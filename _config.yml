@@ -1,0 +1,77 @@
+# The main config file for your Jekyll template
+
+# Site settings
+title: Tock Embedded Operating System
+desc: >
+  Tock is an operating system designed for running multiple concurrent,
+  mutually distrustful applications on Cortex-M based embedded platforms.
+  Tock's design centers around protection, both from potentially malicious
+  applications and from device drivers. Tock uses two mechanisms to protect
+  different components of the operating system. First, the kernel and device
+  drivers are written in Rust, a systems programming language that provides
+  compile-time memory safety, type safety and strict aliasing. Tock uses Rust
+  to protect the kernel (e.g. the scheduler and hardware abstraction layer)
+  from platform specific device drivers as well as isolate device drivers from
+  each other. Second, Tock uses memory protection units to isolate applications
+  from each other and the kernel.
+
+url: http://tockos.org      # put your website hosting url here
+baseurl: ''                 # the subpath of your site, e.g. /blog
+permalink: /blog/:year/:title/   # how should we display posts url
+
+# Meta settings
+#email: www@tockos.org
+author: The Tock OS Developers
+#twitter_username: clenemt
+github_username: helena-project/tock
+#github_source: tock
+
+# Put your ga tracking code below
+google_analytics: 'UA-XXXXXXXX-X'
+
+# Pagination settings
+paginate: 5                           # number of posts to show per page
+paginate_path: "/blog/page:num/"  # link scheme for articles, should be letf as is
+
+# Navigation settings
+# Used to define the navigation menu items
+# > Title is the tile of the navigation item, url the url and desc is the tooltip
+navigation:
+  - title: About
+    url: /about/
+    desc: What is Tock and why you should care?
+  - title: Documentation
+    url: /documentation/
+    desc: Getting Started, Porting and Architecture
+  - title: Papers
+    url: /papers/
+    desc: Published academic papers about Tock
+  - title: Blog
+    url: /blog/
+    desc: Project updates and articles
+
+# Used by Jekyll to recognize what is a post and what is a page
+defaults:
+  -
+    scope:
+      path: ''
+      type: posts
+    values:
+      layout: post
+
+# Markdown parser settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false          # you can change this if you feel like it
+  parse_block_html: true    # allow parsing html inside markdown
+
+# Build settings
+include:
+  - _pages                  # all your pages can be put inside pages (except articles)
+exclude:
+  - README.md
+  - vendor
+gems:
+  - jekyll-paginate
+
