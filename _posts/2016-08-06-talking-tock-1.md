@@ -25,7 +25,7 @@ safe multi-tasking operating system for microcontrollers.
     SPI and BLE drivers, and fixed dependencies in th kernel such that the
     platform crate is the root of compilation.
 
-## Progress report
+## In the works
 
   * Switching from a complicated home-baked Makefil build system to Cargo. This
     will not only clean up the build system significantly but, more
