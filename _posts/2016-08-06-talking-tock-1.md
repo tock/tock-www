@@ -2,8 +2,8 @@
 title: Talking Tock Week 1
 ---
 
-This is the first post in a series tracking the development of Tock, a safe
-multi-tasking operating system for microcontrollers.
+This is the first post in a weekly series tracking the development of Tock, a
+safe multi-tasking operating system for microcontrollers.
 
 ## What's new in Tock?
 
