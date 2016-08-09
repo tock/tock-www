@@ -8,21 +8,21 @@ safe multi-tasking operating system for microcontrollers.
 
 ## What's new in Tock?
 
-  * [@idolf] fixed the `static_init!` to only allocate as much static memory as
+  * @idolf fixed the `static_init!` to only allocate as much static memory as
     needed.
 
-  * [@yuriks] Upgraded Tock to Rust nightly version 2016-07-29, catching us up by
+  * @yuriks Upgraded Tock to Rust nightly version 2016-07-29, catching us up by
     over 7 months worth of nightly versions.
 
-  * [@KBaichoo] implemented a driver for the SAM4L's flash controller, which is a
+  * @KBaichoo implemented a driver for the SAM4L's flash controller, which is a
     step towards replacing apps at runtime.
 
-  * [@phil-levis] made significant progress on the NRF51822 port, implementing
+  * @phil-levis made significant progress on the NRF51822 port, implementing
     support for the real time counter and GPIO interrupts.
 
-  * [@utkarshapets] contributed a UART driver for the NRF51822.
+  * @utkarshapets contributed a UART driver for the NRF51822.
 
-  * [@alevy] removed dependencies on the deprecated `NUM_PROCS` variables in the
+  * @alevy removed dependencies on the deprecated `NUM_PROCS` variables in the
     SPI and BLE drivers, and fixed dependencies in th kernel such that the
     platform crate is the root of compilation.
 
@@ -34,7 +34,7 @@ safe multi-tasking operating system for microcontrollers.
 
   * A native BLE stack for the NRF51822 (based on the Mynewt project).
 
-  * Runtime programming of apps. As a next step, [@KBaichoo] is working on a
+  * Runtime programming of apps. As a next step, @KBaichoo is working on a
     block store abstraction for the flash that allocates storage space in a way
     that respects requirements of the MPU.
 

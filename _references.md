@@ -1,2 +1,0 @@
-
-[@alevy]: https://amitlevy.com

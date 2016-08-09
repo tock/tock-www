@@ -82,4 +82,5 @@ exclude:
   - vendor
 gems:
   - jekyll-paginate
+  - jekyll-mentions
 
