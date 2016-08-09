@@ -97,6 +97,14 @@
   font-size: .875rem;
 }
 
+[rel="author"] {
+  display: block;
+  font-family: $font-heading;
+  color: $text-muted;
+  margin: -$spacer0 0 $spacer;
+  font-size: .875rem;
+}
+
 // Reset the responsive content
 p.post-desc {
   margin-bottom: $spacer;

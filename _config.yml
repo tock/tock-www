@@ -66,6 +66,13 @@ kramdown:
   hard_wrap: false          # you can change this if you feel like it
   parse_block_html: true    # allow parsing html inside markdown
 
+# List of authors for blog posts. Each author should have a `display_name` and
+# `web` field.
+authors:
+  alevy:
+    display_name: Amit
+    web: https://amitlevy.com/
+
 # Build settings
 include:
   - _pages                  # all your pages can be put inside pages (except articles)

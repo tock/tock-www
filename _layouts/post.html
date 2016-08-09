@@ -17,6 +17,14 @@ layout: default
       {% when '1' or '21' or '31' %}{{ d }}st{% when '2' or '22' %}{{ d }}nd{% when '3' or '23' %}{{ d }}rd{% else %}{{ d }}th{% endcase %}
     {{ page.date | date: "%Y" }}
     </time>
+    {% if page.author %}
+    {% if site.authors[page.author] %}<span rel="author">by
+      <a href="{{ site.authors[page.author].web }}">{{ site.authors[page.author].display_name }}</a>
+    </span>
+    {% else %}
+    <span rel="author">by {{ page.author }}</span>
+    {% endif %}
+    {% endif %}
   </header>
 
   <div class="post-content pretty-links">

@@ -1,5 +1,6 @@
 ---
 title: Talking Tock Week 1
+author: alevy
 ---
 
 This is the first post in a weekly series tracking the development of Tock, a
