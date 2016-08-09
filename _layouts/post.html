@@ -17,13 +17,14 @@ layout: default
       {% when '1' or '21' or '31' %}{{ d }}st{% when '2' or '22' %}{{ d }}nd{% when '3' or '23' %}{{ d }}rd{% else %}{{ d }}th{% endcase %}
     {{ page.date | date: "%Y" }}
     </time>
-    {% if page.author %}
-    {% if site.authors[page.author] %}<span rel="author">by
-      <a href="{{ site.authors[page.author].web }}">{{ site.authors[page.author].display_name }}</a>
+    {% if page.authors %}
+    <span rel="author">by
+    {% for author in page.authors %}
+      {% if site.authors[author] %}
+      <a href="{{ site.authors[author].web }}">{{ site.authors[author].display_name }}</a>{% else %}
+      {{ author }}{% endif %}{% unless forloop.last %},{% endunless %}
+    {% endfor %}
     </span>
-    {% else %}
-    <span rel="author">by {{ page.author }}</span>
-    {% endif %}
     {% endif %}
   </header>
 
