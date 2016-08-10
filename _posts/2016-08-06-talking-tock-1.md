@@ -28,7 +28,7 @@ safe multi-tasking operating system for microcontrollers.
 
 ## In the works
 
-  * Switching from a complicated home-baked Makefil build system to Cargo. This
+  * Switching from a complicated home-baked Makefile build system to Cargo. This
     will not only clean up the build system significantly but, more
     importantly, allow porting to other chips and platforms out of tree.
 
