@@ -72,6 +72,9 @@ authors:
   alevy:
     display_name: Amit
     web: https://amitlevy.com/
+  brghena:
+    display_name: Branden
+    web: http://web.eecs.umich.edu/~brghena/
 
 # Build settings
 include:
