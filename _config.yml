@@ -22,9 +22,13 @@ permalink: /blog/:year/:title/   # how should we display posts url
 # Meta settings
 #email: www@tockos.org
 author: The Tock OS Developers
-#twitter_username: clenemt
-github_username: helena-project/tock
-#github_source: tock
+twitter_username: talkingtock
+twitter:
+  username: talkingtock
+github:
+  username: helena-project
+  repo: tock
+  site_source: tock-www
 
 # Put your ga tracking code below
 google_analytics: 'UA-82118347-1'
@@ -83,4 +87,5 @@ exclude:
 gems:
   - jekyll-paginate
   - jekyll-mentions
+  - jekyll-seo-tag
 

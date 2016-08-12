@@ -9,19 +9,19 @@
         <li><a href="mailto:{{ site.email }}">Contact</a></li>
         {% endif %}
 
-        {% if site.github_username %}
-        <li><a target="_blank" rel="external" href="https://github.com/{{ site.github_username }}">Github</a></li>
+        {% if site.github.username and site.github.repo %}
+        <li><a target="_blank" rel="external" href="https://github.com/{{ site.github.username }}/{{ site.github.repo }}">Github</a></li>
         {% endif %}
 
-        {% if site.twitter_username %}
-        <li><a target="_blank" rel="external" href="https://twitter.com/{{ site.twitter_username }}">Twitter</a></li>
+        {% if site.twitter.username %}
+        <li><a target="_blank" rel="external" href="https://twitter.com/{{ site.twitter.username }}">Twitter</a></li>
         {% endif %}
       </ul>
     </div>
 
     <div class="site-source">
       <ul>
-        <li><a target="_blank" href="https://github.com/{{ site.github_username }}/{{ site.github_source }}">Source</a></li>
+        <li><a target="_blank" href="https://github.com/{{ site.github.username }}/{{ site.github.site_source }}">Source</a></li>
       </ul>
     </div>
   </div>
