@@ -2,7 +2,7 @@
 layout: page
 title: Documentation
 subtitle: Documentation
-desc: Documentation for users and developers of the Tock OS
+description: Documentation for users and developers of the Tock OS
 permalink: /documentation/
 ---
 

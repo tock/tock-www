@@ -2,19 +2,7 @@
 
 # Site settings
 title: Tock Embedded Operating System
-desc: >
-  Tock is an operating system designed for running multiple concurrent,
-  mutually distrustful applications on Cortex-M based embedded platforms.
-  Tock's design centers around protection, both from potentially malicious
-  applications and from device drivers. Tock uses two mechanisms to protect
-  different components of the operating system. First, the kernel and device
-  drivers are written in Rust, a systems programming language that provides
-  compile-time memory safety, type safety and strict aliasing. Tock uses Rust
-  to protect the kernel (e.g. the scheduler and hardware abstraction layer)
-  from platform specific device drivers as well as isolate device drivers from
-  each other. Second, Tock uses memory protection units to isolate applications
-  from each other and the kernel.
-
+description: Tock is a safe, multitasking operating system for low-power, low-memory microcontrollers.
 url: http://tockos.org      # put your website hosting url here
 baseurl: ''                 # the subpath of your site, e.g. /blog
 permalink: /blog/:year/:title/   # how should we display posts url
@@ -39,20 +27,21 @@ paginate_path: "/blog/page:num/"  # link scheme for articles, should be letf as 
 
 # Navigation settings
 # Used to define the navigation menu items
-# > Title is the tile of the navigation item, url the url and desc is the tooltip
+# > Title is the tile of the navigation item, url the url and description is
+#   the tooltip
 navigation:
   - title: About
     url: /about/
-    desc: What is Tock and why you should care?
+    description: What is Tock and why you should care?
   - title: Documentation
     url: /documentation/
-    desc: Getting Started, Porting and Architecture
+    description: Getting Started, Porting and Architecture
   - title: Papers
     url: /papers/
-    desc: Published academic papers about Tock
+    description: Published academic papers about Tock
   - title: Blog
     url: /blog/
-    desc: Project updates and articles
+    description: Project updates and articles
 
 # Used by Jekyll to recognize what is a post and what is a page
 defaults:

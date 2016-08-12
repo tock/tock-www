@@ -2,7 +2,7 @@
 layout: page
 title: Papers
 subtitle: Academic Papers
-desc: Academic papers published about the Tock embedded operating system
+description: Academic papers published about the Tock embedded operating system
 permalink: /papers/
 ---
 

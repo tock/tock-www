@@ -2,7 +2,7 @@
 layout: page
 title: About
 subtitle: About
-desc: About the Tock embedded operating system
+description: About the Tock embedded operating system
 permalink: /about/
 ---
 
