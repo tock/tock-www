@@ -12,8 +12,8 @@ process is written assuming that it is the only code in the world and that it
 can place memory at any address it pleases. The MMU handles translating these
 virtual addresses into a physical address in real memory, which is shared
 between all processes. Unfortunately, in the world of embedded systems MMUs are
-not available. Processors like the ARM Cortex-M series omit them because they
-aren't necessary for traditional single-process embedded devices.
+not available. Processors like the ARM Cortex-M series omit them since they are
+power and area-hungry.
 
 A common approach to handle this issue is to assign addresses to applications
 at compile-time. For example, Application A can be placed at address 0x21000
@@ -24,8 +24,8 @@ run time. Assigning each an address in advance simply isn't possible.
 
 In Tock, we use position independent code (PIC) [^1] to enable loading
 multiple applications. In PIC, all branches and jumps are PC-relative
-rather than absolute, allowing code to be placed at any address in
-Flash. All references to the data section are indirected through the
+rather than absolute, allowing code to be placed at any address.
+All references to the data section are indirected through the
 Global Offset Table (GOT) [^2]. Rather than access data at an absolute
 address, first the address of the data is loaded from a hard-coded
 offset into the GOT, and then the data is accessed at that address. This
@@ -34,6 +34,8 @@ based on the actual location of SRAM rather than fixing various
 instructions throughout the code. The address of the GOT itself is
 stored in a PIC base register which is set by the OS before switching to
 application code and is different for each application.
+The ARM instruction set is optimized for PIC operation, allowing most code to
+execute with little to no cost in number of instructions.
 
 While PIC handles the majority of addressing issues, it does not fix
 everything. Data members which are themselves pointers are assigned a
@@ -41,7 +43,7 @@ value by the compiler rather than indirecting through the GOT. For
 example, take the statement:
 
 ```c
-  char* str = "Hello";
+  const char* str = "Hello";
 ```
 
 The address of `"Hello"` is stored in the data section (as the value of
@@ -58,18 +60,19 @@ format. Each application binary is compiled as position independent
 code [^3], has a relocation section appended to it [^4], and begins with a header
 structure containing the size and location of the text, data, GOT, and
 relocation segments as well as an entry point for the app [^5]. The app is
-able to be loaded into any flash and SRAM addresses with the recurring
-cost of additional load instructions for the indirection through the GOT
-and the one-time cost of several simple data address relocations at
-application load time.
+able to be loaded into any flash and SRAM addresses with no control-flow costs,
+the recurring cost of additional load instructions when indirecting data
+accesses through the GOT, and the one-time cost of several simple data address
+relocations at application load time.
 
 When receiving an application binary, Tock assigns space in flash and
 SRAM for it, loads the data segment into SRAM, fixes up addresses stored
 in the GOT [^6], walks the relocation section fixing up additional items in
 the data section [^7], sets the process PC to the entry point of the
 application, and enqueues the newly created processes to be run.
-Applications can be received through many methods including 802.15.4 and
-BLE, but the currently implemented system for Tock receives application
+Applications can be received through many methods including wireless uploads
+over protocols such as IEEE 802.15.4 and Bluetooth Low Energy,
+but the currently implemented system for Tock receives application
 binaries over a UART serial connection.
 
 
