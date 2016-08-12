@@ -90,7 +90,7 @@ the text segment works just fine, since it can always be when the code is
 loaded into RAM. However, Tock executes applications directly from flash
 where it is not practical to rewrite pointer dynamically.
 
-A patch[^8] to add a base-register PIC strategy was sent to LLVM a few years ago,
+A patch[^8] to add a base-register PIC strategy was sent to LLVM a while back
 but it was never merged. Ironically, this means that, for now, to write
 user-land processes in Rust for Tock, an operating system written in Rust.
 
