@@ -75,6 +75,18 @@ over protocols such as IEEE 802.15.4 and Bluetooth Low Energy,
 but the currently implemented system for Tock receives application
 binaries over a UART serial connection.
 
+### Drawbacks
+
+The main issue with this loading strategy is that it is not currently possible
+for applications compiled with LLVM. LLVM does not support a PIC addressing
+like GCC's base-register. In many cases, encoding the location of the GOT in
+the text segment works just fine, since it can always be when the code is
+loaded into RAM. However, Tock executes applications directly from flash
+where it is not practical to rewrite pointer dynamically.
+
+A patch[^8] to add a base-register PIC strategy was sent to LLVM a few years ago,
+but it was never merged. Ironically, this means that, for now, to write
+user-land processes in Rust for Tock, an operating system written in Rust.
 
 ### References
 
@@ -92,3 +104,4 @@ binaries over a UART serial connection.
 
 [^7]: [Tock Relocations Fixup - August 2016](https://github.com/helena-project/tock/blob/a68d5a16b9567ba47681bba678f49ad82f4ff98e/src/main/process.rs#L378)
 
+[^8]: [\[llvm-dev\] \[RFC\]\[ARM\] Add support for embedded position-independent code (ROPI/RWPI)](http://lists.llvm.org/pipermail/llvm-dev/2015-December/093022.html)
