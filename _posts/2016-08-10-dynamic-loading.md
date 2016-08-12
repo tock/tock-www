@@ -22,11 +22,11 @@ when Application A grows in size in the future. Moreover, with Tock we want to
 be able to handle dynamically adding, updating, and removing applications at
 run time. Assigning each an address in advance simply isn't possible.
 
-In Tock, we use position independent code (PIC)**[1]** to enable loading
+In Tock, we use position independent code (PIC) [^1] to enable loading
 multiple applications. In PIC, all branches and jumps are PC-relative
 rather than absolute, allowing code to be placed at any address in
 Flash. All references to the data section are indirected through the
-Global Offset Table (GOT)**[2]**. Rather than access data at an absolute
+Global Offset Table (GOT) [^2]. Rather than access data at an absolute
 address, first the address of the data is loaded from a hard-coded
 offset into the GOT, and then the data is accessed at that address. This
 allows the OS to simply relocate all addresses in the GOT at load time
@@ -55,9 +55,9 @@ segment, making the process of applying relocations simple.
 
 Combining these two solutions together, we reach the Tock application
 format. Each application binary is compiled as position independent
-code**[3]**, has a relocation section appended to it**[4]**, and begins with a header
+code [^3], has a relocation section appended to it [^4], and begins with a header
 structure containing the size and location of the text, data, GOT, and
-relocation segments as well as an entry point for the app**[5]**. The app is
+relocation segments as well as an entry point for the app [^5]. The app is
 able to be loaded into any flash and SRAM addresses with the recurring
 cost of additional load instructions for the indirection through the GOT
 and the one-time cost of several simple data address relocations at
@@ -65,8 +65,8 @@ application load time.
 
 When receiving an application binary, Tock assigns space in flash and
 SRAM for it, loads the data segment into SRAM, fixes up addresses stored
-in the GOT**[6]**, walks the relocation section fixing up additional items in
-the data section**[7]**, sets the process PC to the entry point of the
+in the GOT [^6], walks the relocation section fixing up additional items in
+the data section [^7], sets the process PC to the entry point of the
 application, and enqueues the newly created processes to be run.
 Applications can be received through many methods including 802.15.4 and
 BLE, but the currently implemented system for Tock receives application
@@ -74,11 +74,18 @@ binaries over a UART serial connection.
 
 
 ### References
-**[1]** [Position Independent Code (PIC) in shared libraries](http://eli.thegreenplace.net/2011/11/03/position-independent-code-pic-in-shared-libraries)
-**[2]** [GOT in Tock Applications - August 2016](https://github.com/helena-project/tock/blob/a68d5a16b9567ba47681bba678f49ad82f4ff98e/apps/blink/loader.ld#L26)
-**[3]** [GCC Compiler Flags for Tock Applications - August 2016](https://github.com/helena-project/tock/blob/be050f9ed1fdfe7cf77af06d397980925f6fbe9d/apps/Makefile.Common.mk#L22)
-**[4]** [ELF to Tock Binary - August 2016](https://github.com/helena-project/tock/blob/a68d5a16b9567ba47681bba678f49ad82f4ff98e/tools/elf2tbf/src/main.rs#L86)
-**[5]** [Tock Application Header - August 2016](https://github.com/helena-project/tock/blob/a68d5a16b9567ba47681bba678f49ad82f4ff98e/tools/elf2tbf/src/main.rs#L17)
-**[6]** [Tock GOT Fixup - August 2016](https://github.com/helena-project/tock/blob/a68d5a16b9567ba47681bba678f49ad82f4ff98e/src/main/process.rs#L368)
-**[7]** [Tock Relocations Fixup - August 2016](https://github.com/helena-project/tock/blob/a68d5a16b9567ba47681bba678f49ad82f4ff98e/src/main/process.rs#L378)
+
+[^1]: [Position Independent Code (PIC) in shared libraries](http://eli.thegreenplace.net/2011/11/03/position-independent-code-pic-in-shared-libraries)
+
+[^2]: [GOT in Tock Applications - August 2016](https://github.com/helena-project/tock/blob/a68d5a16b9567ba47681bba678f49ad82f4ff98e/apps/blink/loader.ld#L26)
+
+[^3]: [GCC Compiler Flags for Tock Applications - August 2016](https://github.com/helena-project/tock/blob/be050f9ed1fdfe7cf77af06d397980925f6fbe9d/apps/Makefile.Common.mk#L22)
+
+[^4]: [ELF to Tock Binary - August 2016](https://github.com/helena-project/tock/blob/a68d5a16b9567ba47681bba678f49ad82f4ff98e/tools/elf2tbf/src/main.rs#L86)
+
+[^5]: [Tock Application Header - August 2016](https://github.com/helena-project/tock/blob/a68d5a16b9567ba47681bba678f49ad82f4ff98e/tools/elf2tbf/src/main.rs#L17)
+
+[^6]: [Tock GOT Fixup - August 2016](https://github.com/helena-project/tock/blob/a68d5a16b9567ba47681bba678f49ad82f4ff98e/src/main/process.rs#L368)
+
+[^7]: [Tock Relocations Fixup - August 2016](https://github.com/helena-project/tock/blob/a68d5a16b9567ba47681bba678f49ad82f4ff98e/src/main/process.rs#L378)
 
