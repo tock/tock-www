@@ -3,6 +3,12 @@ title: Dynamic Code Loading on a MCU
 authors:
   - brghena
   - alevy
+desc:
+  One key feature of Tock is the ability to load and run multiple applications
+  simultaneously. Unfortunately, in the world of embedded systems virtual
+  memory is not available. In Tock, we use an underappreciated variant of
+  position independent code (PIC) to enable loading multiple applications
+  without knowing their locations at compile time.
 ---
 
 One key feature of Tock is the ability to load and run multiple applications
