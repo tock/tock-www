@@ -88,7 +88,7 @@ for applications compiled with LLVM. LLVM does not support a dynamic PIC address
 like GCC's base-register. In many cases, encoding the location of the GOT in
 the text segment works just fine, since it can always be when the code is
 loaded into RAM. However, Tock executes applications directly from flash
-where it is not practical to rewrite pointer dynamically.
+where it is not practical to rewrite pointers dynamically.
 
 A patch [^8] to add a base-register PIC strategy was sent to LLVM a while back
 but it was never merged. Ironically, this means that although the Tock kernel
