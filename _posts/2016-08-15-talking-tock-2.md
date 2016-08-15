@@ -20,7 +20,7 @@ using relocatable code? Check it out [here]({% post_url
   * @KBaichoo made a buddy allocator that doesn't rely on the std crate. He'll
     use this as a layer for writing apps to flash at runtime. The main
     challenge the buddy allocator solves is to ensure that apps written to
-    flash are aligned to bounderies that allow correct use of the MPU.
+    flash are aligned to boundaries that allow correct use of the MPU.
 
   * @phil-levis switched development of the NRF51 to the NRF51-DK since the
     evaluation kit is deprecated.
