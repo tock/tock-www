@@ -10,7 +10,7 @@ permalink: /documentation/
 <div class="grid no-gutters">
 
 <div class="unit one-third">
-  <div class="project">
+  <div class="project coming-soon">
 
 #### [Getting Started](#)
 
