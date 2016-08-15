@@ -38,7 +38,7 @@ using relocatable code? Check it out [here]({% post_url
 @shaneleonard is working on a development board based on the
 [Firestorm](http://storm.rocks/firestorm.html) that will be widely available
 (details to come). It is particularly amenable to Tock development since it
-exposes many more internal pins for debugging as well as facilitates
+exposes many more internal pins for debugging as well as facilitating
 power-measurement of individual components.
 
 A first revision of the board came back last week and we've gotten basic code
