@@ -68,6 +68,9 @@ authors:
   brghena:
     display_name: Branden
     web: http://web.eecs.umich.edu/~brghena/
+  pal:
+    display_name: Phil
+    web: http://csl.stanford.edu/~pal/
 
 # Build settings
 include:
