@@ -3,7 +3,6 @@ layout: page
 title: Talking Tock
 subtitle: The Tock OS Blog
 desc: Blog for the Tock embedded operating system
-permalink: /blog/
 ---
 {% if paginator.page == 1 %}
   {% for post in site.posts limit: 2 %}
@@ -38,12 +37,12 @@ permalink: /blog/
 <ol class="pager">
   {% if paginator.previous_page %}
   <li class="pager-prev">
-    <a href="{{ paginator.previous_page_path }}">Previous</a>
+    <a href="{{ paginator.previous_page_path }}">&larr; Previous</a>
   </li>
   {% endif %}
   {% if paginator.next_page %}
   <li class="pager-next">
-    <a href="{{ paginator.next_page_path }}">Next</a>
+    <a href="{{ paginator.next_page_path }}">Next &rarr;</a>
   </li>
   {% endif %}
 </ol>

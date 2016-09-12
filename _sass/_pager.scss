@@ -1,0 +1,12 @@
+ol.pager {
+  list-style: none;
+  padding: 0;
+
+  li.pager-prev {
+    float: left;
+  }
+
+  li.pager-next {
+    float: right;
+  }
+}
