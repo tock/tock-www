@@ -10,6 +10,16 @@ permalink: /documentation/
 <div class="grid no-gutters">
 
 <div class="unit one-third">
+  <div class="project">
+#### [Design](/documentation/design)
+
+Tock's architecture is unique in providing isolation in the kernel using a
+language sandbox. Kernel components, like drivers and virtualization layers,
+are protected from each other with no resource overhead.
+  </div>
+</div>
+
+<div class="unit one-third">
   <div class="project coming-soon">
 
 #### [Getting Started](#)
