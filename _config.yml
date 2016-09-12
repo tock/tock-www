@@ -36,6 +36,9 @@ navigation:
   - title: Documentation
     url: /documentation/
     description: Getting Started, Porting and Architecture
+  - title: Community
+    url: /community/
+    description: Mailing list, GitHub, IRC...
   - title: Papers
     url: /papers/
     description: Published academic papers about Tock
