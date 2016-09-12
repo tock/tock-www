@@ -9,7 +9,7 @@ permalink: /blog/:year/:title/   # how should we display posts url
 
 # Meta settings
 #email: www@tockos.org
-author: The Tock OS Developers
+logo: http://www.tockos.org/assets/img/logo_square.png
 twitter_username: talkingtock
 twitter:
   username: talkingtock
