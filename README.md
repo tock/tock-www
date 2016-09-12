@@ -18,3 +18,4 @@ To build the website:
 
 Now browse to http://localhost:4000 to view
 
+Logo maker: [logomakr.com/5mGstw](http://logomakr.com/5mGstw)
