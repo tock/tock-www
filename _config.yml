@@ -30,9 +30,6 @@ paginate_path: "/blog/page:num/"  # link scheme for articles, should be letf as 
 # > Title is the tile of the navigation item, url the url and description is
 #   the tooltip
 navigation:
-  - title: About
-    url: /about/
-    description: What is Tock and why you should care?
   - title: Documentation
     url: /documentation/
     description: Getting Started, Porting and Architecture
