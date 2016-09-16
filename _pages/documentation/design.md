@@ -100,13 +100,12 @@ explicitly by the hardware Memory Protection Unit (MPU). The MPU limits which
 memory addresses a process can access. Accesses outside of a process’s permitted
 region result in a fault and trap to the kernel.
 
-shows how a process is laid out in memory. Code, stored in flash, is made
-accessible with a read-only memory protection region. Each process is allocated
-a contiguous region of RAM. One novel aspect of a process is the presence of a
+A process's code, stored in flash, is made
+accessible with a read-only memory protection region while it's memory is allocated
+as a contiguous region of RAM. One novel aspect of a Tock process is the presence of a
 “grant” region at the top of the address space. This is memory allocated to the
-process covered by a memory protection region that the process can neither read
-nor write. The grant region, discussed in , is needed for the kernel to be able
-to borrow memory from a process in order to ensure liveness and safety in
+process but covered by a memory protection region that the process can neither read
+nor write. The grant region allows the kernel to borrow memory from a process in
 response to system calls.
 
 ## Grants
