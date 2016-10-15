@@ -58,6 +58,15 @@ kramdown:
   input: GFM
   hard_wrap: false          # you can change this if you feel like it
   parse_block_html: true    # allow parsing html inside markdown
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    # Rouge Options › https://github.com/jneen/rouge#full-options
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
 
 # List of authors for blog posts. Each author should have a `display_name` and
 # `web` field.

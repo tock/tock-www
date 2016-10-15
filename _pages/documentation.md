@@ -20,6 +20,16 @@ are protected from each other with no resource overhead.
 </div>
 
 <div class="unit one-third">
+  <div class="project">
+#### [Walkthrough](/documentation/walkthrough)
+
+An end-to-end walkthrough of how Tock boots and runs a simple app.  Reviews the
+responsibilities of each crate, the system call interface and the user-level
+library.
+  </div>
+</div>
+
+<div class="unit one-third">
   <div class="project coming-soon">
 
 #### [Getting Started](#)
