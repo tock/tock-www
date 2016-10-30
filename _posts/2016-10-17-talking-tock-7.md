@@ -51,7 +51,7 @@ base set of applications for on Tock.
   * @ppannuto made aesthetic improvements to the userland make system as well
     as functional changes that make sure changes are tracked more accurately.
 
-## Interprocess communication (IPC): 30m (Amit)
+## Interprocess communication (IPC)
 
 We've begun prototyping an IPC system that would allow processes to expose
 driver-like functionality. @alevy has
