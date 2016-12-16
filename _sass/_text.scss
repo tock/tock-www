@@ -57,6 +57,13 @@ mark,
 .mark {
   padding: .2em;
   background-color: $ligt-yellow;
+  text-align: center;
+  font-size: 120%;
+  border: 1px dotted;
+
+  a {
+    white-space: nowrap;
+  }
 }
 
 code, kbd,

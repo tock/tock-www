@@ -2,6 +2,10 @@
 layout: default
 ---
 
+{% include notice.html content="Support our crowd campaign by pre-ordering an
+imix development board on [Crowd
+Supply](https://www.crowdsupply.com/helena-project/imix)!" %}
+
 <div class="lead pretty-links">
 Tock is a safe, multitasking operating system for low-power, low-memory
 microcontrollers.
