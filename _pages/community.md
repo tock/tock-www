@@ -20,7 +20,7 @@ The main repository is hosted on [GitHub](https://github.com/helena-project/tock
 Tock developers communicate on the [tock-dev mailing
 list](https://groups.google.com/forum/#!forum/tock-dev) and on the
 [#tock](https://kiwiirc.com/client/irc.freenode.net/tock) IRC channel on
-Freenode.
+Freenode. Join us on either if you have questions or are developing for Tock.
 
 ## Conduct
 
