@@ -4,7 +4,7 @@ author: brghena
 authors: brghena
 ---
 
-Lead Tock developer Amit Levy was recently interviewed for USENIX's `;login:`
+Tock developer Amit Levy was recently interviewed for USENIX's `;login:`
 spring 2017 edition.
 
 He spoke on his interest in embedded operating systems,
