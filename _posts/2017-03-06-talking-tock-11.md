@@ -17,8 +17,10 @@ Tock focused meeting. I forgot to snap some pictures to share even though I
 intended to. But trust me, both meetings happened.
 
 The Signpost meeting was particularly exciting because about 15 new programmers
-built some Tock apps to run on Signpost. Hopefully there will be more good
-information
+built some Tock apps to run on Signpost. As the signpost platform matures, look
+for new exciting announcements around hardware and platform availability, as well
+as some new Tock primitives surrounding distributed programming and multicore
+resource sharing that are in early discussion stages from the project.
 
 ## NRF51 Progress
 
