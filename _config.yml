@@ -42,6 +42,9 @@ navigation:
   - title: Blog
     url: /blog/
     description: Project updates and articles
+  - title: Hardware
+    url: /hardware/
+    description: TockOS Development Hardware
 
 # Used by Jekyll to recognize what is a post and what is a page
 defaults:
