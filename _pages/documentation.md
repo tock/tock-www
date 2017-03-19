@@ -11,6 +11,18 @@ permalink: /documentation/
 
 <div class="unit one-third">
   <div class="project">
+
+#### [Getting Started](/documentation/getting-started)
+
+Compile and flash the Tock kernel and an application onto a supported board.
+This covers how to get the toolchain setup on your platform to start using and
+developing Tock.
+
+  </div>
+</div>
+
+<div class="unit one-third">
+  <div class="project">
 #### [Design](/documentation/design)
 
 Tock's architecture is unique in providing isolation in the kernel using a
@@ -26,18 +38,6 @@ are protected from each other with no resource overhead.
 An end-to-end walkthrough of how Tock boots and runs a simple app.  Reviews the
 responsibilities of each crate, the system call interface and the user-level
 library.
-  </div>
-</div>
-
-<div class="unit one-third">
-  <div class="project coming-soon">
-
-#### [Getting Started](#)
-
-Start building applications for the Imix development platform. This tutorial
-will walk you through building and flashing the Tock kernel onto your device
-and building a simple app.
-
   </div>
 </div>
 </div><!-- grid -->
