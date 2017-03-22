@@ -2,6 +2,7 @@
   margin-right: auto;
   margin-left: auto;
   padding: 0 $spacer;
+  background-color: white;
   @include make-container();
 }
 
@@ -15,7 +16,8 @@
 // SITE HEADER ====================================
 
 .site-header {
-  margin: $spacer4 0 $spacer1;
+  margin: 0 0 $spacer1;
+  padding-top: $spacer4;
   @include clearfix();
 }
 
@@ -63,7 +65,8 @@
 
 @include mq-up(sm) {
   .site-header {
-    margin: $spacer4 0 $spacer2;
+    margin: 0 0 $spacer2;
+    padding-top: $spacer4;
   }
 
   .site-title {
@@ -104,8 +107,9 @@
 // SITE FOOTER ====================================
 
 .site-footer {
-  margin: 4rem 0 6rem;
+  margin: 4rem 0 0;
   padding-top: $spacer1;
+  padding-bottom: 6rem;
   font-family: $font-heading;
   border-top: 1px solid $brand-light-color;
 }
