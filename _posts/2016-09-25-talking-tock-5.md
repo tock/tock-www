@@ -19,7 +19,7 @@ console).
 
 We've begun discussing the UART on the [mailing
 list](https://groups.google.com/d/topic/tock-dev/Inl2rtoKPfw/discussion) and
-@berghena has started prototyping these changes in the [uart-async
+@brghena has started prototyping these changes in the [uart-async
 branch](https://github.com/helena-project/tock/blob/66f7794e078f024499e397cf6e0b4fce010f9b08/kernel/src/hil/uart.rs).
 The high-level take aways from the discussion is that it's important to remove
 any synchronous calls from the trait and add the ability to receive more than
@@ -28,9 +28,7 @@ statically allocated slices to specifically allow slicing buffers with out
 losing the ability to exchange the new slice for a reference to the entire
 buffer.
 
-We also started discussing the GPIO trait in our weekly calls. @ppanuto has
-transcribed most of that discussion in a
-["Project"](https://github.com/helena-project/tock/projects/2) on our GitHub.
+We also started discussing the GPIO trait in our weekly calls.
 We're still resolving some basic questions like how to handle different chip
 semantics for enabling read and write simultaneously and separating pin control
 from configuration. @bradjc has begun

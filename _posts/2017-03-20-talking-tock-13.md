@@ -36,7 +36,7 @@ or desktops.
 
 ### Proposed
 
-  * @nikalasad1 and @frenicth added support for encryption/decryption in
+  * @niklasad1 and @frenicth added support for encryption/decryption in
     [AES in counter mode](https://github.com/helena-project/tock/pull/316/files)
     on top of the NRF51's AES in ECB mode.
 
