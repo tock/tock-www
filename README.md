@@ -12,7 +12,7 @@ First install ruby and ruby bundler if you don't already have it from another ru
         sudo apt install ruby ruby-dev
         sudo gem install jekyll bundler
 	
-	or
+or
 	
 	brew install ruby
 	gem install jekyll bundler
