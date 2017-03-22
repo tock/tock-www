@@ -83,6 +83,9 @@ authors:
   pal:
     display_name: Phil
     web: http://csl.stanford.edu/~pal/
+  bradjc:
+    display_name: Brad
+    web: http://bradcampbell.com
 
 # Build settings
 include:
