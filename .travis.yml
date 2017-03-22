@@ -1,0 +1,12 @@
+sudo: false
+
+cache: bundler
+
+env:
+  global:
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+
+script:
+  - bundle exec jekyll build
+  - bundle exec htmlproofer --assume-extension --check-favicon --check-html --check-img-http --url-ignore 'http://storm.rocks/firestorm.html' ./_site/
+
