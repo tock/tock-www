@@ -10,7 +10,7 @@ Dependencies:
 First install ruby and ruby bundler if you don't already have it from another ruby project:
 
     sudo apt install ruby ruby-dev
-    sudo gem install jekyll bundler
+    gem install jekyll bundler
 	
 or
 
