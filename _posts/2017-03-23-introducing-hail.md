@@ -6,6 +6,7 @@ desc: >
   Today we are introducing Hail, an IoT development board that supports
   Tock! Hail is designed to be a very low-friction way to get started using and
   creating Tock applications.
+image: /assets/img/hail_reva_isometric_1000x547.jpg
 ---
 
 Today we are introducing [Hail](https://github.com/lab11/hail), an IoT
