@@ -9,7 +9,7 @@ desc: >
 image: /assets/img/hail_reva_isometric_1000x547.jpg
 ---
 
-Today we are introducing [Hail](https://github.com/lab11/hail), an IoT
+Today we are introducing [Hail](https://github.com/lab11/hail), an open sourcet IoT
 development board that supports Tock! Hail is designed to be a very low-friction
 way to get started using and creating Tock applications. Simply plug in the
 Hail module over USB and use the [tockloader](https://github.com/helena-project/tockloader)
