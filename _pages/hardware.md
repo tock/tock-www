@@ -27,5 +27,9 @@ information.
 
 ## nRF51-DK
 
-The [Nordic nRF Development Kit](https://www.nordicsemi.com/eng/Products/nRF51-DK)
-and its corresponding [Tock board](https://github.com/helena-project/tock/tree/master/boards/nrf51dk).
+![NRF51 Development Kit](/assets/img/nrf51dk.jpg)
+
+The [Nordic nRF Development
+Kit](https://www.nordicsemi.com/eng/Products/nRF51-DK) is Nordic
+Semiconductor's development board for the popular Blutooth Low Energy SoC, the
+NRF51. Both imix and Hail include this chip in addition to the SAM4L.
