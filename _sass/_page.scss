@@ -93,9 +93,18 @@
   display: block;
   font-family: $font-heading;
   color: $text-muted;
-  margin: -$spacer0 0 $spacer;
+  margin: $spacer0 0 $spacer;
   font-size: .875rem;
 }
+
+h1.post-title {
+  color: $brand-color;
+}
+
+h4.post-title {
+  color: $brand-secondary;
+}
+
 
 [rel="author"] {
   display: block;

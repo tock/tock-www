@@ -14,7 +14,7 @@ desc: Blog for the Tock embedded operating system
   {% for post in paginator.posts %}
   <li class="post">
     <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
-      <h4 class="post-title">{{ post.title }}</h4>
+      <h4 class="post-title">{{ post.title }}{% if post.subtitle %}: {{ post.subtitle }}{% endif %}</h4>
       <time class="post-date" datetime="{{ post.date }}">
       {% assign d = post.date | date: "%-d" %}
       {% assign m = post.date | date: "%B" %}
