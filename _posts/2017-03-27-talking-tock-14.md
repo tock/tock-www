@@ -10,7 +10,7 @@ safe multi-tasking operating system for microcontrollers.
 
 ## Hail released!
 
-This @bradjc, @brghena and @ppannuto [released Hail]({% post_url
+This week @bradjc, @brghena and @ppannuto [released Hail]({% post_url
 2017-03-23-introducing-hail %}): an open source IoT development board that
 supports Tock! Hail is designed to be a very low-friction way to get started
 using and creating Tock applications. Simply plug in the Hail module over USB
