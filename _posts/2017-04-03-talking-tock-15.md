@@ -13,6 +13,31 @@ safe multi-tasking operating system for microcontrollers.
 TODO(ppannuto): a brief explanation of how they are included/built and should
 be structured.
 
+## IRC and Mailing List
+
+We've
+[arranged](https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/tock-dev/m1sGAUi5g5U/1hJYwUQfAgAJ)
+with the organizers of [RustFest](http://2017.rustfest.eu/) for there to be a
+few Hails available to check out at RustFest at the end of April.
+
+@JayKickliter [chimmed in on
+IRC](https://bot.tockos.org/tockbot/tock/2017-04-01/?msg=947&page=1) to ask
+some questions about porting Tock to a new chip and board in an external
+repository. It sounds like he's working on a port to another Cortex-M0 with
+some exciting features. In the process, he's been compiling a list of questions
+arising from the documentation, which we very much appreciate him sharing with
+us.
+
+## Hail Pre-sale
+
+Presales for the [Hail platform]() are ongoing but going fast. The current
+batch is in production and will ship in early May. There are still about 70
+Hails remaining in this batch, so get them while their hot, lest you have to
+wait for the next one. We plan to start supporting other platforms soon, but if
+you're interested in playing around with Tock in all it's glory, Hail will
+still your best bet since it's so feature packed. Pre-order one today on our
+[hardware page]({{ "/hardware" | relative_url }})
+
 ## Tock Pull Requests
 
 Another successful week of merging all proposed pull requests. We're not sure
