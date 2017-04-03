@@ -8,6 +8,9 @@ authors: alevy
 This is the fifteenth post in a series tracking the development of Tock, a
 safe multi-tasking operating system for microcontrollers.
 
+1. TOC
+{:toc}
+
 ## Including External Libraries in Processes
 
 TODO(ppannuto): a brief explanation of how they are included/built and should
@@ -38,7 +41,7 @@ you're interested in playing around with Tock in all it's glory, Hail will
 still your best bet since it's so feature packed. Pre-order one today on our
 [hardware page]({{ "/hardware" | relative_url }})
 
-## Tock Pull Requests
+## Pull Requests
 
 Another successful week of merging all proposed pull requests. We're not sure
 if it's the slightly reduced volume of PRs or just procrastinating from writing
