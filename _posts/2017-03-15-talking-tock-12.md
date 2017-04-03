@@ -16,8 +16,8 @@ shorter.
 
 ## Signpost
 
-@longle2718 ported an [acoustic event detection
-library](https://bitbucket.org/longle1/gcwa) (which he originally used for bird
+@longle2718 ported an acoustic event detection
+library (which he originally used for bird
 song detection on Android) to Tock for the Signpost audio module. It's
 currently [waiting on some guidance](https://github.com/lab11/signpost/pull/46)
 to fix build issues, but involves an FFT, some clever math and should be very
