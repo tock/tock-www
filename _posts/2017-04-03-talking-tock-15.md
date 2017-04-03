@@ -11,10 +11,12 @@ safe multi-tasking operating system for microcontrollers.
 1. TOC
 {:toc}
 
+{::comment}
 ## Including External Libraries in Processes
 
 TODO(ppannuto): a brief explanation of how they are included/built and should
 be structured.
+{:/comment}
 
 ## IRC and Mailing List
 
