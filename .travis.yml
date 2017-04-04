@@ -8,5 +8,5 @@ env:
 
 script:
   - bundle exec jekyll build
-  - bundle exec htmlproofer --assume-extension --check-favicon --check-html --check-img-http --url-ignore 'http://storm.rocks/firestorm.html' ./_site/
+  - bundle exec htmlproofer --assume-extension --check-favicon --check-html --check-img-http ./_site/
 
