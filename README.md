@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/helena-project/tock-www.svg?branch=master)](https://travis-ci.org/helena-project/tock-www)
+
 # Tock OS Website
 
 [http://www.tockos.org/](http://www.tockos.org/)
