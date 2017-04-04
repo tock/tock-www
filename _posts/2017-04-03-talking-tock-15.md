@@ -11,13 +11,6 @@ safe multi-tasking operating system for microcontrollers.
 1. TOC
 {:toc}
 
-{::comment}
-## Including External Libraries in Processes
-
-TODO(ppannuto): a brief explanation of how they are included/built and should
-be structured.
-{:/comment}
-
 ## IRC and Mailing List
 
 We've
@@ -79,3 +72,8 @@ papers, but either way it seems to be working!
     [added a TravisCI check](https://github.com/helena-project/tock/pull/342)
     that verifies TOCs in markdown files in case such inconsistencies arise
     again.
+
+[pic]: https://github.com/helena-project/tock/blob/master/doc/Compilation.md#position-independent-code
+[tab]: https://github.com/helena-project/tock/blob/master/doc/Compilation.md#tock-application-bundle
+[ble-app]: https://github.com/helena-project/tock/blob/master/userland/examples/ble-env-sense/Makefile
+[comp-env]: https://github.com/helena-project/tock/blob/master/doc/Compilation.md#tock-userland-compilation-environment
