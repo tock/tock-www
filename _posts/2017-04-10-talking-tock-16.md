@@ -43,7 +43,8 @@ list](https://groups.google.com/forum/#!forum/tock-dev) and/or chime in on [IRC
 
   * @alevy removed the now defunkt Firstorm platform (RIP) from the repository
     and replaced it with [Hail]({{ "/hardware/hail" | relative_url }}) as the
-    default platform. Hail is not only
+    default platform. Hail is not only active, but also available for purchase.
+    Make sure to get yours!
 
   * @ppannuto fixed an
     [bug in the SAM4L I2C
