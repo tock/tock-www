@@ -32,7 +32,7 @@ list](https://groups.google.com/forum/#!forum/tock-dev) and/or chime in on [IRC
 
 ## Pull Requests
 
-  * @alevy and @ppanuto fixed build failures in Travis CI related to the
+  * @alevy and @ppannuto fixed build failures in Travis CI related to the
     [userspace build system](https://github.com/helena-project/tock/pull/348)
     and [rustfmt](https://github.com/helena-project/tock/pull/347) version
     inconsistencies. The Travis CI problems, in particular, are totally

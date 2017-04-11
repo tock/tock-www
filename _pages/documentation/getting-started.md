@@ -132,10 +132,10 @@ routes all calls to that board's specific Makefile. The root Makefile
 is set up with the following defaults:
 
 ```
-TOCK_BOARD ?= storm
+TOCK_BOARD ?= hail
 ```
 
-Thus it compiles for the storm board by default. There are two ways to
+Thus it compiles for the hail board by default. There are two ways to
 build for a different board:
 
  * You can compile the kernel for a specific board by running the command
@@ -175,7 +175,7 @@ system calls with return error codes (`ENODEVICE` or `ENOSUPPORT`).
 The `TOCK_ARCH` environment variable controls which chip architecture
 to compile to. You can set the `TOCK_ARCH` to any architecture GCC's
 `-mcpu` option accepts. Boards set an appropriate architecture by default,
-(e.g. `cortex-m4` for the `storm` board).
+(e.g. `cortex-m4` for the `hail` board).
 
 To compile an app, `cd` to the desired app and `make`. For example:
 
@@ -204,7 +204,6 @@ the board specific READMEs:
 * [imix](https://github.com/helena-project/tock/blob/master/boards/imix/README.md)
 * [Hail](https://github.com/helena-project/tock/blob/master/boards/hail/README.md)
 * [nRF51-DK](https://github.com/helena-project/tock/blob/master/boards/nrf51dk/README.md)
-* [Storm](https://github.com/helena-project/tock/blob/master/boards/storm/README.md)
 
 
 ## Formatting Rust Source Code
