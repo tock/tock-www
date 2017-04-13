@@ -101,4 +101,5 @@ gems:
   - jekyll-paginate
   - jekyll-mentions
   - jekyll-seo-tag
+  - jekyll-sitemap
 
