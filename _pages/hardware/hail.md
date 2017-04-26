@@ -17,6 +17,8 @@ that supports Tock. It is designed to be a very low-friction way to get started
 using and creating Tock applications. Simply plug in the Hail module over USB
 and use the [tockloader](https://github.com/helena-project/tockloader) utility
 to load and run applications.
+Already have one? Head [here](https://github.com/helena-project/tock/tree/master/boards/hail)
+for getting started instructions and to learn how to use your Hail.
 
 {% include hail_buy.html %}
 
