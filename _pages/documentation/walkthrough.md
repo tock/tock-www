@@ -61,12 +61,12 @@ there we can run arbitrary C/Rust code.
 
 In Tock, the chip-specific crate[^sam4l-crate] sets up the vector table by
 defining values in the `.vectors`[^vectors] section and relies on the
-board-specific crate[^storm-crate] to place that section appropriately using it's linker
+board-specific crate[^hail-crate] to place that section appropriately using it's linker
 script:
 
-[^sam4l-crate]: [SAM4L crate](https://github.com/helena-project/tock/tree/4e7ea7d86e5ff4598148425edf9058d8c4d7f3de/chips/sam4l)
-[^vectors]: [SAM4L Vector Table](https://github.com/helena-project/tock/blob/4e7ea7d86e5ff4598148425edf9058d8c4d7f3de/chips/sam4l/src/lib.rs#L68)
-[^storm-crate]: [Firestorm Crate](https://github.com/helena-project/tock/tree/4e7ea7d86e5ff4598148425edf9058d8c4d7f3de/boards/storm)
+[^sam4l-crate]: [SAM4L crate](https://github.com/helena-project/tock/tree/master/chips/sam4l)
+[^vectors]: [SAM4L Vector Table](https://github.com/helena-project/tock/blob/master/chips/sam4l/src/lib.rs#L68)
+[^hail-crate]: [Hail Crate](https://github.com/helena-project/tock/tree/master/boards/hail)
 
 ```rust
 // Exposed by the linker script or board-specific crate
@@ -161,26 +161,29 @@ let timer = static_init!(
 virtual_alarm1.set_client(timer);
 ```
 
-At each level above, we're initializing a new layer in static memory, passing
-it a reference to the layer below and also setting it as the client of the
-layer below. This works because each of our layers implements both the
-`time::Alarm` and `time::Client` traits and because all capsules use immutable
-references to `self`.
+> The `static_init!` macro creates and initializes variables in static memory,
+while getting around some restrictions on static initialization in Rust (e.g.
+constructors have to be `const` functions).
+
+Above, we're initializing a new component for each level of the stack in static
+memory, passing it a reference to the component below and also setting it as
+the client of the same component. This works because all of the components
+implement both the `time::Alarm` and `time::Client` traits and because capsules
+use immutable references to `self`.
 
 Finally, the `TimerDriver` is stored in the board's struct, which is passed to
 the kernel's main function (the scheduler):
 
 ```rust
-let board = static_init!(Firestorm,
-    Firestorm {
-        /* ... */
-        timer: timer,
-        /* ... */
-    }, 28);
+let hail = Hail {
+    /* .. */
+    timer: timer,
+    /* .. */
+};
 
 /* ... */
 
-kernel::main(firestorm, &mut chip, load_processes());
+kernel::main(&hail, &mut chip, load_processes(), &hail.ipc);
 ```
 
 We also passed the result of `load_processes()` to `kernel::main`. This is a
@@ -214,7 +217,7 @@ while let Some(interrupt) = iq.dequeue() {
 }
 ```
 
-[^service-interrupts]: [`service_pending_interrupts` for SAM4L](https://github.com/helena-project/tock/blob/4e7ea7d86e5ff4598148425edf9058d8c4d7f3de/chips/sam4l/src/chip.rs#L55)
+[^service-interrupts]: [`service_pending_interrupts` for SAM4L](https://github.com/helena-project/tock/blob/master/chips/sam4l/src/chip.rs#L70)
 
 The board definition specifies which system call number is associated with a
 particular capsule in the `with_driver` method[^with-driver]:
@@ -237,7 +240,7 @@ requires them to implement three methods (`allow`, `command` and `subscribe`)
 corresponding to three of the five system calls processes can invoke. The other
 two (`memop` and `yield`) are handled directly by the scheduler.
 
-[^with-driver]: [`with_driver` for Firestorm](https://github.com/helena-project/tock/blob/4e7ea7d86e5ff4598148425edf9058d8c4d7f3de/boards/storm/src/main.rs#L94)
+[^with-driver]: [`with_driver` for Hail](https://github.com/helena-project/tock/blob/master/boards/hail/src/main.rs#L93)
 
 ## Process scheduler
 
@@ -286,7 +289,7 @@ interaction between processes, capsules and the hardware works.
 ```rust
 static void delay_cb(int unused0, int unused1, int unused2,
     void* userdata) {
-  *((bool*)ud) = true;
+  *((bool*)userdata) = true;
 }
 
 void delay_ms(uint32_t ms) {
@@ -320,7 +323,7 @@ last parameter.
 When a process calls `subscribe`, a system call instruction is invoked
 which traps to the scheduler. The scheduler uses the driver number to figure
 out which driver the process wants to forward the subscribe request to. In this
-case, the Firestorm maps driver number `3` to the timer driver. The scheduler
+case, Hail maps driver number `3` to the timer driver. The scheduler
 wraps the function pointer and user-data into an opaque `Callback` type and
 passes it to the timer driver's `subscribe` method.
 
@@ -343,7 +346,7 @@ fn subscribe(&self, _: usize, callback: Callback) -> isize {
 }
 ```
 
-[^timer-subscribe]: [Timer driver `subscribe`](https://github.com/helena-project/tock/blob/4e7ea7d86e5ff4598148425edf9058d8c4d7f3de/capsules/src/timer.rs#L62)
+[^timer-subscribe]: [Timer driver `subscribe`](https://github.com/helena-project/tock/blob/master/capsules/src/timer.rs#L65)
 
 ## Command
 
