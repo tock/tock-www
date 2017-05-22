@@ -3,13 +3,13 @@
 # Site settings
 title: Tock Embedded Operating System
 description: Tock is a safe, multitasking operating system for low-power, low-memory microcontrollers.
-url: http://tockos.org      # put your website hosting url here
+url: https://www.tockos.org      # put your website hosting url here
 baseurl: ''                 # the subpath of your site, e.g. /blog
 permalink: /blog/:year/:title/   # how should we display posts url
 
 # Meta settings
 #email: www@tockos.org
-logo: http://www.tockos.org/assets/img/logo_square.png
+logo: https://www.tockos.org/assets/img/logo_square.png
 twitter_username: talkingtock
 twitter:
   username: talkingtock
