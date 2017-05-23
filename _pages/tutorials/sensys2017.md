@@ -8,6 +8,15 @@ description: >
 permalink: /tutorials/sensys2017
 ---
 
+The Tock operating system is a secure, embedded kernel for sensor network and
+Internet of Things systems using Cortex-M micro controllers. Written in the
+Rust language, it supports kernel extensions in Rust as well as multiple
+concurrent applications written in C, Rust, or Lua. This tutorial will give an
+introduction to programming in Tock as well as an overview of its architecture.
+Attendees will write a user-land networking application in C as well as a
+kernel extension in Rust. Attendees will be provided hardware kits, which they
+may optionally purchase as part of the registration fee.
+
 Sign up to receive emails when registration opens and details are available.
 
 <div id="mc_embed_signup" markdown="0" style="text-align: center;">
