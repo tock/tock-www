@@ -40,7 +40,7 @@ needs to be padded to 20kB (instead of 32kB) and the base address aligned to
 Our proposal was accepted to host a tutorial at SenSys 2017 (the ACM Conference
 on Embedded Networked Sensor Systems) in Delft, The Netherlands on November
 5th! You can sign up for updates and to be notified when registration opens
-[here]({{ "/tutorials/sensys2017" | relative_url}}). But, meanwhile, the cliffnotes.
+[here]({{ "/events/sensys2017" | relative_url}}). But, meanwhile, the cliffnotes.
 
 ### What will the tutorial cover?
 

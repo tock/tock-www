@@ -5,7 +5,7 @@ subtitle: Announcing a Tock Tutorial @ SenSys, Novermber 5th in Delft
 description: >
   A Tock tutorial for the sensor-networks community, co-located with SenSys
   2017.
-permalink: /tutorials/sensys2017
+permalink: /events/sensys2017
 ---
 
 The Tock operating system is a secure, embedded kernel for sensor network and
