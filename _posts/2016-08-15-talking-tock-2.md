@@ -36,7 +36,8 @@ using relocatable code? Check it out [here]({% post_url
 ### Imix platform
 
 @shaneleonard is working on a development board based on the
-[Firestorm][firestorm] that will be widely available
+<a href="https://web.archive.org/web/20160828042208/http://storm.rocks/firestorm.html" data-proofer-ignore>Firestorm</a>
+that will be widely available
 (details to come). It is particularly amenable to Tock development since it
 exposes many more internal pins for debugging as well as facilitating
 power-measurement of individual components.
@@ -68,5 +69,3 @@ port layers of the library into Rust drivers in the kernel.
 @KBaichoo has finished a block store abstraction that respects the alignment
 rules of the ARM Cortex-M memory protection unit. The next step is build a layer
 on top that gets contiguous blocks of storage sized for an app and program it.
-
-[firestorm]: https://web.archive.org/web/20160828042208/http://storm.rocks/firestorm.html
