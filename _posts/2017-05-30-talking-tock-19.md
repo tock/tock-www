@@ -1,6 +1,6 @@
 ---
-title: Talking Tock 18
-subtitle:
+title: Talking Tock 19
+subtitle: High-Speed ADC and LLVM bugs
 author: aalevy
 authors: alevy
 ---
@@ -8,31 +8,53 @@ authors: alevy
 This is the 19th post in a series tracking the development of Tock, a
 safe multi-tasking operating system for microcontrollers.
 
+> We're giving a tutorial co-located with [SenSys
+> 2017](http://sensys.acm.org/2017) Novenmber 5th in Delft, The Netherlands.
+> Go [here]({{ "/events/sensys2017" | relative_url }}) for details and to sign
+> up to recieve an e-mail when registration opens.
+
 1. TOC
 {:toc}
 
 ## Continuous ADC Sampling
 
-Makes use of continuous ADC sampling on the SAM4L in order to provide an ADC
-interface to userland capable of providing samples at a set frequency. There
-are also two example applications adc and adc\_continuous which give examples of
-the synchronous and asynchronous ADC interfaces provided to userland.
+@brghena has spent the last month or so implementing continuous ADC sampling in
+order to support high-speed aquisition of audio signals in Signpost
+applications.
 
-This should (finally) address the needs of lab11/signpost#46 for Signpost.
+In particular, a [pending
+application](https://github.com/lab11/signpost/pull/46) for Signpost by
+@longle2718 that provides classification of audio events. For example,
+detecting bird songs, gunshots, etc. In order to do the classification, it
+first needs a source of audio recorded at a high enough data rate to
+distinguish high-frequency noises. Audio applications commonly need samples at
+44.1 kHz.
 
-### Features
-
-  * Specified ADC channels. Like GPIO, the ADC capsule is now initialized with a list of valid ADC channels.
-  * Ability to continuously collect single samples at frequencies from 1 to 10000 Hz.
-  * Ability to continuously collect buffers of samples at frequencies from 23 Hz to 187000 Hz.
-  * Application interface for requesting a single buffer-full of samples at any frequency.
-  * Application interface for requesting continuous double-buffered samples at any frequency.
+The original ADC implementation is only capable of 1-2 kHz sampling with high
+jitter between samples. The [new ADC
+continuous](https://github.com/helena-project/tock/blob/master/doc/reference/trd102-adc.md#3-adccontinuous)
+implementation is capable of low-jitter sampling up to 180 kHz, which will
+allow it to provide for the needs of the audio classification application.
 
 ## LLVM bugs: action and reaction
 
-<https://github.com/japaric/f3/issues/42>
+Following a [relatively](https://github.com/helena-project/tock/pull/367)
+[deep](https://github.com/helena-project/tock/pull/369)
+[rabbit-hole](https://github.com/helena-project/tock/issues/370) over the last
+couple weeks, we ended up running into two LLVM bugs on Cortex-M0 (thumbv6)
+targets that temporarily blocked our progress.
 
-<https://github.com/rust-lang/rust/issues/42248>
+The first was an unsupported relocation in LLVM 3.9 that had already [been
+found](https://github.com/japaric/f3/issues/42) by @japaric and resolved by the
+upgrade to LLVM 4.0 in Rust.
+
+However, upgrading to newer versions of Rust proved challanging as well. LLVM
+4.0 changed how it compiles switch expressions (`match` expressions in Rust)
+for Cortex-M0 and had a regression that resulted in [completely buggy
+  assembly](https://github.com/rust-lang/rust/issues/42248). This has since
+been resolved upstream in LLVM, and will likely be backported to Rust soon.
+In the meantime, forcing LLVM not to inline the particular problematic case
+in the Tock NRF51-DK board setup gets around this bug.
 
 
 ## Pull Requests
@@ -66,6 +88,12 @@ This should (finally) address the needs of lab11/signpost#46 for Signpost.
   * ([#396]) @bradjc TBF version 2
   * ([#397]) @bradjc wrote an IPC tutorial
   * ([#398]) @brghena began updating the ADC reference document to reflect the changes to ADC HIL.
+
+### Hail
+
+Itching to start using and developing for Tock? There are still Hail
+development boards, the main board used for Tock development, available in
+stock. Check them out [here]({{ "/hardware/hail" | relative_url }}).
 
 [#282]: https://github.com/helena-project/tock/pull/282
 [#370]: https://github.com/helena-project/tock/pull/370
