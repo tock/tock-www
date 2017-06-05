@@ -38,7 +38,7 @@ If you've dealt with bare-metal USB drivers, you probably know that enumeration
 is a good deal of the way towards building a device, and we're all in awe of
 @daniel-scs.
 
-The [PR]([#416]) includes a few layers of abstraction geared towards building
+PR [#416] includes a few layers of abstraction geared towards building
 more complete applications: a low-level HAL, a generic USB device interface and
 a simple enumeration capsule.
 
@@ -68,10 +68,10 @@ the NRF51's temperature sensor.
 ### Proposed
   * ([#409]) @niklasad1 and @frenicth are upstreaming their Bluetooth Low-Energy
     advertisement support for the NRF51.
-    
-  * ([#416]) @daniel-scs added USB enumeration to the SAM4L
-  
-  * ([#419]) @alevy added virtual alarms to userland
+
+  * ([#416]) @daniel-scs added USB enumeration to the SAM4L
+
+  * ([#419]) @alevy added virtual alarms to userland
 
 ## Hail
 
