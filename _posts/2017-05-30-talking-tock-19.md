@@ -89,7 +89,7 @@ in the Tock NRF51-DK board setup gets around this bug.
   * ([#397]) @bradjc wrote an IPC tutorial
   * ([#398]) @brghena began updating the ADC reference document to reflect the changes to ADC HIL.
 
-### Hail
+## Hail
 
 Itching to start using and developing for Tock? There are still Hail
 development boards, the main board used for Tock development, available in
