@@ -68,7 +68,9 @@ the NRF51's temperature sensor.
 ### Proposed
   * ([#409]) @niklasad1 and @frenicth are upstreaming their Bluetooth Low-Energy
     advertisement support for the NRF51.
-  * ([#416]) @daniel-scs added USB enumeration to the SAM4L
+    
+  * ([#416]) @daniel-scs added USB enumeration to the SAM4L
+  
   * ([#419]) @alevy added virtual alarms to userland
 
 ## Hail
