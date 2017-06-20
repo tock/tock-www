@@ -17,7 +17,7 @@ isolation granularity and resource consumption.
 Tock's architecture resolves this trade-off by using a language sandbox to
 isolated components and a cooperative scheduling model for concurrency in the
 kernel. As a result, isolation is (more or less) free in terms of resource
-consumption at the expense of preemtive scheduling (so a malicious component
+consumption at the expense of preemptive scheduling (so a malicious component
 could block the system by, e.g., spinning in an infinite loop).
 
 To first order, all component in Tock, including those in the kernel, are

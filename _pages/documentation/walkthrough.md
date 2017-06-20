@@ -33,8 +33,8 @@ First we make sure the GPIO pin connected to the LED (which is connected to
 GPIO pin 0) is enabled as an output (line #4). Then, in an infinite loop, we
 toggle the LED and wait for 500ms.
 
-Under the hood, the kernel intializes the chip, board and peripherals, protects
-most of the memory from the untrusted hands of the application. and sets up an
+Under the hood, the kernel initializes the chip, board and peripherals, protects
+most of the memory from the untrusted hands of the application, and sets up an
 asynchronous timer allowing it to go to sleep during the delay, transparently
 to the application. So let's dive in and see how this all works.
 
@@ -96,8 +96,8 @@ pub static BASE_VECTORS: [unsafe extern fn(); 256] = [
 Since `reset_handler` is defined in the board-specific crate, that's where
 we'll start executing.  However, the first thing it calls is the chip's
 initialization function (e.g. `sam4l::init()`). Chip initialization copies the
-data section from flash to RAM, zeroes out the BSS section and accounts for any
-chip errata.
+data section from flash to RAM, zeroes out the BSS section, and accounts for
+any chip errata.
 
 We're already running code written in Rust, but it's fairly C-like Rust:
 
@@ -195,9 +195,9 @@ segments, global offset tables and stacks into memory.
 
 `kernel::main` is the scheduler for Tock. It runs in a loop, where each
 iteration invokes events on capsules in response to hardware interrupts that
-have occured, runs any processes that are either in the running state or have
+have occurred, runs any processes that are either in the running state or have
 pending callbacks, and servicing systems calls from process by, again, invoking
-events on the approriate capsules.
+events on the appropriate capsules.
 
 ## Capsule scheduler
 
@@ -236,7 +236,7 @@ fn with_driver<F, R>(&mut self, driver_num: usize, f: F) -> R
 ```
 
 Capsules that service system calls must conform to the `Driver` trait, which
-requires them to implement three methods (`allow`, `command` and `subscribe`)
+requires them to implement three methods (`allow`, `command`, and `subscribe`)
 corresponding to three of the five system calls processes can invoke. The other
 two (`memop` and `yield`) are handled directly by the scheduler.
 
@@ -253,7 +253,7 @@ pending callback or block the process until one is available.
 A callback is just an instruction address in the process and three arguments
 (passed via registers). When a process is first created, the kernel enqueues a
 default `start` callback pointing to the processes `_start` function which, by
-default, is defined in the `libtock` user library the the process links to
+default, is defined in the `libtock` user library that the process links to
 statically, and simply sets up a stack and calls `main`.
 
 So, in the case of our blink app, once the chip and board are initialized and
@@ -284,7 +284,7 @@ operations.
 
 `delay_ms`, on the other hand, is more complex and involves four of the five
 system calls. Let's follow `delay_ms` end-to-end to get a picture of the
-interaction between processes, capsules and the hardware works.
+interaction between processes, capsules, and the hardware works.
 
 ```rust
 static void delay_cb(int unused0, int unused1, int unused2,
