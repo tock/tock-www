@@ -2,6 +2,16 @@
 layout: default
 ---
 
+<div style="border: 1px dotted red">
+We'll be giving tutorials this summer and fall. For registration and details head over to the event pages:
+
+  * [RustConf 2017](/events/rustconf2017) (August 17th, Portland, OR)
+
+  * [SenSys 2017](/events/sensys2017) (November 5th, Delft, The Netherlands)
+
+</div>
+
+
 <div class="lead pretty-links">
 Tock is a safe, multitasking operating system for low-power, low-memory
 microcontrollers.
