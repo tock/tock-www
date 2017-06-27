@@ -43,7 +43,7 @@ cryptocurrencies now unavoidable within a 100 mile radius of San Francisco.
 
   * @bradjc `static_init!` cleanup in imix
   * @ppannuto fixed version issues with userland style tool uncrustify
-  * @ppanuto marked inputs and outputs for extended ASM correctly in low-level
+  * @ppannuto marked inputs and outputs for extended ASM correctly in low-level
     libtock functions
   * @shaneleonard's imixv2 support with tock-bootloader
   * @brghena updated the ADC reference document to reflect the changes to ADC
