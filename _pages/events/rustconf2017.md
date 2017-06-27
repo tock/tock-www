@@ -1,35 +1,21 @@
 ---
 layout: page
-title: Tock Tutorial @ RustConf 2017
-subtitle: Announcing a Tock Tutorial @ RustConf, August 18th in Portland
+title: Tock Training @ RustConf 2017
+subtitle: Tock Training @ RustConf, August 18th in Portland
 description: >
   A Tock tutorial for the Rust community, co-located with RustConf
   2017.
 permalink: /events/rustconf2017
 ---
 
-The Tock operating system is a secure, embedded kernel for sensor network and
-Internet of Things systems using Cortex-M micro controllers. Written in the
-Rust language, it supports kernel extensions in Rust as well as multiple
-concurrent applications written in C, Rust, or Lua. This tutorial will give an
-introduction to programming in Tock as well as an overview of its architecture.
-Attendees will write a kernel extension in Rust as well as learn to program
-applications on a development board
+Put Rust to practice in low-level embedded systems. This training will
+introduce cover programming for Tock, a secure embedded operating system for
+sensor networks and the Internet of Things, written in Rust. You will learn to
+write kernel extensions, the basics of porting Tock to a new platform, and how
+to write power- and memory-efficient applications. We will also give an
+overview of the system architecture.
 
-Sign up to receive emails when more details are available and registration
-opens.
+RustConf 2017 Trainings are Friday, August 19th, in Portland, OR. Register below for the conference and trainings:
 
-<div id="mc_embed_signup" markdown="0" style="text-align: center;">
-<form action="//tockos.us14.list-manage.com/subscribe/post?u=3ab7c13c2409f58a1553f170a&amp;id=4df8e5a310" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-<p>
-  <input type="email" value="" placeholder="Enter your e-mail" name="EMAIL" class="required email" id="mce-EMAIL"/>
-</p>
-<div id="mce-responses" class="clear">
-        <div class="response" id="mce-error-response" style="display:none"></div>
-        <div class="response" id="mce-success-response" style="display:none"></div>
-</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3ab7c13c2409f58a1553f170a_4df8e5a310" tabindex="-1" value=""></div>
-<p><input type="submit" value="Get Notified" name="subscribe" id="mc-embedded-subscribe" class="button"></p>
-</form>
-</div>
+<div style="width:100%; text-align:left;" ><iframe  src="//eventbrite.com/tickets-external?eid=35274908200&ref=etckt" frameborder="0" height="800" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe><div style="font-family:Helvetica, Arial; font-size:10px; padding:5px 0 5px; margin:2px; width:100%; text-align:left;" ></div></div>
 
