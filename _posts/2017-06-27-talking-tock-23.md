@@ -14,8 +14,8 @@ safe multi-tasking operating system for microcontrollers.
 ## RustConf Training
 
 Registration for the Tock training at RustConf [is
-up](http://rustconf.com/register.html)! We're extremely excited to be running a
-long side the other tutorials. It will be on Friday, in the afternoon, 
+up](http://rustconf.com/register.html)! We're extremely excited to be running
+alongside the other tutorials. It will be on Friday, in the afternoon.
 
 ## Pull Requests
 ### Merged
