@@ -27,7 +27,7 @@ layout: default
 
   * #### Sensor Networks
 
-    ![Signpost modular city-scale sensing platform]({{ site.url }}/assets/img/signpost.png)
+    ![Signpost modular city-scale sensing platform]({{ site.baseurl }}/assets/img/full-res/signpost.png)
 
     The [Signpost] is a modular city-scale sensing platform that provides power
     and connectivity for a diverse set of sensing modules. Signpost is built
@@ -36,7 +36,7 @@ layout: default
 
   * #### Security critical devices
 
-    ![USB authentication key]({{ site.url }}/assets/img/usb-authkey.png)
+    ![USB authentication key]({{ site.baseurl }}/assets/img/full-res/usb-authkey.png)
 
     Security critical devices, like TPMs and USB authentication fobs, are
     actually multiprogramming environments running applications written by
@@ -45,7 +45,7 @@ layout: default
 
   * #### Wearables
 
-    ![Smart sports watch]({{ site.url }}/assets/img/running-watch.png)
+    ![Smart sports watch]({{ site.baseurl }}/assets/img/full-res/running-watch.png)
 
     Tock enables consumer IoT devices, like sports watches or fitness trackers,
     that run need to run for months on small batteries and low-memory
@@ -55,9 +55,35 @@ layout: default
 
 ### Safety
 
+Tock takes advantage of hardware-protection mechanisms available on recent
+microcontrollers and the type-safety features of the Rust programming language
+to provide a multiprogramming environment that offers isolation of software
+faults.
+
+Kernel components are isolated at compile-time using Rust's type and module
+systems. As a result, sensor drivers, virtualization layers, networking stacks
+and other components can only access resources they are allowed to, even if they
+operate on the same bus or share state with other components. For example, two
+drivers for peripherals on the same I2C bus can only talk to their respective
+peripherals.
+
+[Learn More](/documentation/design)
+
 ### Reliability
 
-### Low-power
+Embedded applications, whether for sensor networks, IoT devices, or security
+focused, need to be highly reliable. If they crash, there is usually no way for
+a human to fix them in the field.
+
+The Tock kernel uses an event driven execution model that uses no heap
+allocation, so the kernel won't run out of memory. Applications can manage their
+memory however they want, but are scheduled preemptively and decoupled from the
+kernel such that the system can keep going if an application crashes or
+restarts.
+
+[Learn More](/documentation/design)
+
+### Seamless Low-power
 
 ```c
 int main() {
