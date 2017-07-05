@@ -1,6 +1,6 @@
 ---
 title: Talking Tock 24
-subtitle: uAs during sleep, ADC clocks and too many PRs to count
+subtitle: μAs during sleep, ADC clocks, and too many PRs to count
 author: aalevy
 authors: alevy
 ---
@@ -14,7 +14,7 @@ safe multi-tasking operating system for microcontrollers.
 
 Maybe it's just some remaining pent-up excitement after taking a break to write
 papers a couple months ago. Or maybe it's just the bright sun keeping us in our
-windowless labs[^1]. But the last few weeks have seen a notable uptick in
+windowless labs,[^1] but the last few weeks have seen a notable uptick in
 activity on the Tock repo. As we march forward towards a deployment of the
 Signpost sensor network, and gear up for tutorials at [RustConf] and [SenSys],
 we've been knocking off features.
@@ -30,9 +30,9 @@ kernel.
 
 One of the main features Signpost needs from Tock is low-power operation. In
 particular, it's the responsibility of the kernel to enter into the lowest
-power state it sleeps (i.e. whenever there are no active events to run).
+power state when it sleeps (i.e. whenever there are no active events to run).
 
-Our initial goal is to run typical applications have Tock enter the SAM4L's
+Our initial goal is to run typical applications and have Tock enter the SAM4L's
 deep-sleep state, which consumes ~5&mu;A with full RAM retention. In this
 state, effectively the only things that can wake the CPU up are the
 asynchronous timer (AST), certain pin interrupts (EIC), and an I2C device
@@ -41,9 +41,9 @@ some sensors, transform the data in some way and potentially send some network
 packets, then go to sleep for a certain amount of time (i.e. to be woken up by
 a timer).
 
-We now have basic functionality in place to support this, and are now working
-on implementing the accounting in each each low-level chip-specific driver. So
-far, it seems that the implementations are fairly straight forward.
+We now have basic functionality in place to support this, and are working on
+implementing the accounting in each each low-level chip-specific driver. So
+far, it seems that the implementations are fairly straightforward.
 
 You can read more about our current strategy for managing sleep states in
 [yesterday's post]({% post_url 2017-07-04-low-power %})
@@ -53,15 +53,15 @@ You can read more about our current strategy for managing sleep states in
 An ADC (Analog to Digital Converter) is a hardware controller that converts a
 continous analog signal, with infinite granularity, into a digital one that can
 be processed by a computer. ADCs typically operate in one of two modes: a
-single-shot mode that captures a single analog reading, and a continuous mode
+single-shot mode that captures a single analog reading and a continuous mode
 that captures an analog signal over time. For example, audio is often encoded
 as a 44kHz analog signal, meaning the analog value from a microphone needs to
-be captured every 22&muS;.
+be captured every 22μS.
 
 In order to support a wide range of continuous ADC intervals, an application
 needs to be able choose different clock sources for the ADC controller. For
 example, on the SAM4L, the main system clock struggles to provide sampling at
-frequencies sloware than 23Hz. On the other hand, the choice of clocks is very
+frequencies slower than 23Hz. On the other hand, the choice of clocks is very
 hardware specific (microcontrollers don't have a standard set of clocks) so
 it's better if applications don't have to choose clocks explicitly, but let the
 kernel (particularly hardware-specific drivers) choose the optimal clock based
