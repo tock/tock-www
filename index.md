@@ -85,6 +85,12 @@ restarts.
 
 ### Seamless Low-power
 
+Tock-based systems can run on battery for months or years, or from energy
+harvesting sources like solar indefinitely. The Tock kernel and drivers
+seamlessly put the hardware into the lowest possible sleep state based on
+application requirements. No explicit power-management is required from the
+application! Even naive apps like this blink app sleep as low as 5&mu;A<sup>\*</sup>:
+
 ```c
 int main() {
   while(1) {
@@ -93,5 +99,8 @@ int main() {
   }
 }
 ```
+
+<small>\* As measure on the imix development board. Actual current draw depends
+on the microcontroller and board.</small>
 
 [Signpost]: https://github.com/lab11/signpost "Signpost is a modular city-scale sensing platform"
