@@ -15,6 +15,7 @@ h1, h2, h3, h4 {
 
 body {
   font-family: 'Lato', sans-serif;
+  margin-top: 115px;
 }
 
 // Elements
@@ -39,6 +40,7 @@ a.button {
 // Heading
 
 body > header {
+  position: fixed;
   padding: 1em;
   top: 0;
   left: 0;
