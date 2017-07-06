@@ -2,29 +2,31 @@
 layout: default
 ---
 
+<div class="hero">
 # Programmable IoT starts at the edge
 
 ## An embedded operating system designed for running multiple concurrent, mutually distrustful applications on low-memory and low-power microcontrollers.
 
-<div id="features">
-### Features
+{:.links}
+ * [Get started](/documentation/getting-started){:.button}
+ * [Join the community](/community){:.button}
 
-  * {:.security}
-  
+{:.features}
+  * {:.extensible}
+    ### Extensible
     Safely use drivers and kernel extensions from third parties
 
-  * {:.memory}
-
+  * {:.reliable}
+    ### Reliable
     Run processes reliably with minimal resource overhead
 
   * {:.lowpower}
-
+    ### Low-power
     Automatic low power operation
+
 </div>
 
-<div id="applications">
-### What can you use Tock for?
-
+{:#applications}
   * #### Sensor Networks
 
     ![Signpost modular city-scale sensing platform]({{ site.baseurl }}/assets/img/full-res/signpost.png)
@@ -51,7 +53,6 @@ layout: default
     that run need to run for months on small batteries and low-memory
     microcontrollers to support third-party apps just like on PC-grade
     operating systems.
-</div>
 
 ### Safety
 

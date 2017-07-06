@@ -1,18 +1,16 @@
-<header class="site-header">
-
-  <h1 class="site-title">
-    <a href="{{ site.baseurl }}/" title="Home page"><img class="site-logo" alt="logo" src="{{ site.baseurl }}/assets/img/logo_square.png"></a>
+<header>
+  <h1>
+    <a href="{{ site.baseurl }}/" title "Home Page"><img src="{{ site.baseurl }}/assets/img/tock.svg" alt="Tock Logo"/></a>
   </h1>
-
-  <nav class="site-nav">
+  <nav>
+    <ul>
     {% for link in site.navigation %}
       {% assign current = nil %}
       {% if page.url contains link.url %}
         {% assign current = 'class="current"' %}
       {% endif %}
-    <a href="{{ link.url | prepend: site.baseurl }}" {{ current }} {% if link.description %} title="{{ link.description }}" {% endif %}>{{ link.title }}</a>
+      <a href="{{ link.url | prepend: site.baseurl }}" {{ current }} {% if link.description %} title="{{ link.description }}" {% endif %}>{{ link.title }}</a>
     {% endfor %}
+    </ul>
   </nav>
-
 </header>
-<!-- site-header -->

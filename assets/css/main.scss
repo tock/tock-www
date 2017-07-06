@@ -1,17 +1,193 @@
 ---
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons|Lato|Lora');
+
 @charset "utf-8";
 
-@import "variables";        // Your Sass variables should go there
-@import "mixins";           // Your additional mixins should go there
+@import "normalize";
 
-@import "reboot";           // Opinionated reboot/normalize/reset css
+// General
 
-@import "grid";             // A small grid css (no flex)
-@import "text";             // The type related css
+h1, h2, h3, h4 {
+  font-family: "Lato", sans-serif;
+}
 
-@import "site";             // Styles specific to the site architecture
-@import "page";             // Styles specific to the pages
+body {
+  font-family: 'Lato', sans-serif;
+}
 
-@import "pager";            // Styles specific to post paging
+// Elements
+
+a.button {
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding: 6px 18px;
+  font-size: 1.25em;
+  box-shadow: 1px 2px 0 rgba(0, 0, 0, 0.25);
+  background-color: #2962ff;
+
+  &:hover {
+    border-color: #333;
+    color: #333;
+  }
+}
+
+// Heading
+
+body > header {
+  padding: 1em;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: white;
+  border-bottom: 2px solid #f5f5f5;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  > * {
+    line-height: 100%;
+    margin: auto 0;
+    flex: 1 1 auto;
+  }
+
+  > h1 {
+    text-align: left;
+  }
+
+  > nav {
+    text-align: right;
+    font-size: 1.25em;
+    font-weight: 900;
+
+    a {
+      color: #2962ff;
+      text-decoration: none;
+      margin-left: 35px;
+      padding: 5px;
+      display: inline-block;
+      line-height: 24pt;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Landing page
+
+body > .hero {
+  color: #fff;
+  background: url("/assets/img/clock.svg");
+  background-position: center 35px;
+  background-repeat: no-repeat;
+  background-size: 550px;
+  background-color: #2962ff;
+  padding: 70px;
+  text-align: center;
+  > h1, > h2 {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 1em;
+    text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  ul.links {
+    margin: 0;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: right;
+
+    li {
+      display: inline-block;
+      margin-left: 15px;
+    }
+  }
+
+  ul.features {
+    display: flex;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 1280px;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    li {
+      list-style: none;
+      margin: 40px 0;
+      flex: 1;
+
+      &:before {
+        font-family: 'Material Icons';
+        font-size: 46pt;
+      }
+
+      &.extensible:before {
+        content: 'extension';
+      }
+
+      &.reliable:before {
+        content: 'verified_user';
+      }
+
+      &.lowpower:before {
+        content: 'battery_charging_full';
+      }
+
+      p {
+        max-width: 200px;
+        text-align: center;
+        margin: 0 auto;
+      }
+      .figure {
+        font-size: 46pt;
+      }
+    }
+  }
+}
+
+ul#applications {
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 35px;
+    padding-left: 140px;
+    padding-right: 140px;
+
+    h4 {
+      font-size: 36pt;
+      flex: 1 1 100%;
+    }
+
+    p {
+      font-size: 28pt;
+      flex: 4;
+    }
+
+    p:first-of-type {
+      flex: 1;
+    }
+
+    img {
+      max-width: 300px;
+      max-height: 300px;
+    }
+  }
+
+  li:nth-child(even) {
+    flex-direction: row-reverse;
+    background-color: #2962ff;
+    color: white;
+  }
+}
