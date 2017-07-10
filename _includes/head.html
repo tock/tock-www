@@ -16,6 +16,9 @@
   <link rel="shortcut icon" href="{{ site.baseurl }}/assets/img/favicon.ico">
   <!-- CSS files -->
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
+  {% if page.css %}
+  <link rel="stylesheet" href="{{ site.baseurl }}{{ page.css }}">
+  {% endif %}
   {% seo %}
   <meta name="google-site-verification" content="G5Zfdp0vBdf7ZlAfy_pAp6dKsxKpRJbXPCl-U7cBEq0" />
 </head>

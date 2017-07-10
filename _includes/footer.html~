@@ -8,14 +8,14 @@
         {% if site.github.username and site.github.repo %}
         <li>
           <a target="_blank" rel="external" href="https://github.com/{{ site.github.username }}/{{ site.github.repo }}">
-            <img src="{{site.baseurl}}/assets/img/git.png"/>
+            <img src="{{site.baseurl}}/assets/img/git.png" style="height: 3em;"/>
           </a>
         </li>
         {% endif %}
         {% if site.twitter.username %}
         <li>
           <a target="_blank" rel="external" href="https://twitter.com/{{ site.twitter.username }}">
-            <img src="{{site.baseurl}}/assets/img/twitter.png"/>
+            <img src="{{site.baseurl}}/assets/img/twitter.png" style="height: 3em;"/>
           </a>
         </li>
         {% endif %}

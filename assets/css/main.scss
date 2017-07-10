@@ -81,115 +81,28 @@ body > header {
   }
 }
 
-// Landing page
-
-body > .hero {
-  color: #fff;
-  background: url("/assets/img/clock.svg");
-  background-position: center 35px;
-  background-repeat: no-repeat;
-  background-size: 550px;
+footer {
   background-color: #2962ff;
-  padding: 70px;
-  text-align: center;
-  > h1, > h2 {
-    max-width: 600px;
+  color: white;
+  padding: 15px 0;
+  > div {
+    width: 600px;
     margin: 0 auto;
-    text-align: left;
-    margin-bottom: 1em;
-    text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.25);
-  }
-
-  ul.links {
-    margin: 0;
-    padding: 0;
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: right;
-
-    li {
-      display: inline-block;
-      margin-left: 15px;
-    }
-  }
-
-  ul.features {
     display: flex;
-    text-align: center;
-    margin: 0 auto;
-    max-width: 1280px;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    li {
-      list-style: none;
-      margin: 40px 0;
+    div {
       flex: 1;
-
-      &:before {
-        font-family: 'Material Icons';
-        font-size: 46pt;
-      }
-
-      &.extensible:before {
-        content: 'extension';
-      }
-
-      &.reliable:before {
-        content: 'verified_user';
-      }
-
-      &.lowpower:before {
-        content: 'battery_charging_full';
-      }
-
-      p {
-        max-width: 200px;
-        text-align: center;
-        margin: 0 auto;
-      }
-      .figure {
-        font-size: 46pt;
-      }
-    }
-  }
-}
-
-ul#applications {
-  margin: 0;
-  padding: 0;
-
-  li {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 35px;
-    padding-left: 140px;
-    padding-right: 140px;
-
-    h4 {
-      font-size: 36pt;
-      flex: 1 1 100%;
-    }
-
-    p {
-      font-size: 28pt;
-      flex: 4;
-    }
-
-    p:first-of-type {
-      flex: 1;
+      margin: auto 0;
     }
 
     img {
-      max-width: 300px;
-      max-height: 300px;
+      height: 3em;
     }
-  }
 
-  li:nth-child(even) {
-    flex-direction: row-reverse;
-    background-color: #2962ff;
-    color: white;
+    ul {
+      display: block;
+      li {
+        display: inline;
+      }
+    }
   }
 }
