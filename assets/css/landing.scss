@@ -2,13 +2,15 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 
+@import 'variables';
+
 body > .hero {
   color: #fff;
   background: url("/assets/img/clock.svg");
   background-position: center 35px;
   background-repeat: no-repeat;
   background-size: 600px;
-  background-color: #2962ff;
+  background-color: $color-primary;
   padding: 70px;
   text-align: center;
   > h1, > h2 {
@@ -109,7 +111,7 @@ ul#applications {
 
   li:nth-child(even) {
     flex-direction: row-reverse;
-    background-color: #2962ff;
+    background-color: $color-primary;
     color: white;
     p:first-of-type {
       flex: 1;
