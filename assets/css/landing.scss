@@ -94,19 +94,25 @@ ul#applications {
       padding-right: 140px;
     }
 
+    font-size: 2rem;
+
     h4 {
       font-size: 3rem;
-      flex: 1 1 100%;
+      margin: 0;
     }
 
-    p {
-      font-size: 2rem;
+    div {
       flex: 2;
     }
 
-    p:first-of-type {
+    div:first-child {
       flex: 1;
       text-align: left;
+      margin-right: $spacer;
+    }
+
+    p {
+      margin: auto 0 0;
     }
 
     img {
@@ -122,9 +128,9 @@ ul#applications {
     flex-direction: row-reverse;
     background-color: $primary-color;
     color: white;
-    p:first-of-type {
+    div:first-child {
       flex: 1;
-      text-align: right;
+      margin-left: $spacer;
     }
   }
 }
