@@ -86,6 +86,7 @@ ul#applications {
 
   li {
     display: flex;
+    background-color: $primary-color-light;
     flex-wrap: wrap;
     list-style: none;
     padding: 2 * $spacer;
@@ -108,7 +109,7 @@ ul#applications {
     div:first-child {
       flex: 1;
       text-align: left;
-      margin-right: $spacer;
+      margin-right: 3 * $spacer;
     }
 
     p {
@@ -121,6 +122,7 @@ ul#applications {
       }
       max-width: 300px;
       max-height: 300px;
+      border-radius: 10%;
     }
   }
 
@@ -130,7 +132,7 @@ ul#applications {
     color: white;
     div:first-child {
       flex: 1;
-      margin-left: $spacer;
+      margin-left: 3 * $spacer;
     }
   }
 }
