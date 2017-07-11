@@ -22,6 +22,7 @@ a {
 
 body > header {
   position: fixed;
+  z-index: 100;
   padding: $spacer;
   top: 0;
   left: 0;
