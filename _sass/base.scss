@@ -82,6 +82,13 @@ body > header {
 
     ul {
       margin: 0;
+      list-style: none;
+      padding: 0;
+      li {
+        @media screen and (min-width: $tablet) {
+          display: inline;
+        }
+      }
     }
 
     a {
@@ -99,6 +106,8 @@ body > header {
 
   @media screen and (max-width: $tablet) {
     > nav {
+      float: right;
+
       .hamburger {
         i {
           font-family: 'Material Icons';
@@ -157,14 +166,20 @@ body > .hero {
 footer {
   background-color: $primary-color;
   color: $light-text;
-  padding: 15px 0;
+  padding: $spacer 2 * $spacer;
+
   > div {
-    width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     display: flex;
     div {
       flex: 1;
       margin: auto 0;
+      text-align: left;
+    }
+
+    div:nth-child(2) {
+      text-align: right;
     }
 
     img {

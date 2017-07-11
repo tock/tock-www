@@ -13,7 +13,7 @@
         {% if page.url contains link.url %}
           {% assign current = 'class="current"' %}
         {% endif %}
-        <a href="{{ link.url | prepend: site.baseurl }}" {{ current }} {% if link.description %} title="{{ link.description }}" {% endif %}>{{ link.title }}</a>
+        <li><a href="{{ link.url | prepend: site.baseurl }}" {{ current }} {% if link.description %} title="{{ link.description }}" {% endif %}>{{ link.title }}</a></li>
       {% endfor %}
       </ul>
     </label>

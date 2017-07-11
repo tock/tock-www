@@ -49,7 +49,7 @@ body > .hero {
 
       &:before {
         font-family: 'Material Icons';
-        font-size: 46pt;
+        font-size: 4rem;
       }
 
       &.extensible:before {
@@ -70,7 +70,7 @@ body > .hero {
         margin: 0 auto;
       }
       .figure {
-        font-size: 46pt;
+        font-size: 4rem;
       }
     }
   }
@@ -89,12 +89,12 @@ ul#applications {
     padding-right: 140px;
 
     h4 {
-      font-size: 36pt;
+      font-size: 3rem;
       flex: 1 1 100%;
     }
 
     p {
-      font-size: 28pt;
+      font-size: 2rem;
       flex: 2;
     }
 
