@@ -3,14 +3,19 @@
     <a href="{{ site.baseurl }}/" title "Home Page"><img src="{{ site.baseurl }}/assets/img/tock.svg" alt="Tock Logo"/></a>
   </h1>
   <nav>
-    <ul>
-    {% for link in site.navigation %}
-      {% assign current = nil %}
-      {% if page.url contains link.url %}
-        {% assign current = 'class="current"' %}
-      {% endif %}
-      <a href="{{ link.url | prepend: site.baseurl }}" {{ current }} {% if link.description %} title="{{ link.description }}" {% endif %}>{{ link.title }}</a>
-    {% endfor %}
-    </ul>
+    <label class="hamburger">
+      <input type="checkbox" class="hamburger"/>
+      <i class="menu material-icons">menu</i>
+      <i class="close material-icons">close</i>
+      <ul>
+      {% for link in site.navigation %}
+        {% assign current = nil %}
+        {% if page.url contains link.url %}
+          {% assign current = 'class="current"' %}
+        {% endif %}
+        <a href="{{ link.url | prepend: site.baseurl }}" {{ current }} {% if link.description %} title="{{ link.description }}" {% endif %}>{{ link.title }}</a>
+      {% endfor %}
+      </ul>
+    </label>
   </nav>
 </header>

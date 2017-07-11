@@ -1,5 +1,5 @@
 a.button {
-  color: $light-text;
+  color: $primary-color-text;
   text-decoration: none;
   display: inline-block;
   border: 2px solid #ddd;
@@ -7,7 +7,7 @@ a.button {
   padding: 6px 18px;
   font-size: 1.25em;
   box-shadow: 1px 2px 0 rgba(0, 0, 0, 0.25);
-  background-color: $color-primary;
+  background-color: $secondary-color;
 
   &:hover {
     border-color: #333;

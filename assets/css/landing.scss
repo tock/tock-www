@@ -10,7 +10,7 @@ body > .hero {
   background-position: center 35px;
   background-repeat: no-repeat;
   background-size: 600px;
-  background-color: $color-primary;
+  background-color: $primary-color;
   padding: 70px;
   text-align: center;
   > h1, > h2 {
@@ -111,7 +111,7 @@ ul#applications {
 
   li:nth-child(even) {
     flex-direction: row-reverse;
-    background-color: $color-primary;
+    background-color: $primary-color;
     color: white;
     p:first-of-type {
       flex: 1;
