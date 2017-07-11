@@ -210,4 +210,20 @@ body > article {
   img {
     max-width: 100%;
   }
+
+  .footnotes {
+    font-size: small;
+  }
+
+  ol.pager {
+    list-style: none;
+    padding: 0;
+    margin-top: $spacer;
+    margin-left: $spacer;
+    text-align: right;
+
+    li {
+      display: inline-block;
+    }
+  }
 }
