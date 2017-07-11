@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Tock Tutorial @ SenSys 2017
-subtitle: Announcing a Tock Tutorial @ SenSys, Novermber 5th in Delft
+subtitle: Announcing a Tock Tutorial @ SenSys, November 5th in Delft
 description: >
   A Tock tutorial for the sensor-networks community, co-located with SenSys
   2017.

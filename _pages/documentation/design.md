@@ -6,8 +6,8 @@ permalink: /documentation/design/
 ---
 
 Most operating systems provide isolation between components using a process-like
-abstraction: each component is given it's own slice of the system memory (for
-it's stack, heap, data) that is not accessible by other components. Processes
+abstraction: each component is given its own slice of the system memory (for
+its stack, heap, data) that is not accessible by other components. Processes
 are great because they provide a convenient abstraction for both isolation and
 concurrency. However, on resource-limited systems, like microcontrollers with
 much less than 1MB of memory, this approach leads to a trade-off between
@@ -16,11 +16,11 @@ isolation granularity and resource consumption.
 Tock's architecture resolves this trade-off by using a language sandbox to
 isolated components and a cooperative scheduling model for concurrency in the
 kernel. As a result, isolation is (more or less) free in terms of resource
-consumption at the expense of preemtive scheduling (so a malicious component
+consumption at the expense of preemptive scheduling (so a malicious component
 could block the system by, e.g., spinning in an infinite loop).
 
 To first order, all component in Tock, including those in the kernel, are
-mutually distrustful. Inside the kernel Tock, achieves this with a
+mutually distrustful. Inside the kernel, Tock achieves this with a
 language-based isolation abstraction called _capsules_ that incurs no memory or
 computation overhead. In user-space, Tock uses (more-or-less) a traditional
 process model where process are isolated from the kernel and each other using
@@ -28,7 +28,7 @@ hardware protection mechanisms.
 
 In addition, Tock is designed with other embedded systems-specific goals in
 mind. Tock favors overall reliability of the system and discourages components
-(prevents when possible) from preventing system progress when buggy.
+(prevents when possible) from blocking system progress when buggy.
 
 # Architecture
 
@@ -88,7 +88,7 @@ system can only recover by restarting.
 Processes are independent applications that are isolated from the kernel and run
 with reduced privileges in separate execution threads from the kernel. The
 kernel schedules processes preemptively, so processes have stronger system
-liveness guarantees than capsules. Moreover, uses hardware protection to enforce
+liveness guarantees than capsules. Moreover, Tock uses hardware protection to enforce
 process isolation at runtime. This allows processes to be written in any
 language and to be safely loaded at runtime.
 
@@ -100,7 +100,7 @@ memory addresses a process can access. Accesses outside of a process’s permitt
 region result in a fault and trap to the kernel.
 
 A process's code, stored in flash, is made
-accessible with a read-only memory protection region while it's memory is allocated
+accessible with a read-only memory protection region while its memory is allocated
 as a contiguous region of RAM. One novel aspect of a Tock process is the presence of a
 “grant” region at the top of the address space. This is memory allocated to the
 process but covered by a memory protection region that the process can neither read
