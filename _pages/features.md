@@ -51,6 +51,6 @@ int main() {
 }
 ```
 
-<small>\* As measure on the imix development board. Actual current draw depends
+<small>\*As measured on the imix development board. Actual current draw depends
 on the microcontroller and board.</small>
 
