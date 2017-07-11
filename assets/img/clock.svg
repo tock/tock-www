@@ -16,12 +16,11 @@
    sodipodi:docname="clock.svg"
    width="100"
    inkscape:version="0.92.1 r">
-   
 <style xmlns="http://www.w3.org/2000/svg">
   svg { fill: rgba(255, 255, 255, 0.1)}
   #seconds {
-    transform-origin: bottom;
-    -moz-transform-origin: bottom;
+    transform-origin: 128.1px 66.5px;
+    -moz-transform-origin: 128.1px 66.5px;
     animation: clock-minute 60s steps(60) infinite;
   }
   @keyframes clock-minute {
