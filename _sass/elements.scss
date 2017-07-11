@@ -14,3 +14,23 @@ a.button {
     color: #333;
   }
 }
+
+table {
+  margin-top: 0;
+  margin-bottom: $spacer;
+  border-collapse: collapse;
+  background-color: transparent;
+
+  tr {
+    border-top: 1px solid #ddd;
+  }
+
+  th, td {
+    padding: $spacer / 2 $spacer;
+    border: 1px solid #ddd;
+  }
+
+  th {
+    text-align: center;
+  }
+}
