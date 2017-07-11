@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Community
-subtitle: Community
 description: Mailing lists, GitHub, IRC...
 permalink: /community/
 ---

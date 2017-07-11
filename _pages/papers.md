@@ -1,10 +1,11 @@
 ---
 layout: page
 title: Papers
-subtitle: Academic Papers
 description: Academic papers published about the Tock embedded operating system
 permalink: /papers/
 ---
+
+# Academic Papers
 
   * [Ownership is Theft: Experiences Building an Embedded OS in
     Rust](/assets/papers/tock-plos2015.pdf). PLOS 2015

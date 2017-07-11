@@ -1,7 +1,6 @@
 ---
 layout: page
-title: Tock Getting Started
-subtitle: Tock Getting Started
+title: Getting Started
 description: Tock Getting Started
 permalink: /documentation/getting-started/
 ---
