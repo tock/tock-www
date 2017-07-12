@@ -1,0 +1,36 @@
+a.button {
+  color: $primary-color-text;
+  text-decoration: none;
+  display: inline-block;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding: 6px 18px;
+  font-size: 1.25em;
+  box-shadow: 1px 2px 0 rgba(0, 0, 0, 0.25);
+  background-color: $secondary-color;
+
+  &:hover {
+    border-color: #333;
+    color: #333;
+  }
+}
+
+table {
+  margin-top: 0;
+  margin-bottom: $spacer;
+  border-collapse: collapse;
+  background-color: transparent;
+
+  tr {
+    border-top: 1px solid #ddd;
+  }
+
+  th, td {
+    padding: $spacer / 2 $spacer;
+    border: 1px solid #ddd;
+  }
+
+  th {
+    text-align: center;
+  }
+}

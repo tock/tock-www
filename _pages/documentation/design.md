@@ -1,7 +1,6 @@
 ---
 layout: page
-title: Tock Design
-subtitle: Tock Design
+title: Design
 description: Tock Design
 permalink: /documentation/design/
 ---

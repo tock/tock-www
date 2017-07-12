@@ -1,0 +1,226 @@
+h1, h2, h3, h4 {
+  font-family: $heading-font;
+}
+
+body {
+  font-family: $body-font;
+  font-size: $text-base-size;
+  margin-top: $header-height;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    color: $primary-color-dark;
+  }
+}
+
+// Heading
+
+body > header {
+  position: fixed;
+  z-index: 100;
+  padding: $spacer;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: white;
+  border-bottom: 2px solid #f5f5f5;
+  display: block;
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (min-width: $tablet) {
+    &:before, &:after {
+      content: '';
+      flex: 1 1 auto;
+    }
+  }
+
+  .hamburger {
+    > input {
+      display: none;
+    }
+
+    > i {
+      display: none;
+    }
+
+    @media screen and (max-width: $tablet) {
+      float: right;
+    }
+  }
+
+  > * {
+    line-height: 100%;
+    margin: auto 0;
+    flex: 2 1 auto;
+  }
+
+  > h1 {
+    @media screen and (max-width: $tablet) {
+      float: left;
+    }
+    text-align: left;
+
+    img {
+      height: $header-height - (3 * $spacer);
+      margin: 5px 0;
+    }
+  }
+
+  > nav {
+    text-align: right;
+    font-size: 1rem;
+    font-weight: 900;
+
+    ul {
+      margin: 0;
+      list-style: none;
+      padding: 0;
+      li {
+        @media screen and (min-width: $tablet) {
+          display: inline;
+        }
+      }
+    }
+
+    a {
+      color: $primary-color;
+      text-decoration: none;
+      margin-left: $spacer;
+      padding: 5px;
+      display: inline-block;
+      line-height: 24pt;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  @media screen and (max-width: $tablet) {
+    > nav {
+      float: right;
+
+      .hamburger {
+        i {
+          font-family: 'Material Icons';
+          font-size: 3rem;
+          line-height: 100%;
+          color: $primary-color-dark;
+        }
+      }
+
+      ul {
+        display: none;
+      }
+
+      i.menu {
+        display: block;
+      }
+
+      i.close {
+        display: none;
+      }
+
+      input:checked {
+        & ~ ul {
+          display: block;
+        }
+        & ~ i.close {
+          display: block;
+        }
+
+        & ~ i.menu {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// Hero
+
+
+body > .hero {
+  color: #fff;
+  background-color: $primary-color;
+  padding: 2 * $spacer;
+  text-align: center;
+  > h1, h2 {
+    margin: 0 auto;
+    max-width: 800px;
+    text-align: left;
+    text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.25);
+  }
+}
+
+// Footer
+
+footer {
+  background-color: $primary-color;
+  color: $light-text;
+  padding: $spacer 2 * $spacer;
+
+  > div {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    div {
+      flex: 1;
+      margin: auto 0;
+      text-align: left;
+    }
+
+    div:nth-child(2) {
+      text-align: right;
+    }
+
+    img {
+      height: 3rem;
+    }
+
+    ul {
+      display: block;
+      li {
+        display: inline;
+      }
+    }
+  }
+}
+
+// Article
+
+body > article {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: $spacer 2 * $spacer;
+  font-size: 1.25rem;
+
+  img {
+    max-width: 100%;
+  }
+
+  .footnotes {
+    font-size: small;
+  }
+
+  ol.pager {
+    list-style: none;
+    padding: 0;
+    margin-top: $spacer;
+    margin-left: $spacer;
+    text-align: right;
+
+    li {
+      display: inline-block;
+    }
+  }
+}

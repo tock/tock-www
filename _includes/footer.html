@@ -1,40 +1,29 @@
-<footer class="site-footer">
-
-  <div class="site-copy">&copy; {{ site.time | date: '%Y' }}<span class="site-author">{{ site.author }}</span></div>
-
-  <div class="site-links">
-    <div class="site-contact">
-      <ul>
-        {% if site.email %}
-        <li><a href="mailto:{{ site.email }}">Contact</a></li>
-        {% endif %}
-
-        {% if site.github.username and site.github.repo %}
-        <li><a target="_blank" rel="external" href="https://github.com/{{ site.github.username }}/{{ site.github.repo }}">Github</a></li>
-        {% endif %}
-
-        {% if site.twitter.username %}
-        <li><a target="_blank" rel="external" href="https://twitter.com/{{ site.twitter.username }}">Twitter</a></li>
-        {% endif %}
-      </ul>
+<footer>
+  <div>
+    <div>
+    &copy; {{ site.time | date: '%Y' }} {{ site.author }}
     </div>
-
-    <div class="site-source">
+    <div>
       <ul>
-        <li><a target="_blank" href="https://github.com/{{ site.github.username }}/{{ site.github.site_source }}">Source</a></li>
+        {% if site.github.username and site.github.repo %}
+        <li>
+          <a target="_blank" rel="external" href="https://github.com/{{ site.github.username }}/{{ site.github.repo }}">
+            <img src="{{site.baseurl}}/assets/img/git.png" alt="Git repository" />
+          </a>
+        </li>
+        {% endif %}
+        {% if site.twitter.username %}
+        <li>
+          <a target="_blank" rel="external" href="https://twitter.com/{{ site.twitter.username }}">
+            <img src="{{site.baseurl}}/assets/img/twitter.png" alt="@talkingtock"/>
+          </a>
+        </li>
+        {% endif %}
       </ul>
     </div>
   </div>
-
 </footer>
-<!-- site-footer -->
-
-{% if page.syntax %}
-<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/syntax.css">
-{% endif %}
-
 <script src="{{ site.baseurl }}/assets/js/main.js"></script>
-
 {% if site.google_analytics %}
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

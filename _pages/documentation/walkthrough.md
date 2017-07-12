@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Tock Walkthrough
+title: Walkthrough
 subtitle: From boot to blink
 description:
   An end-to-end walkthrough of how Tock boots and runs a simple app.  Reviews

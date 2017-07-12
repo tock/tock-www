@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Talking Tock
-subtitle: The Tock OS Blog
 desc: Blog for the Tock embedded operating system
 ---
 {% if paginator.page == 1 %}
@@ -10,11 +9,11 @@ desc: Blog for the Tock embedded operating system
   {% endfor %}
 {% endif %}
 
-<ul class="post-list">
+<ul class="posts">
   {% for post in paginator.posts %}
-  <li class="post">
-    <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
-      <h4 class="post-title">{{ post.title }}{% if post.subtitle %}: {{ post.subtitle }}{% endif %}</h4>
+  <li>
+    <a href="{{ post.url | prepend: site.baseurl }}">
+      <h3>{{ post.title }}{% if post.subtitle %}: {{ post.subtitle }}{% endif %}</h3>
       <time class="post-date" datetime="{{ post.date }}">
       {% assign d = post.date | date: "%-d" %}
       {% assign m = post.date | date: "%B" %}
@@ -27,7 +26,7 @@ desc: Blog for the Tock embedded operating system
         {% when '1' or '21' or '31' %}{{ d }}st{% when '2' or '22' %}{{ d }}nd{% when '3' or '23' %}{{ d }}rd{% else %}{{ d }}th{% endcase %},
       {{ post.date | date: "%Y" }}
       </time>
-      <p class="post-desc">{% if post.desc %}{{ post.desc }}{% else %}{{ post.excerpt }}{% endif %}</p>
+      <p>{% if post.desc %}{{ post.desc }}{% else %}{{ post.excerpt }}{% endif %}</p>
     </a>
   </li>
   {% endfor %}

@@ -1,0 +1,138 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import 'sizes';
+@import 'variables';
+
+body > .hero {
+  color: #fff;
+  background: url("/assets/img/clock.svg");
+  background-position: center 35px;
+  background-repeat: no-repeat;
+  background-size: 90%;
+  @media screen and (min-width: $tablet) {
+    background-size: 600px;
+  }
+  background-color: $primary-color;
+  padding: 70px;
+  text-align: center;
+  > h1, > h2 {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 1em;
+    text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  ul.links {
+    margin: 0;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
+
+    li {
+      display: inline-block;
+      margin: $spacer;
+    }
+  }
+
+  ul.features {
+    display: flex;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    li {
+      list-style: none;
+      margin: 40px 0;
+      flex: 1 1 auto;
+
+      &:before {
+        font-family: 'Material Icons';
+        font-size: 4rem;
+      }
+
+      &.extensible:before {
+        content: 'extension';
+      }
+
+      &.reliable:before {
+        content: 'verified_user';
+      }
+
+      &.lowpower:before {
+        content: 'battery_charging_full';
+      }
+
+      p {
+        max-width: 200px;
+        text-align: center;
+        margin: 0 auto;
+      }
+      .figure {
+        font-size: 4rem;
+      }
+    }
+  }
+}
+
+ul#applications {
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: flex;
+    background-color: $primary-color-light;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 2 * $spacer;
+    @media screen and (min-width: $tablet) {
+      padding-left: 140px;
+      padding-right: 140px;
+    }
+
+    font-size: 2rem;
+
+    h4 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    div {
+      flex: 2;
+    }
+
+    div:first-child {
+      flex: 1;
+      text-align: left;
+      margin-right: 3 * $spacer;
+    }
+
+    p {
+      margin: auto 0;
+    }
+
+    img {
+      @media screen and (max-width: $tablet) {
+        display: none;
+      }
+      max-width: 300px;
+      max-height: 300px;
+      border-radius: 10%;
+    }
+  }
+
+  li:nth-child(even) {
+    flex-direction: row-reverse;
+    background-color: $primary-color;
+    color: white;
+    div:first-child {
+      flex: 1;
+      margin-left: 3 * $spacer;
+    }
+  }
+}

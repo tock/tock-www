@@ -68,7 +68,7 @@ kramdown:
     span:
       line_numbers: false
     block:
-      line_numbers: true
+      line_numbers: false
       start_line: 1
 
 # List of authors for blog posts. Each author should have a `display_name` and
@@ -97,7 +97,7 @@ exclude:
   - CNAME
   - README.md
   - vendor
-gems:
+plugins:
   - jekyll-paginate
   - jekyll-mentions
   - jekyll-seo-tag

@@ -3,15 +3,10 @@
 ---
 @charset "utf-8";
 
-@import "variables";        // Your Sass variables should go there
-@import "mixins";           // Your additional mixins should go there
-
-@import "reboot";           // Opinionated reboot/normalize/reset css
-
-@import "grid";             // A small grid css (no flex)
-@import "text";             // The type related css
-
-@import "site";             // Styles specific to the site architecture
-@import "page";             // Styles specific to the pages
-
-@import "pager";            // Styles specific to post paging
+@import "normalize";
+@import "fonts";
+@import "variables";
+@import "sizes";
+@import "elements";
+@import "base";
+@import "blog";
