@@ -97,7 +97,7 @@ exclude:
   - CNAME
   - README.md
   - vendor
-gems:
+plugins:
   - jekyll-paginate
   - jekyll-mentions
   - jekyll-seo-tag
