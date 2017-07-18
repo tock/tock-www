@@ -22,7 +22,10 @@ Register on the RustConf [website](http://rustconf.com/register.html). Just
 remember you need to register for the Tock training regardless of if you
 register for the rest of the conference. All the proceeds from the training go towards funding RustBridge, so it's win-win-win.
 
-![](/assets/2017/07/michael-scott-win-win-win.jpg)
+![Win/Win is number four and number five is win/win/win. The important
+difference here is with win/win/win, we all win. Me too. I win for having
+successfully mediated a conflict at
+work.](/assets/2017/07/michael-scott-win-win-win.jpg "Win/Win is number four and number five is win/win/win. The important difference here is with win/win/win, we all win. Me too. I win for having successfully mediated a conflict at work.")
 
 See you in Portland!
 
