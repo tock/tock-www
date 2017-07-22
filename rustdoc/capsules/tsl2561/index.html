@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `tsl2561` mod in crate `capsules`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, tsl2561">
+
+    <title>capsules::tsl2561 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Module tsl2561</p><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#constants">Constants</a></li><li><a href="#statics">Statics</a></li></ul></div><p class='location'><a href='../index.html'>capsules</a></p><script>window.sidebarCurrent = {name: 'tsl2561', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>capsules</a>::<wbr><a class="mod" href=''>tsl2561</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/capsules/tsl2561.rs.html#1-463' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Driver for the Taos TSL2561 light sensor.</p>
+
+<p><a href="http://www.digikey.com/product-detail/en/ams-taos-usa-inc/TSL2561FN/TSL2561-FNCT-ND/3095298">http://www.digikey.com/product-detail/en/ams-taos-usa-inc/TSL2561FN/TSL2561-FNCT-ND/3095298</a></p>
+
+<blockquote>
+<p>The TSL2560 and TSL2561 are light-to-digital converters that transform
+light intensity to a digital signal output capable of direct I2C
+interface. Each device combines one broadband photodiode (visible plus
+infrared) and one infrared-responding photodiodeon a single CMOS
+integrated circuit capable of providing a near-photopic response over an
+effective 20-bit dynamic range (16-bit resolution). Two integrating ADCs
+convert the photodiode currents to a digital output that represents the
+irradiance measured on each channel. This digital output can be input to a
+microprocessor where illuminance (ambient light level) in lux is derived
+using an empirical formula to approximate the human eye response.</p>
+</blockquote>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>use core::cell::<a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>;</code></td></tr><tr><td><code>use kernel::<a class="struct" href="../../kernel/callback/struct.AppId.html" title="struct kernel::callback::AppId">AppId</a>;</code></td></tr><tr><td><code>use kernel::<a class="struct" href="../../kernel/callback/struct.Callback.html" title="struct kernel::callback::Callback">Callback</a>;</code></td></tr><tr><td><code>use kernel::<a class="trait" href="../../kernel/driver/trait.Driver.html" title="trait kernel::driver::Driver">Driver</a>;</code></td></tr><tr><td><code>use kernel::<a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>;</code></td></tr><tr><td><code>use kernel::common::take_cell::<a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>;</code></td></tr><tr><td><code>use kernel::hil::<a class="mod" href="../../kernel/hil/gpio/index.html" title="mod kernel::hil::gpio">gpio</a>;</code></td></tr><tr><td><code>use kernel::hil::<a class="mod" href="../../kernel/hil/i2c/index.html" title="mod kernel::hil::i2c">i2c</a>;</code></td></tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.TSL2561.html"
+                                  title='struct capsules::tsl2561::TSL2561'>TSL2561</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Registers.html"
+                                  title='enum capsules::tsl2561::Registers'>Registers</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.State.html"
+                                  title='enum capsules::tsl2561::State'>State</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.B1T.html"
+                                  title='constant capsules::tsl2561::B1T'>B1T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.B2T.html"
+                                  title='constant capsules::tsl2561::B2T'>B2T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.B3T.html"
+                                  title='constant capsules::tsl2561::B3T'>B3T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.B4T.html"
+                                  title='constant capsules::tsl2561::B4T'>B4T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.B5T.html"
+                                  title='constant capsules::tsl2561::B5T'>B5T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.B6T.html"
+                                  title='constant capsules::tsl2561::B6T'>B6T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.B7T.html"
+                                  title='constant capsules::tsl2561::B7T'>B7T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.B8T.html"
+                                  title='constant capsules::tsl2561::B8T'>B8T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.CHSCALE_TINT0.html"
+                                  title='constant capsules::tsl2561::CHSCALE_TINT0'>CHSCALE_TINT0</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.CHSCALE_TINT1.html"
+                                  title='constant capsules::tsl2561::CHSCALE_TINT1'>CHSCALE_TINT1</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.CH_SCALE.html"
+                                  title='constant capsules::tsl2561::CH_SCALE'>CH_SCALE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.COMMAND_REG.html"
+                                  title='constant capsules::tsl2561::COMMAND_REG'>COMMAND_REG</a></td>
+                           <td class='docblock-short'>
+                                <p>Command register defines</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.INTEGRATE_TIME_101_MS.html"
+                                  title='constant capsules::tsl2561::INTEGRATE_TIME_101_MS'>INTEGRATE_TIME_101_MS</a></td>
+                           <td class='docblock-short'>
+                                <p>Timing_Reg defines</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.INTERRUPT_CONTROL_LEVEL.html"
+                                  title='constant capsules::tsl2561::INTERRUPT_CONTROL_LEVEL'>INTERRUPT_CONTROL_LEVEL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.INTERRUPT_ON_ADC_DONE.html"
+                                  title='constant capsules::tsl2561::INTERRUPT_ON_ADC_DONE'>INTERRUPT_ON_ADC_DONE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.K1T.html"
+                                  title='constant capsules::tsl2561::K1T'>K1T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.K2T.html"
+                                  title='constant capsules::tsl2561::K2T'>K2T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.K3T.html"
+                                  title='constant capsules::tsl2561::K3T'>K3T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.K4T.html"
+                                  title='constant capsules::tsl2561::K4T'>K4T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.K5T.html"
+                                  title='constant capsules::tsl2561::K5T'>K5T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.K6T.html"
+                                  title='constant capsules::tsl2561::K6T'>K6T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.K7T.html"
+                                  title='constant capsules::tsl2561::K7T'>K7T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.K8T.html"
+                                  title='constant capsules::tsl2561::K8T'>K8T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.LOW_GAIN_MODE.html"
+                                  title='constant capsules::tsl2561::LOW_GAIN_MODE'>LOW_GAIN_MODE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.LUX_SCALE.html"
+                                  title='constant capsules::tsl2561::LUX_SCALE'>LUX_SCALE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.M1T.html"
+                                  title='constant capsules::tsl2561::M1T'>M1T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.M2T.html"
+                                  title='constant capsules::tsl2561::M2T'>M2T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.M3T.html"
+                                  title='constant capsules::tsl2561::M3T'>M3T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.M4T.html"
+                                  title='constant capsules::tsl2561::M4T'>M4T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.M5T.html"
+                                  title='constant capsules::tsl2561::M5T'>M5T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.M6T.html"
+                                  title='constant capsules::tsl2561::M6T'>M6T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.M7T.html"
+                                  title='constant capsules::tsl2561::M7T'>M7T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.M8T.html"
+                                  title='constant capsules::tsl2561::M8T'>M8T</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.POWER_OFF.html"
+                                  title='constant capsules::tsl2561::POWER_OFF'>POWER_OFF</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.POWER_ON.html"
+                                  title='constant capsules::tsl2561::POWER_ON'>POWER_ON</a></td>
+                           <td class='docblock-short'>
+                                <p>Control_Reg defines</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RATIO_SCALE.html"
+                                  title='constant capsules::tsl2561::RATIO_SCALE'>RATIO_SCALE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.WORD_PROTOCOL.html"
+                                  title='constant capsules::tsl2561::WORD_PROTOCOL'>WORD_PROTOCOL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.BUFFER.html"
+                                  title='static capsules::tsl2561::BUFFER'>BUFFER</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "capsules";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

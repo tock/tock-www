@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `nrf51dk` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, nrf51dk">
+
+    <title>nrf51dk - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Crate nrf51dk</p><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#modules">Modules</a></li><li><a href="#macros">Macros</a></li><li><a href="#structs">Structs</a></li><li><a href="#constants">Constants</a></li><li><a href="#statics">Statics</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'nrf51dk', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>nrf51dk</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/nrf51dk/main.rs.html#1-297' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Tock kernel for the Nordic Semiconductor nRF51 development
+kit (DK), a.k.a. the PCA10028. This is an nRF51422 SoC (a
+Cortex M0 core with a BLE transciver) with many exported
+pins, LEDs, and buttons. Currently the kernel provides
+application timers, and GPIO. It will provide a console
+once the UART is fully implemented and debugged. The
+application GPIO pins are:</p>
+
+<p>0 -&gt; LED1 (pin 21)
+  1 -&gt; LED2 (pin 22)
+  2 -&gt; LED3 (pin 23)
+  3 -&gt; LED4 (pin 24)
+  5 -&gt; BUTTON1 (pin 17)
+  6 -&gt; BUTTON2 (pin 18)
+  7 -&gt; BUTTON3 (pin 19)
+  8 -&gt; BUTTON4 (pin 20)
+  9 -&gt; P0.01   (bottom left header)
+ 10 -&gt; P0.02   (bottom left header)
+ 11 -&gt; P0.03   (bottom left header)
+ 12 -&gt; P0.04   (bottom left header)
+ 12 -&gt; P0.05   (bottom left header)
+ 13 -&gt; P0.06   (bottom left header)
+ 14 -&gt; P0.19   (mid right header)
+ 15 -&gt; P0.18   (mid right header)
+ 16 -&gt; P0.17   (mid right header)
+ 17 -&gt; P0.16   (mid right header)
+ 18 -&gt; P0.15   (mid right header)
+ 19 -&gt; P0.14   (mid right header)
+ 20 -&gt; P0.13   (mid right header)
+ 21 -&gt; P0.12   (mid right header)</p>
+
+<p>Author: Philip Levis <a href="mailto:pal@cs.stanford.edu">pal@cs.stanford.edu</a>
+ Author: Anderson Lizardo <a href="mailto:anderson.lizardo@gmail.com">anderson.lizardo@gmail.com</a>
+ Date: August 18, 2016</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>extern crate <a class="mod" href="https://doc.rust-lang.org/nightly/core/index.html" title="mod core">core</a> as core;</code></td></tr><tr><td><code>extern crate <a class="mod" href="../cortexm0/index.html" title="mod cortexm0">cortexm0</a>;</code></td></tr><tr><td><code>extern crate <a class="mod" href="../capsules/index.html" title="mod capsules">capsules</a>;</code></td></tr><tr><td><code>extern crate <a class="mod" href="https://doc.rust-lang.org/nightly/compiler_builtins/index.html" title="mod compiler_builtins">compiler_builtins</a>;</code></td></tr><tr><td><code>extern crate <a class="mod" href="../kernel/index.html" title="mod kernel">kernel</a>;</code></td></tr><tr><td><code>extern crate <a class="mod" href="../nrf51/index.html" title="mod nrf51">nrf51</a>;</code></td></tr><tr><td><code>use core::prelude::v1::*;</code></td></tr><tr><td><code>use capsules::timer::<a class="struct" href="../capsules/timer/struct.TimerDriver.html" title="struct capsules::timer::TimerDriver">TimerDriver</a>;</code></td></tr><tr><td><code>use capsules::virtual_alarm::<a class="struct" href="../capsules/virtual_alarm/struct.MuxAlarm.html" title="struct capsules::virtual_alarm::MuxAlarm">MuxAlarm</a>;</code></td></tr><tr><td><code>use capsules::virtual_alarm::<a class="struct" href="../capsules/virtual_alarm/struct.VirtualMuxAlarm.html" title="struct capsules::virtual_alarm::VirtualMuxAlarm">VirtualMuxAlarm</a>;</code></td></tr><tr><td><code>use kernel::<a class="trait" href="../kernel/platform/trait.Chip.html" title="trait kernel::platform::Chip">Chip</a>;</code></td></tr><tr><td><code>use kernel::<a class="trait" href="../kernel/platform/systick/trait.SysTick.html" title="trait kernel::platform::systick::SysTick">SysTick</a>;</code></td></tr><tr><td><code>use kernel::hil::symmetric_encryption::<a class="trait" href="../kernel/hil/symmetric_encryption/trait.SymmetricEncryption.html" title="trait kernel::hil::symmetric_encryption::SymmetricEncryption">SymmetricEncryption</a>;</code></td></tr><tr><td><code>use kernel::hil::uart::<a class="trait" href="../kernel/hil/uart/trait.UART.html" title="trait kernel::hil::uart::UART">UART</a>;</code></td></tr><tr><td><code>use nrf51::pinmux::<a class="struct" href="../nrf51/pinmux/struct.Pinmux.html" title="struct nrf51::pinmux::Pinmux">Pinmux</a>;</code></td></tr><tr><td><code>use nrf51::rtc::<a class="static" href="../nrf51/rtc/static.RTC.html" title="static nrf51::rtc::RTC">RTC</a>;</code></td></tr><tr><td><code>use nrf51::rtc::<a class="struct" href="../nrf51/rtc/struct.Rtc.html" title="struct nrf51::rtc::Rtc">Rtc</a>;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="io/index.html"
+                                  title='mod nrf51dk::io'>io</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.print.html"
+                                  title='macro nrf51dk::print'>print</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.println.html"
+                                  title='macro nrf51dk::println'>println</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Platform.html"
+                                  title='struct nrf51dk::Platform'>Platform</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.BUTTON1_PIN.html"
+                                  title='constant nrf51dk::BUTTON1_PIN'>BUTTON1_PIN</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.BUTTON2_PIN.html"
+                                  title='constant nrf51dk::BUTTON2_PIN'>BUTTON2_PIN</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.BUTTON3_PIN.html"
+                                  title='constant nrf51dk::BUTTON3_PIN'>BUTTON3_PIN</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.BUTTON4_PIN.html"
+                                  title='constant nrf51dk::BUTTON4_PIN'>BUTTON4_PIN</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.FAULT_RESPONSE.html"
+                                  title='constant nrf51dk::FAULT_RESPONSE'>FAULT_RESPONSE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.LED1_PIN.html"
+                                  title='constant nrf51dk::LED1_PIN'>LED1_PIN</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.LED2_PIN.html"
+                                  title='constant nrf51dk::LED2_PIN'>LED2_PIN</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.LED3_PIN.html"
+                                  title='constant nrf51dk::LED3_PIN'>LED3_PIN</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.LED4_PIN.html"
+                                  title='constant nrf51dk::LED4_PIN'>LED4_PIN</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.NUM_PROCS.html"
+                                  title='constant nrf51dk::NUM_PROCS'>NUM_PROCS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.APP_MEMORY.html"
+                                  title='static nrf51dk::APP_MEMORY'>APP_MEMORY</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.PROCESSES.html"
+                                  title='static nrf51dk::PROCESSES'>PROCESSES</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.reset_handler.html"
+                                  title='fn nrf51dk::reset_handler'>reset_handler</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "nrf51dk";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `adc` mod in crate `sam4l`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, adc">
+
+    <title>sam4l::adc - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Module adc</p><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#constants">Constants</a></li><li><a href="#statics">Statics</a></li><li><a href="#traits">Traits</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>sam4l</a></p><script>window.sidebarCurrent = {name: 'adc', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>sam4l</a>::<wbr><a class="mod" href=''>adc</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/sam4l/adc.rs.html#1-865' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Implementation of the SAM4L ADCIFE.</p>
+
+<p>This is an implementation of the SAM4L analog to digital converter. It is
+bare-bones because it provides little flexibility on how samples are taken.
+Currently, all samples:</p>
+
+<ul>
+<li>are 12 bits</li>
+<li>use the ground pad as the negative reference</li>
+<li>use a VCC/2 positive reference</li>
+<li>are right justified</li>
+</ul>
+
+<p>Samples can either be collected individually or continuously at a specified
+frequency.</p>
+
+<ul>
+<li>Author: Philip Levis <a href="mailto:pal@cs.stanford.edu">pal@cs.stanford.edu</a>, Branden Ghena <a href="mailto:brghena@umich.edu">brghena@umich.edu</a></li>
+<li>Updated: May 1, 2017</li>
+</ul>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>use core::<a class="mod" href="https://doc.rust-lang.org/nightly/core/cmp/index.html" title="mod core::cmp">cmp</a>;</code></td></tr><tr><td><code>use core::<a class="mod" href="https://doc.rust-lang.org/nightly/core/mem/index.html" title="mod core::mem">mem</a>;</code></td></tr><tr><td><code>use core::<a class="mod" href="https://doc.rust-lang.org/nightly/core/slice/index.html" title="mod core::slice">slice</a>;</code></td></tr><tr><td><code>use core::cell::<a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>;</code></td></tr><tr><td><code>use <a class="mod" href="../../sam4l/dma/index.html" title="mod sam4l::dma">dma</a>;</code></td></tr><tr><td><code>use kernel::<a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>;</code></td></tr><tr><td><code>use kernel::common::<a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>;</code></td></tr><tr><td><code>use kernel::common::<a class="mod" href="../../kernel/common/math/index.html" title="mod kernel::common::math">math</a>;</code></td></tr><tr><td><code>use kernel::common::take_cell::<a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>;</code></td></tr><tr><td><code>use kernel::<a class="mod" href="../../kernel/hil/index.html" title="mod kernel::hil">hil</a>;</code></td></tr><tr><td><code>use <a class="mod" href="../../sam4l/nvic/index.html" title="mod sam4l::nvic">nvic</a>;</code></td></tr><tr><td><code>use <a class="mod" href="../../sam4l/pm/index.html" title="mod sam4l::pm">pm</a>;</code></td></tr><tr><td><code>use pm::<a class="enum" href="../../sam4l/pm/enum.Clock.html" title="enum sam4l::pm::Clock">Clock</a>;</code></td></tr><tr><td><code>use pm::<a class="enum" href="../../sam4l/pm/enum.PBAClock.html" title="enum sam4l::pm::PBAClock">PBAClock</a>;</code></td></tr><tr><td><code>use <a class="mod" href="../../sam4l/scif/index.html" title="mod sam4l::scif">scif</a>;</code></td></tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Adc.html"
+                                  title='struct sam4l::adc::Adc'>Adc</a></td>
+                           <td class='docblock-short'>
+                                <p>ADC driver code for the SAM4L.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.AdcChannel.html"
+                                  title='struct sam4l::adc::AdcChannel'>AdcChannel</a></td>
+                           <td class='docblock-short'>
+                                <p>Representation of an ADC channel on the SAM4L.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.AdcRegisters.html"
+                                  title='struct sam4l::adc::AdcRegisters'>AdcRegisters</a></td>
+                           <td class='docblock-short'>
+                                <p>Memory mapped registers for the ADC.</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Channel.html"
+                                  title='enum sam4l::adc::Channel'>Channel</a></td>
+                           <td class='docblock-short'>
+                                <p>SAM4L ADC channels.</p>
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.BASE_ADDRESS.html"
+                                  title='constant sam4l::adc::BASE_ADDRESS'>BASE_ADDRESS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.ADC0.html"
+                                  title='static sam4l::adc::ADC0'>ADC0</a></td>
+                           <td class='docblock-short'>
+                                <p>Statically allocated ADC driver. Used in board configurations to connect to
+various capsules.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_AD0.html"
+                                  title='static sam4l::adc::CHANNEL_AD0'>CHANNEL_AD0</a></td>
+                           <td class='docblock-short'>
+                                <p>Statically allocated ADC channels. Used in board configurations to specify
+which channels are used on the platform.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_AD1.html"
+                                  title='static sam4l::adc::CHANNEL_AD1'>CHANNEL_AD1</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_AD2.html"
+                                  title='static sam4l::adc::CHANNEL_AD2'>CHANNEL_AD2</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_AD3.html"
+                                  title='static sam4l::adc::CHANNEL_AD3'>CHANNEL_AD3</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_AD4.html"
+                                  title='static sam4l::adc::CHANNEL_AD4'>CHANNEL_AD4</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_AD5.html"
+                                  title='static sam4l::adc::CHANNEL_AD5'>CHANNEL_AD5</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_AD6.html"
+                                  title='static sam4l::adc::CHANNEL_AD6'>CHANNEL_AD6</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_AD7.html"
+                                  title='static sam4l::adc::CHANNEL_AD7'>CHANNEL_AD7</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_AD8.html"
+                                  title='static sam4l::adc::CHANNEL_AD8'>CHANNEL_AD8</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_AD9.html"
+                                  title='static sam4l::adc::CHANNEL_AD9'>CHANNEL_AD9</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_AD10.html"
+                                  title='static sam4l::adc::CHANNEL_AD10'>CHANNEL_AD10</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_AD11.html"
+                                  title='static sam4l::adc::CHANNEL_AD11'>CHANNEL_AD11</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_AD12.html"
+                                  title='static sam4l::adc::CHANNEL_AD12'>CHANNEL_AD12</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_AD13.html"
+                                  title='static sam4l::adc::CHANNEL_AD13'>CHANNEL_AD13</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_AD14.html"
+                                  title='static sam4l::adc::CHANNEL_AD14'>CHANNEL_AD14</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_BANDGAP.html"
+                                  title='static sam4l::adc::CHANNEL_BANDGAP'>CHANNEL_BANDGAP</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_DAC.html"
+                                  title='static sam4l::adc::CHANNEL_DAC'>CHANNEL_DAC</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_REFERENCE_GROUND.html"
+                                  title='static sam4l::adc::CHANNEL_REFERENCE_GROUND'>CHANNEL_REFERENCE_GROUND</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_SCALED_VCC.html"
+                                  title='static sam4l::adc::CHANNEL_SCALED_VCC'>CHANNEL_SCALED_VCC</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CHANNEL_VSINGLE.html"
+                                  title='static sam4l::adc::CHANNEL_VSINGLE'>CHANNEL_VSINGLE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.EverythingClient.html"
+                                  title='trait sam4l::adc::EverythingClient'>EverythingClient</a></td>
+                           <td class='docblock-short'>
+                                <p>Create a trait of both client types to allow a single client reference to
+act as both</p>
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.adcife_handler.html"
+                                  title='fn sam4l::adc::adcife_handler'>adcife_handler</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "sam4l";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

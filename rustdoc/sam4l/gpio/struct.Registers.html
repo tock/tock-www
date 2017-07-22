@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Registers` struct in crate `sam4l`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Registers">
+
+    <title>sam4l::gpio::Registers - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct Registers</p><div class="block items"><ul><li><a href="#fields">Fields</a></li></ul></div><p class='location'><a href='../index.html'>sam4l</a>::<wbr><a href='index.html'>gpio</a></p><script>window.sidebarCurrent = {name: 'Registers', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>sam4l</a>::<wbr><a href='index.html'>gpio</a>::<wbr><a class="struct" href=''>Registers</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/sam4l/gpio.rs.html#30-58' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'><div class="docblock attributes">#[repr(C, packed)]
+</div>struct Registers {
+    gper: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a>,
+    pmr0: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a>,
+    pmr1: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a>,
+    pmr2: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a>,
+    oder: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a>,
+    ovr: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a>,
+    pvr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    _reserved0: [u32; 3],
+    puer: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a>,
+    pder: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a>,
+    ier: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a>,
+    imr0: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a>,
+    imr1: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a>,
+    gfer: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a>,
+    ifr: <a class="struct" href="../../sam4l/gpio/struct.RegisterRC.html" title="struct sam4l::gpio::RegisterRC">RegisterRC</a>,
+    _reserved1: [u32; 8],
+    ocdr0: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a>,
+    ocdr1: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a>,
+    _reserved2: [u32; 4],
+    osrr0: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a>,
+    _reserved3: [u32; 8],
+    ster: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a>,
+    _reserved4: [u32; 4],
+    ever: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a>,
+    _reserved5: [u32; 26],
+    parameter: u32,
+    version: u32,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.gper' class="structfield">
+                           <span id='gper.v' class='invisible'>
+                           <code>gper: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a></code>
+                           </span></span><span id='structfield.pmr0' class="structfield">
+                           <span id='pmr0.v' class='invisible'>
+                           <code>pmr0: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a></code>
+                           </span></span><span id='structfield.pmr1' class="structfield">
+                           <span id='pmr1.v' class='invisible'>
+                           <code>pmr1: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a></code>
+                           </span></span><span id='structfield.pmr2' class="structfield">
+                           <span id='pmr2.v' class='invisible'>
+                           <code>pmr2: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a></code>
+                           </span></span><span id='structfield.oder' class="structfield">
+                           <span id='oder.v' class='invisible'>
+                           <code>oder: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a></code>
+                           </span></span><span id='structfield.ovr' class="structfield">
+                           <span id='ovr.v' class='invisible'>
+                           <code>ovr: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a></code>
+                           </span></span><span id='structfield.pvr' class="structfield">
+                           <span id='pvr.v' class='invisible'>
+                           <code>pvr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield._reserved0' class="structfield">
+                           <span id='_reserved0.v' class='invisible'>
+                           <code>_reserved0: [u32; 3]</code>
+                           </span></span><span id='structfield.puer' class="structfield">
+                           <span id='puer.v' class='invisible'>
+                           <code>puer: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a></code>
+                           </span></span><span id='structfield.pder' class="structfield">
+                           <span id='pder.v' class='invisible'>
+                           <code>pder: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a></code>
+                           </span></span><span id='structfield.ier' class="structfield">
+                           <span id='ier.v' class='invisible'>
+                           <code>ier: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a></code>
+                           </span></span><span id='structfield.imr0' class="structfield">
+                           <span id='imr0.v' class='invisible'>
+                           <code>imr0: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a></code>
+                           </span></span><span id='structfield.imr1' class="structfield">
+                           <span id='imr1.v' class='invisible'>
+                           <code>imr1: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a></code>
+                           </span></span><span id='structfield.gfer' class="structfield">
+                           <span id='gfer.v' class='invisible'>
+                           <code>gfer: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a></code>
+                           </span></span><span id='structfield.ifr' class="structfield">
+                           <span id='ifr.v' class='invisible'>
+                           <code>ifr: <a class="struct" href="../../sam4l/gpio/struct.RegisterRC.html" title="struct sam4l::gpio::RegisterRC">RegisterRC</a></code>
+                           </span></span><span id='structfield._reserved1' class="structfield">
+                           <span id='_reserved1.v' class='invisible'>
+                           <code>_reserved1: [u32; 8]</code>
+                           </span></span><span id='structfield.ocdr0' class="structfield">
+                           <span id='ocdr0.v' class='invisible'>
+                           <code>ocdr0: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a></code>
+                           </span></span><span id='structfield.ocdr1' class="structfield">
+                           <span id='ocdr1.v' class='invisible'>
+                           <code>ocdr1: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a></code>
+                           </span></span><span id='structfield._reserved2' class="structfield">
+                           <span id='_reserved2.v' class='invisible'>
+                           <code>_reserved2: [u32; 4]</code>
+                           </span></span><span id='structfield.osrr0' class="structfield">
+                           <span id='osrr0.v' class='invisible'>
+                           <code>osrr0: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a></code>
+                           </span></span><span id='structfield._reserved3' class="structfield">
+                           <span id='_reserved3.v' class='invisible'>
+                           <code>_reserved3: [u32; 8]</code>
+                           </span></span><span id='structfield.ster' class="structfield">
+                           <span id='ster.v' class='invisible'>
+                           <code>ster: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a></code>
+                           </span></span><span id='structfield._reserved4' class="structfield">
+                           <span id='_reserved4.v' class='invisible'>
+                           <code>_reserved4: [u32; 4]</code>
+                           </span></span><span id='structfield.ever' class="structfield">
+                           <span id='ever.v' class='invisible'>
+                           <code>ever: <a class="struct" href="../../sam4l/gpio/struct.Register.html" title="struct sam4l::gpio::Register">Register</a></code>
+                           </span></span><span id='structfield._reserved5' class="structfield">
+                           <span id='_reserved5.v' class='invisible'>
+                           <code>_reserved5: [u32; 26]</code>
+                           </span></span><span id='structfield.parameter' class="structfield">
+                           <span id='parameter.v' class='invisible'>
+                           <code>parameter: u32</code>
+                           </span></span><span id='structfield.version' class="structfield">
+                           <span id='version.v' class='invisible'>
+                           <code>version: u32</code>
+                           </span></span></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "sam4l";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["State","This module is either waiting to do something, or handling a read/write."]],"struct":[["NonvolatileToPages",""]]});

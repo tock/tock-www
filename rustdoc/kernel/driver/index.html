@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `driver` mod in crate `kernel`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, driver">
+
+    <title>kernel::driver - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Module driver</p><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#traits">Traits</a></li></ul></div><p class='location'><a href='../index.html'>kernel</a></p><script>window.sidebarCurrent = {name: 'driver', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>kernel</a>::<wbr><a class="mod" href=''>driver</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/kernel/driver.rs.html#1-107' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>System call interface for userspace applications.</p>
+
+<p>Drivers implement these interfaces to expose operations to applications.</p>
+
+<h1 id='system-call-overview' class='section-header'><a href='#system-call-overview'>System-call Overview</a></h1>
+<p>Tock supports four system calls. The <code>yield</code> system call is handled entirely
+by the scheduler, while three others are passed along to drivers:</p>
+
+<ul>
+<li><p><code>subscribe</code> lets an application pass a callback to the driver to be
+called later, when an event has occurred or data of interest is available.</p></li>
+<li><p><code>command</code> tells the driver to do something immediately.</p></li>
+<li><p><code>allow</code> provides the driver access to an application buffer.</p></li>
+</ul>
+
+<h2 id='mapping-system-calls-to-drivers' class='section-header'><a href='#mapping-system-calls-to-drivers'>Mapping system-calls to drivers</a></h2>
+<p>Each of these three system calls takes at least two parameters. The first is
+a <em>driver major number</em> and tells the scheduler which driver to forward the
+system call to. The second parameters is a <em>driver minor number</em> and is used
+by the driver to differentiate system calls with different driver-specific
+meanings (e.g. <code>subscribe</code> to &quot;data ready&quot; vs <code>subscribe</code> to &quot;send
+complete&quot;). The mapping between <em>driver major numbers</em> and drivers is
+determined by a particular platform, while the <em>driver minor number</em> is
+driver-specific.</p>
+
+<p>One convention in Tock is that <em>driver minor number</em> 0 for the <code>command</code>
+syscall can always be used to determine if the driver is supported by
+the running kernel by checking the return code. If the return value is
+greater than or equal to zero then the driver is present. Typically this is
+implemented by a null command that only returns 0, but in some cases the
+command can also return more information, like the number of supported
+devices (useful for things like the number of LEDs).</p>
+
+<h1 id='the-yield-system-call' class='section-header'><a href='#the-yield-system-call'>The <code>yield</code> System-call</a></h1>
+<p>While drivers do not handle the <code>yield</code> system call, it is important to
+understand its function and how it interacts with <code>subscribe</code>.</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>use returncode::<a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>;</code></td></tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Driver.html"
+                                  title='trait kernel::driver::Driver'>Driver</a></td>
+                           <td class='docblock-short'>
+                                <p><code>Driver</code>s implement the three driver-specific system calls: <code>subscribe</code>,
+<code>command</code> and <code>allow</code>.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "kernel";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

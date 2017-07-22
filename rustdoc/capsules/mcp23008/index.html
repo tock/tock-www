@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `mcp23008` mod in crate `capsules`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, mcp23008">
+
+    <title>capsules::mcp23008 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Module mcp23008</p><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#statics">Statics</a></li></ul></div><p class='location'><a href='../index.html'>capsules</a></p><script>window.sidebarCurrent = {name: 'mcp23008', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>capsules</a>::<wbr><a class="mod" href=''>mcp23008</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/capsules/mcp23008.rs.html#1-544' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Driver for the Microchip MCP23008 I2C GPIO extender.</p>
+
+<p><a href="http://www.microchip.com/wwwproducts/en/MCP23008">http://www.microchip.com/wwwproducts/en/MCP23008</a></p>
+
+<p>Paraphrased from the website:</p>
+
+<blockquote>
+<p>The MCP23008 device provides 8-bit, general purpose, parallel I/O
+expansion for I2C bus applications. The MCP23008 has three address pins
+and consists of multiple 8-bit configuration registers for input, output
+and polarity selection. The system master can enable the I/Os as either
+inputs or outputs by writing the I/O configuration bits. The data for each
+input or output is kept in the corresponding Input or Output register. The
+polarity of the Input Port register can be inverted with the Polarity
+Inversion register. All registers can be read by the system master.</p>
+</blockquote>
+
+<h2 id='usage' class='section-header'><a href='#usage'>Usage</a></h2>
+<p>This capsule can either be used inside of the kernel or as an input to
+the <code>gpio_async</code> capsule because it implements the <code>hil::gpio_async::Port</code>
+trait.</p>
+
+<p>Example usage:</p>
+
+<pre class="rust rust-example-rendered">
+<span class="comment">// Configure the MCP23008. Device address 0x20.</span>
+<span class="kw">let</span> <span class="ident">mcp23008_i2c</span> <span class="op">=</span> <span class="macro">static_init</span><span class="macro">!</span>(
+    <span class="ident">capsules</span>::<span class="ident">virtual_i2c</span>::<span class="ident">I2CDevice</span>,
+    <span class="ident">capsules</span>::<span class="ident">virtual_i2c</span>::<span class="ident">I2CDevice</span>::<span class="ident">new</span>(<span class="ident">i2c_mux</span>, <span class="number">0x20</span>));
+<span class="kw">let</span> <span class="ident">mcp23008</span> <span class="op">=</span> <span class="macro">static_init</span><span class="macro">!</span>(
+    <span class="ident">capsules</span>::<span class="ident">mcp23008</span>::<span class="ident">MCP23008</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span>,
+    <span class="ident">capsules</span>::<span class="ident">mcp23008</span>::<span class="ident">MCP23008</span>::<span class="ident">new</span>(<span class="ident">mcp23008_i2c</span>,
+                                      <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">sam4l</span>::<span class="ident">gpio</span>::<span class="ident">PA</span>[<span class="number">04</span>]),
+                                      <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">capsules</span>::<span class="ident">mcp23008</span>::<span class="ident">BUFFER</span>));
+<span class="ident">mcp23008_i2c</span>.<span class="ident">set_client</span>(<span class="ident">mcp23008</span>);
+<span class="ident">sam4l</span>::<span class="ident">gpio</span>::<span class="ident">PA</span>[<span class="number">04</span>].<span class="ident">set_client</span>(<span class="ident">mcp23008</span>);
+
+<span class="comment">// Create an array of the GPIO extenders so we can pass them to an</span>
+<span class="comment">// administrative layer that provides a single interface to them all.</span>
+<span class="kw">let</span> <span class="ident">async_gpio_ports</span> <span class="op">=</span> <span class="macro">static_init</span><span class="macro">!</span>(
+    [<span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">capsules</span>::<span class="ident">mcp23008</span>::<span class="ident">MCP23008</span>; <span class="number">1</span>],
+    [<span class="ident">mcp23008</span>]);
+
+<span class="comment">// `gpio_async` is the object that manages all of the extenders.</span>
+<span class="kw">let</span> <span class="ident">gpio_async</span> <span class="op">=</span> <span class="macro">static_init</span><span class="macro">!</span>(
+    <span class="ident">capsules</span>::<span class="ident">gpio_async</span>::<span class="ident">GPIOAsync</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">capsules</span>::<span class="ident">mcp23008</span>::<span class="ident">MCP23008</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;&gt;</span>,
+    <span class="ident">capsules</span>::<span class="ident">gpio_async</span>::<span class="ident">GPIOAsync</span>::<span class="ident">new</span>(<span class="ident">async_gpio_ports</span>));
+<span class="comment">// Setup the clients correctly.</span>
+<span class="kw">for</span> <span class="ident">port</span> <span class="kw">in</span> <span class="ident">async_gpio_ports</span>.<span class="ident">iter</span>() {
+    <span class="ident">port</span>.<span class="ident">set_client</span>(<span class="ident">gpio_async</span>);
+}</pre>
+
+<p>Note that if interrupts are not needed, a <code>None</code> can be passed in when the
+<code>mcp23008</code> object is created.</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>use core::cell::<a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>;</code></td></tr><tr><td><code>use kernel::<a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>;</code></td></tr><tr><td><code>use kernel::common::take_cell::<a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>;</code></td></tr><tr><td><code>use kernel::<a class="mod" href="../../kernel/hil/index.html" title="mod kernel::hil">hil</a>;</code></td></tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.MCP23008.html"
+                                  title='struct capsules::mcp23008::MCP23008'>MCP23008</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Direction.html"
+                                  title='enum capsules::mcp23008::Direction'>Direction</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.PinState.html"
+                                  title='enum capsules::mcp23008::PinState'>PinState</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Registers.html"
+                                  title='enum capsules::mcp23008::Registers'>Registers</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.State.html"
+                                  title='enum capsules::mcp23008::State'>State</a></td>
+                           <td class='docblock-short'>
+                                <p>States of the I2C protocol with the MCP23008.</p>
+                           </td>
+                       </tr></table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.BUFFER.html"
+                                  title='static capsules::mcp23008::BUFFER'>BUFFER</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "capsules";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

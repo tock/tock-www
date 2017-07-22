@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `InternalState` enum in crate `capsules`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, InternalState">
+
+    <title>capsules::rf233::InternalState - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc enum">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Enum InternalState</p><div class="block items"><ul><li><a href="#variants">Variants</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>capsules</a>::<wbr><a href='index.html'>rf233</a></p><script>window.sidebarCurrent = {name: 'InternalState', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>capsules</a>::<wbr><a href='index.html'>rf233</a>::<wbr><a class="enum" href=''>InternalState</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/capsules/rf233.rs.html#34-128' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>enum InternalState {
+    START,
+    START_PART_READ,
+    START_STATUS_READ,
+    START_TURNING_OFF,
+    START_CTRL1_SET,
+    START_CCA_SET,
+    START_PWR_SET,
+    START_CTRL2_SET,
+    START_IRQMASK_SET,
+    START_XAH1_SET,
+    START_XAH0_SET,
+    START_PANID0_SET,
+    START_PANID1_SET,
+    START_IEEE0_SET,
+    START_IEEE1_SET,
+    START_IEEE2_SET,
+    START_IEEE3_SET,
+    START_IEEE4_SET,
+    START_IEEE5_SET,
+    START_IEEE6_SET,
+    START_IEEE7_SET,
+    START_SHORT0_SET,
+    START_SHORT1_SET,
+    START_CSMA_SEEDED,
+    START_RPC_SET,
+    ON_STATUS_READ,
+    ON_PLL_WAITING,
+    ON_PLL_SET,
+    READY,
+    TX_STATUS_PRECHECK1,
+    TX_WRITING_FRAME,
+    TX_WRITING_FRAME_DONE,
+    TX_STATUS_PRECHECK2,
+    TX_PLL_START,
+    TX_PLL_WAIT,
+    TX_ARET_ON,
+    TX_TRANSMITTING,
+    TX_READ_ACK,
+    TX_DONE,
+    TX_RETURN_TO_RX,
+    TX_PENDING,
+    CONFIG_SHORT0_SET,
+    CONFIG_SHORT1_SET,
+    CONFIG_PAN0_SET,
+    CONFIG_PAN1_SET,
+    CONFIG_IEEE0_SET,
+    CONFIG_IEEE1_SET,
+    CONFIG_IEEE2_SET,
+    CONFIG_IEEE3_SET,
+    CONFIG_IEEE4_SET,
+    CONFIG_IEEE5_SET,
+    CONFIG_IEEE6_SET,
+    CONFIG_IEEE7_SET,
+    CONFIG_POWER_SET,
+    CONFIG_DONE,
+    RX,
+    RX_START_READING,
+    RX_READING_FRAME_LEN,
+    RX_READING_FRAME_LEN_DONE,
+    RX_READING_FRAME,
+    RX_READING_FRAME_DONE,
+    UNKNOWN,
+}</pre><h2 id='variants' class='variants'>Variants</h2>
+<span id='variant.START' class='variant'><span id='START.v' class='invisible'><code>START</code></span></span><span id='variant.START_PART_READ' class='variant'><span id='START_PART_READ.v' class='invisible'><code>START_PART_READ</code></span></span><span id='variant.START_STATUS_READ' class='variant'><span id='START_STATUS_READ.v' class='invisible'><code>START_STATUS_READ</code></span></span><span id='variant.START_TURNING_OFF' class='variant'><span id='START_TURNING_OFF.v' class='invisible'><code>START_TURNING_OFF</code></span></span><span id='variant.START_CTRL1_SET' class='variant'><span id='START_CTRL1_SET.v' class='invisible'><code>START_CTRL1_SET</code></span></span><span id='variant.START_CCA_SET' class='variant'><span id='START_CCA_SET.v' class='invisible'><code>START_CCA_SET</code></span></span><span id='variant.START_PWR_SET' class='variant'><span id='START_PWR_SET.v' class='invisible'><code>START_PWR_SET</code></span></span><span id='variant.START_CTRL2_SET' class='variant'><span id='START_CTRL2_SET.v' class='invisible'><code>START_CTRL2_SET</code></span></span><span id='variant.START_IRQMASK_SET' class='variant'><span id='START_IRQMASK_SET.v' class='invisible'><code>START_IRQMASK_SET</code></span></span><span id='variant.START_XAH1_SET' class='variant'><span id='START_XAH1_SET.v' class='invisible'><code>START_XAH1_SET</code></span></span><span id='variant.START_XAH0_SET' class='variant'><span id='START_XAH0_SET.v' class='invisible'><code>START_XAH0_SET</code></span></span><span id='variant.START_PANID0_SET' class='variant'><span id='START_PANID0_SET.v' class='invisible'><code>START_PANID0_SET</code></span></span><span id='variant.START_PANID1_SET' class='variant'><span id='START_PANID1_SET.v' class='invisible'><code>START_PANID1_SET</code></span></span><span id='variant.START_IEEE0_SET' class='variant'><span id='START_IEEE0_SET.v' class='invisible'><code>START_IEEE0_SET</code></span></span><span id='variant.START_IEEE1_SET' class='variant'><span id='START_IEEE1_SET.v' class='invisible'><code>START_IEEE1_SET</code></span></span><span id='variant.START_IEEE2_SET' class='variant'><span id='START_IEEE2_SET.v' class='invisible'><code>START_IEEE2_SET</code></span></span><span id='variant.START_IEEE3_SET' class='variant'><span id='START_IEEE3_SET.v' class='invisible'><code>START_IEEE3_SET</code></span></span><span id='variant.START_IEEE4_SET' class='variant'><span id='START_IEEE4_SET.v' class='invisible'><code>START_IEEE4_SET</code></span></span><span id='variant.START_IEEE5_SET' class='variant'><span id='START_IEEE5_SET.v' class='invisible'><code>START_IEEE5_SET</code></span></span><span id='variant.START_IEEE6_SET' class='variant'><span id='START_IEEE6_SET.v' class='invisible'><code>START_IEEE6_SET</code></span></span><span id='variant.START_IEEE7_SET' class='variant'><span id='START_IEEE7_SET.v' class='invisible'><code>START_IEEE7_SET</code></span></span><span id='variant.START_SHORT0_SET' class='variant'><span id='START_SHORT0_SET.v' class='invisible'><code>START_SHORT0_SET</code></span></span><span id='variant.START_SHORT1_SET' class='variant'><span id='START_SHORT1_SET.v' class='invisible'><code>START_SHORT1_SET</code></span></span><span id='variant.START_CSMA_SEEDED' class='variant'><span id='START_CSMA_SEEDED.v' class='invisible'><code>START_CSMA_SEEDED</code></span></span><span id='variant.START_RPC_SET' class='variant'><span id='START_RPC_SET.v' class='invisible'><code>START_RPC_SET</code></span></span><span id='variant.ON_STATUS_READ' class='variant'><span id='ON_STATUS_READ.v' class='invisible'><code>ON_STATUS_READ</code></span></span><span id='variant.ON_PLL_WAITING' class='variant'><span id='ON_PLL_WAITING.v' class='invisible'><code>ON_PLL_WAITING</code></span></span><span id='variant.ON_PLL_SET' class='variant'><span id='ON_PLL_SET.v' class='invisible'><code>ON_PLL_SET</code></span></span><span id='variant.READY' class='variant'><span id='READY.v' class='invisible'><code>READY</code></span></span><span id='variant.TX_STATUS_PRECHECK1' class='variant'><span id='TX_STATUS_PRECHECK1.v' class='invisible'><code>TX_STATUS_PRECHECK1</code></span></span><span id='variant.TX_WRITING_FRAME' class='variant'><span id='TX_WRITING_FRAME.v' class='invisible'><code>TX_WRITING_FRAME</code></span></span><span id='variant.TX_WRITING_FRAME_DONE' class='variant'><span id='TX_WRITING_FRAME_DONE.v' class='invisible'><code>TX_WRITING_FRAME_DONE</code></span></span><span id='variant.TX_STATUS_PRECHECK2' class='variant'><span id='TX_STATUS_PRECHECK2.v' class='invisible'><code>TX_STATUS_PRECHECK2</code></span></span><span id='variant.TX_PLL_START' class='variant'><span id='TX_PLL_START.v' class='invisible'><code>TX_PLL_START</code></span></span><span id='variant.TX_PLL_WAIT' class='variant'><span id='TX_PLL_WAIT.v' class='invisible'><code>TX_PLL_WAIT</code></span></span><span id='variant.TX_ARET_ON' class='variant'><span id='TX_ARET_ON.v' class='invisible'><code>TX_ARET_ON</code></span></span><span id='variant.TX_TRANSMITTING' class='variant'><span id='TX_TRANSMITTING.v' class='invisible'><code>TX_TRANSMITTING</code></span></span><span id='variant.TX_READ_ACK' class='variant'><span id='TX_READ_ACK.v' class='invisible'><code>TX_READ_ACK</code></span></span><span id='variant.TX_DONE' class='variant'><span id='TX_DONE.v' class='invisible'><code>TX_DONE</code></span></span><span id='variant.TX_RETURN_TO_RX' class='variant'><span id='TX_RETURN_TO_RX.v' class='invisible'><code>TX_RETURN_TO_RX</code></span></span><span id='variant.TX_PENDING' class='variant'><span id='TX_PENDING.v' class='invisible'><code>TX_PENDING</code></span></span><span id='variant.CONFIG_SHORT0_SET' class='variant'><span id='CONFIG_SHORT0_SET.v' class='invisible'><code>CONFIG_SHORT0_SET</code></span></span><span id='variant.CONFIG_SHORT1_SET' class='variant'><span id='CONFIG_SHORT1_SET.v' class='invisible'><code>CONFIG_SHORT1_SET</code></span></span><span id='variant.CONFIG_PAN0_SET' class='variant'><span id='CONFIG_PAN0_SET.v' class='invisible'><code>CONFIG_PAN0_SET</code></span></span><span id='variant.CONFIG_PAN1_SET' class='variant'><span id='CONFIG_PAN1_SET.v' class='invisible'><code>CONFIG_PAN1_SET</code></span></span><span id='variant.CONFIG_IEEE0_SET' class='variant'><span id='CONFIG_IEEE0_SET.v' class='invisible'><code>CONFIG_IEEE0_SET</code></span></span><span id='variant.CONFIG_IEEE1_SET' class='variant'><span id='CONFIG_IEEE1_SET.v' class='invisible'><code>CONFIG_IEEE1_SET</code></span></span><span id='variant.CONFIG_IEEE2_SET' class='variant'><span id='CONFIG_IEEE2_SET.v' class='invisible'><code>CONFIG_IEEE2_SET</code></span></span><span id='variant.CONFIG_IEEE3_SET' class='variant'><span id='CONFIG_IEEE3_SET.v' class='invisible'><code>CONFIG_IEEE3_SET</code></span></span><span id='variant.CONFIG_IEEE4_SET' class='variant'><span id='CONFIG_IEEE4_SET.v' class='invisible'><code>CONFIG_IEEE4_SET</code></span></span><span id='variant.CONFIG_IEEE5_SET' class='variant'><span id='CONFIG_IEEE5_SET.v' class='invisible'><code>CONFIG_IEEE5_SET</code></span></span><span id='variant.CONFIG_IEEE6_SET' class='variant'><span id='CONFIG_IEEE6_SET.v' class='invisible'><code>CONFIG_IEEE6_SET</code></span></span><span id='variant.CONFIG_IEEE7_SET' class='variant'><span id='CONFIG_IEEE7_SET.v' class='invisible'><code>CONFIG_IEEE7_SET</code></span></span><span id='variant.CONFIG_POWER_SET' class='variant'><span id='CONFIG_POWER_SET.v' class='invisible'><code>CONFIG_POWER_SET</code></span></span><span id='variant.CONFIG_DONE' class='variant'><span id='CONFIG_DONE.v' class='invisible'><code>CONFIG_DONE</code></span></span><span id='variant.RX' class='variant'><span id='RX.v' class='invisible'><code>RX</code></span></span><span id='variant.RX_START_READING' class='variant'><span id='RX_START_READING.v' class='invisible'><code>RX_START_READING</code></span></span><span id='variant.RX_READING_FRAME_LEN' class='variant'><span id='RX_READING_FRAME_LEN.v' class='invisible'><code>RX_READING_FRAME_LEN</code></span></span><span id='variant.RX_READING_FRAME_LEN_DONE' class='variant'><span id='RX_READING_FRAME_LEN_DONE.v' class='invisible'><code>RX_READING_FRAME_LEN_DONE</code></span></span><span id='variant.RX_READING_FRAME' class='variant'><span id='RX_READING_FRAME.v' class='invisible'><code>RX_READING_FRAME</code></span></span><span id='variant.RX_READING_FRAME_DONE' class='variant'><span id='RX_READING_FRAME_DONE.v' class='invisible'><code>RX_READING_FRAME_DONE</code></span></span><span id='variant.UNKNOWN' class='variant'><span id='UNKNOWN.v' class='invisible'><code>UNKNOWN</code></span></span><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="../../capsules/rf233/enum.InternalState.html" title="enum capsules::rf233::InternalState">InternalState</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/rf233.rs.html#33' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="enum" href="../../capsules/rf233/enum.InternalState.html" title="enum capsules::rf233::InternalState">InternalState</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/rf233.rs.html#33' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="enum" href="../../capsules/rf233/enum.InternalState.html" title="enum capsules::rf233::InternalState">InternalState</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="enum" href="../../capsules/rf233/enum.InternalState.html" title="enum capsules::rf233::InternalState">InternalState</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/rf233.rs.html#33' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../capsules/rf233/enum.InternalState.html" title="enum capsules::rf233::InternalState">InternalState</a>) -&gt; bool</code></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, other: &amp;Rhs) -&gt; bool</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "capsules";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

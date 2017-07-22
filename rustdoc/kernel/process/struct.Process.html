@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Process` struct in crate `kernel`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Process">
+
+    <title>kernel::process::Process - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct Process</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li></ul></div><p class='location'><a href='../index.html'>kernel</a>::<wbr><a href='index.html'>process</a></p><script>window.sidebarCurrent = {name: 'Process', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>kernel</a>::<wbr><a href='index.html'>process</a>::<wbr><a class="struct" href=''>Process</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/kernel/process.rs.html#209-279' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Process&lt;'a&gt; {
+    memory: &amp;'static mut [u8],
+    kernel_memory_break: *const u8,
+    app_heap_break: *const u8,
+    app_heap_start: *const u8,
+    stack_data_boundary: *const u8,
+    cur_stack: *const u8,
+    min_stack_pointer: *const u8,
+    syscall_count: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;,
+    last_syscall: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../kernel/syscall/enum.Syscall.html" title="enum kernel::syscall::Syscall">Syscall</a>&gt;&gt;,
+    text: &amp;'static [u8],
+    stored_regs: <a class="struct" href="../../kernel/process/struct.StoredRegs.html" title="struct kernel::process::StoredRegs">StoredRegs</a>,
+    yield_pc: usize,
+    psr: usize,
+    state: <a class="enum" href="../../kernel/process/enum.State.html" title="enum kernel::process::State">State</a>,
+    fault_response: <a class="enum" href="../../kernel/process/enum.FaultResponse.html" title="enum kernel::process::FaultResponse">FaultResponse</a>,
+    mpu_regions: [<a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;(*const u8, <a class="struct" href="../../kernel/common/math/struct.PowerOfTwo.html" title="struct kernel::common::math::PowerOfTwo">PowerOfTwo</a>)&gt;; 5],
+    tasks: <a class="struct" href="../../kernel/common/ring_buffer/struct.RingBuffer.html" title="struct kernel::common::ring_buffer::RingBuffer">RingBuffer</a>&lt;'a, <a class="enum" href="../../kernel/process/enum.Task.html" title="enum kernel::process::Task">Task</a>&gt;,
+    pub package_name: &amp;'static str,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.memory' class="structfield">
+                           <span id='memory.v' class='invisible'>
+                           <code>memory: &amp;'static mut [u8]</code>
+                           </span></span><div class='docblock'><p>Application memory layout:</p>
+
+<pre class="rust rust-example-rendered">
+<span class="op">|=</span><span class="op">==</span><span class="op">==</span><span class="op">==</span><span class="op">=</span> &lt;- <span class="ident">memory</span>[<span class="ident">memory</span>.<span class="ident">len</span>()]</pre>
+
+<p>╔═ | Grant
+    |   ↓
+ D  |  ----   &lt;- kernel_memory_break
+ Y  |
+ N  |  ----   &lt;- app_heap_break
+ A  |
+ M  |   ↑
+    |  Heap
+ ╠═ |  ----   &lt;- app_heap_start
+    |  Data
+ F  |  ----   &lt;- stack_data_boundary
+ I  | Stack
+ X  |   ↓
+ E  |
+ D  |  ----   &lt;- cur_stack
+    |
+ ╚═ |======== &lt;- memory[0]
+The process&#39;s memory.</p>
+</div><span id='structfield.kernel_memory_break' class="structfield">
+                           <span id='kernel_memory_break.v' class='invisible'>
+                           <code>kernel_memory_break: *const u8</code>
+                           </span></span><span id='structfield.app_heap_break' class="structfield">
+                           <span id='app_heap_break.v' class='invisible'>
+                           <code>app_heap_break: *const u8</code>
+                           </span></span><span id='structfield.app_heap_start' class="structfield">
+                           <span id='app_heap_start.v' class='invisible'>
+                           <code>app_heap_start: *const u8</code>
+                           </span></span><span id='structfield.stack_data_boundary' class="structfield">
+                           <span id='stack_data_boundary.v' class='invisible'>
+                           <code>stack_data_boundary: *const u8</code>
+                           </span></span><span id='structfield.cur_stack' class="structfield">
+                           <span id='cur_stack.v' class='invisible'>
+                           <code>cur_stack: *const u8</code>
+                           </span></span><span id='structfield.min_stack_pointer' class="structfield">
+                           <span id='min_stack_pointer.v' class='invisible'>
+                           <code>min_stack_pointer: *const u8</code>
+                           </span></span><div class='docblock'><p>How low have we ever seen the stack pointer</p>
+</div><span id='structfield.syscall_count' class="structfield">
+                           <span id='syscall_count.v' class='invisible'>
+                           <code>syscall_count: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;</code>
+                           </span></span><div class='docblock'><p>How many syscalls have occurred since the process started</p>
+</div><span id='structfield.last_syscall' class="structfield">
+                           <span id='last_syscall.v' class='invisible'>
+                           <code>last_syscall: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../kernel/syscall/enum.Syscall.html" title="enum kernel::syscall::Syscall">Syscall</a>&gt;&gt;</code>
+                           </span></span><div class='docblock'><p>What was the most recent syscall</p>
+</div><span id='structfield.text' class="structfield">
+                           <span id='text.v' class='invisible'>
+                           <code>text: &amp;'static [u8]</code>
+                           </span></span><div class='docblock'><p>Process text segment</p>
+</div><span id='structfield.stored_regs' class="structfield">
+                           <span id='stored_regs.v' class='invisible'>
+                           <code>stored_regs: <a class="struct" href="../../kernel/process/struct.StoredRegs.html" title="struct kernel::process::StoredRegs">StoredRegs</a></code>
+                           </span></span><span id='structfield.yield_pc' class="structfield">
+                           <span id='yield_pc.v' class='invisible'>
+                           <code>yield_pc: usize</code>
+                           </span></span><span id='structfield.psr' class="structfield">
+                           <span id='psr.v' class='invisible'>
+                           <code>psr: usize</code>
+                           </span></span><span id='structfield.state' class="structfield">
+                           <span id='state.v' class='invisible'>
+                           <code>state: <a class="enum" href="../../kernel/process/enum.State.html" title="enum kernel::process::State">State</a></code>
+                           </span></span><span id='structfield.fault_response' class="structfield">
+                           <span id='fault_response.v' class='invisible'>
+                           <code>fault_response: <a class="enum" href="../../kernel/process/enum.FaultResponse.html" title="enum kernel::process::FaultResponse">FaultResponse</a></code>
+                           </span></span><div class='docblock'><p>How to deal with Faults occuring in the process</p>
+</div><span id='structfield.mpu_regions' class="structfield">
+                           <span id='mpu_regions.v' class='invisible'>
+                           <code>mpu_regions: [<a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;(*const u8, <a class="struct" href="../../kernel/common/math/struct.PowerOfTwo.html" title="struct kernel::common::math::PowerOfTwo">PowerOfTwo</a>)&gt;; 5]</code>
+                           </span></span><div class='docblock'><p>MPU regions are saved as a pointer-size pair.</p>
+
+<p>size is encoded as X where
+SIZE = 2<sup>X + 1</sup> and X &gt;= 4.</p>
+
+<p>A null pointer represents an empty region.</p>
+
+<h1 id='invariants' class='section-header'><a href='#invariants'>Invariants</a></h1>
+<p>The pointer must be aligned to the size. E.g. if the size is 32 bytes, the pointer must be
+32-byte aligned.</p>
+</div><span id='structfield.tasks' class="structfield">
+                           <span id='tasks.v' class='invisible'>
+                           <code>tasks: <a class="struct" href="../../kernel/common/ring_buffer/struct.RingBuffer.html" title="struct kernel::common::ring_buffer::RingBuffer">RingBuffer</a>&lt;'a, <a class="enum" href="../../kernel/process/enum.Task.html" title="enum kernel::process::Task">Task</a>&gt;</code>
+                           </span></span><span id='structfield.package_name' class="structfield">
+                           <span id='package_name.v' class='invisible'>
+                           <code>package_name: &amp;'static str</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="struct" href="../../kernel/process/struct.Process.html" title="struct kernel::process::Process">Process</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/kernel/process.rs.html#310-1126' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.schedule_ipc' class="method"><span id='schedule_ipc.v' class='invisible'><code>fn <a href='#method.schedule_ipc' class='fnname'>schedule_ipc</a>(&amp;mut self, from: <a class="struct" href="../../kernel/callback/struct.AppId.html" title="struct kernel::callback::AppId">AppId</a>, cb_type: <a class="enum" href="../../kernel/process/enum.IPCType.html" title="enum kernel::process::IPCType">IPCType</a>)</code></span></h4>
+<h4 id='method.current_state' class="method"><span id='current_state.v' class='invisible'><code>fn <a href='#method.current_state' class='fnname'>current_state</a>(&amp;self) -&gt; <a class="enum" href="../../kernel/process/enum.State.html" title="enum kernel::process::State">State</a></code></span></h4>
+<h4 id='method.yield_state' class="method"><span id='yield_state.v' class='invisible'><code>fn <a href='#method.yield_state' class='fnname'>yield_state</a>(&amp;mut self)</code></span></h4>
+<h4 id='method.fault_state' class="method"><span id='fault_state.v' class='invisible'><code>unsafe fn <a href='#method.fault_state' class='fnname'>fault_state</a>(&amp;mut self)</code></span></h4>
+<h4 id='method.dequeue_task' class="method"><span id='dequeue_task.v' class='invisible'><code>fn <a href='#method.dequeue_task' class='fnname'>dequeue_task</a>(&amp;mut self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../kernel/process/enum.Task.html" title="enum kernel::process::Task">Task</a>&gt;</code></span></h4>
+<h4 id='method.mem_start' class="method"><span id='mem_start.v' class='invisible'><code>fn <a href='#method.mem_start' class='fnname'>mem_start</a>(&amp;self) -&gt; *const u8</code></span></h4>
+<h4 id='method.mem_end' class="method"><span id='mem_end.v' class='invisible'><code>fn <a href='#method.mem_end' class='fnname'>mem_end</a>(&amp;self) -&gt; *const u8</code></span></h4>
+<h4 id='method.flash_start' class="method"><span id='flash_start.v' class='invisible'><code>fn <a href='#method.flash_start' class='fnname'>flash_start</a>(&amp;self) -&gt; *const u8</code></span></h4>
+<h4 id='method.flash_end' class="method"><span id='flash_end.v' class='invisible'><code>fn <a href='#method.flash_end' class='fnname'>flash_end</a>(&amp;self) -&gt; *const u8</code></span></h4>
+<h4 id='method.kernel_memory_break' class="method"><span id='kernel_memory_break.v-1' class='invisible'><code>fn <a href='#method.kernel_memory_break' class='fnname'>kernel_memory_break</a>(&amp;self) -&gt; *const u8</code></span></h4>
+<h4 id='method.setup_mpu' class="method"><span id='setup_mpu.v' class='invisible'><code>fn <a href='#method.setup_mpu' class='fnname'>setup_mpu</a>&lt;MPU:&nbsp;<a class="trait" href="../../kernel/platform/mpu/trait.MPU.html" title="trait kernel::platform::mpu::MPU">MPU</a>&gt;(&amp;self, mpu: &amp;MPU)</code></span></h4>
+<h4 id='method.add_mpu_region' class="method"><span id='add_mpu_region.v' class='invisible'><code>fn <a href='#method.add_mpu_region' class='fnname'>add_mpu_region</a>(&amp;self, base: *const u8, size: u32) -&gt; bool</code></span></h4>
+<h4 id='method.create' class="method"><span id='create.v' class='invisible'><code>unsafe fn <a href='#method.create' class='fnname'>create</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;app_flash_address: *const u8, <br>&nbsp;&nbsp;&nbsp;&nbsp;remaining_app_memory: *mut u8, <br>&nbsp;&nbsp;&nbsp;&nbsp;remaining_app_memory_size: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;fault_response: <a class="enum" href="../../kernel/process/enum.FaultResponse.html" title="enum kernel::process::FaultResponse">FaultResponse</a><br>) -&gt; (<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../kernel/process/struct.Process.html" title="struct kernel::process::Process">Process</a>&lt;'a&gt;&gt;, usize, usize)</code></span></h4>
+<h4 id='method.sbrk' class="method"><span id='sbrk.v' class='invisible'><code>fn <a href='#method.sbrk' class='fnname'>sbrk</a>(&amp;mut self, increment: isize) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;*const u8, <a class="enum" href="../../kernel/process/enum.Error.html" title="enum kernel::process::Error">Error</a>&gt;</code></span></h4>
+<h4 id='method.brk' class="method"><span id='brk.v' class='invisible'><code>fn <a href='#method.brk' class='fnname'>brk</a>(&amp;mut self, new_break: *const u8) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;*const u8, <a class="enum" href="../../kernel/process/enum.Error.html" title="enum kernel::process::Error">Error</a>&gt;</code></span></h4>
+<h4 id='method.in_exposed_bounds' class="method"><span id='in_exposed_bounds.v' class='invisible'><code>fn <a href='#method.in_exposed_bounds' class='fnname'>in_exposed_bounds</a>(&amp;self, buf_start_addr: *const u8, size: usize) -&gt; bool</code></span></h4>
+<h4 id='method.alloc' class="method"><span id='alloc.v' class='invisible'><code>unsafe fn <a href='#method.alloc' class='fnname'>alloc</a>(&amp;mut self, size: usize) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;mut [u8]&gt;</code></span></h4>
+<h4 id='method.free' class="method"><span id='free.v' class='invisible'><code>unsafe fn <a href='#method.free' class='fnname'>free</a>&lt;T&gt;(&amp;mut self, _: *mut T)</code></span></h4>
+<h4 id='method.container_ptr' class="method"><span id='container_ptr.v' class='invisible'><code>unsafe fn <a href='#method.container_ptr' class='fnname'>container_ptr</a>&lt;T&gt;(&amp;self, container_num: usize) -&gt; *mut *mut T</code></span></h4>
+<h4 id='method.container_for' class="method"><span id='container_for.v' class='invisible'><code>unsafe fn <a href='#method.container_for' class='fnname'>container_for</a>&lt;T&gt;(&amp;mut self, container_num: usize) -&gt; *mut T</code></span></h4>
+<h4 id='method.container_for_or_alloc' class="method"><span id='container_for_or_alloc.v' class='invisible'><code>unsafe fn <a href='#method.container_for_or_alloc' class='fnname'>container_for_or_alloc</a>&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html" title="trait core::default::Default">Default</a>&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;mut self, <br>&nbsp;&nbsp;&nbsp;&nbsp;container_num: usize<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;*mut T&gt;</code></span></h4>
+<h4 id='method.pop_syscall_stack' class="method"><span id='pop_syscall_stack.v' class='invisible'><code>fn <a href='#method.pop_syscall_stack' class='fnname'>pop_syscall_stack</a>(&amp;mut self)</code></span></h4>
+<h4 id='method.push_function_call' class="method"><span id='push_function_call.v' class='invisible'><code>unsafe fn <a href='#method.push_function_call' class='fnname'>push_function_call</a>(&amp;mut self, callback: <a class="struct" href="../../kernel/process/struct.FunctionCall.html" title="struct kernel::process::FunctionCall">FunctionCall</a>)</code></span></h4>
+<div class='docblock'><p>Context switch to the process.</p>
+</div><h4 id='method.app_fault' class="method"><span id='app_fault.v' class='invisible'><code>unsafe fn <a href='#method.app_fault' class='fnname'>app_fault</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.syscall_fired' class="method"><span id='syscall_fired.v' class='invisible'><code>unsafe fn <a href='#method.syscall_fired' class='fnname'>syscall_fired</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.switch_to' class="method"><span id='switch_to.v' class='invisible'><code>unsafe fn <a href='#method.switch_to' class='fnname'>switch_to</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>Context switch to the process.</p>
+</div><h4 id='method.svc_number' class="method"><span id='svc_number.v' class='invisible'><code>fn <a href='#method.svc_number' class='fnname'>svc_number</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../kernel/syscall/enum.Syscall.html" title="enum kernel::syscall::Syscall">Syscall</a>&gt;</code></span></h4>
+<h4 id='method.incr_syscall_count' class="method"><span id='incr_syscall_count.v' class='invisible'><code>fn <a href='#method.incr_syscall_count' class='fnname'>incr_syscall_count</a>(&amp;self)</code></span></h4>
+<h4 id='method.sp' class="method"><span id='sp.v' class='invisible'><code>fn <a href='#method.sp' class='fnname'>sp</a>(&amp;self) -&gt; usize</code></span></h4>
+<h4 id='method.lr' class="method"><span id='lr.v' class='invisible'><code>fn <a href='#method.lr' class='fnname'>lr</a>(&amp;self) -&gt; usize</code></span></h4>
+<h4 id='method.pc' class="method"><span id='pc.v' class='invisible'><code>fn <a href='#method.pc' class='fnname'>pc</a>(&amp;self) -&gt; usize</code></span></h4>
+<h4 id='method.r0' class="method"><span id='r0.v' class='invisible'><code>fn <a href='#method.r0' class='fnname'>r0</a>(&amp;self) -&gt; usize</code></span></h4>
+<h4 id='method.set_return_code' class="method"><span id='set_return_code.v' class='invisible'><code>fn <a href='#method.set_return_code' class='fnname'>set_return_code</a>(&amp;mut self, return_code: <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>)</code></span></h4>
+<h4 id='method.set_r0' class="method"><span id='set_r0.v' class='invisible'><code>fn <a href='#method.set_r0' class='fnname'>set_r0</a>(&amp;mut self, val: isize)</code></span></h4>
+<h4 id='method.r1' class="method"><span id='r1.v' class='invisible'><code>fn <a href='#method.r1' class='fnname'>r1</a>(&amp;self) -&gt; usize</code></span></h4>
+<h4 id='method.r2' class="method"><span id='r2.v' class='invisible'><code>fn <a href='#method.r2' class='fnname'>r2</a>(&amp;self) -&gt; usize</code></span></h4>
+<h4 id='method.r3' class="method"><span id='r3.v' class='invisible'><code>fn <a href='#method.r3' class='fnname'>r3</a>(&amp;self) -&gt; usize</code></span></h4>
+<h4 id='method.r12' class="method"><span id='r12.v' class='invisible'><code>fn <a href='#method.r12' class='fnname'>r12</a>(&amp;self) -&gt; usize</code></span></h4>
+<h4 id='method.xpsr' class="method"><span id='xpsr.v' class='invisible'><code>fn <a href='#method.xpsr' class='fnname'>xpsr</a>(&amp;self) -&gt; usize</code></span></h4>
+<h4 id='method.fault_str' class="method"><span id='fault_str.v' class='invisible'><code>unsafe fn <a href='#method.fault_str' class='fnname'>fault_str</a>&lt;W:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Write.html" title="trait core::fmt::Write">Write</a>&gt;(&amp;mut self, writer: &amp;mut W)</code></span></h4>
+<h4 id='method.statistics_str' class="method"><span id='statistics_str.v' class='invisible'><code>unsafe fn <a href='#method.statistics_str' class='fnname'>statistics_str</a>&lt;W:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Write.html" title="trait core::fmt::Write">Write</a>&gt;(&amp;mut self, writer: &amp;mut W)</code></span></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "kernel";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

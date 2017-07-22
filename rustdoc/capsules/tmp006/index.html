@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `tmp006` mod in crate `capsules`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, tmp006">
+
+    <title>capsules::tmp006 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Module tmp006</p><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#constants">Constants</a></li><li><a href="#statics">Statics</a></li><li><a href="#functions">Functions</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'><a href='../index.html'>capsules</a></p><script>window.sidebarCurrent = {name: 'tmp006', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>capsules</a>::<wbr><a class="mod" href=''>tmp006</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/capsules/tmp006.rs.html#1-334' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Driver for the TI TMP006 infrared thermopile contactless temperature sensor.</p>
+
+<p><a href="http://www.ti.com/product/TMP006">http://www.ti.com/product/TMP006</a></p>
+
+<blockquote>
+<p>The TMP006 and TMP006B are fully integrated MEMs thermopile sensors that
+measure the temperature of an object without having to be in direct
+contact. The thermopile absorbs passive infrared energy from an object at
+wavelengths between 4 um to 16 um within the end-user defined field of
+view.</p>
+</blockquote>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>use core::cell::<a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>;</code></td></tr><tr><td><code>use kernel::<a class="struct" href="../../kernel/callback/struct.AppId.html" title="struct kernel::callback::AppId">AppId</a>;</code></td></tr><tr><td><code>use kernel::<a class="struct" href="../../kernel/callback/struct.Callback.html" title="struct kernel::callback::Callback">Callback</a>;</code></td></tr><tr><td><code>use kernel::<a class="trait" href="../../kernel/driver/trait.Driver.html" title="trait kernel::driver::Driver">Driver</a>;</code></td></tr><tr><td><code>use kernel::<a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>;</code></td></tr><tr><td><code>use kernel::common::math::<a class="fn" href="../../kernel/common/math/fn.sqrtf32.html" title="fn kernel::common::math::sqrtf32">sqrtf32</a>;</code></td></tr><tr><td><code>use kernel::common::math::<a class="fn" href="../../kernel/common/math/fn.get_errno.html" title="fn kernel::common::math::get_errno">get_errno</a>;</code></td></tr><tr><td><code>use kernel::common::take_cell::<a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>;</code></td></tr><tr><td><code>use kernel::hil::gpio::<a class="trait" href="../../kernel/hil/gpio/trait.Pin.html" title="trait kernel::hil::gpio::Pin">Pin</a>;</code></td></tr><tr><td><code>use kernel::hil::gpio::<a class="enum" href="../../kernel/hil/gpio/enum.InterruptMode.html" title="enum kernel::hil::gpio::InterruptMode">InterruptMode</a>;</code></td></tr><tr><td><code>use kernel::hil::gpio::<a class="trait" href="../../kernel/hil/gpio/trait.Client.html" title="trait kernel::hil::gpio::Client">Client</a>;</code></td></tr><tr><td><code>use kernel::hil::<a class="mod" href="../../kernel/hil/i2c/index.html" title="mod kernel::hil::i2c">i2c</a>;</code></td></tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.TMP006.html"
+                                  title='struct capsules::tmp006::TMP006'>TMP006</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.ProtocolState.html"
+                                  title='enum capsules::tmp006::ProtocolState'>ProtocolState</a></td>
+                           <td class='docblock-short'>
+                                <p>States of the I2C protocol with the TMP006. There are three sequences:</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Registers.html"
+                                  title='enum capsules::tmp006::Registers'>Registers</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.A_1.html"
+                                  title='constant capsules::tmp006::A_1'>A_1</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.A_2.html"
+                                  title='constant capsules::tmp006::A_2'>A_2</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.B_0.html"
+                                  title='constant capsules::tmp006::B_0'>B_0</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.B_1.html"
+                                  title='constant capsules::tmp006::B_1'>B_1</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.B_2.html"
+                                  title='constant capsules::tmp006::B_2'>B_2</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.C_2.html"
+                                  title='constant capsules::tmp006::C_2'>C_2</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.C_TO_K.html"
+                                  title='constant capsules::tmp006::C_TO_K'>C_TO_K</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.DEFAULT_SAMPLING_RATE.html"
+                                  title='constant capsules::tmp006::DEFAULT_SAMPLING_RATE'>DEFAULT_SAMPLING_RATE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.K_TO_C.html"
+                                  title='constant capsules::tmp006::K_TO_C'>K_TO_C</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.MAX_SAMPLING_RATE.html"
+                                  title='constant capsules::tmp006::MAX_SAMPLING_RATE'>MAX_SAMPLING_RATE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.NV_TO_V.html"
+                                  title='constant capsules::tmp006::NV_TO_V'>NV_TO_V</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.S_0.html"
+                                  title='constant capsules::tmp006::S_0'>S_0</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.T_DIE_CONVERT.html"
+                                  title='constant capsules::tmp006::T_DIE_CONVERT'>T_DIE_CONVERT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.T_REF.html"
+                                  title='constant capsules::tmp006::T_REF'>T_REF</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.V_OBJ_CONVERT.html"
+                                  title='constant capsules::tmp006::V_OBJ_CONVERT'>V_OBJ_CONVERT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.BUFFER.html"
+                                  title='static capsules::tmp006::BUFFER'>BUFFER</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.calculate_temperature.html"
+                                  title='fn capsules::tmp006::calculate_temperature'>calculate_temperature</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.SensorVoltage.html"
+                                  title='type capsules::tmp006::SensorVoltage'>SensorVoltage</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "capsules";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

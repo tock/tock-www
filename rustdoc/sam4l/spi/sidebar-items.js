@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["SPI_BASE",""]],"enum":[["Peripheral","Values for selected peripherals"],["SpiRole",""]],"fn":[["spi_interrupt_handler",""]],"mod":[["spi_consts",""]],"static":[["SPI",""]],"struct":[["Spi","The SAM4L supports four peripherals."],["SpiRegisters","The registers used to interface with the hardware"]]});

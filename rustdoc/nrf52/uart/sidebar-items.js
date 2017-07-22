@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["BUF_SIZE",""]],"fn":[["UART0_Handler",""]],"static":[["BUF",""],["UART0",""]],"struct":[["UART",""],["UARTParams",""]]});

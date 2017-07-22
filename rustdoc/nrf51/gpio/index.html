@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `gpio` mod in crate `nrf51`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, gpio">
+
+    <title>nrf51::gpio - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Module gpio</p><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#structs">Structs</a></li><li><a href="#constants">Constants</a></li><li><a href="#statics">Statics</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>nrf51</a></p><script>window.sidebarCurrent = {name: 'gpio', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>nrf51</a>::<wbr><a class="mod" href=''>gpio</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/nrf51/gpio.rs.html#1-283' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>GPIO and GPIOTE (task and events) for the nRF51 series.</p>
+
+<p>Author: Philip Levis <a href="mailto:pal@cs.stanford.edu">pal@cs.stanford.edu</a>
+Date: August 18, 2016</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>use <a class="mod" href="../../nrf51/chip/index.html" title="mod nrf51::chip">chip</a>;</code></td></tr><tr><td><code>use core::cell::<a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>;</code></td></tr><tr><td><code>use core::<a class="mod" href="https://doc.rust-lang.org/nightly/core/mem/index.html" title="mod core::mem">mem</a>;</code></td></tr><tr><td><code>use core::ops::<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/index/trait.Index.html" title="trait core::ops::index::Index">Index</a>;</code></td></tr><tr><td><code>use core::ops::<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/index/trait.IndexMut.html" title="trait core::ops::index::IndexMut">IndexMut</a>;</code></td></tr><tr><td><code>use kernel::common::<a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>;</code></td></tr><tr><td><code>use kernel::<a class="mod" href="../../kernel/hil/index.html" title="mod kernel::hil">hil</a>;</code></td></tr><tr><td><code>use <a class="mod" href="../../nrf51/nvic/index.html" title="mod nrf51::nvic">nvic</a>;</code></td></tr><tr><td><code>use peripheral_interrupts::<a class="enum" href="../../nrf51/peripheral_interrupts/enum.NvicIdx.html" title="enum nrf51::peripheral_interrupts::NvicIdx">NvicIdx</a>;</code></td></tr><tr><td><code>use peripheral_registers::<a class="constant" href="../../nrf51/peripheral_registers/constant.GPIO_BASE.html" title="constant nrf51::peripheral_registers::GPIO_BASE">GPIO_BASE</a>;</code></td></tr><tr><td><code>use peripheral_registers::<a class="struct" href="../../nrf51/peripheral_registers/struct.GPIO.html" title="struct nrf51::peripheral_registers::GPIO">GPIO</a>;</code></td></tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.GPIOPin.html"
+                                  title='struct nrf51::gpio::GPIOPin'>GPIOPin</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.GpioteRegisters.html"
+                                  title='struct nrf51::gpio::GpioteRegisters'>GpioteRegisters</a></td>
+                           <td class='docblock-short'>
+                                <p>The nRF51822 doesn&#39;t automatically provide GPIO interrupts. Instead,
+to receive interrupts from a GPIO line, you must allocate a GPIOTE
+(GPIO Task and Event) channel, and bind the channel to the desired
+pin. There are 4 channels. This means that requesting an interrupt
+can fail, if there are already 4 allocated.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Port.html"
+                                  title='struct nrf51::gpio::Port'>Port</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.GPIOTE_BASE.html"
+                                  title='constant nrf51::gpio::GPIOTE_BASE'>GPIOTE_BASE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.PORT.html"
+                                  title='static nrf51::gpio::PORT'>PORT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.GPIO.html"
+                                  title='fn nrf51::gpio::GPIO'>GPIO</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.GPIOTE.html"
+                                  title='fn nrf51::gpio::GPIOTE'>GPIOTE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.GPIOTE_Handler.html"
+                                  title='fn nrf51::gpio::GPIOTE_Handler'>GPIOTE_Handler</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.allocate_channel.html"
+                                  title='fn nrf51::gpio::allocate_channel'>allocate_channel</a></td>
+                           <td class='docblock-short'>
+                                <p>Allocate a GPIOTE channel</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.find_channel.html"
+                                  title='fn nrf51::gpio::find_channel'>find_channel</a></td>
+                           <td class='docblock-short'>
+                                <p>Return which channel is allocated to a pin, or -1 if none.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "nrf51";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

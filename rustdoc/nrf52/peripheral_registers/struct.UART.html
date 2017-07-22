@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `UART` struct in crate `nrf52`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, UART">
+
+    <title>nrf52::peripheral_registers::UART - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct UART</p><div class="block items"><ul><li><a href="#fields">Fields</a></li></ul></div><p class='location'><a href='../index.html'>nrf52</a>::<wbr><a href='index.html'>peripheral_registers</a></p><script>window.sidebarCurrent = {name: 'UART', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>nrf52</a>::<wbr><a href='index.html'>peripheral_registers</a>::<wbr><a class="struct" href=''>UART</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/nrf52/peripheral_registers.rs.html#47-95' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'><div class="docblock attributes">#[repr(C, packed)]
+</div>pub struct UART {
+    pub task_startrx: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    pub task_stoprx: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    pub task_starttx: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    pub task_stoptx: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    _reserved1: [u32; 7],
+    pub task_flush_rx: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    _reserved2: [u32; 52],
+    pub event_cts: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    pub event_ncts: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    _reserved3: [u32; 2],
+    pub event_endrx: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    _reserved4: [u32; 3],
+    pub event_endtx: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    pub event_error: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    _reserved6: [u32; 7],
+    pub event_rxto: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    _reserved7: [u32; 1],
+    pub event_rxstarted: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    pub event_txstarted: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    _reserved8: [u32; 1],
+    pub event_txstopped: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    _reserved9: [u32; 41],
+    pub shorts: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    _reserved10: [u32; 64],
+    pub intenset: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    pub intenclr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    _reserved11: [u32; 93],
+    pub errorsrc: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    _reserved12: [u32; 31],
+    pub enable: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    _reserved13: [u32; 1],
+    pub pselrts: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;<a class="struct" href="../../nrf52/pinmux/struct.Pinmux.html" title="struct nrf52::pinmux::Pinmux">Pinmux</a>&gt;,
+    pub pseltxd: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;<a class="struct" href="../../nrf52/pinmux/struct.Pinmux.html" title="struct nrf52::pinmux::Pinmux">Pinmux</a>&gt;,
+    pub pselcts: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;<a class="struct" href="../../nrf52/pinmux/struct.Pinmux.html" title="struct nrf52::pinmux::Pinmux">Pinmux</a>&gt;,
+    pub pselrxd: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;<a class="struct" href="../../nrf52/pinmux/struct.Pinmux.html" title="struct nrf52::pinmux::Pinmux">Pinmux</a>&gt;,
+    _reserved14: [u32; 3],
+    pub baudrate: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    _reserved15: [u32; 3],
+    pub rxd_ptr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    pub rxd_maxcnt: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    pub rxd_amount: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    _reserved16: [u32; 1],
+    pub txd_ptr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    pub txd_maxcnt: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    pub txd_amount: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    _reserved17: [u32; 7],
+    pub config: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.task_startrx' class="structfield">
+                           <span id='task_startrx.v' class='invisible'>
+                           <code>task_startrx: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.task_stoprx' class="structfield">
+                           <span id='task_stoprx.v' class='invisible'>
+                           <code>task_stoprx: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.task_starttx' class="structfield">
+                           <span id='task_starttx.v' class='invisible'>
+                           <code>task_starttx: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.task_stoptx' class="structfield">
+                           <span id='task_stoptx.v' class='invisible'>
+                           <code>task_stoptx: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield._reserved1' class="structfield">
+                           <span id='_reserved1.v' class='invisible'>
+                           <code>_reserved1: [u32; 7]</code>
+                           </span></span><span id='structfield.task_flush_rx' class="structfield">
+                           <span id='task_flush_rx.v' class='invisible'>
+                           <code>task_flush_rx: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield._reserved2' class="structfield">
+                           <span id='_reserved2.v' class='invisible'>
+                           <code>_reserved2: [u32; 52]</code>
+                           </span></span><span id='structfield.event_cts' class="structfield">
+                           <span id='event_cts.v' class='invisible'>
+                           <code>event_cts: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.event_ncts' class="structfield">
+                           <span id='event_ncts.v' class='invisible'>
+                           <code>event_ncts: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield._reserved3' class="structfield">
+                           <span id='_reserved3.v' class='invisible'>
+                           <code>_reserved3: [u32; 2]</code>
+                           </span></span><span id='structfield.event_endrx' class="structfield">
+                           <span id='event_endrx.v' class='invisible'>
+                           <code>event_endrx: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield._reserved4' class="structfield">
+                           <span id='_reserved4.v' class='invisible'>
+                           <code>_reserved4: [u32; 3]</code>
+                           </span></span><span id='structfield.event_endtx' class="structfield">
+                           <span id='event_endtx.v' class='invisible'>
+                           <code>event_endtx: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.event_error' class="structfield">
+                           <span id='event_error.v' class='invisible'>
+                           <code>event_error: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield._reserved6' class="structfield">
+                           <span id='_reserved6.v' class='invisible'>
+                           <code>_reserved6: [u32; 7]</code>
+                           </span></span><span id='structfield.event_rxto' class="structfield">
+                           <span id='event_rxto.v' class='invisible'>
+                           <code>event_rxto: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield._reserved7' class="structfield">
+                           <span id='_reserved7.v' class='invisible'>
+                           <code>_reserved7: [u32; 1]</code>
+                           </span></span><span id='structfield.event_rxstarted' class="structfield">
+                           <span id='event_rxstarted.v' class='invisible'>
+                           <code>event_rxstarted: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.event_txstarted' class="structfield">
+                           <span id='event_txstarted.v' class='invisible'>
+                           <code>event_txstarted: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield._reserved8' class="structfield">
+                           <span id='_reserved8.v' class='invisible'>
+                           <code>_reserved8: [u32; 1]</code>
+                           </span></span><span id='structfield.event_txstopped' class="structfield">
+                           <span id='event_txstopped.v' class='invisible'>
+                           <code>event_txstopped: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield._reserved9' class="structfield">
+                           <span id='_reserved9.v' class='invisible'>
+                           <code>_reserved9: [u32; 41]</code>
+                           </span></span><span id='structfield.shorts' class="structfield">
+                           <span id='shorts.v' class='invisible'>
+                           <code>shorts: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield._reserved10' class="structfield">
+                           <span id='_reserved10.v' class='invisible'>
+                           <code>_reserved10: [u32; 64]</code>
+                           </span></span><span id='structfield.intenset' class="structfield">
+                           <span id='intenset.v' class='invisible'>
+                           <code>intenset: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.intenclr' class="structfield">
+                           <span id='intenclr.v' class='invisible'>
+                           <code>intenclr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield._reserved11' class="structfield">
+                           <span id='_reserved11.v' class='invisible'>
+                           <code>_reserved11: [u32; 93]</code>
+                           </span></span><span id='structfield.errorsrc' class="structfield">
+                           <span id='errorsrc.v' class='invisible'>
+                           <code>errorsrc: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield._reserved12' class="structfield">
+                           <span id='_reserved12.v' class='invisible'>
+                           <code>_reserved12: [u32; 31]</code>
+                           </span></span><span id='structfield.enable' class="structfield">
+                           <span id='enable.v' class='invisible'>
+                           <code>enable: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield._reserved13' class="structfield">
+                           <span id='_reserved13.v' class='invisible'>
+                           <code>_reserved13: [u32; 1]</code>
+                           </span></span><span id='structfield.pselrts' class="structfield">
+                           <span id='pselrts.v' class='invisible'>
+                           <code>pselrts: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;<a class="struct" href="../../nrf52/pinmux/struct.Pinmux.html" title="struct nrf52::pinmux::Pinmux">Pinmux</a>&gt;</code>
+                           </span></span><span id='structfield.pseltxd' class="structfield">
+                           <span id='pseltxd.v' class='invisible'>
+                           <code>pseltxd: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;<a class="struct" href="../../nrf52/pinmux/struct.Pinmux.html" title="struct nrf52::pinmux::Pinmux">Pinmux</a>&gt;</code>
+                           </span></span><span id='structfield.pselcts' class="structfield">
+                           <span id='pselcts.v' class='invisible'>
+                           <code>pselcts: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;<a class="struct" href="../../nrf52/pinmux/struct.Pinmux.html" title="struct nrf52::pinmux::Pinmux">Pinmux</a>&gt;</code>
+                           </span></span><span id='structfield.pselrxd' class="structfield">
+                           <span id='pselrxd.v' class='invisible'>
+                           <code>pselrxd: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;<a class="struct" href="../../nrf52/pinmux/struct.Pinmux.html" title="struct nrf52::pinmux::Pinmux">Pinmux</a>&gt;</code>
+                           </span></span><span id='structfield._reserved14' class="structfield">
+                           <span id='_reserved14.v' class='invisible'>
+                           <code>_reserved14: [u32; 3]</code>
+                           </span></span><span id='structfield.baudrate' class="structfield">
+                           <span id='baudrate.v' class='invisible'>
+                           <code>baudrate: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield._reserved15' class="structfield">
+                           <span id='_reserved15.v' class='invisible'>
+                           <code>_reserved15: [u32; 3]</code>
+                           </span></span><span id='structfield.rxd_ptr' class="structfield">
+                           <span id='rxd_ptr.v' class='invisible'>
+                           <code>rxd_ptr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.rxd_maxcnt' class="structfield">
+                           <span id='rxd_maxcnt.v' class='invisible'>
+                           <code>rxd_maxcnt: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.rxd_amount' class="structfield">
+                           <span id='rxd_amount.v' class='invisible'>
+                           <code>rxd_amount: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield._reserved16' class="structfield">
+                           <span id='_reserved16.v' class='invisible'>
+                           <code>_reserved16: [u32; 1]</code>
+                           </span></span><span id='structfield.txd_ptr' class="structfield">
+                           <span id='txd_ptr.v' class='invisible'>
+                           <code>txd_ptr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.txd_maxcnt' class="structfield">
+                           <span id='txd_maxcnt.v' class='invisible'>
+                           <code>txd_maxcnt: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.txd_amount' class="structfield">
+                           <span id='txd_amount.v' class='invisible'>
+                           <code>txd_amount: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield._reserved17' class="structfield">
+                           <span id='_reserved17.v' class='invisible'>
+                           <code>_reserved17: [u32; 7]</code>
+                           </span></span><span id='structfield.config' class="structfield">
+                           <span id='config.v' class='invisible'>
+                           <code>config: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "nrf52";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

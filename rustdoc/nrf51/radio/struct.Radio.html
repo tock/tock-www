@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Radio` struct in crate `nrf51`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Radio">
+
+    <title>nrf51::radio::Radio - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct Radio</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li></ul></div><p class='location'><a href='../index.html'>nrf51</a>::<wbr><a href='index.html'>radio</a></p><script>window.sidebarCurrent = {name: 'Radio', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>nrf51</a>::<wbr><a href='index.html'>radio</a>::<wbr><a class="struct" href=''>Radio</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/nrf51/radio.rs.html#92-97' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Radio {
+    regs: *const <a class="struct" href="../../nrf51/peripheral_registers/struct.RADIO_REGS.html" title="struct nrf51::peripheral_registers::RADIO_REGS">RADIO_REGS</a>,
+    txpower: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;,
+    client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../nrf51/ble_advertising_driver/trait.RxClient.html" title="trait nrf51::ble_advertising_driver::RxClient">RxClient</a>&gt;&gt;,
+    freq: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u32&gt;,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.regs' class="structfield">
+                           <span id='regs.v' class='invisible'>
+                           <code>regs: *const <a class="struct" href="../../nrf51/peripheral_registers/struct.RADIO_REGS.html" title="struct nrf51::peripheral_registers::RADIO_REGS">RADIO_REGS</a></code>
+                           </span></span><span id='structfield.txpower' class="structfield">
+                           <span id='txpower.v' class='invisible'>
+                           <code>txpower: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;</code>
+                           </span></span><span id='structfield.client' class="structfield">
+                           <span id='client.v' class='invisible'>
+                           <code>client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../nrf51/ble_advertising_driver/trait.RxClient.html" title="trait nrf51::ble_advertising_driver::RxClient">RxClient</a>&gt;&gt;</code>
+                           </span></span><span id='structfield.freq' class="structfield">
+                           <span id='freq.v' class='invisible'>
+                           <code>freq: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u32&gt;</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../nrf51/radio/struct.Radio.html" title="struct nrf51::radio::Radio">Radio</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/nrf51/radio.rs.html#101-470' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>const fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class="struct" href="../../nrf51/radio/struct.Radio.html" title="struct nrf51::radio::Radio">Radio</a></code></span></h4>
+<h4 id='method.start_adv_tx' class="method"><span id='start_adv_tx.v' class='invisible'><code>fn <a href='#method.start_adv_tx' class='fnname'>start_adv_tx</a>(&amp;self)</code></span></h4>
+<h4 id='method.start_adv_rx' class="method"><span id='start_adv_rx.v' class='invisible'><code>fn <a href='#method.start_adv_rx' class='fnname'>start_adv_rx</a>(&amp;self)</code></span></h4>
+<h4 id='method.set_crc_config' class="method"><span id='set_crc_config.v' class='invisible'><code>fn <a href='#method.set_crc_config' class='fnname'>set_crc_config</a>(&amp;self)</code></span></h4>
+<h4 id='method.set_packet_config' class="method"><span id='set_packet_config.v' class='invisible'><code>fn <a href='#method.set_packet_config' class='fnname'>set_packet_config</a>(&amp;self, _: u32)</code></span></h4>
+<h4 id='method.set_rx_address' class="method"><span id='set_rx_address.v' class='invisible'><code>fn <a href='#method.set_rx_address' class='fnname'>set_rx_address</a>(&amp;self, _: u32)</code></span></h4>
+<h4 id='method.set_tx_address' class="method"><span id='set_tx_address.v' class='invisible'><code>fn <a href='#method.set_tx_address' class='fnname'>set_tx_address</a>(&amp;self, _: u32)</code></span></h4>
+<h4 id='method.set_channel_rate' class="method"><span id='set_channel_rate.v' class='invisible'><code>fn <a href='#method.set_channel_rate' class='fnname'>set_channel_rate</a>(&amp;self, rate: u32)</code></span></h4>
+<h4 id='method.set_data_white_iv' class="method"><span id='set_data_white_iv.v' class='invisible'><code>fn <a href='#method.set_data_white_iv' class='fnname'>set_data_white_iv</a>(&amp;self, val: u32)</code></span></h4>
+<h4 id='method.set_channel_freq' class="method"><span id='set_channel_freq.v' class='invisible'><code>fn <a href='#method.set_channel_freq' class='fnname'>set_channel_freq</a>(&amp;self, val: u32)</code></span></h4>
+<h4 id='method.radio_on' class="method"><span id='radio_on.v' class='invisible'><code>fn <a href='#method.radio_on' class='fnname'>radio_on</a>(&amp;self)</code></span></h4>
+<h4 id='method.radio_off' class="method"><span id='radio_off.v' class='invisible'><code>fn <a href='#method.radio_off' class='fnname'>radio_off</a>(&amp;self)</code></span></h4>
+<h4 id='method.set_txpower' class="method"><span id='set_txpower.v' class='invisible'><code>fn <a href='#method.set_txpower' class='fnname'>set_txpower</a>(&amp;self)</code></span></h4>
+<h4 id='method.set_buffer' class="method"><span id='set_buffer.v' class='invisible'><code>fn <a href='#method.set_buffer' class='fnname'>set_buffer</a>(&amp;self)</code></span></h4>
+<h4 id='method.handle_interrupt' class="method"><span id='handle_interrupt.v' class='invisible'><code>fn <a href='#method.handle_interrupt' class='fnname'>handle_interrupt</a>(&amp;self)</code></span></h4>
+<h4 id='method.enable_interrupts' class="method"><span id='enable_interrupts.v' class='invisible'><code>fn <a href='#method.enable_interrupts' class='fnname'>enable_interrupts</a>(&amp;self)</code></span></h4>
+<h4 id='method.disable_interrupts' class="method"><span id='disable_interrupts.v' class='invisible'><code>fn <a href='#method.disable_interrupts' class='fnname'>disable_interrupts</a>(&amp;self)</code></span></h4>
+<h4 id='method.enable_nvic' class="method"><span id='enable_nvic.v' class='invisible'><code>fn <a href='#method.enable_nvic' class='fnname'>enable_nvic</a>(&amp;self)</code></span></h4>
+<h4 id='method.disable_nvic' class="method"><span id='disable_nvic.v' class='invisible'><code>fn <a href='#method.disable_nvic' class='fnname'>disable_nvic</a>(&amp;self)</code></span></h4>
+<h4 id='method.reset_payload' class="method"><span id='reset_payload.v' class='invisible'><code>fn <a href='#method.reset_payload' class='fnname'>reset_payload</a>(&amp;self)</code></span></h4>
+<h4 id='method.set_payload_header_pdu' class="method"><span id='set_payload_header_pdu.v' class='invisible'><code>fn <a href='#method.set_payload_header_pdu' class='fnname'>set_payload_header_pdu</a>(&amp;self, pdu: u8)</code></span></h4>
+<h4 id='method.set_payload_header_len' class="method"><span id='set_payload_header_len.v' class='invisible'><code>fn <a href='#method.set_payload_header_len' class='fnname'>set_payload_header_len</a>(&amp;self, len: u8)</code></span></h4>
+<h4 id='method.set_advertisement_address' class="method"><span id='set_advertisement_address.v' class='invisible'><code>fn <a href='#method.set_advertisement_address' class='fnname'>set_advertisement_address</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;addr: &amp;'static mut [u8]<br>) -&gt; &amp;'static mut [u8]</code></span></h4>
+<h4 id='method.set_adv_data' class="method"><span id='set_adv_data.v' class='invisible'><code>fn <a href='#method.set_adv_data' class='fnname'>set_adv_data</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;ad_type: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;data: &amp;'static mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;len: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;offset: usize<br>) -&gt; &amp;'static mut [u8]</code></span></h4>
+<h4 id='method.clear_adv_data' class="method"><span id='clear_adv_data.v' class='invisible'><code>fn <a href='#method.clear_adv_data' class='fnname'>clear_adv_data</a>(&amp;self)</code></span></h4>
+<h4 id='method.set_adv_txpower' class="method"><span id='set_adv_txpower.v' class='invisible'><code>fn <a href='#method.set_adv_txpower' class='fnname'>set_adv_txpower</a>(&amp;self, dbm: usize) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.set_client' class="method"><span id='set_client.v' class='invisible'><code>fn <a href='#method.set_client' class='fnname'>set_client</a>&lt;C:&nbsp;<a class="trait" href="../../nrf51/ble_advertising_driver/trait.RxClient.html" title="trait nrf51::ble_advertising_driver::RxClient">RxClient</a>&gt;(&amp;self, client: &amp;'static C)</code></span></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "nrf51";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

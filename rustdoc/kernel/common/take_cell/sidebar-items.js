@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["MapCell","A mutable memory location that enforces borrow rules at runtime without possible panics."],["TakeCell","A shared reference to a mutable reference."]]});

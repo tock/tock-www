@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Spi` struct in crate `sam4l`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Spi">
+
+    <title>sam4l::spi::Spi - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct Spi</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>sam4l</a>::<wbr><a href='index.html'>spi</a></p><script>window.sidebarCurrent = {name: 'Spi', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>sam4l</a>::<wbr><a href='index.html'>spi</a>::<wbr><a class="struct" href=''>Spi</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/sam4l/spi.rs.html#146-159' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Spi {
+    registers: *mut <a class="struct" href="../../sam4l/spi/struct.SpiRegisters.html" title="struct sam4l::spi::SpiRegisters">SpiRegisters</a>,
+    client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/spi/trait.SpiMasterClient.html" title="trait kernel::hil::spi::SpiMasterClient">SpiMasterClient</a>&gt;&gt;,
+    dma_read: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="struct" href="../../sam4l/dma/struct.DMAChannel.html" title="struct sam4l::dma::DMAChannel">DMAChannel</a>&gt;&gt;,
+    dma_write: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="struct" href="../../sam4l/dma/struct.DMAChannel.html" title="struct sam4l::dma::DMAChannel">DMAChannel</a>&gt;&gt;,
+    transfers_in_progress: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;,
+    dma_length: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;,
+    slave_client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/spi/trait.SpiSlaveClient.html" title="trait kernel::hil::spi::SpiSlaveClient">SpiSlaveClient</a>&gt;&gt;,
+    role: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="../../sam4l/spi/enum.SpiRole.html" title="enum sam4l::spi::SpiRole">SpiRole</a>&gt;,
+}</pre><div class='docblock'><p>The SAM4L supports four peripherals.</p>
+</div><h2 id='fields' class='fields'>Fields</h2><span id='structfield.registers' class="structfield">
+                           <span id='registers.v' class='invisible'>
+                           <code>registers: *mut <a class="struct" href="../../sam4l/spi/struct.SpiRegisters.html" title="struct sam4l::spi::SpiRegisters">SpiRegisters</a></code>
+                           </span></span><span id='structfield.client' class="structfield">
+                           <span id='client.v' class='invisible'>
+                           <code>client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/spi/trait.SpiMasterClient.html" title="trait kernel::hil::spi::SpiMasterClient">SpiMasterClient</a>&gt;&gt;</code>
+                           </span></span><span id='structfield.dma_read' class="structfield">
+                           <span id='dma_read.v' class='invisible'>
+                           <code>dma_read: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="struct" href="../../sam4l/dma/struct.DMAChannel.html" title="struct sam4l::dma::DMAChannel">DMAChannel</a>&gt;&gt;</code>
+                           </span></span><span id='structfield.dma_write' class="structfield">
+                           <span id='dma_write.v' class='invisible'>
+                           <code>dma_write: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="struct" href="../../sam4l/dma/struct.DMAChannel.html" title="struct sam4l::dma::DMAChannel">DMAChannel</a>&gt;&gt;</code>
+                           </span></span><span id='structfield.transfers_in_progress' class="structfield">
+                           <span id='transfers_in_progress.v' class='invisible'>
+                           <code>transfers_in_progress: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;</code>
+                           </span></span><span id='structfield.dma_length' class="structfield">
+                           <span id='dma_length.v' class='invisible'>
+                           <code>dma_length: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;</code>
+                           </span></span><span id='structfield.slave_client' class="structfield">
+                           <span id='slave_client.v' class='invisible'>
+                           <code>slave_client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/spi/trait.SpiSlaveClient.html" title="trait kernel::hil::spi::SpiSlaveClient">SpiSlaveClient</a>&gt;&gt;</code>
+                           </span></span><span id='structfield.role' class="structfield">
+                           <span id='role.v' class='invisible'>
+                           <code>role: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="../../sam4l/spi/enum.SpiRole.html" title="enum sam4l::spi::SpiRole">SpiRole</a>&gt;</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../sam4l/spi/struct.Spi.html" title="struct sam4l::spi::Spi">Spi</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/spi.rs.html#163-453' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>const fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class="struct" href="../../sam4l/spi/struct.Spi.html" title="struct sam4l::spi::Spi">Spi</a></code></span></h4>
+<div class='docblock'><p>Creates a new SPI object, with peripheral 0 selected</p>
+</div><h4 id='method.init_as_role' class="method"><span id='init_as_role.v' class='invisible'><code>fn <a href='#method.init_as_role' class='fnname'>init_as_role</a>(&amp;self, role: <a class="enum" href="../../sam4l/spi/enum.SpiRole.html" title="enum sam4l::spi::SpiRole">SpiRole</a>)</code></span></h4>
+<h4 id='method.enable' class="method"><span id='enable.v' class='invisible'><code>fn <a href='#method.enable' class='fnname'>enable</a>(&amp;self)</code></span></h4>
+<h4 id='method.disable' class="method"><span id='disable.v' class='invisible'><code>fn <a href='#method.disable' class='fnname'>disable</a>(&amp;self)</code></span></h4>
+<h4 id='method.set_baud_rate' class="method"><span id='set_baud_rate.v' class='invisible'><code>fn <a href='#method.set_baud_rate' class='fnname'>set_baud_rate</a>(&amp;self, rate: u32) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Sets the approximate baud rate for the active peripheral,
+and return the actual baud rate set.</p>
+
+<p>Since the only supported baud rates are (system clock / n) where n
+is an integer from 1 to 255, the exact baud rate may not
+be available. In that case, the next lower baud rate will
+be selected.</p>
+
+<p>The lowest available baud rate is 188235 baud. If the
+requested rate is lower, 188235 baud will be selected.</p>
+</div><h4 id='method.get_baud_rate' class="method"><span id='get_baud_rate.v' class='invisible'><code>fn <a href='#method.get_baud_rate' class='fnname'>get_baud_rate</a>(&amp;self) -&gt; u32</code></span></h4>
+<h4 id='method.set_clock' class="method"><span id='set_clock.v' class='invisible'><code>fn <a href='#method.set_clock' class='fnname'>set_clock</a>(&amp;self, polarity: <a class="enum" href="../../kernel/hil/spi/enum.ClockPolarity.html" title="enum kernel::hil::spi::ClockPolarity">ClockPolarity</a>)</code></span></h4>
+<h4 id='method.get_clock' class="method"><span id='get_clock.v' class='invisible'><code>fn <a href='#method.get_clock' class='fnname'>get_clock</a>(&amp;self) -&gt; <a class="enum" href="../../kernel/hil/spi/enum.ClockPolarity.html" title="enum kernel::hil::spi::ClockPolarity">ClockPolarity</a></code></span></h4>
+<h4 id='method.set_phase' class="method"><span id='set_phase.v' class='invisible'><code>fn <a href='#method.set_phase' class='fnname'>set_phase</a>(&amp;self, phase: <a class="enum" href="../../kernel/hil/spi/enum.ClockPhase.html" title="enum kernel::hil::spi::ClockPhase">ClockPhase</a>)</code></span></h4>
+<h4 id='method.get_phase' class="method"><span id='get_phase.v' class='invisible'><code>fn <a href='#method.get_phase' class='fnname'>get_phase</a>(&amp;self) -&gt; <a class="enum" href="../../kernel/hil/spi/enum.ClockPhase.html" title="enum kernel::hil::spi::ClockPhase">ClockPhase</a></code></span></h4>
+<h4 id='method.set_active_peripheral' class="method"><span id='set_active_peripheral.v' class='invisible'><code>fn <a href='#method.set_active_peripheral' class='fnname'>set_active_peripheral</a>(&amp;self, peripheral: <a class="enum" href="../../sam4l/spi/enum.Peripheral.html" title="enum sam4l::spi::Peripheral">Peripheral</a>)</code></span></h4>
+<h4 id='method.get_active_peripheral' class="method"><span id='get_active_peripheral.v' class='invisible'><code>fn <a href='#method.get_active_peripheral' class='fnname'>get_active_peripheral</a>(&amp;self) -&gt; <a class="enum" href="../../sam4l/spi/enum.Peripheral.html" title="enum sam4l::spi::Peripheral">Peripheral</a></code></span></h4>
+<div class='docblock'><p>Returns the currently active peripheral</p>
+</div><h4 id='method.read_active_csr' class="method"><span id='read_active_csr.v' class='invisible'><code>fn <a href='#method.read_active_csr' class='fnname'>read_active_csr</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Returns the value of CSR0, CSR1, CSR2, or CSR3,
+whichever corresponds to the active peripheral</p>
+</div><h4 id='method.write_active_csr' class="method"><span id='write_active_csr.v' class='invisible'><code>fn <a href='#method.write_active_csr' class='fnname'>write_active_csr</a>(&amp;self, value: u32)</code></span></h4>
+<div class='docblock'><p>Sets the Chip Select Register (CSR) of the active peripheral
+(CSR0, CSR1, CSR2, or CSR3).</p>
+</div><h4 id='method.set_dma' class="method"><span id='set_dma.v' class='invisible'><code>fn <a href='#method.set_dma' class='fnname'>set_dma</a>(&amp;mut self, read: &amp;'static <a class="struct" href="../../sam4l/dma/struct.DMAChannel.html" title="struct sam4l::dma::DMAChannel">DMAChannel</a>, write: &amp;'static <a class="struct" href="../../sam4l/dma/struct.DMAChannel.html" title="struct sam4l::dma::DMAChannel">DMAChannel</a>)</code></span></h4>
+<div class='docblock'><p>Set the DMA channels used for reading and writing.</p>
+</div><h4 id='method.enable_clock' class="method"><span id='enable_clock.v' class='invisible'><code>fn <a href='#method.enable_clock' class='fnname'>enable_clock</a>(&amp;self)</code></span></h4>
+<h4 id='method.handle_interrupt' class="method"><span id='handle_interrupt.v' class='invisible'><code>fn <a href='#method.handle_interrupt' class='fnname'>handle_interrupt</a>(&amp;self)</code></span></h4>
+<h4 id='method.read_write_bytes' class="method"><span id='read_write_bytes.v' class='invisible'><code>fn <a href='#method.read_write_bytes' class='fnname'>read_write_bytes</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;write_buffer: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static mut [u8]&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;read_buffer: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static mut [u8]&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;len: usize<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Asynchronous buffer read/write of SPI.
+returns <code>SUCCESS</code> if operation starts (will receive callback through SpiMasterClient),
+returns <code>EBUSY</code> if the operation does not start.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../kernel/hil/spi/trait.SpiMaster.html" title="trait kernel::hil::spi::SpiMaster">SpiMaster</a> for <a class="struct" href="../../sam4l/spi/struct.Spi.html" title="struct sam4l::spi::Spi">Spi</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/spi.rs.html#455-572' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.ChipSelect' class="type"><span id='ChipSelect.t' class='invisible'><code>type <a href='../../kernel/hil/spi/trait.SpiMaster.html#associatedtype.ChipSelect' class="type">ChipSelect</a> = u8</code></span></h4>
+<h4 id='method.set_client' class="method"><span id='set_client.v' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiMaster.html#tymethod.set_client' class='fnname'>set_client</a>(&amp;self, client: &amp;'static <a class="trait" href="../../kernel/hil/spi/trait.SpiMasterClient.html" title="trait kernel::hil::spi::SpiMasterClient">SpiMasterClient</a>)</code></span></h4>
+<h4 id='method.init' class="method"><span id='init.v' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiMaster.html#tymethod.init' class='fnname'>init</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>By default, initialize SPI to operate at 40KHz, clock is
+idle on low, and sample on the leading edge.</p>
+</div><h4 id='method.is_busy' class="method"><span id='is_busy.v' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiMaster.html#tymethod.is_busy' class='fnname'>is_busy</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.write_byte' class="method"><span id='write_byte.v' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiMaster.html#tymethod.write_byte' class='fnname'>write_byte</a>(&amp;self, out_byte: u8)</code></span></h4>
+<div class='docblock'><p>Write a byte to the SPI and discard the read; if an
+asynchronous operation is outstanding, do nothing.</p>
+</div><h4 id='method.read_byte' class="method"><span id='read_byte.v' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiMaster.html#tymethod.read_byte' class='fnname'>read_byte</a>(&amp;self) -&gt; u8</code></span></h4>
+<div class='docblock'><p>Write 0 to the SPI and return the read; if an
+asynchronous operation is outstanding, do nothing.</p>
+</div><h4 id='method.read_write_byte' class="method"><span id='read_write_byte.v' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiMaster.html#tymethod.read_write_byte' class='fnname'>read_write_byte</a>(&amp;self, val: u8) -&gt; u8</code></span></h4>
+<div class='docblock'><p>Write a byte to the SPI and return the read; if an
+asynchronous operation is outstanding, do nothing.</p>
+</div><h4 id='method.read_write_bytes-1' class="method"><span id='read_write_bytes.v-1' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiMaster.html#tymethod.read_write_bytes' class='fnname'>read_write_bytes</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;write_buffer: &amp;'static mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;read_buffer: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static mut [u8]&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;len: usize<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Asynchronous buffer read/write of SPI.
+write_buffer must  be Some; read_buffer may be None;
+if read_buffer is Some, then length of read/write is the
+minimum of two buffer lengths; returns <code>SUCCESS</code> if operation
+starts (will receive callback through SpiMasterClient), returns
+<code>EBUSY</code> if the operation does not start.</p>
+</div><h4 id='method.set_rate' class="method"><span id='set_rate.v' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiMaster.html#tymethod.set_rate' class='fnname'>set_rate</a>(&amp;self, rate: u32) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Returns the actual rate set</p>
+</div><h4 id='method.get_rate' class="method"><span id='get_rate.v' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiMaster.html#tymethod.get_rate' class='fnname'>get_rate</a>(&amp;self) -&gt; u32</code></span></h4>
+<h4 id='method.set_clock-1' class="method"><span id='set_clock.v-1' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiMaster.html#tymethod.set_clock' class='fnname'>set_clock</a>(&amp;self, polarity: <a class="enum" href="../../kernel/hil/spi/enum.ClockPolarity.html" title="enum kernel::hil::spi::ClockPolarity">ClockPolarity</a>)</code></span></h4>
+<h4 id='method.get_clock-1' class="method"><span id='get_clock.v-1' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiMaster.html#tymethod.get_clock' class='fnname'>get_clock</a>(&amp;self) -&gt; <a class="enum" href="../../kernel/hil/spi/enum.ClockPolarity.html" title="enum kernel::hil::spi::ClockPolarity">ClockPolarity</a></code></span></h4>
+<h4 id='method.set_phase-1' class="method"><span id='set_phase.v-1' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiMaster.html#tymethod.set_phase' class='fnname'>set_phase</a>(&amp;self, phase: <a class="enum" href="../../kernel/hil/spi/enum.ClockPhase.html" title="enum kernel::hil::spi::ClockPhase">ClockPhase</a>)</code></span></h4>
+<h4 id='method.get_phase-1' class="method"><span id='get_phase.v-1' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiMaster.html#tymethod.get_phase' class='fnname'>get_phase</a>(&amp;self) -&gt; <a class="enum" href="../../kernel/hil/spi/enum.ClockPhase.html" title="enum kernel::hil::spi::ClockPhase">ClockPhase</a></code></span></h4>
+<h4 id='method.hold_low' class="method"><span id='hold_low.v' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiMaster.html#tymethod.hold_low' class='fnname'>hold_low</a>(&amp;self)</code></span></h4>
+<h4 id='method.release_low' class="method"><span id='release_low.v' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiMaster.html#tymethod.release_low' class='fnname'>release_low</a>(&amp;self)</code></span></h4>
+<h4 id='method.specify_chip_select' class="method"><span id='specify_chip_select.v' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiMaster.html#tymethod.specify_chip_select' class='fnname'>specify_chip_select</a>(&amp;self, cs: Self::<a class="type" href="../../kernel/hil/spi/trait.SpiMaster.html#associatedtype.ChipSelect" title="type kernel::hil::spi::SpiMaster::ChipSelect">ChipSelect</a>)</code></span></h4>
+<div class='docblock'><p>Tell the SPI peripheral what to use as a chip select pin. The type of the argument is based on what makes sense for the peripheral when this trait is implemented. <a href="../../kernel/hil/spi/trait.SpiMaster.html#tymethod.specify_chip_select">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../kernel/hil/spi/trait.SpiSlave.html" title="trait kernel::hil::spi::SpiSlave">SpiSlave</a> for <a class="struct" href="../../sam4l/spi/struct.Spi.html" title="struct sam4l::spi::Spi">Spi</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/spi.rs.html#574-618' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.set_client-1' class="method"><span id='set_client.v-1' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiSlave.html#tymethod.set_client' class='fnname'>set_client</a>(&amp;self, client: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/spi/trait.SpiSlaveClient.html" title="trait kernel::hil::spi::SpiSlaveClient">SpiSlaveClient</a>&gt;)</code></span></h4>
+<h4 id='method.has_client' class="method"><span id='has_client.v' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiSlave.html#tymethod.has_client' class='fnname'>has_client</a>(&amp;self) -&gt; bool</code></span></h4>
+<div class='docblock'><p>Returns true if there is a client.</p>
+</div><h4 id='method.init-1' class="method"><span id='init.v-1' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiSlave.html#tymethod.init' class='fnname'>init</a>(&amp;self)</code></span></h4>
+<h4 id='method.set_write_byte' class="method"><span id='set_write_byte.v' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiSlave.html#tymethod.set_write_byte' class='fnname'>set_write_byte</a>(&amp;self, write_byte: u8)</code></span></h4>
+<div class='docblock'><p>This sets the value in the TDR register, to be sent as soon as the
+chip select pin is low.</p>
+</div><h4 id='method.read_write_bytes-2' class="method"><span id='read_write_bytes.v-2' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiSlave.html#tymethod.read_write_bytes' class='fnname'>read_write_bytes</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;write_buffer: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static mut [u8]&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;read_buffer: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static mut [u8]&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;len: usize<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.set_clock-2' class="method"><span id='set_clock.v-2' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiSlave.html#tymethod.set_clock' class='fnname'>set_clock</a>(&amp;self, polarity: <a class="enum" href="../../kernel/hil/spi/enum.ClockPolarity.html" title="enum kernel::hil::spi::ClockPolarity">ClockPolarity</a>)</code></span></h4>
+<h4 id='method.get_clock-2' class="method"><span id='get_clock.v-2' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiSlave.html#tymethod.get_clock' class='fnname'>get_clock</a>(&amp;self) -&gt; <a class="enum" href="../../kernel/hil/spi/enum.ClockPolarity.html" title="enum kernel::hil::spi::ClockPolarity">ClockPolarity</a></code></span></h4>
+<h4 id='method.set_phase-2' class="method"><span id='set_phase.v-2' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiSlave.html#tymethod.set_phase' class='fnname'>set_phase</a>(&amp;self, phase: <a class="enum" href="../../kernel/hil/spi/enum.ClockPhase.html" title="enum kernel::hil::spi::ClockPhase">ClockPhase</a>)</code></span></h4>
+<h4 id='method.get_phase-2' class="method"><span id='get_phase.v-2' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiSlave.html#tymethod.get_phase' class='fnname'>get_phase</a>(&amp;self) -&gt; <a class="enum" href="../../kernel/hil/spi/enum.ClockPhase.html" title="enum kernel::hil::spi::ClockPhase">ClockPhase</a></code></span></h4>
+</div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sam4l/dma/trait.DMAClient.html" title="trait sam4l::dma::DMAClient">DMAClient</a> for <a class="struct" href="../../sam4l/spi/struct.Spi.html" title="struct sam4l::spi::Spi">Spi</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/spi.rs.html#620-665' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.xfer_done' class="method"><span id='xfer_done.v' class='invisible'><code>fn <a href='../../sam4l/dma/trait.DMAClient.html#tymethod.xfer_done' class='fnname'>xfer_done</a>(&amp;self, _pid: <a class="enum" href="../../sam4l/dma/enum.DMAPeripheral.html" title="enum sam4l::dma::DMAPeripheral">DMAPeripheral</a>)</code></span></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "sam4l";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

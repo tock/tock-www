@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `load_processes` fn in crate `kernel`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, load_processes">
+
+    <title>kernel::process::load_processes - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc fn">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>kernel</a>::<wbr><a href='index.html'>process</a></p><script>window.sidebarCurrent = {name: 'load_processes', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Function <a href='../index.html'>kernel</a>::<wbr><a href='index.html'>process</a>::<wbr><a class="fn" href=''>load_processes</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/kernel/process.rs.html#52-81' title='goto source code'>[src]</a></span></h1>
+<pre class='rust fn'>pub unsafe fn load_processes(<br>&nbsp;&nbsp;&nbsp;&nbsp;start_of_flash: *const u8, <br>&nbsp;&nbsp;&nbsp;&nbsp;app_memory: &amp;mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;procs: &amp;mut [<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../kernel/process/struct.Process.html" title="struct kernel::process::Process">Process</a>&lt;'static&gt;&gt;], <br>&nbsp;&nbsp;&nbsp;&nbsp;fault_response: <a class="enum" href="../../kernel/process/enum.FaultResponse.html" title="enum kernel::process::FaultResponse">FaultResponse</a><br>)</pre><div class='docblock'><p>Helper function to load processes from flash into an array of active
+processes. This is the default template for loading processes, but a board
+is able to create its own <code>load_processes()</code> function and use that instead.</p>
+
+<p>Processes are found in flash starting from the given address and iterating
+through Tock Binary Format headers. Processes are given memory out of the
+<code>app_memory</code> buffer until either the memory is exhausted or the allocated
+number of processes are created, with process structures placed in the
+provided array. How process faults are handled by the kernel is also
+selected.</p>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "kernel";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Error","The type of error encountered during UART transaction."],["Parity",""],["StopBits",""]],"struct":[["UARTParams",""]],"trait":[["Client","Implement Client to receive callbacks from UART."],["UART",""],["UARTAdvanced",""]]});

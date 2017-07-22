@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `RingBuffer` struct in crate `kernel`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, RingBuffer">
+
+    <title>kernel::common::ring_buffer::RingBuffer - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct RingBuffer</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../../index.html'>kernel</a>::<wbr><a href='../index.html'>common</a>::<wbr><a href='index.html'>ring_buffer</a></p><script>window.sidebarCurrent = {name: 'RingBuffer', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>kernel</a>::<wbr><a href='../index.html'>common</a>::<wbr><a href='index.html'>ring_buffer</a>::<wbr><a class="struct" href=''>RingBuffer</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/kernel/common/ring_buffer.rs.html#6-10' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct RingBuffer&lt;'a, T:&nbsp;'a&gt; {
+    ring: &amp;'a mut [T],
+    head: usize,
+    tail: usize,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.ring' class="structfield">
+                           <span id='ring.v' class='invisible'>
+                           <code>ring: &amp;'a mut [T]</code>
+                           </span></span><span id='structfield.head' class="structfield">
+                           <span id='head.v' class='invisible'>
+                           <code>head: usize</code>
+                           </span></span><span id='structfield.tail' class="structfield">
+                           <span id='tail.v' class='invisible'>
+                           <code>tail: usize</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a, T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a>&gt; <a class="struct" href="../../../kernel/common/ring_buffer/struct.RingBuffer.html" title="struct kernel::common::ring_buffer::RingBuffer">RingBuffer</a>&lt;'a, T&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/kernel/common/ring_buffer.rs.html#12-20' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(ring: &amp;'a mut [T]) -&gt; <a class="struct" href="../../../kernel/common/ring_buffer/struct.RingBuffer.html" title="struct kernel::common::ring_buffer::RingBuffer">RingBuffer</a>&lt;'a, T&gt;</code></span></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a, T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a>&gt; <a class="trait" href="../../../kernel/common/queue/trait.Queue.html" title="trait kernel::common::queue::Queue">Queue</a>&lt;T&gt; for <a class="struct" href="../../../kernel/common/ring_buffer/struct.RingBuffer.html" title="struct kernel::common::ring_buffer::RingBuffer">RingBuffer</a>&lt;'a, T&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/kernel/common/ring_buffer.rs.html#22-72' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.has_elements' class="method"><span id='has_elements.v' class='invisible'><code>fn <a href='../../../kernel/common/queue/trait.Queue.html#tymethod.has_elements' class='fnname'>has_elements</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.is_full' class="method"><span id='is_full.v' class='invisible'><code>fn <a href='../../../kernel/common/queue/trait.Queue.html#tymethod.is_full' class='fnname'>is_full</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.len' class="method"><span id='len.v' class='invisible'><code>fn <a href='../../../kernel/common/queue/trait.Queue.html#tymethod.len' class='fnname'>len</a>(&amp;self) -&gt; usize</code></span></h4>
+<h4 id='method.enqueue' class="method"><span id='enqueue.v' class='invisible'><code>fn <a href='../../../kernel/common/queue/trait.Queue.html#tymethod.enqueue' class='fnname'>enqueue</a>(&amp;mut self, val: T) -&gt; bool</code></span></h4>
+<h4 id='method.dequeue' class="method"><span id='dequeue.v' class='invisible'><code>fn <a href='../../../kernel/common/queue/trait.Queue.html#tymethod.dequeue' class='fnname'>dequeue</a>(&amp;mut self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;</code></span></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "kernel";
+    </script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

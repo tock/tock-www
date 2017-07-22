@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["alg_from_user_int",""]],"struct":[["App","An opaque value maintaining state for one application's request"],["Crc","Struct that holds the state of the CRC driver and implements the `Driver` trait for use by processes through the system call interface."]]});

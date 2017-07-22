@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `GPIOAsync` struct in crate `capsules`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, GPIOAsync">
+
+    <title>capsules::gpio_async::GPIOAsync - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct GPIOAsync</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>capsules</a>::<wbr><a href='index.html'>gpio_async</a></p><script>window.sidebarCurrent = {name: 'GPIOAsync', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>capsules</a>::<wbr><a href='index.html'>gpio_async</a>::<wbr><a class="struct" href=''>GPIOAsync</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/capsules/gpio_async.rs.html#32-36' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct GPIOAsync&lt;'a, Port:&nbsp;<a class="trait" href="../../kernel/hil/gpio_async/trait.Port.html" title="trait kernel::hil::gpio_async::Port">Port</a> + 'a&gt; {
+    ports: &amp;'a [&amp;'a Port],
+    callback: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../kernel/callback/struct.Callback.html" title="struct kernel::callback::Callback">Callback</a>&gt;&gt;,
+    interrupt_callback: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../kernel/callback/struct.Callback.html" title="struct kernel::callback::Callback">Callback</a>&gt;&gt;,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.ports' class="structfield">
+                           <span id='ports.v' class='invisible'>
+                           <code>ports: &amp;'a [&amp;'a Port]</code>
+                           </span></span><span id='structfield.callback' class="structfield">
+                           <span id='callback.v' class='invisible'>
+                           <code>callback: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../kernel/callback/struct.Callback.html" title="struct kernel::callback::Callback">Callback</a>&gt;&gt;</code>
+                           </span></span><span id='structfield.interrupt_callback' class="structfield">
+                           <span id='interrupt_callback.v' class='invisible'>
+                           <code>interrupt_callback: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../kernel/callback/struct.Callback.html" title="struct kernel::callback::Callback">Callback</a>&gt;&gt;</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a, Port:&nbsp;<a class="trait" href="../../kernel/hil/gpio_async/trait.Port.html" title="trait kernel::hil::gpio_async::Port">Port</a>&gt; <a class="struct" href="../../capsules/gpio_async/struct.GPIOAsync.html" title="struct capsules::gpio_async::GPIOAsync">GPIOAsync</a>&lt;'a, Port&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/gpio_async.rs.html#38-68' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(ports: &amp;'a [&amp;'a Port]) -&gt; <a class="struct" href="../../capsules/gpio_async/struct.GPIOAsync.html" title="struct capsules::gpio_async::GPIOAsync">GPIOAsync</a>&lt;'a, Port&gt;</code></span></h4>
+<h4 id='method.configure_input_pin' class="method"><span id='configure_input_pin.v' class='invisible'><code>fn <a href='#method.configure_input_pin' class='fnname'>configure_input_pin</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;port: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;pin: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;config: usize<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.configure_interrupt' class="method"><span id='configure_interrupt.v' class='invisible'><code>fn <a href='#method.configure_interrupt' class='fnname'>configure_interrupt</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;port: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;pin: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;config: usize<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a, Port:&nbsp;<a class="trait" href="../../kernel/hil/gpio_async/trait.Port.html" title="trait kernel::hil::gpio_async::Port">Port</a>&gt; <a class="trait" href="../../kernel/hil/gpio_async/trait.Client.html" title="trait kernel::hil::gpio_async::Client">Client</a> for <a class="struct" href="../../capsules/gpio_async/struct.GPIOAsync.html" title="struct capsules::gpio_async::GPIOAsync">GPIOAsync</a>&lt;'a, Port&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/gpio_async.rs.html#70-78' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fired' class="method"><span id='fired.v' class='invisible'><code>fn <a href='../../kernel/hil/gpio_async/trait.Client.html#tymethod.fired' class='fnname'>fired</a>(&amp;self, pin: usize, identifier: usize)</code></span></h4>
+<div class='docblock'><p>Called when an interrupt occurs. The pin that interrupted is included, and the identifier that was passed with the call to <code>enable_interrupt</code> is also returned. <a href="../../kernel/hil/gpio_async/trait.Client.html#tymethod.fired">Read more</a></p>
+</div><h4 id='method.done' class="method"><span id='done.v' class='invisible'><code>fn <a href='../../kernel/hil/gpio_async/trait.Client.html#tymethod.done' class='fnname'>done</a>(&amp;self, value: usize)</code></span></h4>
+<div class='docblock'><p>Done is called when a configuration command finishes.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a, Port:&nbsp;<a class="trait" href="../../kernel/hil/gpio_async/trait.Port.html" title="trait kernel::hil::gpio_async::Port">Port</a>&gt; <a class="trait" href="../../kernel/driver/trait.Driver.html" title="trait kernel::driver::Driver">Driver</a> for <a class="struct" href="../../capsules/gpio_async/struct.GPIOAsync.html" title="struct capsules::gpio_async::GPIOAsync">GPIOAsync</a>&lt;'a, Port&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/gpio_async.rs.html#80-183' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.subscribe' class="method"><span id='subscribe.v' class='invisible'><code>fn <a href='../../kernel/driver/trait.Driver.html#method.subscribe' class='fnname'>subscribe</a>(&amp;self, subscribe_num: usize, callback: <a class="struct" href="../../kernel/callback/struct.Callback.html" title="struct kernel::callback::Callback">Callback</a>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Setup callbacks for gpio_async events.</p>
+
+<h3 id='subscribe_num' class='section-header'><a href='#subscribe_num'><code>subscribe_num</code></a></h3>
+<ul>
+<li><code>0</code>: Setup a callback for when <strong>split-phase operations complete</strong>.
+This callback gets called from the gpio_async <code>done()</code> event and
+signals the end of operations like asserting a GPIO pin or configuring
+an interrupt pin. The callback will be called with two valid
+arguments. The first is the callback type, which is currently 0 for
+all <code>done()</code> events. The second is a value, which is only useful for
+operations which should return something, like a GPIO read.</li>
+<li><code>1</code>: Setup a callback for when a <strong>GPIO interrupt</strong> occurs. This
+callback will be called with two arguments, the first being the port
+number of the interrupting pin, and the second being the pin number.</li>
+</ul>
+</div><h4 id='method.command' class="method"><span id='command.v' class='invisible'><code>fn <a href='../../kernel/driver/trait.Driver.html#method.command' class='fnname'>command</a>(&amp;self, command_num: usize, data: usize, _: <a class="struct" href="../../kernel/callback/struct.AppId.html" title="struct kernel::callback::AppId">AppId</a>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Configure and read GPIO pins.</p>
+
+<p><code>data</code> is a 32 bit value packed with the lowest 8 bits as the port
+number, the next lowest 8 bits as the pin number, and the remaining
+upper bits as a command-specific value.</p>
+
+<h3 id='command_num' class='section-header'><a href='#command_num'><code>command_num</code></a></h3>
+<ul>
+<li><code>0</code>: Driver check and get number of GPIO ports supported.</li>
+<li><code>1</code>: Set a pin as an output.</li>
+<li><code>2</code>: Set a pin high by setting it to 1.</li>
+<li><code>3</code>: Clear a pin by setting it to 0.</li>
+<li><code>4</code>: Toggle a pin.</li>
+<li><code>5</code>: Set a pin as an input and configure its pull-up or pull-down
+state. The command-specific field should be set to 0 for a pull-up, 1
+for a pull-down, or 2 for neither.</li>
+<li><code>6</code>: Read a GPIO pin state, and have its value returned in the done()
+callback.</li>
+<li><code>7</code>: Enable an interrupt on a GPIO pin. The command-specific data
+should be 0 for an either-edge interrupt, 1 for a rising edge
+interrupt, and 2 for a falling edge interrupt.</li>
+<li><code>8</code>: Disable an interrupt on a pin.</li>
+<li><code>9</code>: Disable a GPIO pin.</li>
+</ul>
+</div><h4 id='method.allow' class="method"><span id='allow.v' class='invisible'><code>fn <a href='../../kernel/driver/trait.Driver.html#method.allow' class='fnname'>allow</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;app: <a class="struct" href="../../kernel/callback/struct.AppId.html" title="struct kernel::callback::AppId">AppId</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;minor_num: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;slice: <a class="struct" href="../../kernel/mem/struct.AppSlice.html" title="struct kernel::mem::AppSlice">AppSlice</a>&lt;<a class="struct" href="../../kernel/mem/struct.Shared.html" title="struct kernel::mem::Shared">Shared</a>, u8&gt;<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p><code>allow</code> lets an application give the driver access to a buffer in the application&#39;s memory. This returns <code>ENOSUPPORT</code> if not used. <a href="../../kernel/driver/trait.Driver.html#method.allow">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "capsules";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

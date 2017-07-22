@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `imix` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, imix">
+
+    <title>imix - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Crate imix</p><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#modules">Modules</a></li><li><a href="#macros">Macros</a></li><li><a href="#structs">Structs</a></li><li><a href="#constants">Constants</a></li><li><a href="#statics">Statics</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'imix', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>imix</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/imix/main.rs.html#1-434' title='goto source code'>[src]</a></span></h1>
+<h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>extern crate <a class="mod" href="https://doc.rust-lang.org/nightly/core/index.html" title="mod core">core</a> as core;</code></td></tr><tr><td><code>extern crate <a class="mod" href="../capsules/index.html" title="mod capsules">capsules</a>;</code></td></tr><tr><td><code>extern crate <a class="mod" href="https://doc.rust-lang.org/nightly/compiler_builtins/index.html" title="mod compiler_builtins">compiler_builtins</a>;</code></td></tr><tr><td><code>extern crate <a class="mod" href="../kernel/index.html" title="mod kernel">kernel</a>;</code></td></tr><tr><td><code>extern crate <a class="mod" href="../sam4l/index.html" title="mod sam4l">sam4l</a>;</code></td></tr><tr><td><code>use core::prelude::v1::*;</code></td></tr><tr><td><code>use capsules::rf233::<a class="struct" href="../capsules/rf233/struct.RF233.html" title="struct capsules::rf233::RF233">RF233</a>;</code></td></tr><tr><td><code>use capsules::timer::<a class="struct" href="../capsules/timer/struct.TimerDriver.html" title="struct capsules::timer::TimerDriver">TimerDriver</a>;</code></td></tr><tr><td><code>use capsules::virtual_alarm::<a class="struct" href="../capsules/virtual_alarm/struct.MuxAlarm.html" title="struct capsules::virtual_alarm::MuxAlarm">MuxAlarm</a>;</code></td></tr><tr><td><code>use capsules::virtual_alarm::<a class="struct" href="../capsules/virtual_alarm/struct.VirtualMuxAlarm.html" title="struct capsules::virtual_alarm::VirtualMuxAlarm">VirtualMuxAlarm</a>;</code></td></tr><tr><td><code>use capsules::virtual_i2c::<a class="struct" href="../capsules/virtual_i2c/struct.I2CDevice.html" title="struct capsules::virtual_i2c::I2CDevice">I2CDevice</a>;</code></td></tr><tr><td><code>use capsules::virtual_i2c::<a class="struct" href="../capsules/virtual_i2c/struct.MuxI2C.html" title="struct capsules::virtual_i2c::MuxI2C">MuxI2C</a>;</code></td></tr><tr><td><code>use capsules::virtual_spi::<a class="struct" href="../capsules/virtual_spi/struct.VirtualSpiMasterDevice.html" title="struct capsules::virtual_spi::VirtualSpiMasterDevice">VirtualSpiMasterDevice</a>;</code></td></tr><tr><td><code>use capsules::virtual_spi::<a class="struct" href="../capsules/virtual_spi/struct.MuxSpiMaster.html" title="struct capsules::virtual_spi::MuxSpiMaster">MuxSpiMaster</a>;</code></td></tr><tr><td><code>use kernel::<a class="trait" href="../kernel/platform/trait.Chip.html" title="trait kernel::platform::Chip">Chip</a>;</code></td></tr><tr><td><code>use kernel::<a class="mod" href="../kernel/hil/index.html" title="mod kernel::hil">hil</a>;</code></td></tr><tr><td><code>use kernel::hil::<a class="trait" href="../kernel/hil/trait.Controller.html" title="trait kernel::hil::Controller">Controller</a>;</code></td></tr><tr><td><code>use kernel::hil::<a class="mod" href="../kernel/hil/radio/index.html" title="mod kernel::hil::radio">radio</a>;</code></td></tr><tr><td><code>use kernel::hil::radio::<a class="trait" href="../kernel/hil/radio/trait.RadioConfig.html" title="trait kernel::hil::radio::RadioConfig">RadioConfig</a>;</code></td></tr><tr><td><code>use kernel::hil::radio::<a class="trait" href="../kernel/hil/radio/trait.RadioData.html" title="trait kernel::hil::radio::RadioData">RadioData</a>;</code></td></tr><tr><td><code>use kernel::hil::spi::<a class="trait" href="../kernel/hil/spi/trait.SpiMaster.html" title="trait kernel::hil::spi::SpiMaster">SpiMaster</a>;</code></td></tr><tr><td><code>use kernel::mpu::MPU;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="i2c_dummy/index.html"
+                                  title='mod imix::i2c_dummy'>i2c_dummy</a></td>
+                           <td class='docblock-short'>
+                                <p>A dummy I2C client</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="io/index.html"
+                                  title='mod imix::io'>io</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="power/index.html"
+                                  title='mod imix::power'>power</a></td>
+                           <td class='docblock-short'>
+                                <p>Implements a helper function for enabling/disabling power on the imix
+submodules.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="spi_dummy/index.html"
+                                  title='mod imix::spi_dummy'>spi_dummy</a></td>
+                           <td class='docblock-short'>
+                                <p>A dummy SPI client to test the SPI implementation</p>
+                           </td>
+                       </tr></table><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.print.html"
+                                  title='macro imix::print'>print</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.println.html"
+                                  title='macro imix::println'>println</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Imix.html"
+                                  title='struct imix::Imix'>Imix</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.FAULT_RESPONSE.html"
+                                  title='constant imix::FAULT_RESPONSE'>FAULT_RESPONSE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.NUM_PROCS.html"
+                                  title='constant imix::NUM_PROCS'>NUM_PROCS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.APP_MEMORY.html"
+                                  title='static imix::APP_MEMORY'>APP_MEMORY</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.PROCESSES.html"
+                                  title='static imix::PROCESSES'>PROCESSES</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.RADIO_BUF.html"
+                                  title='static imix::RADIO_BUF'>RADIO_BUF</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.RF233_BUF.html"
+                                  title='static imix::RF233_BUF'>RF233_BUF</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.RF233_REG_READ.html"
+                                  title='static imix::RF233_REG_READ'>RF233_REG_READ</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.RF233_REG_WRITE.html"
+                                  title='static imix::RF233_REG_WRITE'>RF233_REG_WRITE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.RF233_RX_BUF.html"
+                                  title='static imix::RF233_RX_BUF'>RF233_RX_BUF</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.reset_handler.html"
+                                  title='fn imix::reset_handler'>reset_handler</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_pin_primary_functions.html"
+                                  title='fn imix::set_pin_primary_functions'>set_pin_primary_functions</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "imix";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

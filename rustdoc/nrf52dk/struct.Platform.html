@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Platform` struct in crate `nrf52dk`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Platform">
+
+    <title>nrf52dk::Platform - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct Platform</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='index.html'>nrf52dk</a></p><script>window.sidebarCurrent = {name: 'Platform', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>nrf52dk</a>::<wbr><a class="struct" href=''>Platform</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/nrf52dk/main.rs.html#116-123' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Platform {
+    console: &amp;'static <a class="struct" href="../capsules/console/struct.Console.html" title="struct capsules::console::Console">Console</a>&lt;'static, <a class="struct" href="../nrf52/uart/struct.UART.html" title="struct nrf52::uart::UART">UART</a>&gt;,
+    button: &amp;'static <a class="struct" href="../capsules/button/struct.Button.html" title="struct capsules::button::Button">Button</a>&lt;'static, <a class="struct" href="../nrf52/gpio/struct.GPIOPin.html" title="struct nrf52::gpio::GPIOPin">GPIOPin</a>&gt;,
+    gpio: &amp;'static <a class="struct" href="../capsules/gpio/struct.GPIO.html" title="struct capsules::gpio::GPIO">GPIO</a>&lt;'static, <a class="struct" href="../nrf52/gpio/struct.GPIOPin.html" title="struct nrf52::gpio::GPIOPin">GPIOPin</a>&gt;,
+    led: &amp;'static <a class="struct" href="../capsules/led/struct.LED.html" title="struct capsules::led::LED">LED</a>&lt;'static, <a class="struct" href="../nrf52/gpio/struct.GPIOPin.html" title="struct nrf52::gpio::GPIOPin">GPIOPin</a>&gt;,
+    timer: &amp;'static <a class="struct" href="../capsules/timer/struct.TimerDriver.html" title="struct capsules::timer::TimerDriver">TimerDriver</a>&lt;'static, <a class="struct" href="../capsules/virtual_alarm/struct.VirtualMuxAlarm.html" title="struct capsules::virtual_alarm::VirtualMuxAlarm">VirtualMuxAlarm</a>&lt;'static, <a class="struct" href="../nrf52/rtc/struct.Rtc.html" title="struct nrf52::rtc::Rtc">Rtc</a>&gt;&gt;,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.console' class="structfield">
+                           <span id='console.v' class='invisible'>
+                           <code>console: &amp;'static <a class="struct" href="../capsules/console/struct.Console.html" title="struct capsules::console::Console">Console</a>&lt;'static, <a class="struct" href="../nrf52/uart/struct.UART.html" title="struct nrf52::uart::UART">UART</a>&gt;</code>
+                           </span></span><span id='structfield.button' class="structfield">
+                           <span id='button.v' class='invisible'>
+                           <code>button: &amp;'static <a class="struct" href="../capsules/button/struct.Button.html" title="struct capsules::button::Button">Button</a>&lt;'static, <a class="struct" href="../nrf52/gpio/struct.GPIOPin.html" title="struct nrf52::gpio::GPIOPin">GPIOPin</a>&gt;</code>
+                           </span></span><span id='structfield.gpio' class="structfield">
+                           <span id='gpio.v' class='invisible'>
+                           <code>gpio: &amp;'static <a class="struct" href="../capsules/gpio/struct.GPIO.html" title="struct capsules::gpio::GPIO">GPIO</a>&lt;'static, <a class="struct" href="../nrf52/gpio/struct.GPIOPin.html" title="struct nrf52::gpio::GPIOPin">GPIOPin</a>&gt;</code>
+                           </span></span><span id='structfield.led' class="structfield">
+                           <span id='led.v' class='invisible'>
+                           <code>led: &amp;'static <a class="struct" href="../capsules/led/struct.LED.html" title="struct capsules::led::LED">LED</a>&lt;'static, <a class="struct" href="../nrf52/gpio/struct.GPIOPin.html" title="struct nrf52::gpio::GPIOPin">GPIOPin</a>&gt;</code>
+                           </span></span><span id='structfield.timer' class="structfield">
+                           <span id='timer.v' class='invisible'>
+                           <code>timer: &amp;'static <a class="struct" href="../capsules/timer/struct.TimerDriver.html" title="struct capsules::timer::TimerDriver">TimerDriver</a>&lt;'static, <a class="struct" href="../capsules/virtual_alarm/struct.VirtualMuxAlarm.html" title="struct capsules::virtual_alarm::VirtualMuxAlarm">VirtualMuxAlarm</a>&lt;'static, <a class="struct" href="../nrf52/rtc/struct.Rtc.html" title="struct nrf52::rtc::Rtc">Rtc</a>&gt;&gt;</code>
+                           </span></span><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../kernel/platform/trait.Platform.html" title="trait kernel::platform::Platform">Platform</a> for <a class="struct" href="../nrf52dk/struct.Platform.html" title="struct nrf52dk::Platform">Platform</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/nrf52dk/main.rs.html#126-140' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.with_driver' class="method"><span id='with_driver.v' class='invisible'><code>fn <a href='../kernel/platform/trait.Platform.html#tymethod.with_driver' class='fnname'>with_driver</a>&lt;F, R&gt;(&amp;self, driver_num: usize, f: F) -&gt; R <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.FnOnce.html" title="trait core::ops::function::FnOnce">FnOnce</a>(<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="trait" href="../kernel/driver/trait.Driver.html" title="trait kernel::driver::Driver">Driver</a>&gt;) -&gt; R,&nbsp;</span></code></span></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "nrf52dk";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

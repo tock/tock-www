@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `GPIOPin` struct in crate `sam4l`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, GPIOPin">
+
+    <title>sam4l::gpio::GPIOPin - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct GPIOPin</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>sam4l</a>::<wbr><a href='index.html'>gpio</a></p><script>window.sidebarCurrent = {name: 'GPIOPin', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>sam4l</a>::<wbr><a href='index.html'>gpio</a>::<wbr><a class="struct" href=''>GPIOPin</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/sam4l/gpio.rs.html#291-297' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct GPIOPin {
+    port: *mut <a class="struct" href="../../sam4l/gpio/struct.Registers.html" title="struct sam4l::gpio::Registers">Registers</a>,
+    nvic: <a class="enum" href="../../sam4l/nvic/enum.NvicIdx.html" title="enum sam4l::nvic::NvicIdx">NvicIdx</a>,
+    pin_mask: u32,
+    client_data: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;,
+    client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/gpio/trait.Client.html" title="trait kernel::hil::gpio::Client">Client</a>&gt;&gt;,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.port' class="structfield">
+                           <span id='port.v' class='invisible'>
+                           <code>port: *mut <a class="struct" href="../../sam4l/gpio/struct.Registers.html" title="struct sam4l::gpio::Registers">Registers</a></code>
+                           </span></span><span id='structfield.nvic' class="structfield">
+                           <span id='nvic.v' class='invisible'>
+                           <code>nvic: <a class="enum" href="../../sam4l/nvic/enum.NvicIdx.html" title="enum sam4l::nvic::NvicIdx">NvicIdx</a></code>
+                           </span></span><span id='structfield.pin_mask' class="structfield">
+                           <span id='pin_mask.v' class='invisible'>
+                           <code>pin_mask: u32</code>
+                           </span></span><span id='structfield.client_data' class="structfield">
+                           <span id='client_data.v' class='invisible'>
+                           <code>client_data: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;</code>
+                           </span></span><span id='structfield.client' class="structfield">
+                           <span id='client.v' class='invisible'>
+                           <code>client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/gpio/trait.Client.html" title="trait kernel::hil::gpio::Client">Client</a>&gt;&gt;</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../sam4l/gpio/struct.GPIOPin.html" title="struct sam4l::gpio::GPIOPin">GPIOPin</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/gpio.rs.html#299-464' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>const fn <a href='#method.new' class='fnname'>new</a>(pin: <a class="enum" href="../../sam4l/gpio/enum.Pin.html" title="enum sam4l::gpio::Pin">Pin</a>, nvic: <a class="enum" href="../../sam4l/nvic/enum.NvicIdx.html" title="enum sam4l::nvic::NvicIdx">NvicIdx</a>) -&gt; <a class="struct" href="../../sam4l/gpio/struct.GPIOPin.html" title="struct sam4l::gpio::GPIOPin">GPIOPin</a></code></span></h4>
+<h4 id='method.set_client' class="method"><span id='set_client.v' class='invisible'><code>fn <a href='#method.set_client' class='fnname'>set_client</a>&lt;C:&nbsp;<a class="trait" href="../../kernel/hil/gpio/trait.Client.html" title="trait kernel::hil::gpio::Client">Client</a>&gt;(&amp;self, client: &amp;'static C)</code></span></h4>
+<h4 id='method.select_peripheral' class="method"><span id='select_peripheral.v' class='invisible'><code>fn <a href='#method.select_peripheral' class='fnname'>select_peripheral</a>(&amp;self, function: <a class="enum" href="../../sam4l/gpio/enum.PeripheralFunction.html" title="enum sam4l::gpio::PeripheralFunction">PeripheralFunction</a>)</code></span></h4>
+<h4 id='method.enable' class="method"><span id='enable.v' class='invisible'><code>fn <a href='#method.enable' class='fnname'>enable</a>(&amp;self)</code></span></h4>
+<h4 id='method.disable' class="method"><span id='disable.v' class='invisible'><code>fn <a href='#method.disable' class='fnname'>disable</a>(&amp;self)</code></span></h4>
+<h4 id='method.enable_output' class="method"><span id='enable_output.v' class='invisible'><code>fn <a href='#method.enable_output' class='fnname'>enable_output</a>(&amp;self)</code></span></h4>
+<h4 id='method.disable_output' class="method"><span id='disable_output.v' class='invisible'><code>fn <a href='#method.disable_output' class='fnname'>disable_output</a>(&amp;self)</code></span></h4>
+<h4 id='method.enable_pull_down' class="method"><span id='enable_pull_down.v' class='invisible'><code>fn <a href='#method.enable_pull_down' class='fnname'>enable_pull_down</a>(&amp;self)</code></span></h4>
+<h4 id='method.disable_pull_down' class="method"><span id='disable_pull_down.v' class='invisible'><code>fn <a href='#method.disable_pull_down' class='fnname'>disable_pull_down</a>(&amp;self)</code></span></h4>
+<h4 id='method.enable_pull_up' class="method"><span id='enable_pull_up.v' class='invisible'><code>fn <a href='#method.enable_pull_up' class='fnname'>enable_pull_up</a>(&amp;self)</code></span></h4>
+<h4 id='method.disable_pull_up' class="method"><span id='disable_pull_up.v' class='invisible'><code>fn <a href='#method.disable_pull_up' class='fnname'>disable_pull_up</a>(&amp;self)</code></span></h4>
+<h4 id='method.set_interrupt_mode' class="method"><span id='set_interrupt_mode.v' class='invisible'><code>fn <a href='#method.set_interrupt_mode' class='fnname'>set_interrupt_mode</a>(&amp;self, mode: u8)</code></span></h4>
+<div class='docblock'><p>Sets the interrupt mode registers. Interrupts may fire on the rising or
+falling edge of the pin or on both.</p>
+
+<p>The mode is a two-bit value based on the mapping from section 23.7.13 of
+the SAM4L datasheet (page 563):</p>
+
+<table>
+<thead>
+<tr>
+<th><code>mode</code> value</th>
+<th>Interrupt Mode</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>0b00</td>
+<td>Pin change</td>
+</tr>
+<tr>
+<td>0b01</td>
+<td>Rising edge</td>
+</tr>
+<tr>
+<td>0b10</td>
+<td>Falling edge</td>
+</tr>
+</tbody>
+</table>
+</div><h4 id='method.enable_interrupt' class="method"><span id='enable_interrupt.v' class='invisible'><code>fn <a href='#method.enable_interrupt' class='fnname'>enable_interrupt</a>(&amp;self)</code></span></h4>
+<h4 id='method.disable_interrupt' class="method"><span id='disable_interrupt.v' class='invisible'><code>fn <a href='#method.disable_interrupt' class='fnname'>disable_interrupt</a>(&amp;self)</code></span></h4>
+<h4 id='method.handle_interrupt' class="method"><span id='handle_interrupt.v' class='invisible'><code>fn <a href='#method.handle_interrupt' class='fnname'>handle_interrupt</a>(&amp;self)</code></span></h4>
+<h4 id='method.disable_schmidtt_trigger' class="method"><span id='disable_schmidtt_trigger.v' class='invisible'><code>fn <a href='#method.disable_schmidtt_trigger' class='fnname'>disable_schmidtt_trigger</a>(&amp;self)</code></span></h4>
+<h4 id='method.enable_schmidtt_trigger' class="method"><span id='enable_schmidtt_trigger.v' class='invisible'><code>fn <a href='#method.enable_schmidtt_trigger' class='fnname'>enable_schmidtt_trigger</a>(&amp;self)</code></span></h4>
+<h4 id='method.read' class="method"><span id='read.v' class='invisible'><code>fn <a href='#method.read' class='fnname'>read</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.toggle' class="method"><span id='toggle.v' class='invisible'><code>fn <a href='#method.toggle' class='fnname'>toggle</a>(&amp;self)</code></span></h4>
+<h4 id='method.set' class="method"><span id='set.v' class='invisible'><code>fn <a href='#method.set' class='fnname'>set</a>(&amp;self)</code></span></h4>
+<h4 id='method.clear' class="method"><span id='clear.v' class='invisible'><code>fn <a href='#method.clear' class='fnname'>clear</a>(&amp;self)</code></span></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../kernel/hil/trait.Controller.html" title="trait kernel::hil::Controller">Controller</a> for <a class="struct" href="../../sam4l/gpio/struct.GPIOPin.html" title="struct sam4l::gpio::GPIOPin">GPIOPin</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/gpio.rs.html#466-476' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Config' class="type"><span id='Config.t' class='invisible'><code>type <a href='../../kernel/hil/trait.Controller.html#associatedtype.Config' class="type">Config</a> = <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../sam4l/gpio/enum.PeripheralFunction.html" title="enum sam4l::gpio::PeripheralFunction">PeripheralFunction</a>&gt;</code></span></h4>
+<h4 id='method.configure' class="method"><span id='configure.v' class='invisible'><code>fn <a href='../../kernel/hil/trait.Controller.html#tymethod.configure' class='fnname'>configure</a>(&amp;self, config: Self::<a class="type" href="../../kernel/hil/trait.Controller.html#associatedtype.Config" title="type kernel::hil::Controller::Config">Config</a>)</code></span></h4>
+</div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../kernel/hil/gpio/trait.PinCtl.html" title="trait kernel::hil::gpio::PinCtl">PinCtl</a> for <a class="struct" href="../../sam4l/gpio/struct.GPIOPin.html" title="struct sam4l::gpio::GPIOPin">GPIOPin</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/gpio.rs.html#478-495' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.set_input_mode' class="method"><span id='set_input_mode.v' class='invisible'><code>fn <a href='../../kernel/hil/gpio/trait.PinCtl.html#tymethod.set_input_mode' class='fnname'>set_input_mode</a>(&amp;self, mode: <a class="enum" href="../../kernel/hil/gpio/enum.InputMode.html" title="enum kernel::hil::gpio::InputMode">InputMode</a>)</code></span></h4>
+<div class='docblock'><p>Configure whether the pin should have a pull-up or pull-down resistor or neither. <a href="../../kernel/hil/gpio/trait.PinCtl.html#tymethod.set_input_mode">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../kernel/hil/gpio/trait.Pin.html" title="trait kernel::hil::gpio::Pin">Pin</a> for <a class="struct" href="../../sam4l/gpio/struct.GPIOPin.html" title="struct sam4l::gpio::GPIOPin">GPIOPin</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/gpio.rs.html#497-544' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.disable-1' class="method"><span id='disable.v-1' class='invisible'><code>fn <a href='../../kernel/hil/gpio/trait.Pin.html#tymethod.disable' class='fnname'>disable</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Disable the GPIO pin and put it into its lowest power mode. <a href="../../kernel/hil/gpio/trait.Pin.html#tymethod.disable">Read more</a></p>
+</div><h4 id='method.make_output' class="method"><span id='make_output.v' class='invisible'><code>fn <a href='../../kernel/hil/gpio/trait.Pin.html#tymethod.make_output' class='fnname'>make_output</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Configure the GPIO pin as an output pin.</p>
+</div><h4 id='method.make_input' class="method"><span id='make_input.v' class='invisible'><code>fn <a href='../../kernel/hil/gpio/trait.Pin.html#tymethod.make_input' class='fnname'>make_input</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Configure the GPIO pin as an input pin.</p>
+</div><h4 id='method.read-1' class="method"><span id='read.v-1' class='invisible'><code>fn <a href='../../kernel/hil/gpio/trait.Pin.html#tymethod.read' class='fnname'>read</a>(&amp;self) -&gt; bool</code></span></h4>
+<div class='docblock'><p>Get the current state of an input GPIO pin.</p>
+</div><h4 id='method.toggle-1' class="method"><span id='toggle.v-1' class='invisible'><code>fn <a href='../../kernel/hil/gpio/trait.Pin.html#tymethod.toggle' class='fnname'>toggle</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Toggle the GPIO pin. It must be an output.</p>
+</div><h4 id='method.set-1' class="method"><span id='set.v-1' class='invisible'><code>fn <a href='../../kernel/hil/gpio/trait.Pin.html#tymethod.set' class='fnname'>set</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Set the GPIO pin high. It must be an output.</p>
+</div><h4 id='method.clear-1' class="method"><span id='clear.v-1' class='invisible'><code>fn <a href='../../kernel/hil/gpio/trait.Pin.html#tymethod.clear' class='fnname'>clear</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Set the GPIO pin low. It must be an output.</p>
+</div><h4 id='method.enable_interrupt-1' class="method"><span id='enable_interrupt.v-1' class='invisible'><code>fn <a href='../../kernel/hil/gpio/trait.Pin.html#tymethod.enable_interrupt' class='fnname'>enable_interrupt</a>(&amp;self, client_data: usize, mode: <a class="enum" href="../../kernel/hil/gpio/enum.InterruptMode.html" title="enum kernel::hil::gpio::InterruptMode">InterruptMode</a>)</code></span></h4>
+<div class='docblock'><p>Enable an interrupt on the GPIO pin. It must be configured as an interrupt. The <code>identifier</code> can be any value and will be returned to you when the interrupt on this pin fires. <a href="../../kernel/hil/gpio/trait.Pin.html#tymethod.enable_interrupt">Read more</a></p>
+</div><h4 id='method.disable_interrupt-1' class="method"><span id='disable_interrupt.v-1' class='invisible'><code>fn <a href='../../kernel/hil/gpio/trait.Pin.html#tymethod.disable_interrupt' class='fnname'>disable_interrupt</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Disable the interrupt for the GPIO pin.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "sam4l";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

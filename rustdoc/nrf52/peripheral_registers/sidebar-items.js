@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["GPIO_BASE",""],["NVMC_BASE",""],["RTC1_BASE",""],["TIMER_BASE",""],["TIMER_SIZE",""],["UART_BASE",""],["UICR_BASE",""]],"struct":[["GPIO",""],["NVMC",""],["RTC1",""],["TIMER",""],["UART",""],["UICR",""]]});

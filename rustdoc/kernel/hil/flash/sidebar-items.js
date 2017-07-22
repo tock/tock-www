@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Error","Flash errors returned in the callbacks."]],"trait":[["Client","Implement `Client` to receive callbacks from `Flash`."],["Flash","A page of writable persistent flash memory."],["HasClient",""]]});

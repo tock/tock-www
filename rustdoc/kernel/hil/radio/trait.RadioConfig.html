@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `RadioConfig` trait in crate `kernel`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, RadioConfig">
+
+    <title>kernel::hil::radio::RadioConfig - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc trait">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Trait RadioConfig</p><div class="block items"><ul><li><a href="#required-methods">Required Methods</a></li><li><a href="#implementors">Implementors</a></li></ul></div><p class='location'><a href='../../index.html'>kernel</a>::<wbr><a href='../index.html'>hil</a>::<wbr><a href='index.html'>radio</a></p><script>window.sidebarCurrent = {name: 'RadioConfig', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Trait <a href='../../index.html'>kernel</a>::<wbr><a href='../index.html'>hil</a>::<wbr><a href='index.html'>radio</a>::<wbr><a class="trait" href=''>RadioConfig</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/kernel/hil/radio.rs.html#58-91' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait RadioConfig {
+    fn <a href='#tymethod.initialize' class='fnname'>initialize</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;spi_buf: &amp;'static mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reg_write: &amp;'static mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reg_read: &amp;'static mut [u8]<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; <a class="enum" href="../../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>;
+    fn <a href='#tymethod.reset' class='fnname'>reset</a>(&amp;self) -&gt; <a class="enum" href="../../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>;
+    fn <a href='#tymethod.start' class='fnname'>start</a>(&amp;self) -&gt; <a class="enum" href="../../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>;
+    fn <a href='#tymethod.stop' class='fnname'>stop</a>(&amp;self) -&gt; <a class="enum" href="../../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>;
+    fn <a href='#tymethod.is_on' class='fnname'>is_on</a>(&amp;self) -&gt; bool;
+    fn <a href='#tymethod.busy' class='fnname'>busy</a>(&amp;self) -&gt; bool;
+    fn <a href='#tymethod.set_power_client' class='fnname'>set_power_client</a>(&amp;self, client: &amp;'static <a class="trait" href="../../../kernel/hil/radio/trait.PowerClient.html" title="trait kernel::hil::radio::PowerClient">PowerClient</a>);
+    fn <a href='#tymethod.config_commit' class='fnname'>config_commit</a>(&amp;self) -&gt; <a class="enum" href="../../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>;
+    fn <a href='#tymethod.set_config_client' class='fnname'>set_config_client</a>(&amp;self, client: &amp;'static <a class="trait" href="../../../kernel/hil/radio/trait.ConfigClient.html" title="trait kernel::hil::radio::ConfigClient">ConfigClient</a>);
+    fn <a href='#tymethod.config_address' class='fnname'>config_address</a>(&amp;self) -&gt; u16;
+    fn <a href='#tymethod.config_address_long' class='fnname'>config_address_long</a>(&amp;self) -&gt; [u8; 8];
+    fn <a href='#tymethod.config_pan' class='fnname'>config_pan</a>(&amp;self) -&gt; u16;
+    fn <a href='#tymethod.config_tx_power' class='fnname'>config_tx_power</a>(&amp;self) -&gt; i8;
+    fn <a href='#tymethod.config_channel' class='fnname'>config_channel</a>(&amp;self) -&gt; u8;
+    fn <a href='#tymethod.config_set_address' class='fnname'>config_set_address</a>(&amp;self, addr: u16);
+    fn <a href='#tymethod.config_set_address_long' class='fnname'>config_set_address_long</a>(&amp;self, addr: [u8; 8]);
+    fn <a href='#tymethod.config_set_pan' class='fnname'>config_set_pan</a>(&amp;self, addr: u16);
+    fn <a href='#tymethod.config_set_tx_power' class='fnname'>config_set_tx_power</a>(&amp;self, power: i8) -&gt; <a class="enum" href="../../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>;
+    fn <a href='#tymethod.config_set_channel' class='fnname'>config_set_channel</a>(&amp;self, chan: u8) -&gt; <a class="enum" href="../../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>;
+}</pre><div class='docblock'><p>Configure the 802.15.4 radio.</p>
+</div>
+            <h2 id='required-methods'>Required Methods</h2>
+            <div class='methods'>
+        <h3 id='tymethod.initialize' class='method'><span id='initialize.v' class='invisible'><code>fn <a href='#tymethod.initialize' class='fnname'>initialize</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;spi_buf: &amp;'static mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;reg_write: &amp;'static mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;reg_read: &amp;'static mut [u8]<br>) -&gt; <a class="enum" href="../../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h3><div class='docblock'><p>buf must be at least MAX_BUF_SIZE in length, and
+reg_read and reg_write must be 2 bytes.</p>
+</div><h3 id='tymethod.reset' class='method'><span id='reset.v' class='invisible'><code>fn <a href='#tymethod.reset' class='fnname'>reset</a>(&amp;self) -&gt; <a class="enum" href="../../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h3><h3 id='tymethod.start' class='method'><span id='start.v' class='invisible'><code>fn <a href='#tymethod.start' class='fnname'>start</a>(&amp;self) -&gt; <a class="enum" href="../../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h3><h3 id='tymethod.stop' class='method'><span id='stop.v' class='invisible'><code>fn <a href='#tymethod.stop' class='fnname'>stop</a>(&amp;self) -&gt; <a class="enum" href="../../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h3><h3 id='tymethod.is_on' class='method'><span id='is_on.v' class='invisible'><code>fn <a href='#tymethod.is_on' class='fnname'>is_on</a>(&amp;self) -&gt; bool</code></span></h3><h3 id='tymethod.busy' class='method'><span id='busy.v' class='invisible'><code>fn <a href='#tymethod.busy' class='fnname'>busy</a>(&amp;self) -&gt; bool</code></span></h3><h3 id='tymethod.set_power_client' class='method'><span id='set_power_client.v' class='invisible'><code>fn <a href='#tymethod.set_power_client' class='fnname'>set_power_client</a>(&amp;self, client: &amp;'static <a class="trait" href="../../../kernel/hil/radio/trait.PowerClient.html" title="trait kernel::hil::radio::PowerClient">PowerClient</a>)</code></span></h3><h3 id='tymethod.config_commit' class='method'><span id='config_commit.v' class='invisible'><code>fn <a href='#tymethod.config_commit' class='fnname'>config_commit</a>(&amp;self) -&gt; <a class="enum" href="../../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h3><div class='docblock'><p>Commit the config calls to hardware, changing the address,
+PAN ID, TX power, and channel to the specified values, issues
+a callback to the config client when done.</p>
+</div><h3 id='tymethod.set_config_client' class='method'><span id='set_config_client.v' class='invisible'><code>fn <a href='#tymethod.set_config_client' class='fnname'>set_config_client</a>(&amp;self, client: &amp;'static <a class="trait" href="../../../kernel/hil/radio/trait.ConfigClient.html" title="trait kernel::hil::radio::ConfigClient">ConfigClient</a>)</code></span></h3><h3 id='tymethod.config_address' class='method'><span id='config_address.v' class='invisible'><code>fn <a href='#tymethod.config_address' class='fnname'>config_address</a>(&amp;self) -&gt; u16</code></span></h3><h3 id='tymethod.config_address_long' class='method'><span id='config_address_long.v' class='invisible'><code>fn <a href='#tymethod.config_address_long' class='fnname'>config_address_long</a>(&amp;self) -&gt; [u8; 8]</code></span></h3><h3 id='tymethod.config_pan' class='method'><span id='config_pan.v' class='invisible'><code>fn <a href='#tymethod.config_pan' class='fnname'>config_pan</a>(&amp;self) -&gt; u16</code></span></h3><h3 id='tymethod.config_tx_power' class='method'><span id='config_tx_power.v' class='invisible'><code>fn <a href='#tymethod.config_tx_power' class='fnname'>config_tx_power</a>(&amp;self) -&gt; i8</code></span></h3><h3 id='tymethod.config_channel' class='method'><span id='config_channel.v' class='invisible'><code>fn <a href='#tymethod.config_channel' class='fnname'>config_channel</a>(&amp;self) -&gt; u8</code></span></h3><h3 id='tymethod.config_set_address' class='method'><span id='config_set_address.v' class='invisible'><code>fn <a href='#tymethod.config_set_address' class='fnname'>config_set_address</a>(&amp;self, addr: u16)</code></span></h3><h3 id='tymethod.config_set_address_long' class='method'><span id='config_set_address_long.v' class='invisible'><code>fn <a href='#tymethod.config_set_address_long' class='fnname'>config_set_address_long</a>(&amp;self, addr: [u8; 8])</code></span></h3><h3 id='tymethod.config_set_pan' class='method'><span id='config_set_pan.v' class='invisible'><code>fn <a href='#tymethod.config_set_pan' class='fnname'>config_set_pan</a>(&amp;self, addr: u16)</code></span></h3><h3 id='tymethod.config_set_tx_power' class='method'><span id='config_set_tx_power.v' class='invisible'><code>fn <a href='#tymethod.config_set_tx_power' class='fnname'>config_set_tx_power</a>(&amp;self, power: i8) -&gt; <a class="enum" href="../../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h3><h3 id='tymethod.config_set_channel' class='method'><span id='config_set_channel.v' class='invisible'><code>fn <a href='#tymethod.config_set_channel' class='fnname'>config_set_channel</a>(&amp;self, chan: u8) -&gt; <a class="enum" href="../../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h3></div>
+        <h2 id='implementors'>Implementors</h2>
+        <ul class='item-list' id='implementors-list'>
+    </ul><script type="text/javascript" async
+                         src="../../../implementors/kernel/hil/radio/trait.RadioConfig.js">
+                 </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "kernel";
+    </script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

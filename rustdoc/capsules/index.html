@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `capsules` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, capsules">
+
+    <title>capsules - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Crate capsules</p><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#modules">Modules</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'capsules', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>capsules</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/capsules/lib.rs.html#1-44' title='goto source code'>[src]</a></span></h1>
+<h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>extern crate <a class="mod" href="https://doc.rust-lang.org/nightly/core/index.html" title="mod core">core</a> as core;</code></td></tr><tr><td><code>extern crate <a class="mod" href="../kernel/index.html" title="mod kernel">kernel</a>;</code></td></tr><tr><td><code>use core::prelude::v1::*;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="adc/index.html"
+                                  title='mod capsules::adc'>adc</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides userspace applications with the ability to sample
+analog signals.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="button/index.html"
+                                  title='mod capsules::button'>button</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides capsule driver for controlling buttons on a board.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="console/index.html"
+                                  title='mod capsules::console'>console</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides userspace with the ability to print text via a serial interface.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="crc/index.html"
+                                  title='mod capsules::crc'>crc</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides userspace access to a CRC unit.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="dac/index.html"
+                                  title='mod capsules::dac'>dac</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides a DAC interface for userspace.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="fm25cl/index.html"
+                                  title='mod capsules::fm25cl'>fm25cl</a></td>
+                           <td class='docblock-short'>
+                                <p>Driver for the FM25CL FRAM chip.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="fxos8700cq/index.html"
+                                  title='mod capsules::fxos8700cq'>fxos8700cq</a></td>
+                           <td class='docblock-short'>
+                                <p>Driver for the FXOS8700CQ accelerometer.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="gpio/index.html"
+                                  title='mod capsules::gpio'>gpio</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides userspace applications with access to GPIO pins.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="gpio_async/index.html"
+                                  title='mod capsules::gpio_async'>gpio_async</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides userspace applications with a driver interface to asynchronous GPIO
+pins.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="i2c_master_slave_driver/index.html"
+                                  title='mod capsules::i2c_master_slave_driver'>i2c_master_slave_driver</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides both an I2C Master and I2C Slave interface to userspace.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="isl29035/index.html"
+                                  title='mod capsules::isl29035'>isl29035</a></td>
+                           <td class='docblock-short'>
+                                <p>Driver for the ISL29035 digital light sensor.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="led/index.html"
+                                  title='mod capsules::led'>led</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides userspace access to LEDs on a board.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="lps25hb/index.html"
+                                  title='mod capsules::lps25hb'>lps25hb</a></td>
+                           <td class='docblock-short'>
+                                <p>Driver for the ST LPS25HB pressure sensor.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="ltc294x/index.html"
+                                  title='mod capsules::ltc294x'>ltc294x</a></td>
+                           <td class='docblock-short'>
+                                <p>Driver for the LTC294X line of coulomb counters.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="max17205/index.html"
+                                  title='mod capsules::max17205'>max17205</a></td>
+                           <td class='docblock-short'>
+                                <p>Driver for the Maxim MAX17205 fuel gauge.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="mcp23008/index.html"
+                                  title='mod capsules::mcp23008'>mcp23008</a></td>
+                           <td class='docblock-short'>
+                                <p>Driver for the Microchip MCP23008 I2C GPIO extender.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="ninedof/index.html"
+                                  title='mod capsules::ninedof'>ninedof</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides userspace with virtualized access to 9DOF sensors.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="nonvolatile_storage_driver/index.html"
+                                  title='mod capsules::nonvolatile_storage_driver'>nonvolatile_storage_driver</a></td>
+                           <td class='docblock-short'>
+                                <p>This provides kernel and userspace access to nonvolatile memory.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="nonvolatile_to_pages/index.html"
+                                  title='mod capsules::nonvolatile_to_pages'>nonvolatile_to_pages</a></td>
+                           <td class='docblock-short'>
+                                <p>Map arbitrary nonvolatile reads and writes to page operations.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="nrf51822_serialization/index.html"
+                                  title='mod capsules::nrf51822_serialization'>nrf51822_serialization</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides userspace with the UART API that the nRF51822 serialization library
+requires.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="pca9544a/index.html"
+                                  title='mod capsules::pca9544a'>pca9544a</a></td>
+                           <td class='docblock-short'>
+                                <p>Driver for the PCA9544A I2C Selector.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="radio/index.html"
+                                  title='mod capsules::radio'>radio</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides userspace applications with the ability
+to send and receive 802.15.4 packets.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="rf233/index.html"
+                                  title='mod capsules::rf233'>rf233</a></td>
+                           <td class='docblock-short'>
+                                <p>Driver for sending 802.15.4 packets with an Atmel RF233.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="rf233_const/index.html"
+                                  title='mod capsules::rf233_const'>rf233_const</a></td>
+                           <td class='docblock-short'>
+                                <p>Support for the RF233 capsule.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="rng/index.html"
+                                  title='mod capsules::rng'>rng</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides a simple driver for userspace applications to request randomness.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="sdcard/index.html"
+                                  title='mod capsules::sdcard'>sdcard</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides driver for accessing an SD Card and a userspace Driver.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="si7021/index.html"
+                                  title='mod capsules::si7021'>si7021</a></td>
+                           <td class='docblock-short'>
+                                <p>Driver for the Silicon Labs SI7021 temperature/humidity sensor.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="spi/index.html"
+                                  title='mod capsules::spi'>spi</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides userspace applications with the ability to communicate over the SPI
+bus.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="symmetric_encryption/index.html"
+                                  title='mod capsules::symmetric_encryption'>symmetric_encryption</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides userspace applications with the ability to encrypt and decrypt
+messages.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="temp_nrf51dk/index.html"
+                                  title='mod capsules::temp_nrf51dk'>temp_nrf51dk</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides userspace with access to the NRF51DK onboard temperature sensor.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="timer/index.html"
+                                  title='mod capsules::timer'>timer</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides userspace applications with a timer API.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="tmp006/index.html"
+                                  title='mod capsules::tmp006'>tmp006</a></td>
+                           <td class='docblock-short'>
+                                <p>Driver for the TI TMP006 infrared thermopile contactless temperature sensor.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="tsl2561/index.html"
+                                  title='mod capsules::tsl2561'>tsl2561</a></td>
+                           <td class='docblock-short'>
+                                <p>Driver for the Taos TSL2561 light sensor.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="virtual_alarm/index.html"
+                                  title='mod capsules::virtual_alarm'>virtual_alarm</a></td>
+                           <td class='docblock-short'>
+                                <p>Virtualize the Alarm interface to enable multiple users of an underlying
+alarm hardware peripheral.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="virtual_flash/index.html"
+                                  title='mod capsules::virtual_flash'>virtual_flash</a></td>
+                           <td class='docblock-short'>
+                                <p>Virtualize writing flash.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="virtual_i2c/index.html"
+                                  title='mod capsules::virtual_i2c'>virtual_i2c</a></td>
+                           <td class='docblock-short'>
+                                <p>Virtualize an I2C master bus.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="virtual_spi/index.html"
+                                  title='mod capsules::virtual_spi'>virtual_spi</a></td>
+                           <td class='docblock-short'>
+                                <p>Virtualize a SPI master bus to enable multiple users of the SPI bus.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "capsules";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

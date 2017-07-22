@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["CTRL_REG1_BLOCK_DATA_ENABLE",""],["CTRL_REG1_POWER_ON",""],["CTRL_REG2_ONE_SHOT",""],["CTRL_REG4_INTERRUPT1_DATAREADY",""],["REGISTER_AUTO_INCREMENT","Register values"]],"enum":[["Registers",""],["State","States of the I2C protocol with the LPS25HB."]],"static":[["BUFFER",""]],"struct":[["LPS25HB",""]]});

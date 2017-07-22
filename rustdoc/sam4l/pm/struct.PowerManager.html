@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `PowerManager` struct in crate `sam4l`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, PowerManager">
+
+    <title>sam4l::pm::PowerManager - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct PowerManager</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li></ul></div><p class='location'><a href='../index.html'>sam4l</a>::<wbr><a href='index.html'>pm</a></p><script>window.sidebarCurrent = {name: 'PowerManager', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>sam4l</a>::<wbr><a href='index.html'>pm</a>::<wbr><a class="struct" href=''>PowerManager</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/sam4l/pm.rs.html#227-233' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct PowerManager {
+    system_frequency: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u32&gt;,
+    system_clock_source: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="../../sam4l/pm/enum.SystemClockSource.html" title="enum sam4l::pm::SystemClockSource">SystemClockSource</a>&gt;,
+}</pre><div class='docblock'><p>Contains state for the power management peripheral. This includes the
+configurations for various system clocks and the final frequency that the
+system is running at.</p>
+</div><h2 id='fields' class='fields'>Fields</h2><span id='structfield.system_frequency' class="structfield">
+                           <span id='system_frequency.v' class='invisible'>
+                           <code>system_frequency: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u32&gt;</code>
+                           </span></span><div class='docblock'><p>Frequency at which the system clock is running.</p>
+</div><span id='structfield.system_clock_source' class="structfield">
+                           <span id='system_clock_source.v' class='invisible'>
+                           <code>system_clock_source: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="../../sam4l/pm/enum.SystemClockSource.html" title="enum sam4l::pm::SystemClockSource">SystemClockSource</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Clock source configuration</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../sam4l/pm/struct.PowerManager.html" title="struct sam4l::pm::PowerManager">PowerManager</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/pm.rs.html#243-278' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.setup_system_clock' class="method"><span id='setup_system_clock.v' class='invisible'><code>unsafe fn <a href='#method.setup_system_clock' class='fnname'>setup_system_clock</a>(&amp;self, clock_source: <a class="enum" href="../../sam4l/pm/enum.SystemClockSource.html" title="enum sam4l::pm::SystemClockSource">SystemClockSource</a>)</code></span></h4>
+<div class='docblock'><p>Sets up the system clock. This should be called as one of the first
+lines in the <code>reset_handler</code> within the platform&#39;s <code>main.rs</code>.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "sam4l";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

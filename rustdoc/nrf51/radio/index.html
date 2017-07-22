@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `radio` mod in crate `nrf51`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, radio">
+
+    <title>nrf51::radio - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Module radio</p><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#structs">Structs</a></li><li><a href="#constants">Constants</a></li><li><a href="#statics">Statics</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>nrf51</a></p><script>window.sidebarCurrent = {name: 'radio', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>nrf51</a>::<wbr><a class="mod" href=''>radio</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/nrf51/radio.rs.html#1-480' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Radio/BLE Driver for nrf51dk</p>
+
+<p>Sending BLE advertisement packets
+Possible payload is 31 bytes</p>
+
+<p>Currently all fields in PAYLOAD array are configurable from user-space
+except the PDU_TYPE.</p>
+
+<p>Author: Niklas Adolfsson <a href="mailto:niklasadolfsson1@gmail.com">niklasadolfsson1@gmail.com</a>
+Author: Fredrik Nilsson <a href="mailto:frednils@student.chalmers.se">frednils@student.chalmers.se</a>
+Date: June 22, 2017</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>use <a class="mod" href="../../nrf51/ble_advertising_driver/index.html" title="mod nrf51::ble_advertising_driver">ble_advertising_driver</a>;</code></td></tr><tr><td><code>use <a class="mod" href="../../nrf51/chip/index.html" title="mod nrf51::chip">chip</a>;</code></td></tr><tr><td><code>use core::cell::<a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>;</code></td></tr><tr><td><code>use <a class="mod" href="../../kernel/index.html" title="mod kernel">kernel</a>;</code></td></tr><tr><td><code>use <a class="mod" href="../../nrf51/nvic/index.html" title="mod nrf51::nvic">nvic</a>;</code></td></tr><tr><td><code>use <a class="mod" href="../../nrf51/peripheral_interrupts/index.html" title="mod nrf51::peripheral_interrupts">peripheral_interrupts</a>;</code></td></tr><tr><td><code>use <a class="mod" href="../../nrf51/peripheral_registers/index.html" title="mod nrf51::peripheral_registers">peripheral_registers</a>;</code></td></tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Radio.html"
+                                  title='struct nrf51::radio::Radio'>Radio</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.NRF_LFLEN_LEN_1BYTE.html"
+                                  title='constant nrf51::radio::NRF_LFLEN_LEN_1BYTE'>NRF_LFLEN_LEN_1BYTE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.NRF_S0_LEN_1BYTE.html"
+                                  title='constant nrf51::radio::NRF_S0_LEN_1BYTE'>NRF_S0_LEN_1BYTE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.PACKET0_S0_SIZE.html"
+                                  title='constant nrf51::radio::PACKET0_S0_SIZE'>PACKET0_S0_SIZE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.PACKET0_S1_SIZE.html"
+                                  title='constant nrf51::radio::PACKET0_S1_SIZE'>PACKET0_S1_SIZE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.PACKET_BASE_ADDRESS_LENGTH.html"
+                                  title='constant nrf51::radio::PACKET_BASE_ADDRESS_LENGTH'>PACKET_BASE_ADDRESS_LENGTH</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.PACKET_LENGTH_FIELD_SIZE.html"
+                                  title='constant nrf51::radio::PACKET_LENGTH_FIELD_SIZE'>PACKET_LENGTH_FIELD_SIZE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.PACKET_PAYLOAD_MAXSIZE.html"
+                                  title='constant nrf51::radio::PACKET_PAYLOAD_MAXSIZE'>PACKET_PAYLOAD_MAXSIZE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.PACKET_STATIC_LENGTH.html"
+                                  title='constant nrf51::radio::PACKET_STATIC_LENGTH'>PACKET_STATIC_LENGTH</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.PAYLOAD_ADDR_END.html"
+                                  title='constant nrf51::radio::PAYLOAD_ADDR_END'>PAYLOAD_ADDR_END</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.PAYLOAD_ADDR_START.html"
+                                  title='constant nrf51::radio::PAYLOAD_ADDR_START'>PAYLOAD_ADDR_START</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.PAYLOAD_DATA_START.html"
+                                  title='constant nrf51::radio::PAYLOAD_DATA_START'>PAYLOAD_DATA_START</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.PAYLOAD_HDR_LEN.html"
+                                  title='constant nrf51::radio::PAYLOAD_HDR_LEN'>PAYLOAD_HDR_LEN</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.PAYLOAD_HDR_PDU.html"
+                                  title='constant nrf51::radio::PAYLOAD_HDR_PDU'>PAYLOAD_HDR_PDU</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.PAYLOAD_LENGTH.html"
+                                  title='constant nrf51::radio::PAYLOAD_LENGTH'>PAYLOAD_LENGTH</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_PCNF0_LFLEN_POS.html"
+                                  title='constant nrf51::radio::RADIO_PCNF0_LFLEN_POS'>RADIO_PCNF0_LFLEN_POS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_PCNF0_S0LEN_POS.html"
+                                  title='constant nrf51::radio::RADIO_PCNF0_S0LEN_POS'>RADIO_PCNF0_S0LEN_POS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_PCNF0_S1LEN_POS.html"
+                                  title='constant nrf51::radio::RADIO_PCNF0_S1LEN_POS'>RADIO_PCNF0_S1LEN_POS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_PCNF1_BALEN_POS.html"
+                                  title='constant nrf51::radio::RADIO_PCNF1_BALEN_POS'>RADIO_PCNF1_BALEN_POS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_PCNF1_ENDIAN_BIG.html"
+                                  title='constant nrf51::radio::RADIO_PCNF1_ENDIAN_BIG'>RADIO_PCNF1_ENDIAN_BIG</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_PCNF1_ENDIAN_POS.html"
+                                  title='constant nrf51::radio::RADIO_PCNF1_ENDIAN_POS'>RADIO_PCNF1_ENDIAN_POS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_PCNF1_MAXLEN_POS.html"
+                                  title='constant nrf51::radio::RADIO_PCNF1_MAXLEN_POS'>RADIO_PCNF1_MAXLEN_POS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_PCNF1_STATLEN_POS.html"
+                                  title='constant nrf51::radio::RADIO_PCNF1_STATLEN_POS'>RADIO_PCNF1_STATLEN_POS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_PCNF1_WHITEEN_DISABLED.html"
+                                  title='constant nrf51::radio::RADIO_PCNF1_WHITEEN_DISABLED'>RADIO_PCNF1_WHITEEN_DISABLED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_PCNF1_WHITEEN_ENABLED.html"
+                                  title='constant nrf51::radio::RADIO_PCNF1_WHITEEN_ENABLED'>RADIO_PCNF1_WHITEEN_ENABLED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_PCNF1_WHITEEN_POS.html"
+                                  title='constant nrf51::radio::RADIO_PCNF1_WHITEEN_POS'>RADIO_PCNF1_WHITEEN_POS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_STATE_DISABLE.html"
+                                  title='constant nrf51::radio::RADIO_STATE_DISABLE'>RADIO_STATE_DISABLE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_STATE_RX.html"
+                                  title='constant nrf51::radio::RADIO_STATE_RX'>RADIO_STATE_RX</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_STATE_RXDISABLE.html"
+                                  title='constant nrf51::radio::RADIO_STATE_RXDISABLE'>RADIO_STATE_RXDISABLE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_STATE_RXIDLE.html"
+                                  title='constant nrf51::radio::RADIO_STATE_RXIDLE'>RADIO_STATE_RXIDLE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_STATE_RXRU.html"
+                                  title='constant nrf51::radio::RADIO_STATE_RXRU'>RADIO_STATE_RXRU</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_STATE_TX.html"
+                                  title='constant nrf51::radio::RADIO_STATE_TX'>RADIO_STATE_TX</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_STATE_TXDISABLE.html"
+                                  title='constant nrf51::radio::RADIO_STATE_TXDISABLE'>RADIO_STATE_TXDISABLE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_STATE_TXIDLE.html"
+                                  title='constant nrf51::radio::RADIO_STATE_TXIDLE'>RADIO_STATE_TXIDLE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RADIO_STATE_TXRU.html"
+                                  title='constant nrf51::radio::RADIO_STATE_TXRU'>RADIO_STATE_TXRU</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.PAYLOAD.html"
+                                  title='static nrf51::radio::PAYLOAD'>PAYLOAD</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.RADIO.html"
+                                  title='static nrf51::radio::RADIO'>RADIO</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.RADIO_Handler.html"
+                                  title='fn nrf51::radio::RADIO_Handler'>RADIO_Handler</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "nrf51";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

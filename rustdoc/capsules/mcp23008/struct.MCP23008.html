@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `MCP23008` struct in crate `capsules`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, MCP23008">
+
+    <title>capsules::mcp23008::MCP23008 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct MCP23008</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>capsules</a>::<wbr><a href='index.html'>mcp23008</a></p><script>window.sidebarCurrent = {name: 'MCP23008', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>capsules</a>::<wbr><a href='index.html'>mcp23008</a>::<wbr><a class="struct" href=''>MCP23008</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/capsules/mcp23008.rs.html#118-126' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct MCP23008&lt;'a&gt; {
+    i2c: &amp;'a <a class="trait" href="../../kernel/hil/i2c/trait.I2CDevice.html" title="trait kernel::hil::i2c::I2CDevice">I2CDevice</a>,
+    state: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="../../capsules/mcp23008/enum.State.html" title="enum capsules::mcp23008::State">State</a>&gt;,
+    buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;,
+    interrupt_pin: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/gpio/trait.Pin.html" title="trait kernel::hil::gpio::Pin">Pin</a>&gt;,
+    interrupt_settings: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u32&gt;,
+    identifier: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;,
+    client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/gpio_async/trait.Client.html" title="trait kernel::hil::gpio_async::Client">Client</a>&gt;&gt;,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.i2c' class="structfield">
+                           <span id='i2c.v' class='invisible'>
+                           <code>i2c: &amp;'a <a class="trait" href="../../kernel/hil/i2c/trait.I2CDevice.html" title="trait kernel::hil::i2c::I2CDevice">I2CDevice</a></code>
+                           </span></span><span id='structfield.state' class="structfield">
+                           <span id='state.v' class='invisible'>
+                           <code>state: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="../../capsules/mcp23008/enum.State.html" title="enum capsules::mcp23008::State">State</a>&gt;</code>
+                           </span></span><span id='structfield.buffer' class="structfield">
+                           <span id='buffer.v' class='invisible'>
+                           <code>buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;</code>
+                           </span></span><span id='structfield.interrupt_pin' class="structfield">
+                           <span id='interrupt_pin.v' class='invisible'>
+                           <code>interrupt_pin: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/gpio/trait.Pin.html" title="trait kernel::hil::gpio::Pin">Pin</a>&gt;</code>
+                           </span></span><span id='structfield.interrupt_settings' class="structfield">
+                           <span id='interrupt_settings.v' class='invisible'>
+                           <code>interrupt_settings: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.identifier' class="structfield">
+                           <span id='identifier.v' class='invisible'>
+                           <code>identifier: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;</code>
+                           </span></span><span id='structfield.client' class="structfield">
+                           <span id='client.v' class='invisible'>
+                           <code>client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/gpio_async/trait.Client.html" title="trait kernel::hil::gpio_async::Client">Client</a>&gt;&gt;</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="struct" href="../../capsules/mcp23008/struct.MCP23008.html" title="struct capsules::mcp23008::MCP23008">MCP23008</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/mcp23008.rs.html#128-311' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;i2c: &amp;'a <a class="trait" href="../../kernel/hil/i2c/trait.I2CDevice.html" title="trait kernel::hil::i2c::I2CDevice">I2CDevice</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;interrupt_pin: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/gpio/trait.Pin.html" title="trait kernel::hil::gpio::Pin">Pin</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;buffer: &amp;'static mut [u8]<br>) -&gt; <a class="struct" href="../../capsules/mcp23008/struct.MCP23008.html" title="struct capsules::mcp23008::MCP23008">MCP23008</a>&lt;'a&gt;</code></span></h4>
+<h4 id='method.set_client' class="method"><span id='set_client.v' class='invisible'><code>fn <a href='#method.set_client' class='fnname'>set_client</a>&lt;C:&nbsp;<a class="trait" href="../../kernel/hil/gpio_async/trait.Client.html" title="trait kernel::hil::gpio_async::Client">Client</a>&gt;(&amp;self, client: &amp;'static C)</code></span></h4>
+<div class='docblock'><p>Set the client of this MCP23008 when commands finish or interrupts
+occur. The <code>identifier</code> is simply passed back with the callback
+so that the upper layer can keep track of which device triggered.</p>
+</div><h4 id='method.enable_host_interrupt' class="method"><span id='enable_host_interrupt.v' class='invisible'><code>fn <a href='#method.enable_host_interrupt' class='fnname'>enable_host_interrupt</a>(&amp;self) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.set_direction' class="method"><span id='set_direction.v' class='invisible'><code>fn <a href='#method.set_direction' class='fnname'>set_direction</a>(&amp;self, pin_number: u8, direction: <a class="enum" href="../../capsules/mcp23008/enum.Direction.html" title="enum capsules::mcp23008::Direction">Direction</a>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.configure_pullup' class="method"><span id='configure_pullup.v' class='invisible'><code>fn <a href='#method.configure_pullup' class='fnname'>configure_pullup</a>(&amp;self, pin_number: u8, enabled: bool) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Set the pull-up on the pin also configure it to be an input.</p>
+</div><h4 id='method.set_pin' class="method"><span id='set_pin.v' class='invisible'><code>fn <a href='#method.set_pin' class='fnname'>set_pin</a>(&amp;self, pin_number: u8, value: <a class="enum" href="../../capsules/mcp23008/enum.PinState.html" title="enum capsules::mcp23008::PinState">PinState</a>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.toggle_pin' class="method"><span id='toggle_pin.v' class='invisible'><code>fn <a href='#method.toggle_pin' class='fnname'>toggle_pin</a>(&amp;self, pin_number: u8) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.read_pin' class="method"><span id='read_pin.v' class='invisible'><code>fn <a href='#method.read_pin' class='fnname'>read_pin</a>(&amp;self, pin_number: u8) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.enable_interrupt_pin' class="method"><span id='enable_interrupt_pin.v' class='invisible'><code>fn <a href='#method.enable_interrupt_pin' class='fnname'>enable_interrupt_pin</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;pin_number: u8, <br>&nbsp;&nbsp;&nbsp;&nbsp;direction: <a class="enum" href="../../kernel/hil/gpio/enum.InterruptMode.html" title="enum kernel::hil::gpio::InterruptMode">InterruptMode</a><br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.disable_interrupt_pin' class="method"><span id='disable_interrupt_pin.v' class='invisible'><code>fn <a href='#method.disable_interrupt_pin' class='fnname'>disable_interrupt_pin</a>(&amp;self, pin_number: u8) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.save_pin_interrupt_state' class="method"><span id='save_pin_interrupt_state.v' class='invisible'><code>fn <a href='#method.save_pin_interrupt_state' class='fnname'>save_pin_interrupt_state</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;pin_number: u8, <br>&nbsp;&nbsp;&nbsp;&nbsp;enabled: bool, <br>&nbsp;&nbsp;&nbsp;&nbsp;direction: <a class="enum" href="../../kernel/hil/gpio/enum.InterruptMode.html" title="enum kernel::hil::gpio::InterruptMode">InterruptMode</a><br>)</code></span></h4>
+<div class='docblock'><p>Helper function for keeping track of which interrupts are currently
+enabled.</p>
+</div><h4 id='method.remove_pin_interrupt_state' class="method"><span id='remove_pin_interrupt_state.v' class='invisible'><code>fn <a href='#method.remove_pin_interrupt_state' class='fnname'>remove_pin_interrupt_state</a>(&amp;self, pin_number: u8)</code></span></h4>
+<h4 id='method.get_pin_interrupt_enabled_state' class="method"><span id='get_pin_interrupt_enabled_state.v' class='invisible'><code>fn <a href='#method.get_pin_interrupt_enabled_state' class='fnname'>get_pin_interrupt_enabled_state</a>(&amp;self) -&gt; u8</code></span></h4>
+<div class='docblock'><p>Create an 8 bit bitmask of which interrupts are enabled.</p>
+</div><h4 id='method.check_pin_interrupt_enabled' class="method"><span id='check_pin_interrupt_enabled.v' class='invisible'><code>fn <a href='#method.check_pin_interrupt_enabled' class='fnname'>check_pin_interrupt_enabled</a>(&amp;self, pin_number: u8) -&gt; bool</code></span></h4>
+<h4 id='method.get_pin_interrupt_direction' class="method"><span id='get_pin_interrupt_direction.v' class='invisible'><code>fn <a href='#method.get_pin_interrupt_direction' class='fnname'>get_pin_interrupt_direction</a>(&amp;self, pin_number: u8) -&gt; <a class="enum" href="../../kernel/hil/gpio/enum.InterruptMode.html" title="enum kernel::hil::gpio::InterruptMode">InterruptMode</a></code></span></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../kernel/hil/i2c/trait.I2CClient.html" title="trait kernel::hil::i2c::I2CClient">I2CClient</a> for <a class="struct" href="../../capsules/mcp23008/struct.MCP23008.html" title="struct capsules::mcp23008::MCP23008">MCP23008</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/mcp23008.rs.html#313-449' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.command_complete' class="method"><span id='command_complete.v' class='invisible'><code>fn <a href='../../kernel/hil/i2c/trait.I2CClient.html#tymethod.command_complete' class='fnname'>command_complete</a>(&amp;self, buffer: &amp;'static mut [u8], _error: <a class="enum" href="../../kernel/hil/i2c/enum.Error.html" title="enum kernel::hil::i2c::Error">Error</a>)</code></span></h4>
+<div class='docblock'><p>Called when an I2C command completed. The <code>error</code> denotes whether the command completed successfully or if an error occured. <a href="../../kernel/hil/i2c/trait.I2CClient.html#tymethod.command_complete">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../kernel/hil/gpio/trait.Client.html" title="trait kernel::hil::gpio::Client">Client</a> for <a class="struct" href="../../capsules/mcp23008/struct.MCP23008.html" title="struct capsules::mcp23008::MCP23008">MCP23008</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/mcp23008.rs.html#451-463' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fired' class="method"><span id='fired.v' class='invisible'><code>fn <a href='../../kernel/hil/gpio/trait.Client.html#tymethod.fired' class='fnname'>fired</a>(&amp;self, _: usize)</code></span></h4>
+<div class='docblock'><p>Called when an interrupt occurs. The <code>identifier</code> will be the same value that was passed to <code>enable_interrupt()</code> when the interrupt was configured. <a href="../../kernel/hil/gpio/trait.Client.html#tymethod.fired">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../kernel/hil/gpio_async/trait.Port.html" title="trait kernel::hil::gpio_async::Port">Port</a> for <a class="struct" href="../../capsules/mcp23008/struct.MCP23008.html" title="struct capsules::mcp23008::MCP23008">MCP23008</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/mcp23008.rs.html#465-544' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.disable' class="method"><span id='disable.v' class='invisible'><code>fn <a href='../../kernel/hil/gpio_async/trait.Port.html#tymethod.disable' class='fnname'>disable</a>(&amp;self, pin: usize) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Try to disable a GPIO pin. This cannot be supported for all devices.</p>
+</div><h4 id='method.make_output' class="method"><span id='make_output.v' class='invisible'><code>fn <a href='../../kernel/hil/gpio_async/trait.Port.html#tymethod.make_output' class='fnname'>make_output</a>(&amp;self, pin: usize) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Configure a pin as an ouput GPIO.</p>
+</div><h4 id='method.make_input' class="method"><span id='make_input.v' class='invisible'><code>fn <a href='../../kernel/hil/gpio_async/trait.Port.html#tymethod.make_input' class='fnname'>make_input</a>(&amp;self, pin: usize, mode: <a class="enum" href="../../kernel/hil/gpio/enum.InputMode.html" title="enum kernel::hil::gpio::InputMode">InputMode</a>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Configure a pin as an input GPIO. Not all InputMode settings may be supported by a given device. <a href="../../kernel/hil/gpio_async/trait.Port.html#tymethod.make_input">Read more</a></p>
+</div><h4 id='method.read' class="method"><span id='read.v' class='invisible'><code>fn <a href='../../kernel/hil/gpio_async/trait.Port.html#tymethod.read' class='fnname'>read</a>(&amp;self, pin: usize) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Get the state (0 or 1) of an input pin. The value will be returned via a callback. <a href="../../kernel/hil/gpio_async/trait.Port.html#tymethod.read">Read more</a></p>
+</div><h4 id='method.toggle' class="method"><span id='toggle.v' class='invisible'><code>fn <a href='../../kernel/hil/gpio_async/trait.Port.html#tymethod.toggle' class='fnname'>toggle</a>(&amp;self, pin: usize) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Toggle an output GPIO pin.</p>
+</div><h4 id='method.set' class="method"><span id='set.v' class='invisible'><code>fn <a href='../../kernel/hil/gpio_async/trait.Port.html#tymethod.set' class='fnname'>set</a>(&amp;self, pin: usize) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Assert a GPIO pin high.</p>
+</div><h4 id='method.clear' class="method"><span id='clear.v' class='invisible'><code>fn <a href='../../kernel/hil/gpio_async/trait.Port.html#tymethod.clear' class='fnname'>clear</a>(&amp;self, pin: usize) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Clear a GPIO pin low.</p>
+</div><h4 id='method.enable_interrupt' class="method"><span id='enable_interrupt.v' class='invisible'><code>fn <a href='../../kernel/hil/gpio_async/trait.Port.html#tymethod.enable_interrupt' class='fnname'>enable_interrupt</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;pin: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;mode: <a class="enum" href="../../kernel/hil/gpio/enum.InterruptMode.html" title="enum kernel::hil::gpio::InterruptMode">InterruptMode</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;identifier: usize<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Setup an interrupt on a GPIO input pin. The identifier should be the port number and will be returned when the interrupt callback fires. <a href="../../kernel/hil/gpio_async/trait.Port.html#tymethod.enable_interrupt">Read more</a></p>
+</div><h4 id='method.disable_interrupt' class="method"><span id='disable_interrupt.v' class='invisible'><code>fn <a href='../../kernel/hil/gpio_async/trait.Port.html#tymethod.disable_interrupt' class='fnname'>disable_interrupt</a>(&amp;self, pin: usize) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Disable an interrupt on a GPIO input pin.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "capsules";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `AstRegisters` struct in crate `sam4l`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, AstRegisters">
+
+    <title>sam4l::ast::AstRegisters - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct AstRegisters</p><div class="block items"><ul><li><a href="#fields">Fields</a></li></ul></div><p class='location'><a href='../index.html'>sam4l</a>::<wbr><a href='index.html'>ast</a></p><script>window.sidebarCurrent = {name: 'AstRegisters', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>sam4l</a>::<wbr><a href='index.html'>ast</a>::<wbr><a class="struct" href=''>AstRegisters</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/sam4l/ast.rs.html#31-54' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'><div class="docblock attributes">#[repr(C, packed)]
+</div>struct AstRegisters {
+    cr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    cv: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    sr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    scr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    ier: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    idr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    imr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    wer: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    ar0: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    ar1: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    _reserved0: [u32; 2],
+    pir0: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    pir1: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    _reserved1: [u32; 2],
+    clock: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    dtr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    eve: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    evd: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    evm: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    calv: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.cr' class="structfield">
+                           <span id='cr.v' class='invisible'>
+                           <code>cr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.cv' class="structfield">
+                           <span id='cv.v' class='invisible'>
+                           <code>cv: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.sr' class="structfield">
+                           <span id='sr.v' class='invisible'>
+                           <code>sr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.scr' class="structfield">
+                           <span id='scr.v' class='invisible'>
+                           <code>scr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.ier' class="structfield">
+                           <span id='ier.v' class='invisible'>
+                           <code>ier: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.idr' class="structfield">
+                           <span id='idr.v' class='invisible'>
+                           <code>idr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.imr' class="structfield">
+                           <span id='imr.v' class='invisible'>
+                           <code>imr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.wer' class="structfield">
+                           <span id='wer.v' class='invisible'>
+                           <code>wer: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.ar0' class="structfield">
+                           <span id='ar0.v' class='invisible'>
+                           <code>ar0: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.ar1' class="structfield">
+                           <span id='ar1.v' class='invisible'>
+                           <code>ar1: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield._reserved0' class="structfield">
+                           <span id='_reserved0.v' class='invisible'>
+                           <code>_reserved0: [u32; 2]</code>
+                           </span></span><span id='structfield.pir0' class="structfield">
+                           <span id='pir0.v' class='invisible'>
+                           <code>pir0: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.pir1' class="structfield">
+                           <span id='pir1.v' class='invisible'>
+                           <code>pir1: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield._reserved1' class="structfield">
+                           <span id='_reserved1.v' class='invisible'>
+                           <code>_reserved1: [u32; 2]</code>
+                           </span></span><span id='structfield.clock' class="structfield">
+                           <span id='clock.v' class='invisible'>
+                           <code>clock: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.dtr' class="structfield">
+                           <span id='dtr.v' class='invisible'>
+                           <code>dtr: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.eve' class="structfield">
+                           <span id='eve.v' class='invisible'>
+                           <code>eve: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.evd' class="structfield">
+                           <span id='evd.v' class='invisible'>
+                           <code>evd: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.evm' class="structfield">
+                           <span id='evm.v' class='invisible'>
+                           <code>evm: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.calv' class="structfield">
+                           <span id='calv.v' class='invisible'>
+                           <code>calv: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "sam4l";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

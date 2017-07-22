@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Adc` struct in crate `sam4l`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Adc">
+
+    <title>sam4l::adc::Adc - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct Adc</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>sam4l</a>::<wbr><a href='index.html'>adc</a></p><script>window.sidebarCurrent = {name: 'Adc', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>sam4l</a>::<wbr><a href='index.html'>adc</a>::<wbr><a class="struct" href=''>Adc</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/sam4l/adc.rs.html#105-130' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Adc {
+    registers: *mut <a class="struct" href="../../sam4l/adc/struct.AdcRegisters.html" title="struct sam4l::adc::AdcRegisters">AdcRegisters</a>,
+    enabled: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;,
+    adc_clk_freq: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u32&gt;,
+    active: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;,
+    continuous: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;,
+    dma_running: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;,
+    cpu_clock: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;,
+    timer_repeats: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;,
+    timer_counts: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;,
+    rx_dma: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="struct" href="../../sam4l/dma/struct.DMAChannel.html" title="struct sam4l::dma::DMAChannel">DMAChannel</a>&gt;&gt;,
+    rx_dma_peripheral: <a class="enum" href="../../sam4l/dma/enum.DMAPeripheral.html" title="enum sam4l::dma::DMAPeripheral">DMAPeripheral</a>,
+    rx_length: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;,
+    next_dma_buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u16]&gt;,
+    next_dma_length: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;,
+    stopped_buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u16]&gt;,
+    client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../sam4l/adc/trait.EverythingClient.html" title="trait sam4l::adc::EverythingClient">EverythingClient</a>&gt;&gt;,
+}</pre><div class='docblock'><p>ADC driver code for the SAM4L.</p>
+</div><h2 id='fields' class='fields'>Fields</h2><span id='structfield.registers' class="structfield">
+                           <span id='registers.v' class='invisible'>
+                           <code>registers: *mut <a class="struct" href="../../sam4l/adc/struct.AdcRegisters.html" title="struct sam4l::adc::AdcRegisters">AdcRegisters</a></code>
+                           </span></span><span id='structfield.enabled' class="structfield">
+                           <span id='enabled.v' class='invisible'>
+                           <code>enabled: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;</code>
+                           </span></span><span id='structfield.adc_clk_freq' class="structfield">
+                           <span id='adc_clk_freq.v' class='invisible'>
+                           <code>adc_clk_freq: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.active' class="structfield">
+                           <span id='active.v' class='invisible'>
+                           <code>active: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;</code>
+                           </span></span><span id='structfield.continuous' class="structfield">
+                           <span id='continuous.v' class='invisible'>
+                           <code>continuous: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;</code>
+                           </span></span><span id='structfield.dma_running' class="structfield">
+                           <span id='dma_running.v' class='invisible'>
+                           <code>dma_running: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;</code>
+                           </span></span><span id='structfield.cpu_clock' class="structfield">
+                           <span id='cpu_clock.v' class='invisible'>
+                           <code>cpu_clock: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;</code>
+                           </span></span><span id='structfield.timer_repeats' class="structfield">
+                           <span id='timer_repeats.v' class='invisible'>
+                           <code>timer_repeats: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;</code>
+                           </span></span><span id='structfield.timer_counts' class="structfield">
+                           <span id='timer_counts.v' class='invisible'>
+                           <code>timer_counts: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;</code>
+                           </span></span><span id='structfield.rx_dma' class="structfield">
+                           <span id='rx_dma.v' class='invisible'>
+                           <code>rx_dma: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="struct" href="../../sam4l/dma/struct.DMAChannel.html" title="struct sam4l::dma::DMAChannel">DMAChannel</a>&gt;&gt;</code>
+                           </span></span><span id='structfield.rx_dma_peripheral' class="structfield">
+                           <span id='rx_dma_peripheral.v' class='invisible'>
+                           <code>rx_dma_peripheral: <a class="enum" href="../../sam4l/dma/enum.DMAPeripheral.html" title="enum sam4l::dma::DMAPeripheral">DMAPeripheral</a></code>
+                           </span></span><span id='structfield.rx_length' class="structfield">
+                           <span id='rx_length.v' class='invisible'>
+                           <code>rx_length: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;</code>
+                           </span></span><span id='structfield.next_dma_buffer' class="structfield">
+                           <span id='next_dma_buffer.v' class='invisible'>
+                           <code>next_dma_buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u16]&gt;</code>
+                           </span></span><span id='structfield.next_dma_length' class="structfield">
+                           <span id='next_dma_length.v' class='invisible'>
+                           <code>next_dma_length: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;</code>
+                           </span></span><span id='structfield.stopped_buffer' class="structfield">
+                           <span id='stopped_buffer.v' class='invisible'>
+                           <code>stopped_buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u16]&gt;</code>
+                           </span></span><span id='structfield.client' class="structfield">
+                           <span id='client.v' class='invisible'>
+                           <code>client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../sam4l/adc/trait.EverythingClient.html" title="trait sam4l::adc::EverythingClient">EverythingClient</a>&gt;&gt;</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../sam4l/adc/struct.Adc.html" title="struct sam4l::adc::Adc">Adc</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/adc.rs.html#163-393' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>Functions for initializing the ADC.</p>
+</div><div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>const fn <a href='#method.new' class='fnname'>new</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;base_address: *mut <a class="struct" href="../../sam4l/adc/struct.AdcRegisters.html" title="struct sam4l::adc::AdcRegisters">AdcRegisters</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;rx_dma_peripheral: <a class="enum" href="../../sam4l/dma/enum.DMAPeripheral.html" title="enum sam4l::dma::DMAPeripheral">DMAPeripheral</a><br>) -&gt; <a class="struct" href="../../sam4l/adc/struct.Adc.html" title="struct sam4l::adc::Adc">Adc</a></code></span></h4>
+<div class='docblock'><p>Create a new ADC driver.</p>
+
+<ul>
+<li><code>base_address</code>: pointer to the ADC&#39;s memory mapped I/O registers</li>
+<li><code>rx_dma_peripheral</code>: type used for DMA transactions</li>
+</ul>
+</div><h4 id='method.set_client' class="method"><span id='set_client.v' class='invisible'><code>fn <a href='#method.set_client' class='fnname'>set_client</a>&lt;C:&nbsp;<a class="trait" href="../../sam4l/adc/trait.EverythingClient.html" title="trait sam4l::adc::EverythingClient">EverythingClient</a>&gt;(&amp;self, client: &amp;'static C)</code></span></h4>
+<div class='docblock'><p>Sets the client for this driver.</p>
+
+<ul>
+<li><code>client</code>: reference to capsule which handles responses</li>
+</ul>
+</div><h4 id='method.set_dma' class="method"><span id='set_dma.v' class='invisible'><code>fn <a href='#method.set_dma' class='fnname'>set_dma</a>(&amp;self, rx_dma: &amp;'static <a class="struct" href="../../sam4l/dma/struct.DMAChannel.html" title="struct sam4l::dma::DMAChannel">DMAChannel</a>)</code></span></h4>
+<div class='docblock'><p>Sets the DMA channel for this driver.</p>
+
+<ul>
+<li><code>rx_dma</code>: reference to the DMA channel the ADC should use</li>
+</ul>
+</div><h4 id='method.handle_interrupt' class="method"><span id='handle_interrupt.v' class='invisible'><code>fn <a href='#method.handle_interrupt' class='fnname'>handle_interrupt</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>Interrupt handler for the ADC.</p>
+</div><h4 id='method.config_and_enable' class="method"><span id='config_and_enable.v' class='invisible'><code>fn <a href='#method.config_and_enable' class='fnname'>config_and_enable</a>(&amp;self, frequency: u32) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../kernel/hil/adc/trait.Adc.html" title="trait kernel::hil::adc::Adc">Adc</a> for <a class="struct" href="../../sam4l/adc/struct.Adc.html" title="struct sam4l::adc::Adc">Adc</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/adc.rs.html#396-614' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>Implements an ADC capable reading ADC samples on any channel.</p>
+</div><div class='impl-items'><h4 id='associatedtype.Channel' class="type"><span id='Channel.t' class='invisible'><code>type <a href='../../kernel/hil/adc/trait.Adc.html#associatedtype.Channel' class="type">Channel</a> = <a class="struct" href="../../sam4l/adc/struct.AdcChannel.html" title="struct sam4l::adc::AdcChannel">AdcChannel</a></code></span></h4>
+<div class='docblock'><p>The chip-dependent type of an ADC channel.</p>
+</div><h4 id='method.initialize' class="method"><span id='initialize.v' class='invisible'><code>fn <a href='../../kernel/hil/adc/trait.Adc.html#tymethod.initialize' class='fnname'>initialize</a>(&amp;self) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Enable and configure the ADC.
+This can be called multiple times with no side effects.</p>
+</div><h4 id='method.sample' class="method"><span id='sample.v' class='invisible'><code>fn <a href='../../kernel/hil/adc/trait.Adc.html#tymethod.sample' class='fnname'>sample</a>(&amp;self, channel: &amp;Self::<a class="type" href="../../kernel/hil/adc/trait.Adc.html#associatedtype.Channel" title="type kernel::hil::adc::Adc::Channel">Channel</a>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Capture a single analog sample, calling the client when complete.
+Returns an error if the ADC is already sampling.</p>
+
+<ul>
+<li><code>channel</code>: the ADC channel to sample</li>
+</ul>
+</div><h4 id='method.sample_continuous' class="method"><span id='sample_continuous.v' class='invisible'><code>fn <a href='../../kernel/hil/adc/trait.Adc.html#tymethod.sample_continuous' class='fnname'>sample_continuous</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;channel: &amp;Self::<a class="type" href="../../kernel/hil/adc/trait.Adc.html#associatedtype.Channel" title="type kernel::hil::adc::Adc::Channel">Channel</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;frequency: u32<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Request repeated analog samples on a particular channel, calling after
+each sample. In order to not unacceptably slow down the system
+collecting samples, this interface is limited to one sample every 100
+microseconds (10000 samples per second). To sample faster, use the
+sample_highspeed function.</p>
+
+<ul>
+<li><code>channel</code>: the ADC channel to sample</li>
+<li><code>frequency</code>: the number of samples per second to collect</li>
+</ul>
+</div><h4 id='method.stop_sampling' class="method"><span id='stop_sampling.v' class='invisible'><code>fn <a href='../../kernel/hil/adc/trait.Adc.html#tymethod.stop_sampling' class='fnname'>stop_sampling</a>(&amp;self) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Stop continuously sampling the ADC.
+This is expected to be called to stop continuous sampling operations,
+but can be called to abort any currently running operation. The buffer,
+if any, will be returned via the <code>samples_ready</code> callback.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../kernel/hil/adc/trait.AdcHighSpeed.html" title="trait kernel::hil::adc::AdcHighSpeed">AdcHighSpeed</a> for <a class="struct" href="../../sam4l/adc/struct.Adc.html" title="struct sam4l::adc::Adc">Adc</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/adc.rs.html#617-781' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>Implements an ADC capable of continuous sampling</p>
+</div><div class='impl-items'><h4 id='method.sample_highspeed' class="method"><span id='sample_highspeed.v' class='invisible'><code>fn <a href='../../kernel/hil/adc/trait.AdcHighSpeed.html#tymethod.sample_highspeed' class='fnname'>sample_highspeed</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;channel: &amp;Self::<a class="type" href="../../kernel/hil/adc/trait.Adc.html#associatedtype.Channel" title="type kernel::hil::adc::Adc::Channel">Channel</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;frequency: u32, <br>&nbsp;&nbsp;&nbsp;&nbsp;buffer1: &amp;'static mut [u16], <br>&nbsp;&nbsp;&nbsp;&nbsp;length1: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;buffer2: &amp;'static mut [u16], <br>&nbsp;&nbsp;&nbsp;&nbsp;length2: usize<br>) -&gt; (<a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static mut [u16]&gt;, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static mut [u16]&gt;)</code></span></h4>
+<div class='docblock'><p>Capture buffered samples from the ADC continuously at a given
+frequency, calling the client whenever a buffer fills up. The client is
+then expected to either stop sampling or provide an additional buffer
+to sample into. Note that due to hardware constraints the maximum
+frequency range of the ADC is from 187 kHz to 23 Hz (although its
+precision is limited at higher frequencies due to aliasing).</p>
+
+<ul>
+<li><code>channel</code>: the ADC channel to sample</li>
+<li><code>frequency</code>: frequency to sample at</li>
+<li><code>buffer1</code>: first buffer to fill with samples</li>
+<li><code>length1</code>: number of samples to collect (up to buffer length)</li>
+<li><code>buffer2</code>: second buffer to fill once the first is full</li>
+<li><code>length2</code>: number of samples to collect (up to buffer length)</li>
+</ul>
+</div><h4 id='method.provide_buffer' class="method"><span id='provide_buffer.v' class='invisible'><code>fn <a href='../../kernel/hil/adc/trait.AdcHighSpeed.html#tymethod.provide_buffer' class='fnname'>provide_buffer</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;buf: &amp;'static mut [u16], <br>&nbsp;&nbsp;&nbsp;&nbsp;length: usize<br>) -&gt; (<a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static mut [u16]&gt;)</code></span></h4>
+<div class='docblock'><p>Provide a new buffer to send on-going buffered continuous samples to.
+This is expected to be called after the <code>samples_ready</code> callback.</p>
+
+<ul>
+<li><code>buf</code>: buffer to fill with samples</li>
+<li><code>length</code>: number of samples to collect (up to buffer length)</li>
+</ul>
+</div><h4 id='method.retrieve_buffers' class="method"><span id='retrieve_buffers.v' class='invisible'><code>fn <a href='../../kernel/hil/adc/trait.AdcHighSpeed.html#tymethod.retrieve_buffers' class='fnname'>retrieve_buffers</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self<br>) -&gt; (<a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static mut [u16]&gt;, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static mut [u16]&gt;)</code></span></h4>
+<div class='docblock'><p>Reclaim buffers after the ADC is stopped.
+This is expected to be called after <code>stop_sampling</code>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sam4l/dma/trait.DMAClient.html" title="trait sam4l::dma::DMAClient">DMAClient</a> for <a class="struct" href="../../sam4l/adc/struct.Adc.html" title="struct sam4l::adc::Adc">Adc</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/adc.rs.html#784-862' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>Implements a client of a DMA.</p>
+</div><div class='impl-items'><h4 id='method.xfer_done' class="method"><span id='xfer_done.v' class='invisible'><code>fn <a href='../../sam4l/dma/trait.DMAClient.html#tymethod.xfer_done' class='fnname'>xfer_done</a>(&amp;self, pid: <a class="enum" href="../../sam4l/dma/enum.DMAPeripheral.html" title="enum sam4l::dma::DMAPeripheral">DMAPeripheral</a>)</code></span></h4>
+<div class='docblock'><p>Handler for DMA transfer completion.</p>
+
+<ul>
+<li><code>pid</code>: the DMA peripheral that is complete</li>
+</ul>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "sam4l";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

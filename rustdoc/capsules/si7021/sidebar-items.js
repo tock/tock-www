@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Registers",""],["State","States of the I2C protocol with the LPS331AP."]],"static":[["BUFFER",""]],"struct":[["SI7021",""]]});

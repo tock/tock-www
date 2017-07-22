@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `MAX17205Driver` struct in crate `capsules`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, MAX17205Driver">
+
+    <title>capsules::max17205::MAX17205Driver - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct MAX17205Driver</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>capsules</a>::<wbr><a href='index.html'>max17205</a></p><script>window.sidebarCurrent = {name: 'MAX17205Driver', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>capsules</a>::<wbr><a href='index.html'>max17205</a>::<wbr><a class="struct" href=''>MAX17205Driver</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/capsules/max17205.rs.html#279-282' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct MAX17205Driver&lt;'a&gt; {
+    max17205: &amp;'a <a class="struct" href="../../capsules/max17205/struct.MAX17205.html" title="struct capsules::max17205::MAX17205">MAX17205</a>&lt;'a&gt;,
+    callback: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../kernel/callback/struct.Callback.html" title="struct kernel::callback::Callback">Callback</a>&gt;&gt;,
+}</pre><div class='docblock'><p>Default implementation of the MAX17205 driver that provides a <code>Driver</code>
+interface for providing access to applications.</p>
+</div><h2 id='fields' class='fields'>Fields</h2><span id='structfield.max17205' class="structfield">
+                           <span id='max17205.v' class='invisible'>
+                           <code>max17205: &amp;'a <a class="struct" href="../../capsules/max17205/struct.MAX17205.html" title="struct capsules::max17205::MAX17205">MAX17205</a>&lt;'a&gt;</code>
+                           </span></span><span id='structfield.callback' class="structfield">
+                           <span id='callback.v' class='invisible'>
+                           <code>callback: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../kernel/callback/struct.Callback.html" title="struct kernel::callback::Callback">Callback</a>&gt;&gt;</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="struct" href="../../capsules/max17205/struct.MAX17205Driver.html" title="struct capsules::max17205::MAX17205Driver">MAX17205Driver</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/max17205.rs.html#284-291' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(max: &amp;'a <a class="struct" href="../../capsules/max17205/struct.MAX17205.html" title="struct capsules::max17205::MAX17205">MAX17205</a>) -&gt; <a class="struct" href="../../capsules/max17205/struct.MAX17205Driver.html" title="struct capsules::max17205::MAX17205Driver">MAX17205Driver</a>&lt;'a&gt;</code></span></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../capsules/max17205/trait.MAX17205Client.html" title="trait capsules::max17205::MAX17205Client">MAX17205Client</a> for <a class="struct" href="../../capsules/max17205/struct.MAX17205Driver.html" title="struct capsules::max17205::MAX17205Driver">MAX17205Driver</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/max17205.rs.html#293-313' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.status' class="method"><span id='status.v' class='invisible'><code>fn <a href='../../capsules/max17205/trait.MAX17205Client.html#tymethod.status' class='fnname'>status</a>(&amp;self, status: u16)</code></span></h4>
+<h4 id='method.state_of_charge' class="method"><span id='state_of_charge.v' class='invisible'><code>fn <a href='../../capsules/max17205/trait.MAX17205Client.html#tymethod.state_of_charge' class='fnname'>state_of_charge</a>(&amp;self, percent: u16, capacity: u16, full_capacity: u16)</code></span></h4>
+<h4 id='method.voltage_current' class="method"><span id='voltage_current.v' class='invisible'><code>fn <a href='../../capsules/max17205/trait.MAX17205Client.html#tymethod.voltage_current' class='fnname'>voltage_current</a>(&amp;self, voltage: u16, current: u16)</code></span></h4>
+<h4 id='method.coulomb' class="method"><span id='coulomb.v' class='invisible'><code>fn <a href='../../capsules/max17205/trait.MAX17205Client.html#tymethod.coulomb' class='fnname'>coulomb</a>(&amp;self, coulomb: u16)</code></span></h4>
+</div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../kernel/driver/trait.Driver.html" title="trait kernel::driver::Driver">Driver</a> for <a class="struct" href="../../capsules/max17205/struct.MAX17205Driver.html" title="struct capsules::max17205::MAX17205Driver">MAX17205Driver</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/max17205.rs.html#315-366' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.subscribe' class="method"><span id='subscribe.v' class='invisible'><code>fn <a href='../../kernel/driver/trait.Driver.html#method.subscribe' class='fnname'>subscribe</a>(&amp;self, subscribe_num: usize, callback: <a class="struct" href="../../kernel/callback/struct.Callback.html" title="struct kernel::callback::Callback">Callback</a>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Setup callback.</p>
+
+<h3 id='subscribe_num' class='section-header'><a href='#subscribe_num'><code>subscribe_num</code></a></h3>
+<ul>
+<li><code>0</code>: Setup a callback for when all events complete or data is ready.
+
+<ul>
+<li><code>1</code>: Return the chip status.</li>
+<li><code>2</code>: Return the state of charge.</li>
+<li><code>3</code>: Return the voltage and current.</li>
+<li><code>4</code>: Return the raw coulombs.</li>
+</ul></li>
+</ul>
+</div><h4 id='method.command' class="method"><span id='command.v' class='invisible'><code>fn <a href='../../kernel/driver/trait.Driver.html#method.command' class='fnname'>command</a>(&amp;self, command_num: usize, _data: usize, _: <a class="struct" href="../../kernel/callback/struct.AppId.html" title="struct kernel::callback::AppId">AppId</a>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Setup and read the MAX17205.</p>
+
+<h3 id='command_num' class='section-header'><a href='#command_num'><code>command_num</code></a></h3>
+<ul>
+<li><code>0</code>: Driver check.</li>
+<li><code>1</code>: Read the current status of the MAX17205.</li>
+<li><code>2</code>: Read the current state of charge percent.</li>
+<li><code>3</code>: Read the current voltage and current draw.</li>
+<li><code>4</code>: Read the raw coulomb count.</li>
+</ul>
+</div><h4 id='method.allow' class="method"><span id='allow.v' class='invisible'><code>fn <a href='../../kernel/driver/trait.Driver.html#method.allow' class='fnname'>allow</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;app: <a class="struct" href="../../kernel/callback/struct.AppId.html" title="struct kernel::callback::AppId">AppId</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;minor_num: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;slice: <a class="struct" href="../../kernel/mem/struct.AppSlice.html" title="struct kernel::mem::AppSlice">AppSlice</a>&lt;<a class="struct" href="../../kernel/mem/struct.Shared.html" title="struct kernel::mem::Shared">Shared</a>, u8&gt;<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p><code>allow</code> lets an application give the driver access to a buffer in the application&#39;s memory. This returns <code>ENOSUPPORT</code> if not used. <a href="../../kernel/driver/trait.Driver.html#method.allow">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "capsules";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

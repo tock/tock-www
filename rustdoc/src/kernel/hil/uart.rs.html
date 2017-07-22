@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="Source to the Rust file `/home/bradjc/git/tock/kernel/src/hil/uart.rs`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang">
+
+    <title>uart.rs.html -- source</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc source">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content"><pre class="line-numbers"><span id="1"> 1</span>
+<span id="2"> 2</span>
+<span id="3"> 3</span>
+<span id="4"> 4</span>
+<span id="5"> 5</span>
+<span id="6"> 6</span>
+<span id="7"> 7</span>
+<span id="8"> 8</span>
+<span id="9"> 9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+<span id="61">61</span>
+<span id="62">62</span>
+<span id="63">63</span>
+<span id="64">64</span>
+<span id="65">65</span>
+<span id="66">66</span>
+<span id="67">67</span>
+<span id="68">68</span>
+<span id="69">69</span>
+<span id="70">70</span>
+<span id="71">71</span>
+<span id="72">72</span>
+<span id="73">73</span>
+<span id="74">74</span>
+<span id="75">75</span>
+<span id="76">76</span>
+<span id="77">77</span>
+<span id="78">78</span>
+<span id="79">79</span>
+<span id="80">80</span>
+<span id="81">81</span>
+<span id="82">82</span>
+<span id="83">83</span>
+<span id="84">84</span>
+<span id="85">85</span>
+</pre><pre class="rust ">
+<span class="doccomment">//! Interfaces for UART communications.</span>
+
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
+<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">StopBits</span> {
+    <span class="ident">One</span> <span class="op">=</span> <span class="number">0</span>,
+    <span class="ident">Two</span> <span class="op">=</span> <span class="number">2</span>,
+}
+
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
+<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Parity</span> {
+    <span class="prelude-val">None</span> <span class="op">=</span> <span class="number">0</span>,
+    <span class="ident">Odd</span> <span class="op">=</span> <span class="number">1</span>,
+    <span class="ident">Even</span> <span class="op">=</span> <span class="number">2</span>,
+}
+
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">UARTParams</span> {
+    <span class="kw">pub</span> <span class="ident">baud_rate</span>: <span class="ident">u32</span>, <span class="comment">// baud rate in bit/s</span>
+    <span class="kw">pub</span> <span class="ident">stop_bits</span>: <span class="ident">StopBits</span>,
+    <span class="kw">pub</span> <span class="ident">parity</span>: <span class="ident">Parity</span>,
+    <span class="kw">pub</span> <span class="ident">hw_flow_control</span>: <span class="ident">bool</span>,
+}
+
+<span class="doccomment">/// The type of error encountered during UART transaction.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">PartialEq</span>)]</span>
+<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Error</span> {
+    <span class="doccomment">/// Parity error during receive</span>
+    <span class="ident">ParityError</span>,
+
+    <span class="doccomment">/// Framing error during receive</span>
+    <span class="ident">FramingError</span>,
+
+    <span class="doccomment">/// Overrun error during receive</span>
+    <span class="ident">OverrunError</span>,
+
+    <span class="doccomment">/// Repeat call of transmit or receive before initial command complete</span>
+    <span class="ident">RepeatCallError</span>,
+
+    <span class="doccomment">/// UART hardware was reset</span>
+    <span class="ident">ResetError</span>,
+
+    <span class="doccomment">/// No error occurred and the command completed successfully</span>
+    <span class="ident">CommandComplete</span>,
+}
+
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">UART</span> {
+    <span class="doccomment">/// Set the client for this UART peripheral. The client will be</span>
+    <span class="doccomment">/// called when events finish.</span>
+    <span class="kw">fn</span> <span class="ident">set_client</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">client</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">Client</span>);
+
+    <span class="doccomment">/// Initialize UART</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Panics if UARTParams are invalid for the current chip.</span>
+    <span class="kw">fn</span> <span class="ident">init</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">params</span>: <span class="ident">UARTParams</span>);
+
+    <span class="doccomment">/// Transmit data.</span>
+    <span class="kw">fn</span> <span class="ident">transmit</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tx_data</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>], <span class="ident">tx_len</span>: <span class="ident">usize</span>);
+
+    <span class="doccomment">/// Receive data until buffer is full.</span>
+    <span class="kw">fn</span> <span class="ident">receive</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">rx_buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>], <span class="ident">rx_len</span>: <span class="ident">usize</span>);
+}
+
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">UARTAdvanced</span>: <span class="ident">UART</span> {
+    <span class="doccomment">/// Receive data until `interbyte_timeout` bit periods have passed since the</span>
+    <span class="doccomment">/// last byte or buffer is full. Does not timeout until at least one byte</span>
+    <span class="doccomment">/// has been received.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// * `interbyte_timeout`: number of bit periods since last data received.</span>
+    <span class="kw">fn</span> <span class="ident">receive_automatic</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">rx_buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>], <span class="ident">interbyte_timeout</span>: <span class="ident">u8</span>);
+
+    <span class="doccomment">/// Receive data until `terminator` data byte has been received or buffer</span>
+    <span class="doccomment">/// is full</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// * `terminator`: data byte terminating a reception.</span>
+    <span class="kw">fn</span> <span class="ident">receive_until_terminator</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">rx_buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>], <span class="ident">terminator</span>: <span class="ident">u8</span>);
+}
+
+<span class="doccomment">/// Implement Client to receive callbacks from UART.</span>
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Client</span> {
+    <span class="doccomment">/// UART transmit complete.</span>
+    <span class="kw">fn</span> <span class="ident">transmit_complete</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tx_buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>], <span class="ident">error</span>: <span class="ident">Error</span>);
+
+    <span class="doccomment">/// UART receive complete.</span>
+    <span class="kw">fn</span> <span class="ident">receive_complete</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">rx_buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>], <span class="ident">rx_len</span>: <span class="ident">usize</span>, <span class="ident">error</span>: <span class="ident">Error</span>);
+}
+</pre>
+</section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "kernel";
+    </script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

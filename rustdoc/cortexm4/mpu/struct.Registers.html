@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Registers` struct in crate `cortexm4`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Registers">
+
+    <title>cortexm4::mpu::Registers - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct Registers</p><div class="block items"><ul><li><a href="#fields">Fields</a></li></ul></div><p class='location'><a href='../index.html'>cortexm4</a>::<wbr><a href='index.html'>mpu</a></p><script>window.sidebarCurrent = {name: 'Registers', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>cortexm4</a>::<wbr><a href='index.html'>mpu</a>::<wbr><a class="struct" href=''>Registers</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/cortexm4/mpu.rs.html#31-95' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'><div class="docblock attributes">#[repr(C, packed)]
+</div>pub struct Registers {
+    pub mpu_type: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;<a class="struct" href="../../cortexm4/mpu/struct.MpuType.html" title="struct cortexm4::mpu::MpuType">MpuType</a>&gt;,
+    pub control: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    pub region_number: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    pub region_base_address: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+    pub region_attributes_and_size: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;,
+}</pre><div class='docblock'><p>MPU Registers for the Cortex-M4 family</p>
+
+<p>Described in section 4.5 of
+<a href="http://infocenter.arm.com/help/topic/com.arm.doc.dui0553a/DUI0553A_cortex_m4_dgug.pdf">http://infocenter.arm.com/help/topic/com.arm.doc.dui0553a/DUI0553A_cortex_m4_dgug.pdf</a></p>
+</div><h2 id='fields' class='fields'>Fields</h2><span id='structfield.mpu_type' class="structfield">
+                           <span id='mpu_type.v' class='invisible'>
+                           <code>mpu_type: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;<a class="struct" href="../../cortexm4/mpu/struct.MpuType.html" title="struct cortexm4::mpu::MpuType">MpuType</a>&gt;</code>
+                           </span></span><span id='structfield.control' class="structfield">
+                           <span id='control.v' class='invisible'>
+                           <code>control: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><div class='docblock'><p>The control register:
+  * Enables the MPU (bit 0).
+  * Enables MPU in hard-fault, non-maskable interrupt (NMI) and
+    FAULTMASK escalated handlers (bit 1).
+  * Enables the default memory map background region in privileged mode
+    (bit 2).</p>
+
+<table>
+<thead>
+<tr>
+<th>Bit</th>
+<th>Name</th>
+<th>Function</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>0</td>
+<td>ENABLE</td>
+<td>Enable the MPU (1=enabled)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>HFNMIENA</td>
+<td>0=MPU disabled during HardFault, NMI, and FAULTMASK</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>regardless of bit 0. 1 leaves enabled.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PRIVDEFENA</td>
+<td>0=Any memory access not explicitly enabled causes fault</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>1=Privledged mode code can read any memory address</td>
+</tr>
+</tbody>
+</table>
+</div><span id='structfield.region_number' class="structfield">
+                           <span id='region_number.v' class='invisible'>
+                           <code>region_number: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><div class='docblock'><p>Selects the region number (zero-indexed) referenced by the region base
+address and region attribute and size registers.</p>
+
+<table>
+<thead>
+<tr>
+<th>Bit</th>
+<th>Name</th>
+<th>Function</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>[7:0]</td>
+<td>REGION</td>
+<td>Region for writes to MPU_RBAR or MPU_RASR. Range 0-7.</td>
+</tr>
+</tbody>
+</table>
+</div><span id='structfield.region_base_address' class="structfield">
+                           <span id='region_base_address.v' class='invisible'>
+                           <code>region_base_address: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><div class='docblock'><p>Defines the base address of the currently selected MPU region.</p>
+
+<p>When writing, the first 3 bits select a new region if bit-4 is set.</p>
+
+<p>The top bits set the base address of the register, with the bottom 32-N
+bits masked based on the region size (set in the region attribute and
+size register) according to:</p>
+
+<p>N = Log2(Region size in bytes)</p>
+
+<table>
+<thead>
+<tr>
+<th>Bit</th>
+<th>Name</th>
+<th>Function</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>[31:N]</td>
+<td>ADDR</td>
+<td>Region base address</td>
+</tr>
+<tr>
+<td>[(N-1):5]</td>
+<td></td>
+<td>Reserved</td>
+</tr>
+<tr>
+<td>[4]</td>
+<td>VALID</td>
+<td>{RZ} 0=Use region_number reg, 1=Use REGION</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Update base address for chosen region</td>
+</tr>
+<tr>
+<td>[3:0]</td>
+<td>REGION</td>
+<td>{W} (see VALID) ; {R} return region_number reg</td>
+</tr>
+</tbody>
+</table>
+</div><span id='structfield.region_attributes_and_size' class="structfield">
+                           <span id='region_attributes_and_size.v' class='invisible'>
+                           <code>region_attributes_and_size: <a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>&lt;u32&gt;</code>
+                           </span></span><div class='docblock'><p>Defines the region size and memory attributes of the selected MPU
+region. The bits are defined as in 4.5.5 of the Cortex-M4 user guide:</p>
+
+<table>
+<thead>
+<tr>
+<th>Bit</th>
+<th>Name</th>
+<th>Function</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>0</td>
+<td>ENABLE</td>
+<td>Region enable</td>
+</tr>
+<tr>
+<td>5:1</td>
+<td>SIZE</td>
+<td>Region size is 2<sup>SIZE+1</sup> (minimum 3)</td>
+</tr>
+<tr>
+<td>7:6</td>
+<td></td>
+<td>Unused</td>
+</tr>
+<tr>
+<td>15:8</td>
+<td>SRD</td>
+<td>Subregion disable bits (0 is enable, 1 is disable)</td>
+</tr>
+<tr>
+<td>16</td>
+<td>B</td>
+<td>Memory access attribute</td>
+</tr>
+<tr>
+<td>17</td>
+<td>C</td>
+<td>Memory access attribute</td>
+</tr>
+<tr>
+<td>18</td>
+<td>S</td>
+<td>Shareable</td>
+</tr>
+<tr>
+<td>21:19</td>
+<td>TEX</td>
+<td>Memory access attribute</td>
+</tr>
+<tr>
+<td>23:22</td>
+<td></td>
+<td>Unused</td>
+</tr>
+<tr>
+<td>26:24</td>
+<td>AP</td>
+<td>Access permission field</td>
+</tr>
+<tr>
+<td>27</td>
+<td></td>
+<td>Unused</td>
+</tr>
+<tr>
+<td>28</td>
+<td>XN</td>
+<td>Instruction access disable</td>
+</tr>
+</tbody>
+</table>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "cortexm4";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="Source to the Rust file `/home/bradjc/git/tock/capsules/src/tsl2561.rs`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang">
+
+    <title>tsl2561.rs.html -- source</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc source">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content"><pre class="line-numbers"><span id="1">  1</span>
+<span id="2">  2</span>
+<span id="3">  3</span>
+<span id="4">  4</span>
+<span id="5">  5</span>
+<span id="6">  6</span>
+<span id="7">  7</span>
+<span id="8">  8</span>
+<span id="9">  9</span>
+<span id="10"> 10</span>
+<span id="11"> 11</span>
+<span id="12"> 12</span>
+<span id="13"> 13</span>
+<span id="14"> 14</span>
+<span id="15"> 15</span>
+<span id="16"> 16</span>
+<span id="17"> 17</span>
+<span id="18"> 18</span>
+<span id="19"> 19</span>
+<span id="20"> 20</span>
+<span id="21"> 21</span>
+<span id="22"> 22</span>
+<span id="23"> 23</span>
+<span id="24"> 24</span>
+<span id="25"> 25</span>
+<span id="26"> 26</span>
+<span id="27"> 27</span>
+<span id="28"> 28</span>
+<span id="29"> 29</span>
+<span id="30"> 30</span>
+<span id="31"> 31</span>
+<span id="32"> 32</span>
+<span id="33"> 33</span>
+<span id="34"> 34</span>
+<span id="35"> 35</span>
+<span id="36"> 36</span>
+<span id="37"> 37</span>
+<span id="38"> 38</span>
+<span id="39"> 39</span>
+<span id="40"> 40</span>
+<span id="41"> 41</span>
+<span id="42"> 42</span>
+<span id="43"> 43</span>
+<span id="44"> 44</span>
+<span id="45"> 45</span>
+<span id="46"> 46</span>
+<span id="47"> 47</span>
+<span id="48"> 48</span>
+<span id="49"> 49</span>
+<span id="50"> 50</span>
+<span id="51"> 51</span>
+<span id="52"> 52</span>
+<span id="53"> 53</span>
+<span id="54"> 54</span>
+<span id="55"> 55</span>
+<span id="56"> 56</span>
+<span id="57"> 57</span>
+<span id="58"> 58</span>
+<span id="59"> 59</span>
+<span id="60"> 60</span>
+<span id="61"> 61</span>
+<span id="62"> 62</span>
+<span id="63"> 63</span>
+<span id="64"> 64</span>
+<span id="65"> 65</span>
+<span id="66"> 66</span>
+<span id="67"> 67</span>
+<span id="68"> 68</span>
+<span id="69"> 69</span>
+<span id="70"> 70</span>
+<span id="71"> 71</span>
+<span id="72"> 72</span>
+<span id="73"> 73</span>
+<span id="74"> 74</span>
+<span id="75"> 75</span>
+<span id="76"> 76</span>
+<span id="77"> 77</span>
+<span id="78"> 78</span>
+<span id="79"> 79</span>
+<span id="80"> 80</span>
+<span id="81"> 81</span>
+<span id="82"> 82</span>
+<span id="83"> 83</span>
+<span id="84"> 84</span>
+<span id="85"> 85</span>
+<span id="86"> 86</span>
+<span id="87"> 87</span>
+<span id="88"> 88</span>
+<span id="89"> 89</span>
+<span id="90"> 90</span>
+<span id="91"> 91</span>
+<span id="92"> 92</span>
+<span id="93"> 93</span>
+<span id="94"> 94</span>
+<span id="95"> 95</span>
+<span id="96"> 96</span>
+<span id="97"> 97</span>
+<span id="98"> 98</span>
+<span id="99"> 99</span>
+<span id="100">100</span>
+<span id="101">101</span>
+<span id="102">102</span>
+<span id="103">103</span>
+<span id="104">104</span>
+<span id="105">105</span>
+<span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
+<span id="111">111</span>
+<span id="112">112</span>
+<span id="113">113</span>
+<span id="114">114</span>
+<span id="115">115</span>
+<span id="116">116</span>
+<span id="117">117</span>
+<span id="118">118</span>
+<span id="119">119</span>
+<span id="120">120</span>
+<span id="121">121</span>
+<span id="122">122</span>
+<span id="123">123</span>
+<span id="124">124</span>
+<span id="125">125</span>
+<span id="126">126</span>
+<span id="127">127</span>
+<span id="128">128</span>
+<span id="129">129</span>
+<span id="130">130</span>
+<span id="131">131</span>
+<span id="132">132</span>
+<span id="133">133</span>
+<span id="134">134</span>
+<span id="135">135</span>
+<span id="136">136</span>
+<span id="137">137</span>
+<span id="138">138</span>
+<span id="139">139</span>
+<span id="140">140</span>
+<span id="141">141</span>
+<span id="142">142</span>
+<span id="143">143</span>
+<span id="144">144</span>
+<span id="145">145</span>
+<span id="146">146</span>
+<span id="147">147</span>
+<span id="148">148</span>
+<span id="149">149</span>
+<span id="150">150</span>
+<span id="151">151</span>
+<span id="152">152</span>
+<span id="153">153</span>
+<span id="154">154</span>
+<span id="155">155</span>
+<span id="156">156</span>
+<span id="157">157</span>
+<span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
+<span id="161">161</span>
+<span id="162">162</span>
+<span id="163">163</span>
+<span id="164">164</span>
+<span id="165">165</span>
+<span id="166">166</span>
+<span id="167">167</span>
+<span id="168">168</span>
+<span id="169">169</span>
+<span id="170">170</span>
+<span id="171">171</span>
+<span id="172">172</span>
+<span id="173">173</span>
+<span id="174">174</span>
+<span id="175">175</span>
+<span id="176">176</span>
+<span id="177">177</span>
+<span id="178">178</span>
+<span id="179">179</span>
+<span id="180">180</span>
+<span id="181">181</span>
+<span id="182">182</span>
+<span id="183">183</span>
+<span id="184">184</span>
+<span id="185">185</span>
+<span id="186">186</span>
+<span id="187">187</span>
+<span id="188">188</span>
+<span id="189">189</span>
+<span id="190">190</span>
+<span id="191">191</span>
+<span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
+<span id="200">200</span>
+<span id="201">201</span>
+<span id="202">202</span>
+<span id="203">203</span>
+<span id="204">204</span>
+<span id="205">205</span>
+<span id="206">206</span>
+<span id="207">207</span>
+<span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
+<span id="213">213</span>
+<span id="214">214</span>
+<span id="215">215</span>
+<span id="216">216</span>
+<span id="217">217</span>
+<span id="218">218</span>
+<span id="219">219</span>
+<span id="220">220</span>
+<span id="221">221</span>
+<span id="222">222</span>
+<span id="223">223</span>
+<span id="224">224</span>
+<span id="225">225</span>
+<span id="226">226</span>
+<span id="227">227</span>
+<span id="228">228</span>
+<span id="229">229</span>
+<span id="230">230</span>
+<span id="231">231</span>
+<span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
+<span id="239">239</span>
+<span id="240">240</span>
+<span id="241">241</span>
+<span id="242">242</span>
+<span id="243">243</span>
+<span id="244">244</span>
+<span id="245">245</span>
+<span id="246">246</span>
+<span id="247">247</span>
+<span id="248">248</span>
+<span id="249">249</span>
+<span id="250">250</span>
+<span id="251">251</span>
+<span id="252">252</span>
+<span id="253">253</span>
+<span id="254">254</span>
+<span id="255">255</span>
+<span id="256">256</span>
+<span id="257">257</span>
+<span id="258">258</span>
+<span id="259">259</span>
+<span id="260">260</span>
+<span id="261">261</span>
+<span id="262">262</span>
+<span id="263">263</span>
+<span id="264">264</span>
+<span id="265">265</span>
+<span id="266">266</span>
+<span id="267">267</span>
+<span id="268">268</span>
+<span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
+<span id="274">274</span>
+<span id="275">275</span>
+<span id="276">276</span>
+<span id="277">277</span>
+<span id="278">278</span>
+<span id="279">279</span>
+<span id="280">280</span>
+<span id="281">281</span>
+<span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
+<span id="288">288</span>
+<span id="289">289</span>
+<span id="290">290</span>
+<span id="291">291</span>
+<span id="292">292</span>
+<span id="293">293</span>
+<span id="294">294</span>
+<span id="295">295</span>
+<span id="296">296</span>
+<span id="297">297</span>
+<span id="298">298</span>
+<span id="299">299</span>
+<span id="300">300</span>
+<span id="301">301</span>
+<span id="302">302</span>
+<span id="303">303</span>
+<span id="304">304</span>
+<span id="305">305</span>
+<span id="306">306</span>
+<span id="307">307</span>
+<span id="308">308</span>
+<span id="309">309</span>
+<span id="310">310</span>
+<span id="311">311</span>
+<span id="312">312</span>
+<span id="313">313</span>
+<span id="314">314</span>
+<span id="315">315</span>
+<span id="316">316</span>
+<span id="317">317</span>
+<span id="318">318</span>
+<span id="319">319</span>
+<span id="320">320</span>
+<span id="321">321</span>
+<span id="322">322</span>
+<span id="323">323</span>
+<span id="324">324</span>
+<span id="325">325</span>
+<span id="326">326</span>
+<span id="327">327</span>
+<span id="328">328</span>
+<span id="329">329</span>
+<span id="330">330</span>
+<span id="331">331</span>
+<span id="332">332</span>
+<span id="333">333</span>
+<span id="334">334</span>
+<span id="335">335</span>
+<span id="336">336</span>
+<span id="337">337</span>
+<span id="338">338</span>
+<span id="339">339</span>
+<span id="340">340</span>
+<span id="341">341</span>
+<span id="342">342</span>
+<span id="343">343</span>
+<span id="344">344</span>
+<span id="345">345</span>
+<span id="346">346</span>
+<span id="347">347</span>
+<span id="348">348</span>
+<span id="349">349</span>
+<span id="350">350</span>
+<span id="351">351</span>
+<span id="352">352</span>
+<span id="353">353</span>
+<span id="354">354</span>
+<span id="355">355</span>
+<span id="356">356</span>
+<span id="357">357</span>
+<span id="358">358</span>
+<span id="359">359</span>
+<span id="360">360</span>
+<span id="361">361</span>
+<span id="362">362</span>
+<span id="363">363</span>
+<span id="364">364</span>
+<span id="365">365</span>
+<span id="366">366</span>
+<span id="367">367</span>
+<span id="368">368</span>
+<span id="369">369</span>
+<span id="370">370</span>
+<span id="371">371</span>
+<span id="372">372</span>
+<span id="373">373</span>
+<span id="374">374</span>
+<span id="375">375</span>
+<span id="376">376</span>
+<span id="377">377</span>
+<span id="378">378</span>
+<span id="379">379</span>
+<span id="380">380</span>
+<span id="381">381</span>
+<span id="382">382</span>
+<span id="383">383</span>
+<span id="384">384</span>
+<span id="385">385</span>
+<span id="386">386</span>
+<span id="387">387</span>
+<span id="388">388</span>
+<span id="389">389</span>
+<span id="390">390</span>
+<span id="391">391</span>
+<span id="392">392</span>
+<span id="393">393</span>
+<span id="394">394</span>
+<span id="395">395</span>
+<span id="396">396</span>
+<span id="397">397</span>
+<span id="398">398</span>
+<span id="399">399</span>
+<span id="400">400</span>
+<span id="401">401</span>
+<span id="402">402</span>
+<span id="403">403</span>
+<span id="404">404</span>
+<span id="405">405</span>
+<span id="406">406</span>
+<span id="407">407</span>
+<span id="408">408</span>
+<span id="409">409</span>
+<span id="410">410</span>
+<span id="411">411</span>
+<span id="412">412</span>
+<span id="413">413</span>
+<span id="414">414</span>
+<span id="415">415</span>
+<span id="416">416</span>
+<span id="417">417</span>
+<span id="418">418</span>
+<span id="419">419</span>
+<span id="420">420</span>
+<span id="421">421</span>
+<span id="422">422</span>
+<span id="423">423</span>
+<span id="424">424</span>
+<span id="425">425</span>
+<span id="426">426</span>
+<span id="427">427</span>
+<span id="428">428</span>
+<span id="429">429</span>
+<span id="430">430</span>
+<span id="431">431</span>
+<span id="432">432</span>
+<span id="433">433</span>
+<span id="434">434</span>
+<span id="435">435</span>
+<span id="436">436</span>
+<span id="437">437</span>
+<span id="438">438</span>
+<span id="439">439</span>
+<span id="440">440</span>
+<span id="441">441</span>
+<span id="442">442</span>
+<span id="443">443</span>
+<span id="444">444</span>
+<span id="445">445</span>
+<span id="446">446</span>
+<span id="447">447</span>
+<span id="448">448</span>
+<span id="449">449</span>
+<span id="450">450</span>
+<span id="451">451</span>
+<span id="452">452</span>
+<span id="453">453</span>
+<span id="454">454</span>
+<span id="455">455</span>
+<span id="456">456</span>
+<span id="457">457</span>
+<span id="458">458</span>
+<span id="459">459</span>
+<span id="460">460</span>
+<span id="461">461</span>
+<span id="462">462</span>
+<span id="463">463</span>
+</pre><pre class="rust ">
+<span class="doccomment">//! Driver for the Taos TSL2561 light sensor.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! http://www.digikey.com/product-detail/en/ams-taos-usa-inc/TSL2561FN/TSL2561-FNCT-ND/3095298</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! &gt; The TSL2560 and TSL2561 are light-to-digital converters that transform</span>
+<span class="doccomment">//! &gt; light intensity to a digital signal output capable of direct I2C</span>
+<span class="doccomment">//! &gt; interface. Each device combines one broadband photodiode (visible plus</span>
+<span class="doccomment">//! &gt; infrared) and one infrared-responding photodiodeon a single CMOS</span>
+<span class="doccomment">//! &gt; integrated circuit capable of providing a near-photopic response over an</span>
+<span class="doccomment">//! &gt; effective 20-bit dynamic range (16-bit resolution). Two integrating ADCs</span>
+<span class="doccomment">//! &gt; convert the photodiode currents to a digital output that represents the</span>
+<span class="doccomment">//! &gt; irradiance measured on each channel. This digital output can be input to a</span>
+<span class="doccomment">//! &gt; microprocessor where illuminance (ambient light level) in lux is derived</span>
+<span class="doccomment">//! &gt; using an empirical formula to approximate the human eye response.</span>
+
+<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">cell</span>::<span class="ident">Cell</span>;
+<span class="kw">use</span> <span class="ident">kernel</span>::{<span class="ident">AppId</span>, <span class="ident">Callback</span>, <span class="ident">Driver</span>, <span class="ident">ReturnCode</span>};
+
+<span class="kw">use</span> <span class="ident">kernel</span>::<span class="ident">common</span>::<span class="ident">take_cell</span>::<span class="ident">TakeCell</span>;
+<span class="kw">use</span> <span class="ident">kernel</span>::<span class="ident">hil</span>::<span class="ident">gpio</span>;
+<span class="kw">use</span> <span class="ident">kernel</span>::<span class="ident">hil</span>::<span class="ident">i2c</span>;
+
+<span class="comment">// Buffer to use for I2C messages</span>
+<span class="kw">pub</span> <span class="kw">static</span> <span class="kw-2">mut</span> <span class="ident">BUFFER</span>: [<span class="ident">u8</span>; <span class="number">4</span>] <span class="op">=</span> [<span class="number">0</span>; <span class="number">4</span>];
+
+<span class="doccomment">/// Command register defines</span>
+<span class="kw">const</span> <span class="ident">COMMAND_REG</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="number">0x80</span>;
+<span class="kw">const</span> <span class="ident">WORD_PROTOCOL</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="number">0x20</span>;
+
+<span class="doccomment">/// Control_Reg defines</span>
+<span class="kw">const</span> <span class="ident">POWER_ON</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="number">0x03</span>;
+<span class="kw">const</span> <span class="ident">POWER_OFF</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="number">0x00</span>;
+
+<span class="doccomment">/// Timing_Reg defines</span>
+<span class="kw">const</span> <span class="ident">INTEGRATE_TIME_101_MS</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="number">0x01</span>;
+<span class="kw">const</span> <span class="ident">LOW_GAIN_MODE</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="number">0x00</span>;
+
+<span class="comment">// Interrupt_Control_Reg defines</span>
+<span class="kw">const</span> <span class="ident">INTERRUPT_CONTROL_LEVEL</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="number">0x10</span>;
+<span class="kw">const</span> <span class="ident">INTERRUPT_ON_ADC_DONE</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="number">0x0</span>;
+
+
+<span class="comment">// ADC counts to Lux value conversion copied from TSL2561 manual</span>
+<span class="comment">// −−−−------------------------------</span>
+<span class="comment">// Value scaling factors</span>
+<span class="comment">// −−−−−−−−−−−−−−−-------------------</span>
+<span class="kw">const</span> <span class="ident">LUX_SCALE</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="number">14</span>; <span class="comment">// scale by 2^14</span>
+<span class="kw">const</span> <span class="ident">RATIO_SCALE</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="number">9</span>; <span class="comment">// scale ratio by 2^9</span>
+
+<span class="comment">// −−−−−−−−−−−−−−−−−−−−−−−-----------</span>
+<span class="comment">// Integration time scaling factors</span>
+<span class="comment">// −−−−−−−−−−−−−−−−−−−−−−−−−−−−------</span>
+<span class="kw">const</span> <span class="ident">CH_SCALE</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="number">10</span>; <span class="comment">// scale channel values by 2^10</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span>
+<span class="kw">const</span> <span class="ident">CHSCALE_TINT0</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="number">0x7517</span>; <span class="comment">// 322/11 * 2^CH_SCALE</span>
+<span class="kw">const</span> <span class="ident">CHSCALE_TINT1</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="number">0x0fe7</span>; <span class="comment">// 322/81 * 2^CH_SCALE</span>
+
+<span class="comment">// −−−−−−−−−−−−−−−−−−−−−−−−−−−−------</span>
+<span class="comment">// T, FN, and CL Package coefficients</span>
+<span class="comment">// −−−−−−−−−−−−−−−−−−−−−−−−−−−−------</span>
+<span class="comment">// For Ch1/Ch0=0.00 to 0.50</span>
+<span class="comment">// Lux/Ch0=0.0304−0.062*((Ch1/Ch0)^1.4)</span>
+<span class="comment">// piecewise approximation</span>
+<span class="comment">// For Ch1/Ch0=0.00 to 0.125:</span>
+<span class="comment">// Lux/Ch0=0.0304−0.0272*(Ch1/Ch0)</span>
+<span class="comment">//</span>
+<span class="comment">// For Ch1/Ch0=0.125 to 0.250:</span>
+<span class="comment">// Lux/Ch0=0.0325−0.0440*(Ch1/Ch0)</span>
+<span class="comment">//</span>
+<span class="comment">// For Ch1/Ch0=0.250 to 0.375:</span>
+<span class="comment">// Lux/Ch0=0.0351−0.0544*(Ch1/Ch0)</span>
+<span class="comment">//</span>
+<span class="comment">// For Ch1/Ch0=0.375 to 0.50:</span>
+<span class="comment">// Lux/Ch0=0.0381−0.0624*(Ch1/Ch0)</span>
+<span class="comment">//</span>
+<span class="comment">// For Ch1/Ch0=0.50 to 0.61:</span>
+<span class="comment">// Lux/Ch0=0.0224−0.031*(Ch1/Ch0)</span>
+<span class="comment">//</span>
+<span class="comment">// For Ch1/Ch0=0.61 to 0.80:</span>
+<span class="comment">// Lux/Ch0=0.0128−0.0153*(Ch1/Ch0)</span>
+<span class="comment">//</span>
+<span class="comment">// For Ch1/Ch0=0.80 to 1.30:</span>
+<span class="comment">// Lux/Ch0=0.00146−0.00112*(Ch1/Ch0)</span>
+<span class="comment">//</span>
+<span class="comment">// For Ch1/Ch0&gt;1.3:</span>
+<span class="comment">// Lux/Ch0=0</span>
+<span class="comment">// −−−−−−−−−−−−−−−−−−−−−−−−−−−−------</span>
+<span class="kw">const</span> <span class="ident">K1T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x0040</span>; <span class="comment">// 0.125 * 2^RATIO_SCALE</span>
+<span class="kw">const</span> <span class="ident">B1T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x01f2</span>; <span class="comment">// 0.0304 * 2^LUX_SCALE</span>
+<span class="kw">const</span> <span class="ident">M1T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x01be</span>; <span class="comment">// 0.0272 * 2^LUX_SCALE</span>
+<span class="kw">const</span> <span class="ident">K2T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x0080</span>; <span class="comment">// 0.250 * 2^RATIO_SCALE</span>
+<span class="kw">const</span> <span class="ident">B2T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x0214</span>; <span class="comment">// 0.0325 * 2^LUX_SCALE</span>
+<span class="kw">const</span> <span class="ident">M2T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x02d1</span>; <span class="comment">// 0.0440 * 2^LUX_SCALE</span>
+<span class="kw">const</span> <span class="ident">K3T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x00c0</span>; <span class="comment">// 0.375 * 2^RATIO_SCALE</span>
+<span class="kw">const</span> <span class="ident">B3T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x023f</span>; <span class="comment">// 0.0351 * 2^LUX_SCALE</span>
+<span class="kw">const</span> <span class="ident">M3T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x037b</span>; <span class="comment">// 0.0544 * 2^LUX_SCALE</span>
+<span class="kw">const</span> <span class="ident">K4T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x0100</span>; <span class="comment">// 0.50 * 2^RATIO_SCALE</span>
+<span class="kw">const</span> <span class="ident">B4T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x0270</span>; <span class="comment">// 0.0381 * 2^LUX_SCALE</span>
+<span class="kw">const</span> <span class="ident">M4T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x03fe</span>; <span class="comment">// 0.0624 * 2^LUX_SCALE</span>
+<span class="kw">const</span> <span class="ident">K5T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x0138</span>; <span class="comment">// 0.61 * 2^RATIO_SCALE</span>
+<span class="kw">const</span> <span class="ident">B5T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x016f</span>; <span class="comment">// 0.0224 * 2^LUX_SCALE</span>
+<span class="kw">const</span> <span class="ident">M5T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x01fc</span>; <span class="comment">// 0.0310 * 2^LUX_SCALE</span>
+<span class="kw">const</span> <span class="ident">K6T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x019a</span>; <span class="comment">// 0.80 * 2^RATIO_SCALE</span>
+<span class="kw">const</span> <span class="ident">B6T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x00d2</span>; <span class="comment">// 0.0128 * 2^LUX_SCALE</span>
+<span class="kw">const</span> <span class="ident">M6T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x00fb</span>; <span class="comment">// 0.0153 * 2^LUX_SCALE</span>
+<span class="kw">const</span> <span class="ident">K7T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x029a</span>; <span class="comment">// 1.3 * 2^RATIO_SCALE</span>
+<span class="kw">const</span> <span class="ident">B7T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x0018</span>; <span class="comment">// 0.00146 * 2^LUX_SCALE</span>
+<span class="kw">const</span> <span class="ident">M7T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x0012</span>; <span class="comment">// 0.00112 * 2^LUX_SCALE</span>
+<span class="kw">const</span> <span class="ident">K8T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x029a</span>; <span class="comment">// 1.3 * 2^RATIO_SCALE</span>
+<span class="kw">const</span> <span class="ident">B8T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x0000</span>; <span class="comment">// 0.000 * 2^LUX_SCALE</span>
+<span class="kw">const</span> <span class="ident">M8T</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">0x0000</span>; <span class="comment">// 0.000 * 2^LUX_SCALE</span>
+
+<span class="comment">// −−−−−−−−−−−−−−−−−−−−−−−−−−−−------</span>
+<span class="comment">// CS package coefficients</span>
+<span class="comment">// −−−−−−−−−−−−−−−−−−−−−−−−−−−−------</span>
+<span class="comment">// For 0 &lt;= Ch1/Ch0 &lt;= 0.52</span>
+<span class="comment">// Lux/Ch0 = 0.0315−0.0593*((Ch1/Ch0)^1.4)</span>
+<span class="comment">// piecewise approximation</span>
+<span class="comment">// For 0 &lt;= Ch1/Ch0 &lt;= 0.13</span>
+<span class="comment">// Lux/Ch0 = 0.0315−0.0262*(Ch1/Ch0)</span>
+<span class="comment">// For 0.13 &lt;= Ch1/Ch0 &lt;= 0.26</span>
+<span class="comment">// Lux/Ch0 = 0.0337−0.0430*(Ch1/Ch0)</span>
+<span class="comment">// For 0.26 &lt;= Ch1/Ch0 &lt;= 0.39</span>
+<span class="comment">// Lux/Ch0 = 0.0363−0.0529*(Ch1/Ch0)</span>
+<span class="comment">// For 0.39 &lt;= Ch1/Ch0 &lt;= 0.52</span>
+<span class="comment">// Lux/Ch0 = 0.0392−0.0605*(Ch1/Ch0)</span>
+<span class="comment">// For 0.52 &lt; Ch1/Ch0 &lt;= 0.65</span>
+<span class="comment">// Lux/Ch0 = 0.0229−0.0291*(Ch1/Ch0)</span>
+<span class="comment">// For 0.65 &lt; Ch1/Ch0 &lt;= 0.80</span>
+<span class="comment">// Lux/Ch0 = 0.00157−0.00180*(Ch1/Ch0)</span>
+<span class="comment">// For 0.80 &lt; Ch1/Ch0 &lt;= 1.30</span>
+<span class="comment">// Lux/Ch0 = 0.00338−0.00260*(Ch1/Ch0)</span>
+<span class="comment">// For Ch1/Ch0 &gt; 1.30</span>
+<span class="comment">// Lux = 0</span>
+<span class="comment">// −−−−−−−−−−−−−−−−−−−−−−−−−−−−------</span>
+<span class="comment">// const K1C: usize = 0x0043; // 0.130 * 2^RATIO_SCALE</span>
+<span class="comment">// const B1C: usize = 0x0204; // 0.0315 * 2^LUX_SCALE</span>
+<span class="comment">// const M1C: usize = 0x01ad; // 0.0262 * 2^LUX_SCALE</span>
+<span class="comment">// const K2C: usize = 0x0085; // 0.260 * 2^RATIO_SCALE</span>
+<span class="comment">// const B2C: usize = 0x0228; // 0.0337 * 2^LUX_SCALE</span>
+<span class="comment">// const M2C: usize = 0x02c1; // 0.0430 * 2^LUX_SCALE</span>
+<span class="comment">// const K3C: usize = 0x00c8; // 0.390 * 2^RATIO_SCALE</span>
+<span class="comment">// const B3C: usize = 0x0253; // 0.0363 * 2^LUX_SCALE</span>
+<span class="comment">// const M3C: usize = 0x0363; // 0.0529 * 2^LUX_SCALE</span>
+<span class="comment">// const K4C: usize = 0x010a; // 0.520 * 2^RATIO_SCALE</span>
+<span class="comment">// const B4C: usize = 0x0282; // 0.0392 * 2^LUX_SCALE</span>
+<span class="comment">// const M4C: usize = 0x03df; // 0.0605 * 2^LUX_SCALE</span>
+<span class="comment">// const K5C: usize = 0x014d; // 0.65 * 2^RATIO_SCALE</span>
+<span class="comment">// const B5C: usize = 0x0177; // 0.0229 * 2^LUX_SCALE</span>
+<span class="comment">// const M5C: usize = 0x01dd; // 0.0291 * 2^LUX_SCALE</span>
+<span class="comment">// const K6C: usize = 0x019a; // 0.80 * 2^RATIO_SCALE</span>
+<span class="comment">// const B6C: usize = 0x0101; // 0.0157 * 2^LUX_SCALE</span>
+<span class="comment">// const M6C: usize = 0x0127; // 0.0180 * 2^LUX_SCALE</span>
+<span class="comment">// const K7C: usize = 0x029a; // 1.3 * 2^RATIO_SCALE</span>
+<span class="comment">// const B7C: usize = 0x0037; // 0.00338 * 2^LUX_SCALE</span>
+<span class="comment">// const M7C: usize = 0x002b; // 0.00260 * 2^LUX_SCALE</span>
+<span class="comment">// const K8C: usize = 0x029a; // 1.3 * 2^RATIO_SCALE</span>
+<span class="comment">// const B8C: usize = 0x0000; // 0.000 * 2^LUX_SCALE</span>
+<span class="comment">// const M8C: usize = 0x0000; // 0.000 * 2^LUX_SCALE</span>
+
+
+
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span>
+<span class="kw">enum</span> <span class="ident">Registers</span> {
+    <span class="ident">Control</span> <span class="op">=</span> <span class="number">0x00</span>,
+    <span class="ident">Timing</span> <span class="op">=</span> <span class="number">0x01</span>,
+    <span class="ident">ThresholdLowLow</span> <span class="op">=</span> <span class="number">0x02</span>,
+    <span class="ident">ThresholdLowHigh</span> <span class="op">=</span> <span class="number">0x03</span>,
+    <span class="ident">ThresholdHighLow</span> <span class="op">=</span> <span class="number">0x04</span>,
+    <span class="ident">ThresholdHighHigh</span> <span class="op">=</span> <span class="number">0x05</span>,
+    <span class="ident">Interrupt</span> <span class="op">=</span> <span class="number">0x06</span>,
+    <span class="ident">Id</span> <span class="op">=</span> <span class="number">0x0a</span>,
+    <span class="ident">Data0Low</span> <span class="op">=</span> <span class="number">0x0c</span>,
+    <span class="ident">Data0High</span> <span class="op">=</span> <span class="number">0x0d</span>,
+    <span class="ident">Data1Low</span> <span class="op">=</span> <span class="number">0x0e</span>,
+    <span class="ident">Data1High</span> <span class="op">=</span> <span class="number">0x0f</span>,
+}
+
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>,<span class="ident">Copy</span>,<span class="ident">PartialEq</span>)]</span>
+<span class="kw">enum</span> <span class="ident">State</span> {
+    <span class="ident">Idle</span>,
+
+    <span class="doccomment">/// Read the Id register.</span>
+    <span class="ident">SelectId</span>,
+    <span class="ident">ReadingId</span>,
+
+    <span class="doccomment">/// Process of taking a light measurement.</span>
+    <span class="ident">TakeMeasurementTurnOn</span>,
+    <span class="ident">TakeMeasurementConfigMeasurement</span>,
+    <span class="ident">TakeMeasurementReset1</span>,
+    <span class="ident">TakeMeasurementReset2</span>,
+
+    <span class="doccomment">/// Read the ADC registers.</span>
+    <span class="ident">ReadMeasurement1</span>,
+    <span class="ident">ReadMeasurement2</span>,
+    <span class="ident">ReadMeasurement3</span>,
+    <span class="doccomment">/// Calculate light and call the callback with the value.</span>
+    <span class="ident">GotMeasurement</span>,
+
+    <span class="doccomment">/// Disable I2C and release buffer</span>
+    <span class="ident">Done</span>,
+}
+
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TSL2561</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="ident">i2c</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">i2c</span>::<span class="ident">I2CDevice</span>,
+    <span class="ident">interrupt_pin</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">gpio</span>::<span class="ident">Pin</span>,
+    <span class="ident">callback</span>: <span class="ident">Cell</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Callback</span><span class="op">&gt;&gt;</span>,
+    <span class="ident">state</span>: <span class="ident">Cell</span><span class="op">&lt;</span><span class="ident">State</span><span class="op">&gt;</span>,
+    <span class="ident">buffer</span>: <span class="ident">TakeCell</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, [<span class="ident">u8</span>]<span class="op">&gt;</span>,
+}
+
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">TSL2561</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">i2c</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">i2c</span>::<span class="ident">I2CDevice</span>,
+               <span class="ident">interrupt_pin</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">gpio</span>::<span class="ident">Pin</span>,
+               <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>])
+               <span class="op">-&gt;</span> <span class="ident">TSL2561</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+        <span class="comment">// setup and return struct</span>
+        <span class="ident">TSL2561</span> {
+            <span class="ident">i2c</span>: <span class="ident">i2c</span>,
+            <span class="ident">interrupt_pin</span>: <span class="ident">interrupt_pin</span>,
+            <span class="ident">callback</span>: <span class="ident">Cell</span>::<span class="ident">new</span>(<span class="prelude-val">None</span>),
+            <span class="ident">state</span>: <span class="ident">Cell</span>::<span class="ident">new</span>(<span class="ident">State</span>::<span class="ident">Idle</span>),
+            <span class="ident">buffer</span>: <span class="ident">TakeCell</span>::<span class="ident">new</span>(<span class="ident">buffer</span>),
+        }
+    }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">read_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="self">self</span>.<span class="ident">buffer</span>.<span class="ident">take</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">buffer</span><span class="op">|</span> {
+            <span class="comment">// turn on i2c to send commands</span>
+            <span class="self">self</span>.<span class="ident">i2c</span>.<span class="ident">enable</span>();
+
+            <span class="ident">buffer</span>[<span class="number">0</span>] <span class="op">=</span> <span class="ident">Registers</span>::<span class="ident">Id</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="op">|</span> <span class="ident">COMMAND_REG</span>;
+            <span class="comment">// buffer[0] = Registers::Id as u8;</span>
+            <span class="self">self</span>.<span class="ident">i2c</span>.<span class="ident">write</span>(<span class="ident">buffer</span>, <span class="number">1</span>);
+            <span class="self">self</span>.<span class="ident">state</span>.<span class="ident">set</span>(<span class="ident">State</span>::<span class="ident">SelectId</span>);
+        });
+    }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">take_measurement</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="comment">// Need pull up on interrupt pin</span>
+        <span class="self">self</span>.<span class="ident">interrupt_pin</span>.<span class="ident">make_input</span>();
+        <span class="self">self</span>.<span class="ident">interrupt_pin</span>.<span class="ident">enable_interrupt</span>(<span class="number">0</span>, <span class="ident">gpio</span>::<span class="ident">InterruptMode</span>::<span class="ident">FallingEdge</span>);
+
+        <span class="self">self</span>.<span class="ident">buffer</span>.<span class="ident">take</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">buf</span><span class="op">|</span> {
+            <span class="comment">// Turn on i2c to send commands</span>
+            <span class="self">self</span>.<span class="ident">i2c</span>.<span class="ident">enable</span>();
+
+            <span class="ident">buf</span>[<span class="number">0</span>] <span class="op">=</span> <span class="ident">Registers</span>::<span class="ident">Control</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="op">|</span> <span class="ident">COMMAND_REG</span>;
+            <span class="ident">buf</span>[<span class="number">1</span>] <span class="op">=</span> <span class="ident">POWER_ON</span>;
+            <span class="self">self</span>.<span class="ident">i2c</span>.<span class="ident">write</span>(<span class="ident">buf</span>, <span class="number">2</span>);
+            <span class="self">self</span>.<span class="ident">state</span>.<span class="ident">set</span>(<span class="ident">State</span>::<span class="ident">TakeMeasurementTurnOn</span>);
+        });
+    }
+
+    <span class="kw">fn</span> <span class="ident">calculate_lux</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">chan0</span>: <span class="ident">u16</span>, <span class="ident">chan1</span>: <span class="ident">u16</span>) <span class="op">-&gt;</span> <span class="ident">usize</span> {
+        <span class="comment">// First, scale the channel values depending on the gain and integration</span>
+        <span class="comment">// time. 16X, 402mS is nominal. Scale if integration time is NOT 402 msec.</span>
+        <span class="comment">// let mut ch_scale = CHSCALE_TINT0 as usize; // 13.7ms</span>
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ch_scale</span> <span class="op">=</span> <span class="ident">CHSCALE_TINT1</span> <span class="kw">as</span> <span class="ident">usize</span>; <span class="comment">// 101ms</span>
+        <span class="comment">// let mut ch_scale: usize = 1 &lt;&lt; CH_SCALE; // Default</span>
+
+        <span class="comment">// Scale if gain is NOT 16X</span>
+        <span class="ident">ch_scale</span> <span class="op">=</span> <span class="ident">ch_scale</span> <span class="op">&lt;&lt;</span> <span class="number">4</span>; <span class="comment">// scale 1X to 16X</span>
+
+        <span class="comment">// scale the channel values</span>
+        <span class="kw">let</span> <span class="ident">channel0</span> <span class="op">=</span> (<span class="ident">chan0</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="op">*</span> <span class="ident">ch_scale</span>) <span class="op">&gt;&gt;</span> <span class="ident">CH_SCALE</span>;
+        <span class="kw">let</span> <span class="ident">channel1</span> <span class="op">=</span> (<span class="ident">chan1</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="op">*</span> <span class="ident">ch_scale</span>) <span class="op">&gt;&gt;</span> <span class="ident">CH_SCALE</span>;
+
+        <span class="comment">// Find the ratio of the channel values (Channel1/Channel0).</span>
+        <span class="comment">// Protect against divide by zero.</span>
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ratio1</span> <span class="op">=</span> <span class="number">0</span>;
+        <span class="kw">if</span> <span class="ident">channel0</span> <span class="op">!=</span> <span class="number">0</span> {
+            <span class="ident">ratio1</span> <span class="op">=</span> (<span class="ident">channel1</span> <span class="op">&lt;&lt;</span> (<span class="ident">RATIO_SCALE</span> <span class="op">+</span> <span class="number">1</span>)) <span class="op">/</span> <span class="ident">channel0</span>;
+        }
+
+        <span class="comment">// round the ratio value</span>
+        <span class="kw">let</span> <span class="ident">ratio</span> <span class="op">=</span> (<span class="ident">ratio1</span> <span class="op">+</span> <span class="number">1</span>) <span class="op">&gt;&gt;</span> <span class="number">1</span>;
+
+        <span class="comment">// is ratio &lt;= eachBreak ?</span>
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">b</span> <span class="op">=</span> <span class="number">0</span>;
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">m</span> <span class="op">=</span> <span class="number">0</span>;
+        <span class="comment">// T, FN, and CL package</span>
+        <span class="kw">if</span> <span class="ident">ratio</span> <span class="op">&lt;=</span> <span class="ident">K1T</span> {
+            <span class="ident">b</span> <span class="op">=</span> <span class="ident">B1T</span>;
+            <span class="ident">m</span> <span class="op">=</span> <span class="ident">M1T</span>;
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">ratio</span> <span class="op">&lt;=</span> <span class="ident">K2T</span> {
+            <span class="ident">b</span> <span class="op">=</span> <span class="ident">B2T</span>;
+            <span class="ident">m</span> <span class="op">=</span> <span class="ident">M2T</span>;
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">ratio</span> <span class="op">&lt;=</span> <span class="ident">K3T</span> {
+            <span class="ident">b</span> <span class="op">=</span> <span class="ident">B3T</span>;
+            <span class="ident">m</span> <span class="op">=</span> <span class="ident">M3T</span>;
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">ratio</span> <span class="op">&lt;=</span> <span class="ident">K4T</span> {
+            <span class="ident">b</span> <span class="op">=</span> <span class="ident">B4T</span>;
+            <span class="ident">m</span> <span class="op">=</span> <span class="ident">M4T</span>;
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">ratio</span> <span class="op">&lt;=</span> <span class="ident">K5T</span> {
+            <span class="ident">b</span> <span class="op">=</span> <span class="ident">B5T</span>;
+            <span class="ident">m</span> <span class="op">=</span> <span class="ident">M5T</span>;
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">ratio</span> <span class="op">&lt;=</span> <span class="ident">K6T</span> {
+            <span class="ident">b</span> <span class="op">=</span> <span class="ident">B6T</span>;
+            <span class="ident">m</span> <span class="op">=</span> <span class="ident">M6T</span>;
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">ratio</span> <span class="op">&lt;=</span> <span class="ident">K7T</span> {
+            <span class="ident">b</span> <span class="op">=</span> <span class="ident">B7T</span>;
+            <span class="ident">m</span> <span class="op">=</span> <span class="ident">M7T</span>;
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">ratio</span> <span class="op">&gt;</span> <span class="ident">K8T</span> {
+            <span class="ident">b</span> <span class="op">=</span> <span class="ident">B8T</span>;
+            <span class="ident">m</span> <span class="op">=</span> <span class="ident">M8T</span>;
+        }
+        <span class="comment">// CS package</span>
+        <span class="comment">// if ratio &lt;= K1C {</span>
+        <span class="comment">//     b=B1C; m=M1C;</span>
+        <span class="comment">// } else if ratio &lt;= K2C {</span>
+        <span class="comment">//     b=B2C; m=M2C;</span>
+        <span class="comment">// } else if ratio &lt;= K3C {</span>
+        <span class="comment">//     b=B3C; m=M3C;</span>
+        <span class="comment">// } else if ratio &lt;= K4C {</span>
+        <span class="comment">//     b=B4C; m=M4C;</span>
+        <span class="comment">// } else if ratio &lt;= K5C {</span>
+        <span class="comment">//     b=B5C; m=M5C;</span>
+        <span class="comment">// } else if ratio &lt;= K6C {</span>
+        <span class="comment">//     b=B6C; m=M6C;</span>
+        <span class="comment">// } else if ratio &lt;= K7C {</span>
+        <span class="comment">//     b=B7C; m=M7C;</span>
+        <span class="comment">// } else if ratio &gt; K8C {</span>
+        <span class="comment">//     b=B8C; m=M8C;</span>
+        <span class="comment">// }</span>
+
+        <span class="comment">// Calculate actual lux value</span>
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">val</span> <span class="op">=</span> ((<span class="ident">channel0</span> <span class="op">*</span> <span class="ident">b</span>) <span class="kw">as</span> <span class="ident">isize</span>) <span class="op">-</span> ((<span class="ident">channel1</span> <span class="op">*</span> <span class="ident">m</span>) <span class="kw">as</span> <span class="ident">isize</span>);
+
+        <span class="comment">// Do not allow negative lux value</span>
+        <span class="kw">if</span> <span class="ident">val</span> <span class="op">&lt;</span> <span class="number">0</span> {
+            <span class="ident">val</span> <span class="op">=</span> <span class="number">0</span>;
+        }
+
+        <span class="comment">// round lsb (2^(LUX_SCALE−1))</span>
+        <span class="comment">// val += (1 &lt;&lt; (LUX_SCALE−1));</span>
+        <span class="ident">val</span> <span class="op">+=</span> <span class="number">1</span> <span class="op">&lt;&lt;</span> (<span class="ident">LUX_SCALE</span> <span class="op">-</span> <span class="number">1</span>);
+
+        <span class="comment">// strip off fractional portion and return lux</span>
+        <span class="kw">let</span> <span class="ident">lux</span> <span class="op">=</span> <span class="ident">val</span> <span class="op">&gt;&gt;</span> <span class="ident">LUX_SCALE</span>;
+
+        <span class="ident">lux</span> <span class="kw">as</span> <span class="ident">usize</span>
+    }
+}
+
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">i2c</span>::<span class="ident">I2CClient</span> <span class="kw">for</span> <span class="ident">TSL2561</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">command_complete</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>], <span class="ident">_error</span>: <span class="ident">i2c</span>::<span class="ident">Error</span>) {
+        <span class="kw">match</span> <span class="self">self</span>.<span class="ident">state</span>.<span class="ident">get</span>() {
+            <span class="ident">State</span>::<span class="ident">SelectId</span> <span class="op">=&gt;</span> {
+                <span class="self">self</span>.<span class="ident">i2c</span>.<span class="ident">read</span>(<span class="ident">buffer</span>, <span class="number">1</span>);
+                <span class="self">self</span>.<span class="ident">state</span>.<span class="ident">set</span>(<span class="ident">State</span>::<span class="ident">ReadingId</span>);
+            }
+            <span class="ident">State</span>::<span class="ident">ReadingId</span> <span class="op">=&gt;</span> {
+                <span class="self">self</span>.<span class="ident">buffer</span>.<span class="ident">replace</span>(<span class="ident">buffer</span>);
+                <span class="self">self</span>.<span class="ident">i2c</span>.<span class="ident">disable</span>();
+                <span class="self">self</span>.<span class="ident">state</span>.<span class="ident">set</span>(<span class="ident">State</span>::<span class="ident">Idle</span>);
+            }
+            <span class="ident">State</span>::<span class="ident">TakeMeasurementTurnOn</span> <span class="op">=&gt;</span> {
+                <span class="ident">buffer</span>[<span class="number">0</span>] <span class="op">=</span> <span class="ident">Registers</span>::<span class="ident">Timing</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="op">|</span> <span class="ident">COMMAND_REG</span>;
+                <span class="ident">buffer</span>[<span class="number">1</span>] <span class="op">=</span> <span class="ident">INTEGRATE_TIME_101_MS</span> <span class="op">|</span> <span class="ident">LOW_GAIN_MODE</span>;
+                <span class="self">self</span>.<span class="ident">i2c</span>.<span class="ident">write</span>(<span class="ident">buffer</span>, <span class="number">2</span>);
+                <span class="self">self</span>.<span class="ident">state</span>.<span class="ident">set</span>(<span class="ident">State</span>::<span class="ident">TakeMeasurementConfigMeasurement</span>);
+            }
+            <span class="ident">State</span>::<span class="ident">TakeMeasurementConfigMeasurement</span> <span class="op">=&gt;</span> {
+                <span class="ident">buffer</span>[<span class="number">0</span>] <span class="op">=</span> <span class="ident">Registers</span>::<span class="ident">Interrupt</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="op">|</span> <span class="ident">COMMAND_REG</span>;
+                <span class="ident">buffer</span>[<span class="number">1</span>] <span class="op">=</span> <span class="ident">INTERRUPT_CONTROL_LEVEL</span> <span class="op">|</span> <span class="ident">INTERRUPT_ON_ADC_DONE</span>;
+                <span class="self">self</span>.<span class="ident">i2c</span>.<span class="ident">write</span>(<span class="ident">buffer</span>, <span class="number">2</span>);
+                <span class="self">self</span>.<span class="ident">state</span>.<span class="ident">set</span>(<span class="ident">State</span>::<span class="ident">TakeMeasurementReset1</span>);
+            }
+            <span class="ident">State</span>::<span class="ident">TakeMeasurementReset1</span> <span class="op">=&gt;</span> {
+                <span class="ident">buffer</span>[<span class="number">0</span>] <span class="op">=</span> <span class="ident">Registers</span>::<span class="ident">Control</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="op">|</span> <span class="ident">COMMAND_REG</span>;
+                <span class="ident">buffer</span>[<span class="number">1</span>] <span class="op">=</span> <span class="ident">POWER_OFF</span>;
+                <span class="self">self</span>.<span class="ident">i2c</span>.<span class="ident">write</span>(<span class="ident">buffer</span>, <span class="number">2</span>);
+                <span class="self">self</span>.<span class="ident">state</span>.<span class="ident">set</span>(<span class="ident">State</span>::<span class="ident">TakeMeasurementReset2</span>);
+            }
+            <span class="ident">State</span>::<span class="ident">TakeMeasurementReset2</span> <span class="op">=&gt;</span> {
+                <span class="ident">buffer</span>[<span class="number">0</span>] <span class="op">=</span> <span class="ident">Registers</span>::<span class="ident">Control</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="op">|</span> <span class="ident">COMMAND_REG</span>;
+                <span class="ident">buffer</span>[<span class="number">1</span>] <span class="op">=</span> <span class="ident">POWER_ON</span>;
+                <span class="self">self</span>.<span class="ident">i2c</span>.<span class="ident">write</span>(<span class="ident">buffer</span>, <span class="number">2</span>);
+                <span class="self">self</span>.<span class="ident">state</span>.<span class="ident">set</span>(<span class="ident">State</span>::<span class="ident">Done</span>);
+            }
+            <span class="ident">State</span>::<span class="ident">ReadMeasurement1</span> <span class="op">=&gt;</span> {
+                <span class="self">self</span>.<span class="ident">i2c</span>.<span class="ident">read</span>(<span class="ident">buffer</span>, <span class="number">2</span>);
+                <span class="self">self</span>.<span class="ident">state</span>.<span class="ident">set</span>(<span class="ident">State</span>::<span class="ident">ReadMeasurement2</span>);
+            }
+            <span class="ident">State</span>::<span class="ident">ReadMeasurement2</span> <span class="op">=&gt;</span> {
+                <span class="comment">// Store the previous readings in the buffer where they</span>
+                <span class="comment">// won&#39;t get overwritten.</span>
+                <span class="ident">buffer</span>[<span class="number">2</span>] <span class="op">=</span> <span class="ident">buffer</span>[<span class="number">0</span>];
+                <span class="ident">buffer</span>[<span class="number">3</span>] <span class="op">=</span> <span class="ident">buffer</span>[<span class="number">1</span>];
+                <span class="ident">buffer</span>[<span class="number">0</span>] <span class="op">=</span> <span class="ident">Registers</span>::<span class="ident">Data0Low</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="op">|</span> <span class="ident">COMMAND_REG</span> <span class="op">|</span> <span class="ident">WORD_PROTOCOL</span>;
+                <span class="self">self</span>.<span class="ident">i2c</span>.<span class="ident">write</span>(<span class="ident">buffer</span>, <span class="number">2</span>);
+                <span class="self">self</span>.<span class="ident">state</span>.<span class="ident">set</span>(<span class="ident">State</span>::<span class="ident">ReadMeasurement3</span>);
+            }
+            <span class="ident">State</span>::<span class="ident">ReadMeasurement3</span> <span class="op">=&gt;</span> {
+                <span class="self">self</span>.<span class="ident">i2c</span>.<span class="ident">read</span>(<span class="ident">buffer</span>, <span class="number">2</span>);
+                <span class="self">self</span>.<span class="ident">state</span>.<span class="ident">set</span>(<span class="ident">State</span>::<span class="ident">GotMeasurement</span>);
+            }
+            <span class="ident">State</span>::<span class="ident">GotMeasurement</span> <span class="op">=&gt;</span> {
+                <span class="kw">let</span> <span class="ident">chan0</span> <span class="op">=</span> ((<span class="ident">buffer</span>[<span class="number">1</span>] <span class="kw">as</span> <span class="ident">u16</span>) <span class="op">&lt;&lt;</span> <span class="number">8</span>) <span class="op">|</span> (<span class="ident">buffer</span>[<span class="number">0</span>] <span class="kw">as</span> <span class="ident">u16</span>);
+                <span class="kw">let</span> <span class="ident">chan1</span> <span class="op">=</span> ((<span class="ident">buffer</span>[<span class="number">3</span>] <span class="kw">as</span> <span class="ident">u16</span>) <span class="op">&lt;&lt;</span> <span class="number">8</span>) <span class="op">|</span> (<span class="ident">buffer</span>[<span class="number">2</span>] <span class="kw">as</span> <span class="ident">u16</span>);
+
+                <span class="kw">let</span> <span class="ident">lux</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">calculate_lux</span>(<span class="ident">chan0</span>, <span class="ident">chan1</span>);
+
+                <span class="self">self</span>.<span class="ident">callback</span>.<span class="ident">get</span>().<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">mut</span> <span class="ident">cb</span><span class="op">|</span> <span class="ident">cb</span>.<span class="ident">schedule</span>(<span class="number">0</span>, <span class="ident">lux</span>, <span class="number">0</span>));
+
+                <span class="ident">buffer</span>[<span class="number">0</span>] <span class="op">=</span> <span class="ident">Registers</span>::<span class="ident">Control</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="op">|</span> <span class="ident">COMMAND_REG</span>;
+                <span class="ident">buffer</span>[<span class="number">1</span>] <span class="op">=</span> <span class="ident">POWER_OFF</span>;
+                <span class="self">self</span>.<span class="ident">i2c</span>.<span class="ident">write</span>(<span class="ident">buffer</span>, <span class="number">2</span>);
+                <span class="self">self</span>.<span class="ident">interrupt_pin</span>.<span class="ident">disable_interrupt</span>();
+                <span class="self">self</span>.<span class="ident">state</span>.<span class="ident">set</span>(<span class="ident">State</span>::<span class="ident">Done</span>);
+            }
+            <span class="ident">State</span>::<span class="ident">Done</span> <span class="op">=&gt;</span> {
+                <span class="self">self</span>.<span class="ident">buffer</span>.<span class="ident">replace</span>(<span class="ident">buffer</span>);
+                <span class="self">self</span>.<span class="ident">i2c</span>.<span class="ident">disable</span>();
+                <span class="self">self</span>.<span class="ident">state</span>.<span class="ident">set</span>(<span class="ident">State</span>::<span class="ident">Idle</span>);
+            }
+            _ <span class="op">=&gt;</span> {}
+        }
+    }
+}
+
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">gpio</span>::<span class="ident">Client</span> <span class="kw">for</span> <span class="ident">TSL2561</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">fired</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, _: <span class="ident">usize</span>) {
+        <span class="self">self</span>.<span class="ident">buffer</span>.<span class="ident">take</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">buffer</span><span class="op">|</span> {
+            <span class="comment">// turn on i2c to send commands</span>
+            <span class="self">self</span>.<span class="ident">i2c</span>.<span class="ident">enable</span>();
+
+            <span class="comment">// Read the first of the ADC registers.</span>
+            <span class="ident">buffer</span>[<span class="number">0</span>] <span class="op">=</span> <span class="ident">Registers</span>::<span class="ident">Data1Low</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="op">|</span> <span class="ident">COMMAND_REG</span> <span class="op">|</span> <span class="ident">WORD_PROTOCOL</span>;
+            <span class="self">self</span>.<span class="ident">i2c</span>.<span class="ident">write</span>(<span class="ident">buffer</span>, <span class="number">1</span>);
+            <span class="self">self</span>.<span class="ident">state</span>.<span class="ident">set</span>(<span class="ident">State</span>::<span class="ident">ReadMeasurement1</span>);
+        });
+    }
+}
+
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Driver</span> <span class="kw">for</span> <span class="ident">TSL2561</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">subscribe</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">subscribe_num</span>: <span class="ident">usize</span>, <span class="ident">callback</span>: <span class="ident">Callback</span>) <span class="op">-&gt;</span> <span class="ident">ReturnCode</span> {
+        <span class="kw">match</span> <span class="ident">subscribe_num</span> {
+            <span class="comment">// Set a callback</span>
+            <span class="number">0</span> <span class="op">=&gt;</span> {
+                <span class="comment">// Set callback function</span>
+                <span class="self">self</span>.<span class="ident">callback</span>.<span class="ident">set</span>(<span class="prelude-val">Some</span>(<span class="ident">callback</span>));
+                <span class="ident">ReturnCode</span>::<span class="ident">SUCCESS</span>
+            }
+            <span class="comment">// default</span>
+            _ <span class="op">=&gt;</span> <span class="ident">ReturnCode</span>::<span class="ident">ENOSUPPORT</span>,
+        }
+    }
+
+    <span class="kw">fn</span> <span class="ident">command</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">command_num</span>: <span class="ident">usize</span>, _: <span class="ident">usize</span>, _: <span class="ident">AppId</span>) <span class="op">-&gt;</span> <span class="ident">ReturnCode</span> {
+        <span class="kw">match</span> <span class="ident">command_num</span> {
+            <span class="number">0</span> <span class="comment">/* check if present */</span> <span class="op">=&gt;</span> <span class="ident">ReturnCode</span>::<span class="ident">SUCCESS</span>,
+            <span class="comment">// Take a measurement</span>
+            <span class="number">1</span> <span class="op">=&gt;</span> {
+                <span class="self">self</span>.<span class="ident">take_measurement</span>();
+                <span class="ident">ReturnCode</span>::<span class="ident">SUCCESS</span>
+            }
+            <span class="comment">// default</span>
+            _ <span class="op">=&gt;</span> <span class="ident">ReturnCode</span>::<span class="ident">ENOSUPPORT</span>,
+        }
+    }
+}
+</pre>
+</section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "capsules";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

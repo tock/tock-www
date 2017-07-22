@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["AppPtr",""],["AppSlice",""],["Private",""],["Shared",""]]});

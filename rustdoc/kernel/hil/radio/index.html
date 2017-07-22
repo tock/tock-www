@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `radio` mod in crate `kernel`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, radio">
+
+    <title>kernel::hil::radio - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Module radio</p><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#constants">Constants</a></li><li><a href="#traits">Traits</a></li></ul></div><p class='location'><a href='../../index.html'>kernel</a>::<wbr><a href='../index.html'>hil</a></p><script>window.sidebarCurrent = {name: 'radio', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Module <a href='../../index.html'>kernel</a>::<wbr><a href='../index.html'>hil</a>::<wbr><a class="mod" href=''>radio</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/kernel/hil/radio.rs.html#1-150' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Interface for sending and receiving IEEE 802.15.4 packets.</p>
+
+<p>Hardware independent interface for an 802.15.4 radio. Note that
+configuration commands are asynchronous and must be committed with a call to
+config_commit. For example, calling set_address will change the source
+address of packets but does not change the address stored in hardware used
+for address recognition. This must be committed to hardware with a call to
+config_commit. Please see the relevant TRD for more details.</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>use returncode::<a class="enum" href="../../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>;</code></td></tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Header.html"
+                                  title='struct kernel::hil::radio::Header'>Header</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.RadioMacLen.html"
+                                  title='enum kernel::hil::radio::RadioMacLen'>RadioMacLen</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.MAX_BUF_SIZE.html"
+                                  title='constant kernel::hil::radio::MAX_BUF_SIZE'>MAX_BUF_SIZE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.MAX_FRAME_SIZE.html"
+                                  title='constant kernel::hil::radio::MAX_FRAME_SIZE'>MAX_FRAME_SIZE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.MAX_MTU.html"
+                                  title='constant kernel::hil::radio::MAX_MTU'>MAX_MTU</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.MFR_SIZE.html"
+                                  title='constant kernel::hil::radio::MFR_SIZE'>MFR_SIZE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.MIN_FRAME_SIZE.html"
+                                  title='constant kernel::hil::radio::MIN_FRAME_SIZE'>MIN_FRAME_SIZE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.MIN_MHR_SIZE.html"
+                                  title='constant kernel::hil::radio::MIN_MHR_SIZE'>MIN_MHR_SIZE</a></td>
+                           <td class='docblock-short'>
+                                <p>These constants are used for interacting with the SPI buffer, which contains
+a 1-byte SPI command, a 1-byte PHY header, and then the 802.15.4 frame. In
+theory, the number of extra bytes in front of the frame can depend on the
+particular method used to communicate with the radio, but we leave this as a
+constant in this generic trait for now.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.MIN_PAYLOAD_OFFSET.html"
+                                  title='constant kernel::hil::radio::MIN_PAYLOAD_OFFSET'>MIN_PAYLOAD_OFFSET</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.PSDU_OFFSET.html"
+                                  title='constant kernel::hil::radio::PSDU_OFFSET'>PSDU_OFFSET</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.ConfigClient.html"
+                                  title='trait kernel::hil::radio::ConfigClient'>ConfigClient</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.PowerClient.html"
+                                  title='trait kernel::hil::radio::PowerClient'>PowerClient</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Radio.html"
+                                  title='trait kernel::hil::radio::Radio'>Radio</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.RadioConfig.html"
+                                  title='trait kernel::hil::radio::RadioConfig'>RadioConfig</a></td>
+                           <td class='docblock-short'>
+                                <p>Configure the 802.15.4 radio.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.RadioCrypto.html"
+                                  title='trait kernel::hil::radio::RadioCrypto'>RadioCrypto</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.RadioData.html"
+                                  title='trait kernel::hil::radio::RadioData'>RadioData</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.RxClient.html"
+                                  title='trait kernel::hil::radio::RxClient'>RxClient</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.TxClient.html"
+                                  title='trait kernel::hil::radio::TxClient'>TxClient</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "kernel";
+    </script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

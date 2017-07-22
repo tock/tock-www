@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `symmetric_encryption` mod in crate `capsules`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, symmetric_encryption">
+
+    <title>capsules::symmetric_encryption - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Module symmetric_encryption</p><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#statics">Statics</a></li></ul></div><p class='location'><a href='../index.html'>capsules</a></p><script>window.sidebarCurrent = {name: 'symmetric_encryption', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>capsules</a>::<wbr><a class="mod" href=''>symmetric_encryption</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/capsules/symmetric_encryption.rs.html#1-340' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Provides userspace applications with the ability to encrypt and decrypt
+messages.</p>
+
+<h2 id='userspace-interface' class='section-header'><a href='#userspace-interface'>Userspace Interface</a></h2>
+<p>The system calls allow, subscribe and command are used to initiate the
+driver. The methods <code>set_key_done()</code> and <code>crypt_done()</code> are invoked by chip
+to send back the result of the operation and then passed the user
+application via the callback from the subscribe call.</p>
+
+<h3 id='allow-system-call' class='section-header'><a href='#allow-system-call'><code>allow</code> System Call</a></h3>
+<p>The <code>allow</code> system call is used to provide three different buffers and the
+following allow_num&#39;s are supported:</p>
+
+<ul>
+<li>0: A buffer with the key to be used for encryption and decryption.
+Currently it can only configured once.</li>
+<li>1: A buffer with data that will be encrypted and/or decrypted</li>
+<li>4: A buffer to configure to initial counter when counter mode of block
+cipher is used.</li>
+</ul>
+
+<p>The possible return codes from the &#39;allow&#39; system call indicate the
+following:</p>
+
+<ul>
+<li><code>SUCCESS</code>: The buffer has successfully been filled.</li>
+<li><code>ENOSUPPORT</code>: Invalid allow_num.</li>
+<li><code>ENOMEM</code>: No sufficient memory available.</li>
+<li><code>EINVAL</code>: Invalid address of the buffer or other error.</li>
+</ul>
+
+<h3 id='subscribe-system-call' class='section-header'><a href='#subscribe-system-call'><code>subscribe</code> System Call</a></h3>
+<p>The <code>subscribe</code> system call supports the single <code>subscribe_number</code> zero,
+which is used to provide a callback that will receive the result of
+configuring the key, encryption or decryption. The possible return from the
+<code>subscribe</code> system call indicates the following:</p>
+
+<ul>
+<li><code>SUCCESS</code>: the callback been successfully been configured.</li>
+<li><code>ENOSUPPORT</code>: Invalid allow_num.</li>
+<li><code>ENOMEM</code>: No sufficient memory available.</li>
+<li><code>EINVAL</code>: Invalid address of the buffer or other error.</li>
+</ul>
+
+<h3 id='command-system-call' class='section-header'><a href='#command-system-call'><code>command</code> System Call</a></h3>
+<p>The <code>command</code> system call supports two arguments <code>cmd</code> and <code>sub_cmd</code>. <code>cmd</code>
+is used to specify the specific operation, currently the following cmd&#39;s are
+supported:</p>
+
+<ul>
+<li><code>0</code>: configure the key</li>
+<li><code>2</code>: encryption</li>
+<li><code>3</code>: decryption</li>
+</ul>
+
+<p><code>sub_cmd</code> is used to specify the specific algorithm to be used and currently
+ the following sub_cmd&#39;s are supported:</p>
+
+<ul>
+<li><code>0</code>: aes128 counter-mode</li>
+</ul>
+
+<p>The possible return from the &#39;command&#39; system call indicates the following:</p>
+
+<ul>
+<li><code>SUCCESS</code>:    The operation has been successful.</li>
+<li><code>EBUSY</code>:      The driver is busy.</li>
+<li><code>ESIZE</code>:      Invalid key size currently is must be 16, 24 or 32 bytes.</li>
+<li><code>ENOSUPPORT</code>: Invalid <code>cmd</code> or <code>sub_cmd</code>.</li>
+<li><code>EFAIL</code>:      The key is configured or other error.</li>
+</ul>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>use core::cell::<a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>;</code></td></tr><tr><td><code>use kernel::<a class="struct" href="../../kernel/callback/struct.AppId.html" title="struct kernel::callback::AppId">AppId</a>;</code></td></tr><tr><td><code>use kernel::<a class="struct" href="../../kernel/mem/struct.AppSlice.html" title="struct kernel::mem::AppSlice">AppSlice</a>;</code></td></tr><tr><td><code>use kernel::<a class="struct" href="../../kernel/container/struct.Container.html" title="struct kernel::container::Container">Container</a>;</code></td></tr><tr><td><code>use kernel::<a class="struct" href="../../kernel/callback/struct.Callback.html" title="struct kernel::callback::Callback">Callback</a>;</code></td></tr><tr><td><code>use kernel::<a class="trait" href="../../kernel/driver/trait.Driver.html" title="trait kernel::driver::Driver">Driver</a>;</code></td></tr><tr><td><code>use kernel::<a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>;</code></td></tr><tr><td><code>use kernel::<a class="struct" href="../../kernel/mem/struct.Shared.html" title="struct kernel::mem::Shared">Shared</a>;</code></td></tr><tr><td><code>use kernel::common::take_cell::<a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>;</code></td></tr><tr><td><code>use kernel::hil::symmetric_encryption::<a class="trait" href="../../kernel/hil/symmetric_encryption/trait.SymmetricEncryption.html" title="trait kernel::hil::symmetric_encryption::SymmetricEncryption">SymmetricEncryption</a>;</code></td></tr><tr><td><code>use kernel::hil::symmetric_encryption::<a class="trait" href="../../kernel/hil/symmetric_encryption/trait.Client.html" title="trait kernel::hil::symmetric_encryption::Client">Client</a>;</code></td></tr><tr><td><code>use kernel::process::<a class="enum" href="../../kernel/process/enum.Error.html" title="enum kernel::process::Error">Error</a>;</code></td></tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.App.html"
+                                  title='struct capsules::symmetric_encryption::App'>App</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Crypto.html"
+                                  title='struct capsules::symmetric_encryption::Crypto'>Crypto</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.CryptoState.html"
+                                  title='enum capsules::symmetric_encryption::CryptoState'>CryptoState</a></td>
+                           <td class='docblock-short'>
+                                <p>This enum shall keep track of the state of the AESDriver</p>
+                           </td>
+                       </tr></table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.BUF.html"
+                                  title='static capsules::symmetric_encryption::BUF'>BUF</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.IV.html"
+                                  title='static capsules::symmetric_encryption::IV'>IV</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.KEY.html"
+                                  title='static capsules::symmetric_encryption::KEY'>KEY</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "capsules";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

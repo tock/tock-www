@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["MPU_BASE_ADDRESS",""]],"struct":[["MPU","Constructor field is private to limit who can create a new MPU"],["MpuType","Indicates whether the MPU is present and, if so, how many regions it supports."],["Registers","MPU Registers for the Cortex-M4 family"]],"type":[["Region",""]]});

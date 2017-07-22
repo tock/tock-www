@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["SCB_BASE",""]],"fn":[["reset","Software reset using the ARM System Control Block"],["set_sleepdeep","Allow the core to go into deep sleep on WFI."],["unset_sleepdeep","Do not allow the core to go into deep sleep on WFI."]],"static":[["SCB",""]],"struct":[["ScbRegisters",""]]});

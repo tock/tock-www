@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["CLOCK_BASE",""]],"enum":[["ClockRunning",""],["ClockTaskTriggered",""],["HighClockSource",""],["InterruptField",""],["LowClockSource",""],["XtalFreq",""]],"fn":[["CLK",""]],"static":[["CLOCK",""]],"struct":[["Clock",""],["Registers",""]],"trait":[["ClockClient",""]]});

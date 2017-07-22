@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["ALARM0_SYNC_TICS","Minimum number of clock tics to make sure ALARM0 register is synchronized"],["AST_BASE",""]],"enum":[["Clock",""]],"fn":[["ast_alarm_handler",""]],"static":[["AST",""]],"struct":[["Ast",""],["AstRegisters",""]]});

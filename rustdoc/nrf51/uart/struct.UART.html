@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `UART` struct in crate `nrf51`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, UART">
+
+    <title>nrf51::uart::UART - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct UART</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>nrf51</a>::<wbr><a href='index.html'>uart</a></p><script>window.sidebarCurrent = {name: 'UART', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>nrf51</a>::<wbr><a href='index.html'>uart</a>::<wbr><a class="struct" href=''>UART</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/nrf51/uart.rs.html#54-60' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct UART {
+    regs: *const <a class="struct" href="../../nrf51/uart/struct.Registers.html" title="struct nrf51::uart::Registers">Registers</a>,
+    client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/uart/trait.Client.html" title="trait kernel::hil::uart::Client">Client</a>&gt;&gt;,
+    buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;,
+    len: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;,
+    index: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.regs' class="structfield">
+                           <span id='regs.v' class='invisible'>
+                           <code>regs: *const <a class="struct" href="../../nrf51/uart/struct.Registers.html" title="struct nrf51::uart::Registers">Registers</a></code>
+                           </span></span><span id='structfield.client' class="structfield">
+                           <span id='client.v' class='invisible'>
+                           <code>client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/uart/trait.Client.html" title="trait kernel::hil::uart::Client">Client</a>&gt;&gt;</code>
+                           </span></span><span id='structfield.buffer' class="structfield">
+                           <span id='buffer.v' class='invisible'>
+                           <code>buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;</code>
+                           </span></span><span id='structfield.len' class="structfield">
+                           <span id='len.v' class='invisible'>
+                           <code>len: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;</code>
+                           </span></span><span id='structfield.index' class="structfield">
+                           <span id='index.v' class='invisible'>
+                           <code>index: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../nrf51/uart/struct.UART.html" title="struct nrf51::uart::UART">UART</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/nrf51/uart.rs.html#74-207' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>const fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class="struct" href="../../nrf51/uart/struct.UART.html" title="struct nrf51::uart::UART">UART</a></code></span></h4>
+<h4 id='method.configure' class="method"><span id='configure.v' class='invisible'><code>fn <a href='#method.configure' class='fnname'>configure</a>(&amp;self, tx: <a class="struct" href="../../nrf51/pinmux/struct.Pinmux.html" title="struct nrf51::pinmux::Pinmux">Pinmux</a>, rx: <a class="struct" href="../../nrf51/pinmux/struct.Pinmux.html" title="struct nrf51::pinmux::Pinmux">Pinmux</a>, cts: <a class="struct" href="../../nrf51/pinmux/struct.Pinmux.html" title="struct nrf51::pinmux::Pinmux">Pinmux</a>, rts: <a class="struct" href="../../nrf51/pinmux/struct.Pinmux.html" title="struct nrf51::pinmux::Pinmux">Pinmux</a>)</code></span></h4>
+<h4 id='method.set_baud_rate' class="method"><span id='set_baud_rate.v' class='invisible'><code>fn <a href='#method.set_baud_rate' class='fnname'>set_baud_rate</a>(&amp;self, baud_rate: u32)</code></span></h4>
+<h4 id='method.enable' class="method"><span id='enable.v' class='invisible'><code>fn <a href='#method.enable' class='fnname'>enable</a>(&amp;self)</code></span></h4>
+<h4 id='method.enable_nvic' class="method"><span id='enable_nvic.v' class='invisible'><code>fn <a href='#method.enable_nvic' class='fnname'>enable_nvic</a>(&amp;self)</code></span></h4>
+<h4 id='method.disable_nvic' class="method"><span id='disable_nvic.v' class='invisible'><code>fn <a href='#method.disable_nvic' class='fnname'>disable_nvic</a>(&amp;self)</code></span></h4>
+<h4 id='method.enable_rx_interrupts' class="method"><span id='enable_rx_interrupts.v' class='invisible'><code>fn <a href='#method.enable_rx_interrupts' class='fnname'>enable_rx_interrupts</a>(&amp;self)</code></span></h4>
+<h4 id='method.enable_tx_interrupts' class="method"><span id='enable_tx_interrupts.v' class='invisible'><code>fn <a href='#method.enable_tx_interrupts' class='fnname'>enable_tx_interrupts</a>(&amp;self)</code></span></h4>
+<h4 id='method.disable_rx_interrupts' class="method"><span id='disable_rx_interrupts.v' class='invisible'><code>fn <a href='#method.disable_rx_interrupts' class='fnname'>disable_rx_interrupts</a>(&amp;self)</code></span></h4>
+<h4 id='method.disable_tx_interrupts' class="method"><span id='disable_tx_interrupts.v' class='invisible'><code>fn <a href='#method.disable_tx_interrupts' class='fnname'>disable_tx_interrupts</a>(&amp;self)</code></span></h4>
+<h4 id='method.handle_interrupt' class="method"><span id='handle_interrupt.v' class='invisible'><code>fn <a href='#method.handle_interrupt' class='fnname'>handle_interrupt</a>(&amp;mut self)</code></span></h4>
+<h4 id='method.send_byte' class="method"><span id='send_byte.v' class='invisible'><code>unsafe fn <a href='#method.send_byte' class='fnname'>send_byte</a>(&amp;self, byte: u8)</code></span></h4>
+<h4 id='method.tx_ready' class="method"><span id='tx_ready.v' class='invisible'><code>fn <a href='#method.tx_ready' class='fnname'>tx_ready</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.rx_ready' class="method"><span id='rx_ready.v' class='invisible'><code>fn <a href='#method.rx_ready' class='fnname'>rx_ready</a>(&amp;self) -&gt; bool</code></span></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../kernel/hil/uart/trait.UART.html" title="trait kernel::hil::uart::UART">UART</a> for <a class="struct" href="../../nrf51/uart/struct.UART.html" title="struct nrf51::uart::UART">UART</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/nrf51/uart.rs.html#209-247' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.set_client' class="method"><span id='set_client.v' class='invisible'><code>fn <a href='../../kernel/hil/uart/trait.UART.html#tymethod.set_client' class='fnname'>set_client</a>(&amp;self, client: &amp;'static <a class="trait" href="../../kernel/hil/uart/trait.Client.html" title="trait kernel::hil::uart::Client">Client</a>)</code></span></h4>
+<div class='docblock'><p>Set the client for this UART peripheral. The client will be called when events finish. <a href="../../kernel/hil/uart/trait.UART.html#tymethod.set_client">Read more</a></p>
+</div><h4 id='method.init' class="method"><span id='init.v' class='invisible'><code>fn <a href='../../kernel/hil/uart/trait.UART.html#tymethod.init' class='fnname'>init</a>(&amp;self, params: <a class="struct" href="../../kernel/hil/uart/struct.UARTParams.html" title="struct kernel::hil::uart::UARTParams">UARTParams</a>)</code></span></h4>
+<div class='docblock'><p>Initialize UART <a href="../../kernel/hil/uart/trait.UART.html#tymethod.init">Read more</a></p>
+</div><h4 id='method.transmit' class="method"><span id='transmit.v' class='invisible'><code>fn <a href='../../kernel/hil/uart/trait.UART.html#tymethod.transmit' class='fnname'>transmit</a>(&amp;self, tx_data: &amp;'static mut [u8], tx_len: usize)</code></span></h4>
+<div class='docblock'><p>Transmit data.</p>
+</div><h4 id='method.receive' class="method"><span id='receive.v' class='invisible'><code>fn <a href='../../kernel/hil/uart/trait.UART.html#tymethod.receive' class='fnname'>receive</a>(&amp;self, rx_buffer: &amp;'static mut [u8], rx_len: usize)</code></span></h4>
+<div class='docblock'><p>Receive data until buffer is full.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "nrf51";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

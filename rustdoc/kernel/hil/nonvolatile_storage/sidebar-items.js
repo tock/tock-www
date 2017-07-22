@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["NonvolatileStorage","Simple interface for reading and writing nonvolatile memory. It is expected that drivers for nonvolatile memory would implement this trait."],["NonvolatileStorageClient","Client interface for nonvolatile storage."]]});

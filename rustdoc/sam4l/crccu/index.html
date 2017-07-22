@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `crccu` mod in crate `sam4l`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, crccu">
+
+    <title>sam4l::crccu - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Module crccu</p><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#constants">Constants</a></li><li><a href="#statics">Statics</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>sam4l</a></p><script>window.sidebarCurrent = {name: 'crccu', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>sam4l</a>::<wbr><a class="mod" href=''>crccu</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/sam4l/crccu.rs.html#1-420' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Implementation of the SAM4L CRCCU.</p>
+
+<p>See datasheet section &quot;41. Cyclic Redundancy Check Calculation Unit (CRCCU)&quot;.</p>
+
+<p>The SAM4L can compute CRCs using three different polynomials:</p>
+
+<ul>
+<li><code>0x04C11DB7</code> (as used in &quot;CRC-32&quot;; Atmel calls this &quot;CCIT8023&quot;)</li>
+<li><code>0x1EDC6F41</code> (as used in &quot;CRC-32C&quot;; Atmel calls this &quot;CASTAGNOLI&quot;)</li>
+<li><code>0x1021</code>     (as used in &quot;CRC-16-CCITT&quot;; Atmel calls this &quot;CCIT16&quot;)</li>
+</ul>
+
+<p>(The integers above give each polynomial from most-significant to least-significant
+bit, except that the most significant bit is omitted because it is always 1.)</p>
+
+<p>In all cases, the unit consumes each input byte from LSB to MSB.</p>
+
+<p>Note that the chip&#39;s behavior differs from some &quot;standard&quot; CRC algorithms,
+which may do some of these things:</p>
+
+<ul>
+<li>Consume input from MSB to LSB (CRC-16-CCITT?)</li>
+<li>Bit-reverse and then bit-invert the output (CRC-32)</li>
+</ul>
+
+<h1 id='notes' class='section-header'><a href='#notes'>Notes</a></h1>
+<p>This <a href="http://www.zorc.breitbandkatze.de/crc.html">calculator</a> may be used to
+generate CRC values.  To match the output of the SAM4L, the parameters must
+be set as follows:</p>
+
+<ul>
+<li>Final XOR value: 0  (equivalent to no final XOR)</li>
+<li>reverse data bytes: yes</li>
+<li>reverse CRC result before Final XOR: no</li>
+</ul>
+
+<p>For one example, the SAM4L calculates 0x1541 for &quot;ABCDEFG&quot; when using
+polynomial 0x1021.</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>use core::cell::<a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>;</code></td></tr><tr><td><code>use kernel::<a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>;</code></td></tr><tr><td><code>use kernel::hil::<a class="mod" href="../../kernel/hil/crc/index.html" title="mod kernel::hil::crc">crc</a>;</code></td></tr><tr><td><code>use kernel::hil::crc::<a class="enum" href="../../kernel/hil/crc/enum.CrcAlg.html" title="enum kernel::hil::crc::CrcAlg">CrcAlg</a>;</code></td></tr><tr><td><code>use <a class="mod" href="../../sam4l/nvic/index.html" title="mod sam4l::nvic">nvic</a>;</code></td></tr><tr><td><code>use pm::<a class="enum" href="../../sam4l/pm/enum.Clock.html" title="enum sam4l::pm::Clock">Clock</a>;</code></td></tr><tr><td><code>use pm::<a class="enum" href="../../sam4l/pm/enum.HSBClock.html" title="enum sam4l::pm::HSBClock">HSBClock</a>;</code></td></tr><tr><td><code>use pm::<a class="enum" href="../../sam4l/pm/enum.PBBClock.html" title="enum sam4l::pm::PBBClock">PBBClock</a>;</code></td></tr><tr><td><code>use pm::<a class="fn" href="../../sam4l/pm/fn.enable_clock.html" title="fn sam4l::pm::enable_clock">enable_clock</a>;</code></td></tr><tr><td><code>use pm::<a class="fn" href="../../sam4l/pm/fn.disable_clock.html" title="fn sam4l::pm::disable_clock">disable_clock</a>;</code></td></tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Crccu.html"
+                                  title='struct sam4l::crccu::Crccu'>Crccu</a></td>
+                           <td class='docblock-short'>
+                                <p>State for managing the CRCCU</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Descriptor.html"
+                                  title='struct sam4l::crccu::Descriptor'>Descriptor</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Mode.html"
+                                  title='struct sam4l::crccu::Mode'>Mode</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Reg.html"
+                                  title='struct sam4l::crccu::Reg'>Reg</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.TCR.html"
+                                  title='struct sam4l::crccu::TCR'>TCR</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Polynomial.html"
+                                  title='enum sam4l::crccu::Polynomial'>Polynomial</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.State.html"
+                                  title='enum sam4l::crccu::State'>State</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.TrWidth.html"
+                                  title='enum sam4l::crccu::TrWidth'>TrWidth</a></td>
+                           <td class='docblock-short'>
+                                <p>Transfer width for DMA</p>
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.CR.html"
+                                  title='constant sam4l::crccu::CR'>CR</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.CRCCU_BASE.html"
+                                  title='constant sam4l::crccu::CRCCU_BASE'>CRCCU_BASE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.DMADIS.html"
+                                  title='constant sam4l::crccu::DMADIS'>DMADIS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.DMAEN.html"
+                                  title='constant sam4l::crccu::DMAEN'>DMAEN</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.DMAIDR.html"
+                                  title='constant sam4l::crccu::DMAIDR'>DMAIDR</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.DMAIER.html"
+                                  title='constant sam4l::crccu::DMAIER'>DMAIER</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.DMAIMR.html"
+                                  title='constant sam4l::crccu::DMAIMR'>DMAIMR</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.DMAISR.html"
+                                  title='constant sam4l::crccu::DMAISR'>DMAISR</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.DMASR.html"
+                                  title='constant sam4l::crccu::DMASR'>DMASR</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.DSCR.html"
+                                  title='constant sam4l::crccu::DSCR'>DSCR</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.DSCR_RESERVE.html"
+                                  title='constant sam4l::crccu::DSCR_RESERVE'>DSCR_RESERVE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.IDR.html"
+                                  title='constant sam4l::crccu::IDR'>IDR</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.IER.html"
+                                  title='constant sam4l::crccu::IER'>IER</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.IMR.html"
+                                  title='constant sam4l::crccu::IMR'>IMR</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.ISR.html"
+                                  title='constant sam4l::crccu::ISR'>ISR</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.MR.html"
+                                  title='constant sam4l::crccu::MR'>MR</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SR.html"
+                                  title='constant sam4l::crccu::SR'>SR</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.VERSION.html"
+                                  title='constant sam4l::crccu::VERSION'>VERSION</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.CRCCU.html"
+                                  title='static sam4l::crccu::CRCCU'>CRCCU</a></td>
+                           <td class='docblock-short'>
+                                <p>Static state to manage the CRCCU</p>
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.crccu_handler.html"
+                                  title='fn sam4l::crccu::crccu_handler'>crccu_handler</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.poly_for_alg.html"
+                                  title='fn sam4l::crccu::poly_for_alg'>poly_for_alg</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.post_process.html"
+                                  title='fn sam4l::crccu::post_process'>post_process</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.reverse_and_invert.html"
+                                  title='fn sam4l::crccu::reverse_and_invert'>reverse_and_invert</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "sam4l";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

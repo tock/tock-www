@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `SpiSlave` struct in crate `capsules`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, SpiSlave">
+
+    <title>capsules::spi::SpiSlave - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct SpiSlave</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>capsules</a>::<wbr><a href='index.html'>spi</a></p><script>window.sidebarCurrent = {name: 'SpiSlave', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>capsules</a>::<wbr><a href='index.html'>spi</a>::<wbr><a class="struct" href=''>SpiSlave</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/capsules/spi.rs.html#75-82' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct SpiSlave&lt;'a, S:&nbsp;<a class="trait" href="../../kernel/hil/spi/trait.SpiSlaveDevice.html" title="trait kernel::hil::spi::SpiSlaveDevice">SpiSlaveDevice</a> + 'a&gt; {
+    spi_slave: &amp;'a S,
+    busy: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;,
+    app: <a class="struct" href="../../kernel/common/take_cell/struct.MapCell.html" title="struct kernel::common::take_cell::MapCell">MapCell</a>&lt;<a class="struct" href="../../capsules/spi/struct.SlaveApp.html" title="struct capsules::spi::SlaveApp">SlaveApp</a>&gt;,
+    kernel_read: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;,
+    kernel_write: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;,
+    kernel_len: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.spi_slave' class="structfield">
+                           <span id='spi_slave.v' class='invisible'>
+                           <code>spi_slave: &amp;'a S</code>
+                           </span></span><span id='structfield.busy' class="structfield">
+                           <span id='busy.v' class='invisible'>
+                           <code>busy: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;</code>
+                           </span></span><span id='structfield.app' class="structfield">
+                           <span id='app.v' class='invisible'>
+                           <code>app: <a class="struct" href="../../kernel/common/take_cell/struct.MapCell.html" title="struct kernel::common::take_cell::MapCell">MapCell</a>&lt;<a class="struct" href="../../capsules/spi/struct.SlaveApp.html" title="struct capsules::spi::SlaveApp">SlaveApp</a>&gt;</code>
+                           </span></span><span id='structfield.kernel_read' class="structfield">
+                           <span id='kernel_read.v' class='invisible'>
+                           <code>kernel_read: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;</code>
+                           </span></span><span id='structfield.kernel_write' class="structfield">
+                           <span id='kernel_write.v' class='invisible'>
+                           <code>kernel_write: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;</code>
+                           </span></span><span id='structfield.kernel_len' class="structfield">
+                           <span id='kernel_len.v' class='invisible'>
+                           <code>kernel_len: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a, S:&nbsp;<a class="trait" href="../../kernel/hil/spi/trait.SpiSlaveDevice.html" title="trait kernel::hil::spi::SpiSlaveDevice">SpiSlaveDevice</a>&gt; <a class="struct" href="../../capsules/spi/struct.SpiSlave.html" title="struct capsules::spi::SpiSlave">SpiSlave</a>&lt;'a, S&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/spi.rs.html#293-329' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(spi_slave: &amp;'a S) -&gt; <a class="struct" href="../../capsules/spi/struct.SpiSlave.html" title="struct capsules::spi::SpiSlave">SpiSlave</a>&lt;'a, S&gt;</code></span></h4>
+<h4 id='method.config_buffers' class="method"><span id='config_buffers.v' class='invisible'><code>fn <a href='#method.config_buffers' class='fnname'>config_buffers</a>(&amp;mut self, read: &amp;'static mut [u8], write: &amp;'static mut [u8])</code></span></h4>
+<h4 id='method.do_next_read_write' class="method"><span id='do_next_read_write.v' class='invisible'><code>fn <a href='#method.do_next_read_write' class='fnname'>do_next_read_write</a>(&amp;self, app: &amp;mut <a class="struct" href="../../capsules/spi/struct.SlaveApp.html" title="struct capsules::spi::SlaveApp">SlaveApp</a>)</code></span></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a, S:&nbsp;<a class="trait" href="../../kernel/hil/spi/trait.SpiSlaveDevice.html" title="trait kernel::hil::spi::SpiSlaveDevice">SpiSlaveDevice</a>&gt; <a class="trait" href="../../kernel/driver/trait.Driver.html" title="trait kernel::driver::Driver">Driver</a> for <a class="struct" href="../../capsules/spi/struct.SpiSlave.html" title="struct capsules::spi::SpiSlave">SpiSlave</a>&lt;'a, S&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/spi.rs.html#331-462' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.allow' class="method"><span id='allow.v' class='invisible'><code>fn <a href='../../kernel/driver/trait.Driver.html#method.allow' class='fnname'>allow</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;_appid: <a class="struct" href="../../kernel/callback/struct.AppId.html" title="struct kernel::callback::AppId">AppId</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;allow_num: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;slice: <a class="struct" href="../../kernel/mem/struct.AppSlice.html" title="struct kernel::mem::AppSlice">AppSlice</a>&lt;<a class="struct" href="../../kernel/mem/struct.Shared.html" title="struct kernel::mem::Shared">Shared</a>, u8&gt;<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Provide read/write buffers to SpiSlave</p>
+
+<p>allow_num 0: Provides an app_read buffer to receive transfers into.</p>
+
+<p>allow_num 1: Provides an app_write buffer to send transfers from.</p>
+</div><h4 id='method.subscribe' class="method"><span id='subscribe.v' class='invisible'><code>fn <a href='../../kernel/driver/trait.Driver.html#method.subscribe' class='fnname'>subscribe</a>(&amp;self, subscribe_num: usize, callback: <a class="struct" href="../../kernel/callback/struct.Callback.html" title="struct kernel::callback::Callback">Callback</a>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Setup callbacks for SpiSlave</p>
+
+<p>subscribe_num 0: Sets up a callback for when read_write completes. This
+                 is called after completing a transfer/reception with
+                 the Spi master. Note that this occurs after the pending
+                 DMA transfer initiated by read_write_bytes completes.</p>
+
+<p>subscribe_num 1: Sets up a callback for when the chip select line is
+                 driven low, meaning that the slave was selected by
+                 the Spi master. This occurs immediately before
+                 a data transfer.</p>
+</div><h4 id='method.command' class="method"><span id='command.v' class='invisible'><code>fn <a href='../../kernel/driver/trait.Driver.html#method.command' class='fnname'>command</a>(&amp;self, cmd_num: usize, arg1: usize, _: <a class="struct" href="../../kernel/callback/struct.AppId.html" title="struct kernel::callback::AppId">AppId</a>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>0: check if present
+1: read/write buffers
+  - read and write buffers optional
+  - fails if arg1 (bytes to write) &gt;
+    write_buffer.len()
+2: get chip select
+  - returns current selected peripheral
+  - in slave mode, always returns 0
+3: set clock phase on current peripheral
+  - 0 is sample leading
+  - non-zero is sample trailing
+4: get clock phase on current peripheral
+  - 0 is sample leading
+  - non-zero is sample trailing
+5: set clock polarity on current peripheral
+  - 0 is idle low
+  - non-zero is idle high
+6: get clock polarity on current peripheral
+  - 0 is idle low
+  - non-zero is idle high</p>
+
+<p>x: lock spi
+  - if you perform an operation without the lock,
+    it implicitly acquires the lock before the
+    operation and releases it after
+  - while an app holds the lock no other app can issue
+    operations on SPI (they are buffered)
+  - not implemented or currently supported
+x+1: unlock spi
+  - does nothing if lock not held
+  - not implemented or currently supported</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a, S:&nbsp;<a class="trait" href="../../kernel/hil/spi/trait.SpiSlaveDevice.html" title="trait kernel::hil::spi::SpiSlaveDevice">SpiSlaveDevice</a>&gt; <a class="trait" href="../../kernel/hil/spi/trait.SpiSlaveClient.html" title="trait kernel::hil::spi::SpiSlaveClient">SpiSlaveClient</a> for <a class="struct" href="../../capsules/spi/struct.SpiSlave.html" title="struct capsules::spi::SpiSlave">SpiSlave</a>&lt;'a, S&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/spi.rs.html#464-502' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.read_write_done' class="method"><span id='read_write_done.v' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiSlaveClient.html#tymethod.read_write_done' class='fnname'>read_write_done</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;writebuf: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static mut [u8]&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;readbuf: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static mut [u8]&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;length: usize<br>)</code></span></h4>
+<div class='docblock'><p>This is called as a DMA interrupt when a transfer has completed</p>
+</div><h4 id='method.chip_selected' class="method"><span id='chip_selected.v' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiSlaveClient.html#tymethod.chip_selected' class='fnname'>chip_selected</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>This is called whenever the slave is selected by the master</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "capsules";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

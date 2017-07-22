@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `FLASHCALW` struct in crate `sam4l`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, FLASHCALW">
+
+    <title>sam4l::flashcalw::FLASHCALW - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct FLASHCALW</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>sam4l</a>::<wbr><a href='index.html'>flashcalw</a></p><script>window.sidebarCurrent = {name: 'FLASHCALW', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>sam4l</a>::<wbr><a href='index.html'>flashcalw</a>::<wbr><a class="struct" href=''>FLASHCALW</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/sam4l/flashcalw.rs.html#177-188' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct FLASHCALW {
+    registers: *mut <a class="struct" href="../../sam4l/flashcalw/struct.FlashcalwRegisters.html" title="struct sam4l::flashcalw::FlashcalwRegisters">FlashcalwRegisters</a>,
+    ahb_clock: <a class="enum" href="../../sam4l/pm/enum.Clock.html" title="enum sam4l::pm::Clock">Clock</a>,
+    hramc1_clock: <a class="enum" href="../../sam4l/pm/enum.Clock.html" title="enum sam4l::pm::Clock">Clock</a>,
+    pb_clock: <a class="enum" href="../../sam4l/pm/enum.Clock.html" title="enum sam4l::pm::Clock">Clock</a>,
+    error_status: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u32&gt;,
+    ready: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;,
+    client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/flash/trait.Client.html" title="trait kernel::hil::flash::Client">Client</a>&lt;<a class="struct" href="../../sam4l/flashcalw/struct.FLASHCALW.html" title="struct sam4l::flashcalw::FLASHCALW">FLASHCALW</a>&gt;&gt;&gt;,
+    current_state: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="../../sam4l/flashcalw/enum.FlashState.html" title="enum sam4l::flashcalw::FlashState">FlashState</a>&gt;,
+    current_command: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="../../sam4l/flashcalw/enum.Command.html" title="enum sam4l::flashcalw::Command">Command</a>&gt;,
+    buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, <a class="struct" href="../../sam4l/flashcalw/struct.Sam4lPage.html" title="struct sam4l::flashcalw::Sam4lPage">Sam4lPage</a>&gt;,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.registers' class="structfield">
+                           <span id='registers.v' class='invisible'>
+                           <code>registers: *mut <a class="struct" href="../../sam4l/flashcalw/struct.FlashcalwRegisters.html" title="struct sam4l::flashcalw::FlashcalwRegisters">FlashcalwRegisters</a></code>
+                           </span></span><span id='structfield.ahb_clock' class="structfield">
+                           <span id='ahb_clock.v' class='invisible'>
+                           <code>ahb_clock: <a class="enum" href="../../sam4l/pm/enum.Clock.html" title="enum sam4l::pm::Clock">Clock</a></code>
+                           </span></span><span id='structfield.hramc1_clock' class="structfield">
+                           <span id='hramc1_clock.v' class='invisible'>
+                           <code>hramc1_clock: <a class="enum" href="../../sam4l/pm/enum.Clock.html" title="enum sam4l::pm::Clock">Clock</a></code>
+                           </span></span><span id='structfield.pb_clock' class="structfield">
+                           <span id='pb_clock.v' class='invisible'>
+                           <code>pb_clock: <a class="enum" href="../../sam4l/pm/enum.Clock.html" title="enum sam4l::pm::Clock">Clock</a></code>
+                           </span></span><span id='structfield.error_status' class="structfield">
+                           <span id='error_status.v' class='invisible'>
+                           <code>error_status: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u32&gt;</code>
+                           </span></span><span id='structfield.ready' class="structfield">
+                           <span id='ready.v' class='invisible'>
+                           <code>ready: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;</code>
+                           </span></span><span id='structfield.client' class="structfield">
+                           <span id='client.v' class='invisible'>
+                           <code>client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/flash/trait.Client.html" title="trait kernel::hil::flash::Client">Client</a>&lt;<a class="struct" href="../../sam4l/flashcalw/struct.FLASHCALW.html" title="struct sam4l::flashcalw::FLASHCALW">FLASHCALW</a>&gt;&gt;&gt;</code>
+                           </span></span><span id='structfield.current_state' class="structfield">
+                           <span id='current_state.v' class='invisible'>
+                           <code>current_state: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="../../sam4l/flashcalw/enum.FlashState.html" title="enum sam4l::flashcalw::FlashState">FlashState</a>&gt;</code>
+                           </span></span><span id='structfield.current_command' class="structfield">
+                           <span id='current_command.v' class='invisible'>
+                           <code>current_command: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="../../sam4l/flashcalw/enum.Command.html" title="enum sam4l::flashcalw::Command">Command</a>&gt;</code>
+                           </span></span><span id='structfield.buffer' class="structfield">
+                           <span id='buffer.v' class='invisible'>
+                           <code>buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, <a class="struct" href="../../sam4l/flashcalw/struct.Sam4lPage.html" title="struct sam4l::flashcalw::Sam4lPage">Sam4lPage</a>&gt;</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../sam4l/flashcalw/struct.FLASHCALW.html" title="struct sam4l::flashcalw::FLASHCALW">FLASHCALW</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/flashcalw.rs.html#220-800' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>const fn <a href='#method.new' class='fnname'>new</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;base_addr: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;ahb_clk: <a class="enum" href="../../sam4l/pm/enum.HSBClock.html" title="enum sam4l::pm::HSBClock">HSBClock</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;hramc1_clk: <a class="enum" href="../../sam4l/pm/enum.HSBClock.html" title="enum sam4l::pm::HSBClock">HSBClock</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;pb_clk: <a class="enum" href="../../sam4l/pm/enum.PBBClock.html" title="enum sam4l::pm::PBBClock">PBBClock</a><br>) -&gt; <a class="struct" href="../../sam4l/flashcalw/struct.FLASHCALW.html" title="struct sam4l::flashcalw::FLASHCALW">FLASHCALW</a></code></span></h4>
+<h4 id='method.invalidate_cache' class="method"><span id='invalidate_cache.v' class='invisible'><code>fn <a href='#method.invalidate_cache' class='fnname'>invalidate_cache</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Cache controlling functionality.</p>
+</div><h4 id='method.enable_picocache' class="method"><span id='enable_picocache.v' class='invisible'><code>fn <a href='#method.enable_picocache' class='fnname'>enable_picocache</a>(&amp;self, enable: bool)</code></span></h4>
+<h4 id='method.enable_cache' class="method"><span id='enable_cache.v' class='invisible'><code>fn <a href='#method.enable_cache' class='fnname'>enable_cache</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Enable HCACHE</p>
+</div><h4 id='method.pico_enabled' class="method"><span id='pico_enabled.v' class='invisible'><code>fn <a href='#method.pico_enabled' class='fnname'>pico_enabled</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.read_register' class="method"><span id='read_register.v' class='invisible'><code>fn <a href='#method.read_register' class='fnname'>read_register</a>(&amp;self, key: <a class="enum" href="../../sam4l/flashcalw/enum.RegKey.html" title="enum sam4l::flashcalw::RegKey">RegKey</a>) -&gt; u32</code></span></h4>
+<h4 id='method.handle_interrupt' class="method"><span id='handle_interrupt.v' class='invisible'><code>fn <a href='#method.handle_interrupt' class='fnname'>handle_interrupt</a>(&amp;self)</code></span></h4>
+<h4 id='method.get_flash_size' class="method"><span id='get_flash_size.v' class='invisible'><code>fn <a href='#method.get_flash_size' class='fnname'>get_flash_size</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>FLASH properties.</p>
+</div><h4 id='method.get_page_count' class="method"><span id='get_page_count.v' class='invisible'><code>fn <a href='#method.get_page_count' class='fnname'>get_page_count</a>(&amp;self) -&gt; u32</code></span></h4>
+<h4 id='method.get_page_count_per_region' class="method"><span id='get_page_count_per_region.v' class='invisible'><code>fn <a href='#method.get_page_count_per_region' class='fnname'>get_page_count_per_region</a>(&amp;self) -&gt; u32</code></span></h4>
+<h4 id='method.get_page_region' class="method"><span id='get_page_region.v' class='invisible'><code>fn <a href='#method.get_page_region' class='fnname'>get_page_region</a>(&amp;self, page_number: i32) -&gt; u32</code></span></h4>
+<h4 id='method.get_region_first_page_number' class="method"><span id='get_region_first_page_number.v' class='invisible'><code>fn <a href='#method.get_region_first_page_number' class='fnname'>get_region_first_page_number</a>(&amp;self, region: u32) -&gt; u32</code></span></h4>
+<h4 id='method.get_wait_state' class="method"><span id='get_wait_state.v' class='invisible'><code>fn <a href='#method.get_wait_state' class='fnname'>get_wait_state</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>FLASHC Control</p>
+</div><h4 id='method.set_wait_state' class="method"><span id='set_wait_state.v' class='invisible'><code>fn <a href='#method.set_wait_state' class='fnname'>set_wait_state</a>(&amp;self, wait_state: u32)</code></span></h4>
+<h4 id='method.enable_ws1_read_opt' class="method"><span id='enable_ws1_read_opt.v' class='invisible'><code>fn <a href='#method.enable_ws1_read_opt' class='fnname'>enable_ws1_read_opt</a>(&amp;mut self, enable: bool)</code></span></h4>
+<h4 id='method.set_flash_waitstate_and_readmode' class="method"><span id='set_flash_waitstate_and_readmode.v' class='invisible'><code>fn <a href='#method.set_flash_waitstate_and_readmode' class='fnname'>set_flash_waitstate_and_readmode</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;mut self, <br>&nbsp;&nbsp;&nbsp;&nbsp;cpu_freq: u32, <br>&nbsp;&nbsp;&nbsp;&nbsp;_ps_val: u32, <br>&nbsp;&nbsp;&nbsp;&nbsp;_is_fwu_enabled: bool<br>)</code></span></h4>
+<h4 id='method.enable_high_speed_flash' class="method"><span id='enable_high_speed_flash.v' class='invisible'><code>fn <a href='#method.enable_high_speed_flash' class='fnname'>enable_high_speed_flash</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Configure high-speed flash mode. This is taken from the ASF code</p>
+</div><h4 id='method.is_ready_int_enabled' class="method"><span id='is_ready_int_enabled.v' class='invisible'><code>fn <a href='#method.is_ready_int_enabled' class='fnname'>is_ready_int_enabled</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.enable_ready_int' class="method"><span id='enable_ready_int.v' class='invisible'><code>fn <a href='#method.enable_ready_int' class='fnname'>enable_ready_int</a>(&amp;self, enable: bool)</code></span></h4>
+<h4 id='method.is_lock_error_int_enabled' class="method"><span id='is_lock_error_int_enabled.v' class='invisible'><code>fn <a href='#method.is_lock_error_int_enabled' class='fnname'>is_lock_error_int_enabled</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.enable_lock_error_int' class="method"><span id='enable_lock_error_int.v' class='invisible'><code>fn <a href='#method.enable_lock_error_int' class='fnname'>enable_lock_error_int</a>(&amp;self, enable: bool)</code></span></h4>
+<h4 id='method.is_prog_error_int_enabled' class="method"><span id='is_prog_error_int_enabled.v' class='invisible'><code>fn <a href='#method.is_prog_error_int_enabled' class='fnname'>is_prog_error_int_enabled</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.enable_prog_error_int' class="method"><span id='enable_prog_error_int.v' class='invisible'><code>fn <a href='#method.enable_prog_error_int' class='fnname'>enable_prog_error_int</a>(&amp;self, enable: bool)</code></span></h4>
+<h4 id='method.is_ecc_int_enabled' class="method"><span id='is_ecc_int_enabled.v' class='invisible'><code>fn <a href='#method.is_ecc_int_enabled' class='fnname'>is_ecc_int_enabled</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.enable_ecc_int' class="method"><span id='enable_ecc_int.v' class='invisible'><code>fn <a href='#method.enable_ecc_int' class='fnname'>enable_ecc_int</a>(&amp;self, enable: bool)</code></span></h4>
+<h4 id='method.is_ready' class="method"><span id='is_ready.v' class='invisible'><code>fn <a href='#method.is_ready' class='fnname'>is_ready</a>(&amp;self) -&gt; bool</code></span></h4>
+<div class='docblock'><p>Flashcalw status</p>
+</div><h4 id='method.get_error_status' class="method"><span id='get_error_status.v' class='invisible'><code>fn <a href='#method.get_error_status' class='fnname'>get_error_status</a>(&amp;self) -&gt; u32</code></span></h4>
+<h4 id='method.is_lock_error' class="method"><span id='is_lock_error.v' class='invisible'><code>fn <a href='#method.is_lock_error' class='fnname'>is_lock_error</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.is_programming_error' class="method"><span id='is_programming_error.v' class='invisible'><code>fn <a href='#method.is_programming_error' class='fnname'>is_programming_error</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.get_page_number' class="method"><span id='get_page_number.v' class='invisible'><code>fn <a href='#method.get_page_number' class='fnname'>get_page_number</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Flashcalw command control</p>
+</div><h4 id='method.issue_command' class="method"><span id='issue_command.v' class='invisible'><code>fn <a href='#method.issue_command' class='fnname'>issue_command</a>(&amp;self, command: <a class="enum" href="../../sam4l/flashcalw/enum.FlashCMD.html" title="enum sam4l::flashcalw::FlashCMD">FlashCMD</a>, page_number: i32)</code></span></h4>
+<h4 id='method.no_operation' class="method"><span id='no_operation.v' class='invisible'><code>fn <a href='#method.no_operation' class='fnname'>no_operation</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Flashcalw global commands</p>
+</div><h4 id='method.erase_all' class="method"><span id='erase_all.v' class='invisible'><code>fn <a href='#method.erase_all' class='fnname'>erase_all</a>(&amp;self)</code></span></h4>
+<h4 id='method.is_security_bit_active' class="method"><span id='is_security_bit_active.v' class='invisible'><code>fn <a href='#method.is_security_bit_active' class='fnname'>is_security_bit_active</a>(&amp;self) -&gt; bool</code></span></h4>
+<div class='docblock'><p>FLASHCALW Protection Mechanisms</p>
+</div><h4 id='method.set_security_bit' class="method"><span id='set_security_bit.v' class='invisible'><code>fn <a href='#method.set_security_bit' class='fnname'>set_security_bit</a>(&amp;self)</code></span></h4>
+<h4 id='method.is_page_region_locked' class="method"><span id='is_page_region_locked.v' class='invisible'><code>fn <a href='#method.is_page_region_locked' class='fnname'>is_page_region_locked</a>(&amp;self, page_number: u32) -&gt; bool</code></span></h4>
+<h4 id='method.is_region_locked' class="method"><span id='is_region_locked.v' class='invisible'><code>fn <a href='#method.is_region_locked' class='fnname'>is_region_locked</a>(&amp;self, region: u32) -&gt; bool</code></span></h4>
+<h4 id='method.lock_page_region' class="method"><span id='lock_page_region.v' class='invisible'><code>fn <a href='#method.lock_page_region' class='fnname'>lock_page_region</a>(&amp;self, page_number: i32, lock: bool)</code></span></h4>
+<h4 id='method.lock_region' class="method"><span id='lock_region.v' class='invisible'><code>fn <a href='#method.lock_region' class='fnname'>lock_region</a>(&amp;self, region: u32, lock: bool)</code></span></h4>
+<h4 id='method.clear_page_buffer' class="method"><span id='clear_page_buffer.v' class='invisible'><code>fn <a href='#method.clear_page_buffer' class='fnname'>clear_page_buffer</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Flashcalw Access to Flash Pages</p>
+</div><h4 id='method.is_page_erased' class="method"><span id='is_page_erased.v' class='invisible'><code>fn <a href='#method.is_page_erased' class='fnname'>is_page_erased</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.quick_page_read' class="method"><span id='quick_page_read.v' class='invisible'><code>fn <a href='#method.quick_page_read' class='fnname'>quick_page_read</a>(&amp;self, page_number: i32) -&gt; bool</code></span></h4>
+<h4 id='method.flashcalw_erase_page' class="method"><span id='flashcalw_erase_page.v' class='invisible'><code>fn <a href='#method.flashcalw_erase_page' class='fnname'>flashcalw_erase_page</a>(&amp;self, page_number: i32, check: bool) -&gt; bool</code></span></h4>
+<h4 id='method.flashcalw_write_page' class="method"><span id='flashcalw_write_page.v' class='invisible'><code>fn <a href='#method.flashcalw_write_page' class='fnname'>flashcalw_write_page</a>(&amp;self, page_number: i32)</code></span></h4>
+<h4 id='method.quick_user_page_read' class="method"><span id='quick_user_page_read.v' class='invisible'><code>fn <a href='#method.quick_user_page_read' class='fnname'>quick_user_page_read</a>(&amp;self) -&gt; bool</code></span></h4>
+<div class='docblock'><p>There&#39;s a user_page that isn&#39;t contigous with the rest of the flash. Currently
+it&#39;s not being used.</p>
+</div><h4 id='method.erase_user_page' class="method"><span id='erase_user_page.v' class='invisible'><code>fn <a href='#method.erase_user_page' class='fnname'>erase_user_page</a>(&amp;self, check: bool) -&gt; bool</code></span></h4>
+<h4 id='method.write_user_page' class="method"><span id='write_user_page.v' class='invisible'><code>fn <a href='#method.write_user_page' class='fnname'>write_user_page</a>(&amp;self)</code></span></h4>
+<h4 id='method.write_to_page_buffer' class="method"><span id='write_to_page_buffer.v' class='invisible'><code>fn <a href='#method.write_to_page_buffer' class='fnname'>write_to_page_buffer</a>(&amp;self, pg_buff_addr: usize)</code></span></h4>
+<h4 id='method.debug_error_status' class="method"><span id='debug_error_status.v' class='invisible'><code>fn <a href='#method.debug_error_status' class='fnname'>debug_error_status</a>(&amp;self) -&gt; u32</code></span></h4>
+</div><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../sam4l/flashcalw/struct.FLASHCALW.html" title="struct sam4l::flashcalw::FLASHCALW">FLASHCALW</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/flashcalw.rs.html#803-925' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.configure' class="method"><span id='configure.v' class='invisible'><code>fn <a href='#method.configure' class='fnname'>configure</a>(&amp;mut self)</code></span></h4>
+<h4 id='method.get_page_size' class="method"><span id='get_page_size.v' class='invisible'><code>fn <a href='#method.get_page_size' class='fnname'>get_page_size</a>(&amp;self) -&gt; u32</code></span></h4>
+<h4 id='method.get_number_pages' class="method"><span id='get_number_pages.v' class='invisible'><code>fn <a href='#method.get_number_pages' class='fnname'>get_number_pages</a>(&amp;self) -&gt; u32</code></span></h4>
+<h4 id='method.read_range' class="method"><span id='read_range.v' class='invisible'><code>fn <a href='#method.read_range' class='fnname'>read_range</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;address: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;size: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;buffer: &amp;'static mut <a class="struct" href="../../sam4l/flashcalw/struct.Sam4lPage.html" title="struct sam4l::flashcalw::Sam4lPage">Sam4lPage</a><br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.write_page' class="method"><span id='write_page.v' class='invisible'><code>fn <a href='#method.write_page' class='fnname'>write_page</a>(&amp;self, page_num: i32, data: &amp;'static mut <a class="struct" href="../../sam4l/flashcalw/struct.Sam4lPage.html" title="struct sam4l::flashcalw::Sam4lPage">Sam4lPage</a>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.erase_page' class="method"><span id='erase_page.v' class='invisible'><code>fn <a href='#method.erase_page' class='fnname'>erase_page</a>(&amp;self, page_num: i32) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;C:&nbsp;<a class="trait" href="../../kernel/hil/flash/trait.Client.html" title="trait kernel::hil::flash::Client">Client</a>&lt;Self&gt;&gt; <a class="trait" href="../../kernel/hil/flash/trait.HasClient.html" title="trait kernel::hil::flash::HasClient">HasClient</a>&lt;'static, C&gt; for <a class="struct" href="../../sam4l/flashcalw/struct.FLASHCALW.html" title="struct sam4l::flashcalw::FLASHCALW">FLASHCALW</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/flashcalw.rs.html#927-931' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.set_client' class="method"><span id='set_client.v' class='invisible'><code>fn <a href='../../kernel/hil/flash/trait.HasClient.html#tymethod.set_client' class='fnname'>set_client</a>(&amp;self, client: &amp;'static C)</code></span></h4>
+<div class='docblock'><p>Set the client for this flash peripheral. The client will be called when operations complete. <a href="../../kernel/hil/flash/trait.HasClient.html#tymethod.set_client">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../kernel/hil/flash/trait.Flash.html" title="trait kernel::hil::flash::Flash">Flash</a> for <a class="struct" href="../../sam4l/flashcalw/struct.FLASHCALW.html" title="struct sam4l::flashcalw::FLASHCALW">FLASHCALW</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/flashcalw.rs.html#933-947' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Page' class="type"><span id='Page.t' class='invisible'><code>type <a href='../../kernel/hil/flash/trait.Flash.html#associatedtype.Page' class="type">Page</a> = <a class="struct" href="../../sam4l/flashcalw/struct.Sam4lPage.html" title="struct sam4l::flashcalw::Sam4lPage">Sam4lPage</a></code></span></h4>
+<div class='docblock'><p>Type of a single flash page for the given implementation.</p>
+</div><h4 id='method.read_page' class="method"><span id='read_page.v' class='invisible'><code>fn <a href='../../kernel/hil/flash/trait.Flash.html#tymethod.read_page' class='fnname'>read_page</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;page_number: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;buf: &amp;'static mut Self::<a class="type" href="../../kernel/hil/flash/trait.Flash.html#associatedtype.Page" title="type kernel::hil::flash::Flash::Page">Page</a><br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Read a page of flash into the buffer.</p>
+</div><h4 id='method.write_page-1' class="method"><span id='write_page.v-1' class='invisible'><code>fn <a href='../../kernel/hil/flash/trait.Flash.html#tymethod.write_page' class='fnname'>write_page</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;page_number: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;buf: &amp;'static mut Self::<a class="type" href="../../kernel/hil/flash/trait.Flash.html#associatedtype.Page" title="type kernel::hil::flash::Flash::Page">Page</a><br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Write a page of flash from the buffer.</p>
+</div><h4 id='method.erase_page-1' class="method"><span id='erase_page.v-1' class='invisible'><code>fn <a href='../../kernel/hil/flash/trait.Flash.html#tymethod.erase_page' class='fnname'>erase_page</a>(&amp;self, page_number: usize) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Erase a page of flash.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "sam4l";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

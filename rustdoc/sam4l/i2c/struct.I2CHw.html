@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `I2CHw` struct in crate `sam4l`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, I2CHw">
+
+    <title>sam4l::i2c::I2CHw - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct I2CHw</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>sam4l</a>::<wbr><a href='index.html'>i2c</a></p><script>window.sidebarCurrent = {name: 'I2CHw', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>sam4l</a>::<wbr><a href='index.html'>i2c</a>::<wbr><a class="struct" href=''>I2CHw</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/sam4l/i2c.rs.html#99-120' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct I2CHw {
+    registers: *mut <a class="struct" href="../../sam4l/i2c/struct.TWIMRegisters.html" title="struct sam4l::i2c::TWIMRegisters">TWIMRegisters</a>,
+    slave_registers: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;*mut <a class="struct" href="../../sam4l/i2c/struct.TWISRegisters.html" title="struct sam4l::i2c::TWISRegisters">TWISRegisters</a>&gt;,
+    master_clock: <a class="enum" href="../../sam4l/pm/enum.Clock.html" title="enum sam4l::pm::Clock">Clock</a>,
+    slave_clock: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../sam4l/pm/enum.Clock.html" title="enum sam4l::pm::Clock">Clock</a>&gt;,
+    dma: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="struct" href="../../sam4l/dma/struct.DMAChannel.html" title="struct sam4l::dma::DMAChannel">DMAChannel</a>&gt;&gt;,
+    dma_pids: (<a class="enum" href="../../sam4l/dma/enum.DMAPeripheral.html" title="enum sam4l::dma::DMAPeripheral">DMAPeripheral</a>, <a class="enum" href="../../sam4l/dma/enum.DMAPeripheral.html" title="enum sam4l::dma::DMAPeripheral">DMAPeripheral</a>),
+    nvic: <a class="enum" href="../../sam4l/nvic/enum.NvicIdx.html" title="enum sam4l::nvic::NvicIdx">NvicIdx</a>,
+    slave_nvic: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../sam4l/nvic/enum.NvicIdx.html" title="enum sam4l::nvic::NvicIdx">NvicIdx</a>&gt;,
+    master_client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/i2c/trait.I2CHwMasterClient.html" title="trait kernel::hil::i2c::I2CHwMasterClient">I2CHwMasterClient</a>&gt;&gt;,
+    slave_client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/i2c/trait.I2CHwSlaveClient.html" title="trait kernel::hil::i2c::I2CHwSlaveClient">I2CHwSlaveClient</a>&gt;&gt;,
+    on_deck: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;(<a class="enum" href="../../sam4l/dma/enum.DMAPeripheral.html" title="enum sam4l::dma::DMAPeripheral">DMAPeripheral</a>, usize)&gt;&gt;,
+    slave_enabled: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;,
+    my_slave_address: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;,
+    slave_read_buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;,
+    slave_read_buffer_len: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;,
+    slave_read_buffer_index: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;,
+    slave_write_buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;,
+    slave_write_buffer_len: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;,
+    slave_write_buffer_index: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.registers' class="structfield">
+                           <span id='registers.v' class='invisible'>
+                           <code>registers: *mut <a class="struct" href="../../sam4l/i2c/struct.TWIMRegisters.html" title="struct sam4l::i2c::TWIMRegisters">TWIMRegisters</a></code>
+                           </span></span><span id='structfield.slave_registers' class="structfield">
+                           <span id='slave_registers.v' class='invisible'>
+                           <code>slave_registers: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;*mut <a class="struct" href="../../sam4l/i2c/struct.TWISRegisters.html" title="struct sam4l::i2c::TWISRegisters">TWISRegisters</a>&gt;</code>
+                           </span></span><span id='structfield.master_clock' class="structfield">
+                           <span id='master_clock.v' class='invisible'>
+                           <code>master_clock: <a class="enum" href="../../sam4l/pm/enum.Clock.html" title="enum sam4l::pm::Clock">Clock</a></code>
+                           </span></span><span id='structfield.slave_clock' class="structfield">
+                           <span id='slave_clock.v' class='invisible'>
+                           <code>slave_clock: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../sam4l/pm/enum.Clock.html" title="enum sam4l::pm::Clock">Clock</a>&gt;</code>
+                           </span></span><span id='structfield.dma' class="structfield">
+                           <span id='dma.v' class='invisible'>
+                           <code>dma: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="struct" href="../../sam4l/dma/struct.DMAChannel.html" title="struct sam4l::dma::DMAChannel">DMAChannel</a>&gt;&gt;</code>
+                           </span></span><span id='structfield.dma_pids' class="structfield">
+                           <span id='dma_pids.v' class='invisible'>
+                           <code>dma_pids: (<a class="enum" href="../../sam4l/dma/enum.DMAPeripheral.html" title="enum sam4l::dma::DMAPeripheral">DMAPeripheral</a>, <a class="enum" href="../../sam4l/dma/enum.DMAPeripheral.html" title="enum sam4l::dma::DMAPeripheral">DMAPeripheral</a>)</code>
+                           </span></span><span id='structfield.nvic' class="structfield">
+                           <span id='nvic.v' class='invisible'>
+                           <code>nvic: <a class="enum" href="../../sam4l/nvic/enum.NvicIdx.html" title="enum sam4l::nvic::NvicIdx">NvicIdx</a></code>
+                           </span></span><span id='structfield.slave_nvic' class="structfield">
+                           <span id='slave_nvic.v' class='invisible'>
+                           <code>slave_nvic: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../sam4l/nvic/enum.NvicIdx.html" title="enum sam4l::nvic::NvicIdx">NvicIdx</a>&gt;</code>
+                           </span></span><span id='structfield.master_client' class="structfield">
+                           <span id='master_client.v' class='invisible'>
+                           <code>master_client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/i2c/trait.I2CHwMasterClient.html" title="trait kernel::hil::i2c::I2CHwMasterClient">I2CHwMasterClient</a>&gt;&gt;</code>
+                           </span></span><span id='structfield.slave_client' class="structfield">
+                           <span id='slave_client.v' class='invisible'>
+                           <code>slave_client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/i2c/trait.I2CHwSlaveClient.html" title="trait kernel::hil::i2c::I2CHwSlaveClient">I2CHwSlaveClient</a>&gt;&gt;</code>
+                           </span></span><span id='structfield.on_deck' class="structfield">
+                           <span id='on_deck.v' class='invisible'>
+                           <code>on_deck: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;(<a class="enum" href="../../sam4l/dma/enum.DMAPeripheral.html" title="enum sam4l::dma::DMAPeripheral">DMAPeripheral</a>, usize)&gt;&gt;</code>
+                           </span></span><span id='structfield.slave_enabled' class="structfield">
+                           <span id='slave_enabled.v' class='invisible'>
+                           <code>slave_enabled: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;</code>
+                           </span></span><span id='structfield.my_slave_address' class="structfield">
+                           <span id='my_slave_address.v' class='invisible'>
+                           <code>my_slave_address: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;</code>
+                           </span></span><span id='structfield.slave_read_buffer' class="structfield">
+                           <span id='slave_read_buffer.v' class='invisible'>
+                           <code>slave_read_buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;</code>
+                           </span></span><span id='structfield.slave_read_buffer_len' class="structfield">
+                           <span id='slave_read_buffer_len.v' class='invisible'>
+                           <code>slave_read_buffer_len: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;</code>
+                           </span></span><span id='structfield.slave_read_buffer_index' class="structfield">
+                           <span id='slave_read_buffer_index.v' class='invisible'>
+                           <code>slave_read_buffer_index: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;</code>
+                           </span></span><span id='structfield.slave_write_buffer' class="structfield">
+                           <span id='slave_write_buffer.v' class='invisible'>
+                           <code>slave_write_buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;</code>
+                           </span></span><span id='structfield.slave_write_buffer_len' class="structfield">
+                           <span id='slave_write_buffer_len.v' class='invisible'>
+                           <code>slave_write_buffer_len: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;</code>
+                           </span></span><span id='structfield.slave_write_buffer_index' class="structfield">
+                           <span id='slave_write_buffer_index.v' class='invisible'>
+                           <code>slave_write_buffer_index: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../sam4l/i2c/struct.I2CHw.html" title="struct sam4l::i2c::I2CHw">I2CHw</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/i2c.rs.html#161-726' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>const fn <a href='#method.new' class='fnname'>new</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;base_addr: *mut <a class="struct" href="../../sam4l/i2c/struct.TWIMRegisters.html" title="struct sam4l::i2c::TWIMRegisters">TWIMRegisters</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;slave_base_addr: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;*mut <a class="struct" href="../../sam4l/i2c/struct.TWISRegisters.html" title="struct sam4l::i2c::TWISRegisters">TWISRegisters</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;master_clock: <a class="enum" href="../../sam4l/pm/enum.Clock.html" title="enum sam4l::pm::Clock">Clock</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;slave_clock: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../sam4l/pm/enum.Clock.html" title="enum sam4l::pm::Clock">Clock</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;nvic: <a class="enum" href="../../sam4l/nvic/enum.NvicIdx.html" title="enum sam4l::nvic::NvicIdx">NvicIdx</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;slave_nvic: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../sam4l/nvic/enum.NvicIdx.html" title="enum sam4l::nvic::NvicIdx">NvicIdx</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;dma_rx: <a class="enum" href="../../sam4l/dma/enum.DMAPeripheral.html" title="enum sam4l::dma::DMAPeripheral">DMAPeripheral</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;dma_tx: <a class="enum" href="../../sam4l/dma/enum.DMAPeripheral.html" title="enum sam4l::dma::DMAPeripheral">DMAPeripheral</a><br>) -&gt; <a class="struct" href="../../sam4l/i2c/struct.I2CHw.html" title="struct sam4l::i2c::I2CHw">I2CHw</a></code></span></h4>
+<h4 id='method.set_bus_speed' class="method"><span id='set_bus_speed.v' class='invisible'><code>fn <a href='#method.set_bus_speed' class='fnname'>set_bus_speed</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Set the clock prescaler and the time widths of the I2C signals
+in the CWGR register to make the bus run at a particular I2C speed.</p>
+</div><h4 id='method.set_dma' class="method"><span id='set_dma.v' class='invisible'><code>fn <a href='#method.set_dma' class='fnname'>set_dma</a>(&amp;self, dma: &amp;'static <a class="struct" href="../../sam4l/dma/struct.DMAChannel.html" title="struct sam4l::dma::DMAChannel">DMAChannel</a>)</code></span></h4>
+<h4 id='method.set_master_client' class="method"><span id='set_master_client.v' class='invisible'><code>fn <a href='#method.set_master_client' class='fnname'>set_master_client</a>(&amp;self, client: &amp;'static <a class="trait" href="../../kernel/hil/i2c/trait.I2CHwMasterClient.html" title="trait kernel::hil::i2c::I2CHwMasterClient">I2CHwMasterClient</a>)</code></span></h4>
+<h4 id='method.set_slave_client' class="method"><span id='set_slave_client.v' class='invisible'><code>fn <a href='#method.set_slave_client' class='fnname'>set_slave_client</a>(&amp;self, client: &amp;'static <a class="trait" href="../../kernel/hil/i2c/trait.I2CHwSlaveClient.html" title="trait kernel::hil::i2c::I2CHwSlaveClient">I2CHwSlaveClient</a>)</code></span></h4>
+<h4 id='method.handle_interrupt' class="method"><span id='handle_interrupt.v' class='invisible'><code>fn <a href='#method.handle_interrupt' class='fnname'>handle_interrupt</a>(&amp;self)</code></span></h4>
+<h4 id='method.setup_xfer' class="method"><span id='setup_xfer.v' class='invisible'><code>fn <a href='#method.setup_xfer' class='fnname'>setup_xfer</a>(&amp;self, chip: u8, flags: usize, read: bool, len: u8)</code></span></h4>
+<h4 id='method.setup_nextfer' class="method"><span id='setup_nextfer.v' class='invisible'><code>fn <a href='#method.setup_nextfer' class='fnname'>setup_nextfer</a>(&amp;self, chip: u8, flags: usize, read: bool, len: u8)</code></span></h4>
+<h4 id='method.master_enable' class="method"><span id='master_enable.v' class='invisible'><code>fn <a href='#method.master_enable' class='fnname'>master_enable</a>(&amp;self)</code></span></h4>
+<h4 id='method.write' class="method"><span id='write.v' class='invisible'><code>fn <a href='#method.write' class='fnname'>write</a>(&amp;self, chip: u8, flags: usize, data: &amp;'static mut [u8], len: u8)</code></span></h4>
+<h4 id='method.read' class="method"><span id='read.v' class='invisible'><code>fn <a href='#method.read' class='fnname'>read</a>(&amp;self, chip: u8, flags: usize, data: &amp;'static mut [u8], len: u8)</code></span></h4>
+<h4 id='method.write_read' class="method"><span id='write_read.v' class='invisible'><code>fn <a href='#method.write_read' class='fnname'>write_read</a>(&amp;self, chip: u8, data: &amp;'static mut [u8], split: u8, read_len: u8)</code></span></h4>
+<h4 id='method.enable_interrupts' class="method"><span id='enable_interrupts.v' class='invisible'><code>fn <a href='#method.enable_interrupts' class='fnname'>enable_interrupts</a>(&amp;self)</code></span></h4>
+<h4 id='method.disable_interrupts' class="method"><span id='disable_interrupts.v' class='invisible'><code>fn <a href='#method.disable_interrupts' class='fnname'>disable_interrupts</a>(&amp;self)</code></span></h4>
+<h4 id='method.handle_slave_interrupt' class="method"><span id='handle_slave_interrupt.v' class='invisible'><code>fn <a href='#method.handle_slave_interrupt' class='fnname'>handle_slave_interrupt</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Handle possible interrupt for TWIS module.</p>
+</div><h4 id='method.slave_write_receive' class="method"><span id='slave_write_receive.v' class='invisible'><code>fn <a href='#method.slave_write_receive' class='fnname'>slave_write_receive</a>(&amp;self, buffer: &amp;'static mut [u8], len: u8)</code></span></h4>
+<div class='docblock'><p>Receive the bytes the I2C master is writing to us.</p>
+</div><h4 id='method.slave_read_send' class="method"><span id='slave_read_send.v' class='invisible'><code>fn <a href='#method.slave_read_send' class='fnname'>slave_read_send</a>(&amp;self, buffer: &amp;'static mut [u8], len: u8)</code></span></h4>
+<div class='docblock'><p>Prepare a buffer for the I2C master to read from after a read call.</p>
+</div><h4 id='method.slave_enable_interrupts' class="method"><span id='slave_enable_interrupts.v' class='invisible'><code>fn <a href='#method.slave_enable_interrupts' class='fnname'>slave_enable_interrupts</a>(&amp;self)</code></span></h4>
+<h4 id='method.slave_disable_interrupts' class="method"><span id='slave_disable_interrupts.v' class='invisible'><code>fn <a href='#method.slave_disable_interrupts' class='fnname'>slave_disable_interrupts</a>(&amp;self)</code></span></h4>
+<h4 id='method.slave_set_address' class="method"><span id='slave_set_address.v' class='invisible'><code>fn <a href='#method.slave_set_address' class='fnname'>slave_set_address</a>(&amp;self, address: u8)</code></span></h4>
+<h4 id='method.slave_listen' class="method"><span id='slave_listen.v' class='invisible'><code>fn <a href='#method.slave_listen' class='fnname'>slave_listen</a>(&amp;self)</code></span></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sam4l/dma/trait.DMAClient.html" title="trait sam4l::dma::DMAClient">DMAClient</a> for <a class="struct" href="../../sam4l/i2c/struct.I2CHw.html" title="struct sam4l::i2c::I2CHw">I2CHw</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/i2c.rs.html#728-730' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.xfer_done' class="method"><span id='xfer_done.v' class='invisible'><code>fn <a href='../../sam4l/dma/trait.DMAClient.html#tymethod.xfer_done' class='fnname'>xfer_done</a>(&amp;self, _pid: <a class="enum" href="../../sam4l/dma/enum.DMAPeripheral.html" title="enum sam4l::dma::DMAPeripheral">DMAPeripheral</a>)</code></span></h4>
+</div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../kernel/hil/i2c/trait.I2CMaster.html" title="trait kernel::hil::i2c::I2CMaster">I2CMaster</a> for <a class="struct" href="../../sam4l/i2c/struct.I2CHw.html" title="struct sam4l::i2c::I2CHw">I2CHw</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/i2c.rs.html#732-783' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.enable' class="method"><span id='enable.v' class='invisible'><code>fn <a href='../../kernel/hil/i2c/trait.I2CMaster.html#tymethod.enable' class='fnname'>enable</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>This enables the entire I2C peripheral</p>
+</div><h4 id='method.disable' class="method"><span id='disable.v' class='invisible'><code>fn <a href='../../kernel/hil/i2c/trait.I2CMaster.html#tymethod.disable' class='fnname'>disable</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>This disables the entire I2C peripheral</p>
+</div><h4 id='method.write-1' class="method"><span id='write.v-1' class='invisible'><code>fn <a href='../../kernel/hil/i2c/trait.I2CMaster.html#tymethod.write' class='fnname'>write</a>(&amp;self, addr: u8, data: &amp;'static mut [u8], len: u8)</code></span></h4>
+<h4 id='method.read-1' class="method"><span id='read.v-1' class='invisible'><code>fn <a href='../../kernel/hil/i2c/trait.I2CMaster.html#tymethod.read' class='fnname'>read</a>(&amp;self, addr: u8, data: &amp;'static mut [u8], len: u8)</code></span></h4>
+<h4 id='method.write_read-1' class="method"><span id='write_read.v-1' class='invisible'><code>fn <a href='../../kernel/hil/i2c/trait.I2CMaster.html#tymethod.write_read' class='fnname'>write_read</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;addr: u8, <br>&nbsp;&nbsp;&nbsp;&nbsp;data: &amp;'static mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;write_len: u8, <br>&nbsp;&nbsp;&nbsp;&nbsp;read_len: u8<br>)</code></span></h4>
+</div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../kernel/hil/i2c/trait.I2CSlave.html" title="trait kernel::hil::i2c::I2CSlave">I2CSlave</a> for <a class="struct" href="../../sam4l/i2c/struct.I2CHw.html" title="struct sam4l::i2c::I2CHw">I2CHw</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/i2c.rs.html#785-851' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.enable-1' class="method"><span id='enable.v-1' class='invisible'><code>fn <a href='../../kernel/hil/i2c/trait.I2CSlave.html#tymethod.enable' class='fnname'>enable</a>(&amp;self)</code></span></h4>
+<h4 id='method.disable-1' class="method"><span id='disable.v-1' class='invisible'><code>fn <a href='../../kernel/hil/i2c/trait.I2CSlave.html#tymethod.disable' class='fnname'>disable</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>This disables the entire I2C peripheral</p>
+</div><h4 id='method.set_address' class="method"><span id='set_address.v' class='invisible'><code>fn <a href='../../kernel/hil/i2c/trait.I2CSlave.html#tymethod.set_address' class='fnname'>set_address</a>(&amp;self, addr: u8)</code></span></h4>
+<h4 id='method.write_receive' class="method"><span id='write_receive.v' class='invisible'><code>fn <a href='../../kernel/hil/i2c/trait.I2CSlave.html#tymethod.write_receive' class='fnname'>write_receive</a>(&amp;self, data: &amp;'static mut [u8], max_len: u8)</code></span></h4>
+<h4 id='method.read_send' class="method"><span id='read_send.v' class='invisible'><code>fn <a href='../../kernel/hil/i2c/trait.I2CSlave.html#tymethod.read_send' class='fnname'>read_send</a>(&amp;self, data: &amp;'static mut [u8], max_len: u8)</code></span></h4>
+<h4 id='method.listen' class="method"><span id='listen.v' class='invisible'><code>fn <a href='../../kernel/hil/i2c/trait.I2CSlave.html#tymethod.listen' class='fnname'>listen</a>(&amp;self)</code></span></h4>
+</div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../kernel/hil/i2c/trait.I2CMasterSlave.html" title="trait kernel::hil::i2c::I2CMasterSlave">I2CMasterSlave</a> for <a class="struct" href="../../sam4l/i2c/struct.I2CHw.html" title="struct sam4l::i2c::I2CHw">I2CHw</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sam4l/i2c.rs.html#853' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "sam4l";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

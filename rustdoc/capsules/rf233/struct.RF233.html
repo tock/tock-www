@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `RF233` struct in crate `capsules`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, RF233">
+
+    <title>capsules::rf233::RF233 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct RF233</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>capsules</a>::<wbr><a href='index.html'>rf233</a></p><script>window.sidebarCurrent = {name: 'RF233', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>capsules</a>::<wbr><a href='index.html'>rf233</a>::<wbr><a class="struct" href=''>RF233</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/capsules/rf233.rs.html#172-202' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct RF233&lt;'a, S:&nbsp;<a class="trait" href="../../kernel/hil/spi/trait.SpiMasterDevice.html" title="trait kernel::hil::spi::SpiMasterDevice">SpiMasterDevice</a> + 'a&gt; {
+    spi: &amp;'a S,
+    radio_on: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;,
+    transmitting: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;,
+    receiving: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;,
+    spi_busy: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;,
+    interrupt_handling: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;,
+    interrupt_pending: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;,
+    config_pending: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;,
+    reset_pin: &amp;'a <a class="trait" href="../../kernel/hil/gpio/trait.Pin.html" title="trait kernel::hil::gpio::Pin">Pin</a>,
+    sleep_pin: &amp;'a <a class="trait" href="../../kernel/hil/gpio/trait.Pin.html" title="trait kernel::hil::gpio::Pin">Pin</a>,
+    irq_pin: &amp;'a <a class="trait" href="../../kernel/hil/gpio/trait.Pin.html" title="trait kernel::hil::gpio::Pin">Pin</a>,
+    irq_ctl: &amp;'a <a class="trait" href="../../kernel/hil/gpio/trait.PinCtl.html" title="trait kernel::hil::gpio::PinCtl">PinCtl</a>,
+    state: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="../../capsules/rf233/enum.InternalState.html" title="enum capsules::rf233::InternalState">InternalState</a>&gt;,
+    tx_buf: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;,
+    rx_buf: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;,
+    tx_len: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;,
+    tx_client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/radio/trait.TxClient.html" title="trait kernel::hil::radio::TxClient">TxClient</a>&gt;&gt;,
+    rx_client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/radio/trait.RxClient.html" title="trait kernel::hil::radio::RxClient">RxClient</a>&gt;&gt;,
+    cfg_client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/radio/trait.ConfigClient.html" title="trait kernel::hil::radio::ConfigClient">ConfigClient</a>&gt;&gt;,
+    power_client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/radio/trait.PowerClient.html" title="trait kernel::hil::radio::PowerClient">PowerClient</a>&gt;&gt;,
+    addr: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u16&gt;,
+    addr_long: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;[u8; 8]&gt;,
+    pan: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u16&gt;,
+    tx_power: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;i8&gt;,
+    channel: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;,
+    seq: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;,
+    spi_rx: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;,
+    spi_tx: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;,
+    spi_buf: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.spi' class="structfield">
+                           <span id='spi.v' class='invisible'>
+                           <code>spi: &amp;'a S</code>
+                           </span></span><span id='structfield.radio_on' class="structfield">
+                           <span id='radio_on.v' class='invisible'>
+                           <code>radio_on: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;</code>
+                           </span></span><span id='structfield.transmitting' class="structfield">
+                           <span id='transmitting.v' class='invisible'>
+                           <code>transmitting: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;</code>
+                           </span></span><span id='structfield.receiving' class="structfield">
+                           <span id='receiving.v' class='invisible'>
+                           <code>receiving: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;</code>
+                           </span></span><span id='structfield.spi_busy' class="structfield">
+                           <span id='spi_busy.v' class='invisible'>
+                           <code>spi_busy: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;</code>
+                           </span></span><span id='structfield.interrupt_handling' class="structfield">
+                           <span id='interrupt_handling.v' class='invisible'>
+                           <code>interrupt_handling: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;</code>
+                           </span></span><span id='structfield.interrupt_pending' class="structfield">
+                           <span id='interrupt_pending.v' class='invisible'>
+                           <code>interrupt_pending: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;</code>
+                           </span></span><span id='structfield.config_pending' class="structfield">
+                           <span id='config_pending.v' class='invisible'>
+                           <code>config_pending: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;</code>
+                           </span></span><span id='structfield.reset_pin' class="structfield">
+                           <span id='reset_pin.v' class='invisible'>
+                           <code>reset_pin: &amp;'a <a class="trait" href="../../kernel/hil/gpio/trait.Pin.html" title="trait kernel::hil::gpio::Pin">Pin</a></code>
+                           </span></span><span id='structfield.sleep_pin' class="structfield">
+                           <span id='sleep_pin.v' class='invisible'>
+                           <code>sleep_pin: &amp;'a <a class="trait" href="../../kernel/hil/gpio/trait.Pin.html" title="trait kernel::hil::gpio::Pin">Pin</a></code>
+                           </span></span><span id='structfield.irq_pin' class="structfield">
+                           <span id='irq_pin.v' class='invisible'>
+                           <code>irq_pin: &amp;'a <a class="trait" href="../../kernel/hil/gpio/trait.Pin.html" title="trait kernel::hil::gpio::Pin">Pin</a></code>
+                           </span></span><span id='structfield.irq_ctl' class="structfield">
+                           <span id='irq_ctl.v' class='invisible'>
+                           <code>irq_ctl: &amp;'a <a class="trait" href="../../kernel/hil/gpio/trait.PinCtl.html" title="trait kernel::hil::gpio::PinCtl">PinCtl</a></code>
+                           </span></span><span id='structfield.state' class="structfield">
+                           <span id='state.v' class='invisible'>
+                           <code>state: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="../../capsules/rf233/enum.InternalState.html" title="enum capsules::rf233::InternalState">InternalState</a>&gt;</code>
+                           </span></span><span id='structfield.tx_buf' class="structfield">
+                           <span id='tx_buf.v' class='invisible'>
+                           <code>tx_buf: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;</code>
+                           </span></span><span id='structfield.rx_buf' class="structfield">
+                           <span id='rx_buf.v' class='invisible'>
+                           <code>rx_buf: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;</code>
+                           </span></span><span id='structfield.tx_len' class="structfield">
+                           <span id='tx_len.v' class='invisible'>
+                           <code>tx_len: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;</code>
+                           </span></span><span id='structfield.tx_client' class="structfield">
+                           <span id='tx_client.v' class='invisible'>
+                           <code>tx_client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/radio/trait.TxClient.html" title="trait kernel::hil::radio::TxClient">TxClient</a>&gt;&gt;</code>
+                           </span></span><span id='structfield.rx_client' class="structfield">
+                           <span id='rx_client.v' class='invisible'>
+                           <code>rx_client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/radio/trait.RxClient.html" title="trait kernel::hil::radio::RxClient">RxClient</a>&gt;&gt;</code>
+                           </span></span><span id='structfield.cfg_client' class="structfield">
+                           <span id='cfg_client.v' class='invisible'>
+                           <code>cfg_client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/radio/trait.ConfigClient.html" title="trait kernel::hil::radio::ConfigClient">ConfigClient</a>&gt;&gt;</code>
+                           </span></span><span id='structfield.power_client' class="structfield">
+                           <span id='power_client.v' class='invisible'>
+                           <code>power_client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/radio/trait.PowerClient.html" title="trait kernel::hil::radio::PowerClient">PowerClient</a>&gt;&gt;</code>
+                           </span></span><span id='structfield.addr' class="structfield">
+                           <span id='addr.v' class='invisible'>
+                           <code>addr: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u16&gt;</code>
+                           </span></span><span id='structfield.addr_long' class="structfield">
+                           <span id='addr_long.v' class='invisible'>
+                           <code>addr_long: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;[u8; 8]&gt;</code>
+                           </span></span><span id='structfield.pan' class="structfield">
+                           <span id='pan.v' class='invisible'>
+                           <code>pan: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u16&gt;</code>
+                           </span></span><span id='structfield.tx_power' class="structfield">
+                           <span id='tx_power.v' class='invisible'>
+                           <code>tx_power: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;i8&gt;</code>
+                           </span></span><span id='structfield.channel' class="structfield">
+                           <span id='channel.v' class='invisible'>
+                           <code>channel: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;</code>
+                           </span></span><span id='structfield.seq' class="structfield">
+                           <span id='seq.v' class='invisible'>
+                           <code>seq: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;u8&gt;</code>
+                           </span></span><span id='structfield.spi_rx' class="structfield">
+                           <span id='spi_rx.v' class='invisible'>
+                           <code>spi_rx: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;</code>
+                           </span></span><span id='structfield.spi_tx' class="structfield">
+                           <span id='spi_tx.v' class='invisible'>
+                           <code>spi_tx: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;</code>
+                           </span></span><span id='structfield.spi_buf' class="structfield">
+                           <span id='spi_buf.v' class='invisible'>
+                           <code>spi_buf: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a, S:&nbsp;<a class="trait" href="../../kernel/hil/spi/trait.SpiMasterDevice.html" title="trait kernel::hil::spi::SpiMasterDevice">SpiMasterDevice</a> + 'a&gt; <a class="struct" href="../../capsules/rf233/struct.RF233.html" title="struct capsules::rf233::RF233">RF233</a>&lt;'a, S&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/rf233.rs.html#767-966' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;spi: &amp;'a S, <br>&nbsp;&nbsp;&nbsp;&nbsp;reset: &amp;'a <a class="trait" href="../../kernel/hil/gpio/trait.Pin.html" title="trait kernel::hil::gpio::Pin">Pin</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;sleep: &amp;'a <a class="trait" href="../../kernel/hil/gpio/trait.Pin.html" title="trait kernel::hil::gpio::Pin">Pin</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;irq: &amp;'a <a class="trait" href="../../kernel/hil/gpio/trait.Pin.html" title="trait kernel::hil::gpio::Pin">Pin</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;ctl: &amp;'a <a class="trait" href="../../kernel/hil/gpio/trait.PinCtl.html" title="trait kernel::hil::gpio::PinCtl">PinCtl</a><br>) -&gt; <a class="struct" href="../../capsules/rf233/struct.RF233.html" title="struct capsules::rf233::RF233">RF233</a>&lt;'a, S&gt;</code></span></h4>
+<h4 id='method.handle_interrupt' class="method"><span id='handle_interrupt.v' class='invisible'><code>fn <a href='#method.handle_interrupt' class='fnname'>handle_interrupt</a>(&amp;self)</code></span></h4>
+<h4 id='method.register_write' class="method"><span id='register_write.v' class='invisible'><code>fn <a href='#method.register_write' class='fnname'>register_write</a>(&amp;self, reg: <a class="enum" href="../../capsules/rf233_const/enum.RF233Register.html" title="enum capsules::rf233_const::RF233Register">RF233Register</a>, val: u8) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.register_read' class="method"><span id='register_read.v' class='invisible'><code>fn <a href='#method.register_read' class='fnname'>register_read</a>(&amp;self, reg: <a class="enum" href="../../capsules/rf233_const/enum.RF233Register.html" title="enum capsules::rf233_const::RF233Register">RF233Register</a>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.frame_write' class="method"><span id='frame_write.v' class='invisible'><code>fn <a href='#method.frame_write' class='fnname'>frame_write</a>(&amp;self, buf: &amp;'static mut [u8], frame_len: u8) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.frame_read' class="method"><span id='frame_read.v' class='invisible'><code>fn <a href='#method.frame_read' class='fnname'>frame_read</a>(&amp;self, buf: &amp;'static mut [u8], frame_len: u8) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.state_transition_write' class="method"><span id='state_transition_write.v' class='invisible'><code>fn <a href='#method.state_transition_write' class='fnname'>state_transition_write</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;reg: <a class="enum" href="../../capsules/rf233_const/enum.RF233Register.html" title="enum capsules::rf233_const::RF233Register">RF233Register</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;val: u8, <br>&nbsp;&nbsp;&nbsp;&nbsp;state: <a class="enum" href="../../capsules/rf233/enum.InternalState.html" title="enum capsules::rf233::InternalState">InternalState</a><br>)</code></span></h4>
+<h4 id='method.state_transition_read' class="method"><span id='state_transition_read.v' class='invisible'><code>fn <a href='#method.state_transition_read' class='fnname'>state_transition_read</a>(&amp;self, reg: <a class="enum" href="../../capsules/rf233_const/enum.RF233Register.html" title="enum capsules::rf233_const::RF233Register">RF233Register</a>, state: <a class="enum" href="../../capsules/rf233/enum.InternalState.html" title="enum capsules::rf233::InternalState">InternalState</a>)</code></span></h4>
+<h4 id='method.prepare_packet' class="method"><span id='prepare_packet.v' class='invisible'><code>fn <a href='#method.prepare_packet' class='fnname'>prepare_packet</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;buf: &amp;'static mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;frame_len: u8, <br>&nbsp;&nbsp;&nbsp;&nbsp;dest: u16, <br>&nbsp;&nbsp;&nbsp;&nbsp;source_long: bool<br>)</code></span></h4>
+<div class='docblock'><p>Generate the 802.15.4 header and set up the radio&#39;s state to be able to
+send the packet (store reference, etc.). buf is the full SPI buffer, not
+just the MAC frame</p>
+</div><h4 id='method.prepare_packet_long' class="method"><span id='prepare_packet_long.v' class='invisible'><code>fn <a href='#method.prepare_packet_long' class='fnname'>prepare_packet_long</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;buf: &amp;'static mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;frame_len: u8, <br>&nbsp;&nbsp;&nbsp;&nbsp;dest: [u8; 8], <br>&nbsp;&nbsp;&nbsp;&nbsp;source_long: bool<br>)</code></span></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a, S:&nbsp;<a class="trait" href="../../kernel/hil/spi/trait.SpiMasterDevice.html" title="trait kernel::hil::spi::SpiMasterDevice">SpiMasterDevice</a> + 'a&gt; <a class="trait" href="../../kernel/hil/spi/trait.SpiMasterClient.html" title="trait kernel::hil::spi::SpiMasterClient">SpiMasterClient</a> for <a class="struct" href="../../capsules/rf233/struct.RF233.html" title="struct capsules::rf233::RF233">RF233</a>&lt;'a, S&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/rf233.rs.html#260-757' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.read_write_done' class="method"><span id='read_write_done.v' class='invisible'><code>fn <a href='../../kernel/hil/spi/trait.SpiMasterClient.html#tymethod.read_write_done' class='fnname'>read_write_done</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;_write: &amp;'static mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;read: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static mut [u8]&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;_len: usize<br>)</code></span></h4>
+<div class='docblock'><p>Called when a read/write operation finishes</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a, S:&nbsp;<a class="trait" href="../../kernel/hil/spi/trait.SpiMasterDevice.html" title="trait kernel::hil::spi::SpiMasterDevice">SpiMasterDevice</a> + 'a&gt; <a class="trait" href="../../kernel/hil/gpio/trait.Client.html" title="trait kernel::hil::gpio::Client">Client</a> for <a class="struct" href="../../capsules/rf233/struct.RF233.html" title="struct capsules::rf233::RF233">RF233</a>&lt;'a, S&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/rf233.rs.html#759-765' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fired' class="method"><span id='fired.v' class='invisible'><code>fn <a href='../../kernel/hil/gpio/trait.Client.html#tymethod.fired' class='fnname'>fired</a>(&amp;self, identifier: usize)</code></span></h4>
+<div class='docblock'><p>Called when an interrupt occurs. The <code>identifier</code> will be the same value that was passed to <code>enable_interrupt()</code> when the interrupt was configured. <a href="../../kernel/hil/gpio/trait.Client.html#tymethod.fired">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a, S:&nbsp;<a class="trait" href="../../kernel/hil/spi/trait.SpiMasterDevice.html" title="trait kernel::hil::spi::SpiMasterDevice">SpiMasterDevice</a> + 'a&gt; <a class="trait" href="../../kernel/hil/radio/trait.Radio.html" title="trait kernel::hil::radio::Radio">Radio</a> for <a class="struct" href="../../capsules/rf233/struct.RF233.html" title="struct capsules::rf233::RF233">RF233</a>&lt;'a, S&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/rf233.rs.html#968' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a, S:&nbsp;<a class="trait" href="../../kernel/hil/spi/trait.SpiMasterDevice.html" title="trait kernel::hil::spi::SpiMasterDevice">SpiMasterDevice</a> + 'a&gt; <a class="trait" href="../../kernel/hil/radio/trait.RadioConfig.html" title="trait kernel::hil::radio::RadioConfig">RadioConfig</a> for <a class="struct" href="../../capsules/rf233/struct.RF233.html" title="struct capsules::rf233::RF233">RF233</a>&lt;'a, S&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/rf233.rs.html#970-1101' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.initialize' class="method"><span id='initialize.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.initialize' class='fnname'>initialize</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;buf: &amp;'static mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;reg_write: &amp;'static mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;reg_read: &amp;'static mut [u8]<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>buf must be at least MAX_BUF_SIZE in length, and reg_read and reg_write must be 2 bytes. <a href="../../kernel/hil/radio/trait.RadioConfig.html#tymethod.initialize">Read more</a></p>
+</div><h4 id='method.reset' class="method"><span id='reset.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.reset' class='fnname'>reset</a>(&amp;self) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.start' class="method"><span id='start.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.start' class='fnname'>start</a>(&amp;self) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.stop' class="method"><span id='stop.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.stop' class='fnname'>stop</a>(&amp;self) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.is_on' class="method"><span id='is_on.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.is_on' class='fnname'>is_on</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.busy' class="method"><span id='busy.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.busy' class='fnname'>busy</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.set_config_client' class="method"><span id='set_config_client.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.set_config_client' class='fnname'>set_config_client</a>(&amp;self, client: &amp;'static <a class="trait" href="../../kernel/hil/radio/trait.ConfigClient.html" title="trait kernel::hil::radio::ConfigClient">ConfigClient</a>)</code></span></h4>
+<h4 id='method.set_power_client' class="method"><span id='set_power_client.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.set_power_client' class='fnname'>set_power_client</a>(&amp;self, client: &amp;'static <a class="trait" href="../../kernel/hil/radio/trait.PowerClient.html" title="trait kernel::hil::radio::PowerClient">PowerClient</a>)</code></span></h4>
+<h4 id='method.config_set_address' class="method"><span id='config_set_address.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.config_set_address' class='fnname'>config_set_address</a>(&amp;self, addr: u16)</code></span></h4>
+<h4 id='method.config_set_address_long' class="method"><span id='config_set_address_long.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.config_set_address_long' class='fnname'>config_set_address_long</a>(&amp;self, addr: [u8; 8])</code></span></h4>
+<h4 id='method.config_set_pan' class="method"><span id='config_set_pan.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.config_set_pan' class='fnname'>config_set_pan</a>(&amp;self, id: u16)</code></span></h4>
+<h4 id='method.config_set_tx_power' class="method"><span id='config_set_tx_power.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.config_set_tx_power' class='fnname'>config_set_tx_power</a>(&amp;self, power: i8) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.config_set_channel' class="method"><span id='config_set_channel.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.config_set_channel' class='fnname'>config_set_channel</a>(&amp;self, chan: u8) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.config_address' class="method"><span id='config_address.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.config_address' class='fnname'>config_address</a>(&amp;self) -&gt; u16</code></span></h4>
+<h4 id='method.config_address_long' class="method"><span id='config_address_long.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.config_address_long' class='fnname'>config_address_long</a>(&amp;self) -&gt; [u8; 8]</code></span></h4>
+<h4 id='method.config_pan' class="method"><span id='config_pan.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.config_pan' class='fnname'>config_pan</a>(&amp;self) -&gt; u16</code></span></h4>
+<div class='docblock'><p>The 16-bit PAN ID</p>
+</div><h4 id='method.config_tx_power' class="method"><span id='config_tx_power.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.config_tx_power' class='fnname'>config_tx_power</a>(&amp;self) -&gt; i8</code></span></h4>
+<div class='docblock'><p>The transmit power, in dBm</p>
+</div><h4 id='method.config_channel' class="method"><span id='config_channel.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.config_channel' class='fnname'>config_channel</a>(&amp;self) -&gt; u8</code></span></h4>
+<div class='docblock'><p>The 802.15.4 channel</p>
+</div><h4 id='method.config_commit' class="method"><span id='config_commit.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioConfig.html#tymethod.config_commit' class='fnname'>config_commit</a>(&amp;self) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Commit the config calls to hardware, changing the address, PAN ID, TX power, and channel to the specified values, issues a callback to the config client when done. <a href="../../kernel/hil/radio/trait.RadioConfig.html#tymethod.config_commit">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a, S:&nbsp;<a class="trait" href="../../kernel/hil/spi/trait.SpiMasterDevice.html" title="trait kernel::hil::spi::SpiMasterDevice">SpiMasterDevice</a> + 'a&gt; <a class="trait" href="../../kernel/hil/radio/trait.RadioData.html" title="trait kernel::hil::radio::RadioData">RadioData</a> for <a class="struct" href="../../capsules/rf233/struct.RF233.html" title="struct capsules::rf233::RF233">RF233</a>&lt;'a, S&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/rf233.rs.html#1103-1375' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.payload_offset' class="method"><span id='payload_offset.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioData.html#tymethod.payload_offset' class='fnname'>payload_offset</a>(&amp;self, long_src: bool, long_dest: bool) -&gt; u8</code></span></h4>
+<h4 id='method.header_size' class="method"><span id='header_size.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioData.html#tymethod.header_size' class='fnname'>header_size</a>(&amp;self, long_src: bool, long_dest: bool) -&gt; u8</code></span></h4>
+<h4 id='method.packet_payload_offset' class="method"><span id='packet_payload_offset.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioData.html#tymethod.packet_payload_offset' class='fnname'>packet_payload_offset</a>(&amp;self, spi_buf: &amp;[u8]) -&gt; u8</code></span></h4>
+<h4 id='method.packet_header_size' class="method"><span id='packet_header_size.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioData.html#tymethod.packet_header_size' class='fnname'>packet_header_size</a>(&amp;self, spi_buf: &amp;[u8]) -&gt; u8</code></span></h4>
+<h4 id='method.packet_get_src' class="method"><span id='packet_get_src.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioData.html#tymethod.packet_get_src' class='fnname'>packet_get_src</a>(&amp;self, spi_buf: &amp;[u8]) -&gt; u16</code></span></h4>
+<h4 id='method.packet_get_dest' class="method"><span id='packet_get_dest.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioData.html#tymethod.packet_get_dest' class='fnname'>packet_get_dest</a>(&amp;self, spi_buf: &amp;[u8]) -&gt; u16</code></span></h4>
+<h4 id='method.packet_has_src_long' class="method"><span id='packet_has_src_long.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioData.html#tymethod.packet_has_src_long' class='fnname'>packet_has_src_long</a>(&amp;self, spi_buf: &amp;[u8]) -&gt; bool</code></span></h4>
+<h4 id='method.packet_has_dest_long' class="method"><span id='packet_has_dest_long.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioData.html#tymethod.packet_has_dest_long' class='fnname'>packet_has_dest_long</a>(&amp;self, spi_buf: &amp;[u8]) -&gt; bool</code></span></h4>
+<h4 id='method.packet_get_src_long' class="method"><span id='packet_get_src_long.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioData.html#tymethod.packet_get_src_long' class='fnname'>packet_get_src_long</a>(&amp;self, spi_buf: &amp;[u8]) -&gt; [u8; 8]</code></span></h4>
+<h4 id='method.packet_get_dest_long' class="method"><span id='packet_get_dest_long.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioData.html#tymethod.packet_get_dest_long' class='fnname'>packet_get_dest_long</a>(&amp;self, spi_buf: &amp;[u8]) -&gt; [u8; 8]</code></span></h4>
+<h4 id='method.packet_get_length' class="method"><span id='packet_get_length.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioData.html#tymethod.packet_get_length' class='fnname'>packet_get_length</a>(&amp;self, spi_buf: &amp;[u8]) -&gt; u8</code></span></h4>
+<h4 id='method.packet_get_pan' class="method"><span id='packet_get_pan.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioData.html#tymethod.packet_get_pan' class='fnname'>packet_get_pan</a>(&amp;self, spi_buf: &amp;[u8]) -&gt; u16</code></span></h4>
+<h4 id='method.set_transmit_client' class="method"><span id='set_transmit_client.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioData.html#tymethod.set_transmit_client' class='fnname'>set_transmit_client</a>(&amp;self, client: &amp;'static <a class="trait" href="../../kernel/hil/radio/trait.TxClient.html" title="trait kernel::hil::radio::TxClient">TxClient</a>)</code></span></h4>
+<h4 id='method.set_receive_client' class="method"><span id='set_receive_client.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioData.html#tymethod.set_receive_client' class='fnname'>set_receive_client</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;client: &amp;'static <a class="trait" href="../../kernel/hil/radio/trait.RxClient.html" title="trait kernel::hil::radio::RxClient">RxClient</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;buffer: &amp;'static mut [u8]<br>)</code></span></h4>
+<h4 id='method.set_receive_buffer' class="method"><span id='set_receive_buffer.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioData.html#tymethod.set_receive_buffer' class='fnname'>set_receive_buffer</a>(&amp;self, buffer: &amp;'static mut [u8])</code></span></h4>
+<h4 id='method.transmit' class="method"><span id='transmit.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioData.html#tymethod.transmit' class='fnname'>transmit</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;dest: u16, <br>&nbsp;&nbsp;&nbsp;&nbsp;spi_buf: &amp;'static mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;payload_len: u8, <br>&nbsp;&nbsp;&nbsp;&nbsp;source_long: bool<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.transmit_long' class="method"><span id='transmit_long.v' class='invisible'><code>fn <a href='../../kernel/hil/radio/trait.RadioData.html#tymethod.transmit_long' class='fnname'>transmit_long</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;dest: [u8; 8], <br>&nbsp;&nbsp;&nbsp;&nbsp;spi_buf: &amp;'static mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;payload_len: u8, <br>&nbsp;&nbsp;&nbsp;&nbsp;source_long: bool<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "capsules";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

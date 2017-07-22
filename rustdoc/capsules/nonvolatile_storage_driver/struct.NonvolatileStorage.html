@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `NonvolatileStorage` struct in crate `capsules`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, NonvolatileStorage">
+
+    <title>capsules::nonvolatile_storage_driver::NonvolatileStorage - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct NonvolatileStorage</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>capsules</a>::<wbr><a href='index.html'>nonvolatile_storage_driver</a></p><script>window.sidebarCurrent = {name: 'NonvolatileStorage', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>capsules</a>::<wbr><a href='index.html'>nonvolatile_storage_driver</a>::<wbr><a class="struct" href=''>NonvolatileStorage</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/capsules/nonvolatile_storage_driver.rs.html#101-134' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct NonvolatileStorage&lt;'a&gt; {
+    driver: &amp;'a <a class="trait" href="../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorage.html" title="trait kernel::hil::nonvolatile_storage::NonvolatileStorage">NonvolatileStorage</a>,
+    apps: <a class="struct" href="../../kernel/container/struct.Container.html" title="struct kernel::container::Container">Container</a>&lt;<a class="struct" href="../../capsules/nonvolatile_storage_driver/struct.App.html" title="struct capsules::nonvolatile_storage_driver::App">App</a>&gt;,
+    buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;,
+    current_user: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../capsules/nonvolatile_storage_driver/enum.NonvolatileUser.html" title="enum capsules::nonvolatile_storage_driver::NonvolatileUser">NonvolatileUser</a>&gt;&gt;,
+    userspace_start_address: usize,
+    userspace_length: usize,
+    kernel_start_address: usize,
+    kernel_length: usize,
+    kernel_client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorageClient.html" title="trait kernel::hil::nonvolatile_storage::NonvolatileStorageClient">NonvolatileStorageClient</a>&gt;&gt;,
+    kernel_pending_command: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;,
+    kernel_command: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="../../capsules/nonvolatile_storage_driver/enum.NonvolatileCommand.html" title="enum capsules::nonvolatile_storage_driver::NonvolatileCommand">NonvolatileCommand</a>&gt;,
+    kernel_buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;,
+    kernel_readwrite_length: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;,
+    kernel_readwrite_address: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.driver' class="structfield">
+                           <span id='driver.v' class='invisible'>
+                           <code>driver: &amp;'a <a class="trait" href="../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorage.html" title="trait kernel::hil::nonvolatile_storage::NonvolatileStorage">NonvolatileStorage</a></code>
+                           </span></span><span id='structfield.apps' class="structfield">
+                           <span id='apps.v' class='invisible'>
+                           <code>apps: <a class="struct" href="../../kernel/container/struct.Container.html" title="struct kernel::container::Container">Container</a>&lt;<a class="struct" href="../../capsules/nonvolatile_storage_driver/struct.App.html" title="struct capsules::nonvolatile_storage_driver::App">App</a>&gt;</code>
+                           </span></span><span id='structfield.buffer' class="structfield">
+                           <span id='buffer.v' class='invisible'>
+                           <code>buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;</code>
+                           </span></span><span id='structfield.current_user' class="structfield">
+                           <span id='current_user.v' class='invisible'>
+                           <code>current_user: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../capsules/nonvolatile_storage_driver/enum.NonvolatileUser.html" title="enum capsules::nonvolatile_storage_driver::NonvolatileUser">NonvolatileUser</a>&gt;&gt;</code>
+                           </span></span><span id='structfield.userspace_start_address' class="structfield">
+                           <span id='userspace_start_address.v' class='invisible'>
+                           <code>userspace_start_address: usize</code>
+                           </span></span><span id='structfield.userspace_length' class="structfield">
+                           <span id='userspace_length.v' class='invisible'>
+                           <code>userspace_length: usize</code>
+                           </span></span><span id='structfield.kernel_start_address' class="structfield">
+                           <span id='kernel_start_address.v' class='invisible'>
+                           <code>kernel_start_address: usize</code>
+                           </span></span><span id='structfield.kernel_length' class="structfield">
+                           <span id='kernel_length.v' class='invisible'>
+                           <code>kernel_length: usize</code>
+                           </span></span><span id='structfield.kernel_client' class="structfield">
+                           <span id='kernel_client.v' class='invisible'>
+                           <code>kernel_client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorageClient.html" title="trait kernel::hil::nonvolatile_storage::NonvolatileStorageClient">NonvolatileStorageClient</a>&gt;&gt;</code>
+                           </span></span><span id='structfield.kernel_pending_command' class="structfield">
+                           <span id='kernel_pending_command.v' class='invisible'>
+                           <code>kernel_pending_command: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;bool&gt;</code>
+                           </span></span><span id='structfield.kernel_command' class="structfield">
+                           <span id='kernel_command.v' class='invisible'>
+                           <code>kernel_command: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="../../capsules/nonvolatile_storage_driver/enum.NonvolatileCommand.html" title="enum capsules::nonvolatile_storage_driver::NonvolatileCommand">NonvolatileCommand</a>&gt;</code>
+                           </span></span><span id='structfield.kernel_buffer' class="structfield">
+                           <span id='kernel_buffer.v' class='invisible'>
+                           <code>kernel_buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;</code>
+                           </span></span><span id='structfield.kernel_readwrite_length' class="structfield">
+                           <span id='kernel_readwrite_length.v' class='invisible'>
+                           <code>kernel_readwrite_length: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;</code>
+                           </span></span><span id='structfield.kernel_readwrite_address' class="structfield">
+                           <span id='kernel_readwrite_address.v' class='invisible'>
+                           <code>kernel_readwrite_address: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="struct" href="../../capsules/nonvolatile_storage_driver/struct.NonvolatileStorage.html" title="struct capsules::nonvolatile_storage_driver::NonvolatileStorage">NonvolatileStorage</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/nonvolatile_storage_driver.rs.html#136-378' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;driver: &amp;'a <a class="trait" href="../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorage.html" title="trait kernel::hil::nonvolatile_storage::NonvolatileStorage">NonvolatileStorage</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;container: <a class="struct" href="../../kernel/container/struct.Container.html" title="struct kernel::container::Container">Container</a>&lt;<a class="struct" href="../../capsules/nonvolatile_storage_driver/struct.App.html" title="struct capsules::nonvolatile_storage_driver::App">App</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;userspace_start_address: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;userspace_length: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;kernel_start_address: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;kernel_length: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;buffer: &amp;'static mut [u8]<br>) -&gt; <a class="struct" href="../../capsules/nonvolatile_storage_driver/struct.NonvolatileStorage.html" title="struct capsules::nonvolatile_storage_driver::NonvolatileStorage">NonvolatileStorage</a>&lt;'a&gt;</code></span></h4>
+<h4 id='method.enqueue_command' class="method"><span id='enqueue_command.v' class='invisible'><code>fn <a href='#method.enqueue_command' class='fnname'>enqueue_command</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;command: <a class="enum" href="../../capsules/nonvolatile_storage_driver/enum.NonvolatileCommand.html" title="enum capsules::nonvolatile_storage_driver::NonvolatileCommand">NonvolatileCommand</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;offset: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;length: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;app_id: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../kernel/callback/struct.AppId.html" title="struct kernel::callback::AppId">AppId</a>&gt;<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.userspace_call_driver' class="method"><span id='userspace_call_driver.v' class='invisible'><code>fn <a href='#method.userspace_call_driver' class='fnname'>userspace_call_driver</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;command: <a class="enum" href="../../capsules/nonvolatile_storage_driver/enum.NonvolatileCommand.html" title="enum capsules::nonvolatile_storage_driver::NonvolatileCommand">NonvolatileCommand</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;offset: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;length: usize<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<h4 id='method.check_queue' class="method"><span id='check_queue.v' class='invisible'><code>fn <a href='#method.check_queue' class='fnname'>check_queue</a>(&amp;self)</code></span></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorageClient.html" title="trait kernel::hil::nonvolatile_storage::NonvolatileStorageClient">NonvolatileStorageClient</a> for <a class="struct" href="../../capsules/nonvolatile_storage_driver/struct.NonvolatileStorage.html" title="struct capsules::nonvolatile_storage_driver::NonvolatileStorage">NonvolatileStorage</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/nonvolatile_storage_driver.rs.html#381-441' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>This is the callback client for the underlying physical storage driver.</p>
+</div><div class='impl-items'><h4 id='method.read_done' class="method"><span id='read_done.v' class='invisible'><code>fn <a href='../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorageClient.html#tymethod.read_done' class='fnname'>read_done</a>(&amp;self, buffer: &amp;'static mut [u8], length: usize)</code></span></h4>
+<div class='docblock'><p><code>read_done</code> is called when the implementor is finished reading in to the buffer. The callback returns the buffer and the number of bytes that were actually read. <a href="../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorageClient.html#tymethod.read_done">Read more</a></p>
+</div><h4 id='method.write_done' class="method"><span id='write_done.v' class='invisible'><code>fn <a href='../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorageClient.html#tymethod.write_done' class='fnname'>write_done</a>(&amp;self, buffer: &amp;'static mut [u8], length: usize)</code></span></h4>
+<div class='docblock'><p><code>write_done</code> is called when the implementor is finished writing from the buffer. The callback returns the buffer and the number of bytes that were actually written. <a href="../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorageClient.html#tymethod.write_done">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorage.html" title="trait kernel::hil::nonvolatile_storage::NonvolatileStorage">NonvolatileStorage</a> for <a class="struct" href="../../capsules/nonvolatile_storage_driver/struct.NonvolatileStorage.html" title="struct capsules::nonvolatile_storage_driver::NonvolatileStorage">NonvolatileStorage</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/nonvolatile_storage_driver.rs.html#444-458' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>Provide an interface for the kernel.</p>
+</div><div class='impl-items'><h4 id='method.set_client' class="method"><span id='set_client.v' class='invisible'><code>fn <a href='../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorage.html#tymethod.set_client' class='fnname'>set_client</a>(&amp;self, client: &amp;'static <a class="trait" href="../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorageClient.html" title="trait kernel::hil::nonvolatile_storage::NonvolatileStorageClient">NonvolatileStorageClient</a>)</code></span></h4>
+<h4 id='method.read' class="method"><span id='read.v' class='invisible'><code>fn <a href='../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorage.html#tymethod.read' class='fnname'>read</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;buffer: &amp;'static mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;address: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;length: usize<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Read <code>length</code> bytes starting at address <code>address</code> in to the provided buffer. The buffer must be at least <code>length</code> bytes long. The address must be in the address space of the physical storage. <a href="../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorage.html#tymethod.read">Read more</a></p>
+</div><h4 id='method.write' class="method"><span id='write.v' class='invisible'><code>fn <a href='../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorage.html#tymethod.write' class='fnname'>write</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;buffer: &amp;'static mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;address: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;length: usize<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Write <code>length</code> bytes starting at address <code>address</code> from the provided buffer. The buffer must be at least <code>length</code> bytes long. This address must be in the address space of the physical storage. <a href="../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorage.html#tymethod.write">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../kernel/driver/trait.Driver.html" title="trait kernel::driver::Driver">Driver</a> for <a class="struct" href="../../capsules/nonvolatile_storage_driver/struct.NonvolatileStorage.html" title="struct capsules::nonvolatile_storage_driver::NonvolatileStorage">NonvolatileStorage</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/nonvolatile_storage_driver.rs.html#461-550' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>Provide an interface for userland.</p>
+</div><div class='impl-items'><h4 id='method.allow' class="method"><span id='allow.v' class='invisible'><code>fn <a href='../../kernel/driver/trait.Driver.html#method.allow' class='fnname'>allow</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;appid: <a class="struct" href="../../kernel/callback/struct.AppId.html" title="struct kernel::callback::AppId">AppId</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;allow_num: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;slice: <a class="struct" href="../../kernel/mem/struct.AppSlice.html" title="struct kernel::mem::AppSlice">AppSlice</a>&lt;<a class="struct" href="../../kernel/mem/struct.Shared.html" title="struct kernel::mem::Shared">Shared</a>, u8&gt;<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Setup shared buffers.</p>
+
+<h3 id='allow_num' class='section-header'><a href='#allow_num'><code>allow_num</code></a></h3>
+<ul>
+<li><code>0</code>: Setup a buffer to read from the nonvolatile storage into.</li>
+<li><code>1</code>: Setup a buffer to write bytes to the nonvolatile storage.</li>
+</ul>
+</div><h4 id='method.subscribe' class="method"><span id='subscribe.v' class='invisible'><code>fn <a href='../../kernel/driver/trait.Driver.html#method.subscribe' class='fnname'>subscribe</a>(&amp;self, subscribe_num: usize, callback: <a class="struct" href="../../kernel/callback/struct.Callback.html" title="struct kernel::callback::Callback">Callback</a>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Setup callbacks.</p>
+
+<h3 id='subscribe_num' class='section-header'><a href='#subscribe_num'><code>subscribe_num</code></a></h3>
+<ul>
+<li><code>0</code>: Setup a read done callback.</li>
+<li><code>1</code>: Setup a write done callback.</li>
+</ul>
+</div><h4 id='method.command' class="method"><span id='command.v' class='invisible'><code>fn <a href='../../kernel/driver/trait.Driver.html#method.command' class='fnname'>command</a>(&amp;self, arg0: usize, arg1: usize, appid: <a class="struct" href="../../kernel/callback/struct.AppId.html" title="struct kernel::callback::AppId">AppId</a>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Command interface.</p>
+
+<p>Commands are selected by the lowest 8 bits of the first argument.</p>
+
+<h3 id='command_num' class='section-header'><a href='#command_num'><code>command_num</code></a></h3>
+<ul>
+<li><code>0</code>: Return SUCCESS if this driver is included on the platform.</li>
+<li><code>1</code>: Return the number of bytes available to userspace.</li>
+<li><code>2</code>: Start a read from the nonvolatile storage.</li>
+<li><code>3</code>: Start a write to the nonvolatile_storage.</li>
+</ul>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "capsules";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

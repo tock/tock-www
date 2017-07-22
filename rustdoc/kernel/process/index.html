@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `process` mod in crate `kernel`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, process">
+
+    <title>kernel::process - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Module process</p><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#statics">Statics</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>kernel</a></p><script>window.sidebarCurrent = {name: 'process', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>kernel</a>::<wbr><a class="mod" href=''>process</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/kernel/process.rs.html#1-1270' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Support for creating and running userspace applications.</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>use callback::<a class="struct" href="../../kernel/callback/struct.AppId.html" title="struct kernel::callback::AppId">AppId</a>;</code></td></tr><tr><td><code>use common::<a class="struct" href="../../kernel/common/ring_buffer/struct.RingBuffer.html" title="struct kernel::common::ring_buffer::RingBuffer">RingBuffer</a>;</code></td></tr><tr><td><code>use common::<a class="trait" href="../../kernel/common/queue/trait.Queue.html" title="trait kernel::common::queue::Queue">Queue</a>;</code></td></tr><tr><td><code>use common::<a class="struct" href="../../kernel/common/volatile_cell/struct.VolatileCell.html" title="struct kernel::common::volatile_cell::VolatileCell">VolatileCell</a>;</code></td></tr><tr><td><code>use <a class="mod" href="../../kernel/container/index.html" title="mod kernel::container">container</a>;</code></td></tr><tr><td><code>use core::<a class="mod" href="https://doc.rust-lang.org/nightly/core/mem/index.html" title="mod core::mem">mem</a>;</code></td></tr><tr><td><code>use core::<a class="mod" href="https://doc.rust-lang.org/nightly/core/ptr/index.html" title="mod core::ptr">ptr</a>;</code></td></tr><tr><td><code>use core::<a class="mod" href="https://doc.rust-lang.org/nightly/core/slice/index.html" title="mod core::slice">slice</a>;</code></td></tr><tr><td><code>use core::<a class="mod" href="https://doc.rust-lang.org/nightly/core/str/index.html" title="mod core::str">str</a>;</code></td></tr><tr><td><code>use core::cell::<a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>;</code></td></tr><tr><td><code>use core::fmt::<a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Write.html" title="trait core::fmt::Write">Write</a>;</code></td></tr><tr><td><code>use core::<a class="mod" href="https://doc.rust-lang.org/nightly/core/intrinsics/index.html" title="mod core::intrinsics">intrinsics</a>;</code></td></tr><tr><td><code>use core::ptr::<a class="fn" href="https://doc.rust-lang.org/nightly/core/ptr/fn.read_volatile.html" title="fn core::ptr::read_volatile">read_volatile</a>;</code></td></tr><tr><td><code>use core::ptr::<a class="fn" href="https://doc.rust-lang.org/nightly/core/ptr/fn.write_volatile.html" title="fn core::ptr::write_volatile">write_volatile</a>;</code></td></tr><tr><td><code>use platform::<a class="mod" href="../../kernel/platform/mpu/index.html" title="mod kernel::platform::mpu">mpu</a>;</code></td></tr><tr><td><code>use returncode::<a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a>;</code></td></tr><tr><td><code>use syscall::<a class="enum" href="../../kernel/syscall/enum.Syscall.html" title="enum kernel::syscall::Syscall">Syscall</a>;</code></td></tr><tr><td><code>use common::<a class="mod" href="../../kernel/common/math/index.html" title="mod kernel::common::math">math</a>;</code></td></tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.FunctionCall.html"
+                                  title='struct kernel::process::FunctionCall'>FunctionCall</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.LoadInfo.html"
+                                  title='struct kernel::process::LoadInfo'>LoadInfo</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.LoadResult.html"
+                                  title='struct kernel::process::LoadResult'>LoadResult</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Process.html"
+                                  title='struct kernel::process::Process'>Process</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.StoredRegs.html"
+                                  title='struct kernel::process::StoredRegs'>StoredRegs</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Error.html"
+                                  title='enum kernel::process::Error'>Error</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.FaultResponse.html"
+                                  title='enum kernel::process::FaultResponse'>FaultResponse</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.IPCType.html"
+                                  title='enum kernel::process::IPCType'>IPCType</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.State.html"
+                                  title='enum kernel::process::State'>State</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Task.html"
+                                  title='enum kernel::process::Task'>Task</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.APP_FAULT.html"
+                                  title='static kernel::process::APP_FAULT'>APP_FAULT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.HAVE_WORK.html"
+                                  title='static kernel::process::HAVE_WORK'>HAVE_WORK</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.PROCS.html"
+                                  title='static kernel::process::PROCS'>PROCS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.SCB_REGISTERS.html"
+                                  title='static kernel::process::SCB_REGISTERS'>SCB_REGISTERS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.SYSCALL_FIRED.html"
+                                  title='static kernel::process::SYSCALL_FIRED'>SYSCALL_FIRED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.ipsr_isr_number_to_str.html"
+                                  title='fn kernel::process::ipsr_isr_number_to_str'>ipsr_isr_number_to_str</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.load.html"
+                                  title='fn kernel::process::load'>load</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Loads the process into memory</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.load_processes.html"
+                                  title='fn kernel::process::load_processes'>load_processes</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Helper function to load processes from flash into an array of active
+processes. This is the default template for loading processes, but a board
+is able to create its own <code>load_processes()</code> function and use that instead.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.parse_and_validate_load_info.html"
+                                  title='fn kernel::process::parse_and_validate_load_info'>parse_and_validate_load_info</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Converts a pointer to memory to a LoadInfo struct</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.processes_blocked.html"
+                                  title='fn kernel::process::processes_blocked'>processes_blocked</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.schedule.html"
+                                  title='fn kernel::process::schedule'>schedule</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.switch_to_user.html"
+                                  title='fn kernel::process::switch_to_user'>switch_to_user</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "kernel";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

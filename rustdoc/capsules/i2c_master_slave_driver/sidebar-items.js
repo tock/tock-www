@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["MasterAction",""]],"static":[["BUFFER1",""],["BUFFER2",""],["BUFFER3",""]],"struct":[["App",""],["I2CMasterSlaveDriver",""]]});

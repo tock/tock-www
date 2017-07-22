@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["BPM_BASE",""],["BPM_UNLOCK_KEY",""]],"enum":[["CK32Source",""],["PowerScaling","Which power scaling mode the chip should use for internal voltages"]],"fn":[["power_scaling_ok",""],["set_ck32source",""],["set_power_scaling",""],["unlock_register",""]],"static":[["BPM",""]],"struct":[["BpmRegisters",""]]});

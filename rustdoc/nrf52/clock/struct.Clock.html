@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Clock` struct in crate `nrf52`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Clock">
+
+    <title>nrf52::clock::Clock - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct Clock</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li></ul></div><p class='location'><a href='../index.html'>nrf52</a>::<wbr><a href='index.html'>clock</a></p><script>window.sidebarCurrent = {name: 'Clock', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>nrf52</a>::<wbr><a href='index.html'>clock</a>::<wbr><a class="struct" href=''>Clock</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/nrf52/clock.rs.html#82-84' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Clock {
+    client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../nrf52/clock/trait.ClockClient.html" title="trait nrf52::clock::ClockClient">ClockClient</a>&gt;&gt;,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.client' class="structfield">
+                           <span id='client.v' class='invisible'>
+                           <code>client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../nrf52/clock/trait.ClockClient.html" title="trait nrf52::clock::ClockClient">ClockClient</a>&gt;&gt;</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../nrf52/clock/struct.Clock.html" title="struct nrf52::clock::Clock">Clock</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/nrf52/clock.rs.html#101-176' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.set_client' class="method"><span id='set_client.v' class='invisible'><code>fn <a href='#method.set_client' class='fnname'>set_client</a>(&amp;self, client: &amp;'static <a class="trait" href="../../nrf52/clock/trait.ClockClient.html" title="trait nrf52::clock::ClockClient">ClockClient</a>)</code></span></h4>
+<h4 id='method.interrupt_enable' class="method"><span id='interrupt_enable.v' class='invisible'><code>fn <a href='#method.interrupt_enable' class='fnname'>interrupt_enable</a>(&amp;self, interrupt: <a class="enum" href="../../nrf52/clock/enum.InterruptField.html" title="enum nrf52::clock::InterruptField">InterruptField</a>)</code></span></h4>
+<h4 id='method.interrupt_disable' class="method"><span id='interrupt_disable.v' class='invisible'><code>fn <a href='#method.interrupt_disable' class='fnname'>interrupt_disable</a>(&amp;self, interrupt: <a class="enum" href="../../nrf52/clock/enum.InterruptField.html" title="enum nrf52::clock::InterruptField">InterruptField</a>)</code></span></h4>
+<h4 id='method.high_start' class="method"><span id='high_start.v' class='invisible'><code>fn <a href='#method.high_start' class='fnname'>high_start</a>(&amp;self)</code></span></h4>
+<h4 id='method.high_stop' class="method"><span id='high_stop.v' class='invisible'><code>fn <a href='#method.high_stop' class='fnname'>high_stop</a>(&amp;self)</code></span></h4>
+<h4 id='method.high_started' class="method"><span id='high_started.v' class='invisible'><code>fn <a href='#method.high_started' class='fnname'>high_started</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.high_source' class="method"><span id='high_source.v' class='invisible'><code>fn <a href='#method.high_source' class='fnname'>high_source</a>(&amp;self) -&gt; <a class="enum" href="../../nrf52/clock/enum.HighClockSource.html" title="enum nrf52::clock::HighClockSource">HighClockSource</a></code></span></h4>
+<h4 id='method.high_freq' class="method"><span id='high_freq.v' class='invisible'><code>fn <a href='#method.high_freq' class='fnname'>high_freq</a>(&amp;self) -&gt; <a class="enum" href="../../nrf52/clock/enum.XtalFreq.html" title="enum nrf52::clock::XtalFreq">XtalFreq</a></code></span></h4>
+<h4 id='method.high_set_freq' class="method"><span id='high_set_freq.v' class='invisible'><code>fn <a href='#method.high_set_freq' class='fnname'>high_set_freq</a>(&amp;self, freq: <a class="enum" href="../../nrf52/clock/enum.XtalFreq.html" title="enum nrf52::clock::XtalFreq">XtalFreq</a>)</code></span></h4>
+<h4 id='method.high_running' class="method"><span id='high_running.v' class='invisible'><code>fn <a href='#method.high_running' class='fnname'>high_running</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.low_start' class="method"><span id='low_start.v' class='invisible'><code>fn <a href='#method.low_start' class='fnname'>low_start</a>(&amp;self)</code></span></h4>
+<h4 id='method.low_stop' class="method"><span id='low_stop.v' class='invisible'><code>fn <a href='#method.low_stop' class='fnname'>low_stop</a>(&amp;self)</code></span></h4>
+<h4 id='method.low_started' class="method"><span id='low_started.v' class='invisible'><code>fn <a href='#method.low_started' class='fnname'>low_started</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.low_source' class="method"><span id='low_source.v' class='invisible'><code>fn <a href='#method.low_source' class='fnname'>low_source</a>(&amp;self) -&gt; <a class="enum" href="../../nrf52/clock/enum.LowClockSource.html" title="enum nrf52::clock::LowClockSource">LowClockSource</a></code></span></h4>
+<h4 id='method.low_running' class="method"><span id='low_running.v' class='invisible'><code>fn <a href='#method.low_running' class='fnname'>low_running</a>(&amp;self) -&gt; bool</code></span></h4>
+<h4 id='method.low_set_source' class="method"><span id='low_set_source.v' class='invisible'><code>fn <a href='#method.low_set_source' class='fnname'>low_set_source</a>(&amp;self, src: <a class="enum" href="../../nrf52/clock/enum.LowClockSource.html" title="enum nrf52::clock::LowClockSource">LowClockSource</a>)</code></span></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "nrf52";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

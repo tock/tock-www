@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Registers",""],["State",""]],"static":[["BUFFER",""]],"struct":[["MAX17205",""],["MAX17205Driver","Default implementation of the MAX17205 driver that provides a `Driver` interface for providing access to applications."]],"trait":[["MAX17205Client",""]]});

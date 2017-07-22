@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Timer` struct in crate `nrf51`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Timer">
+
+    <title>nrf51::timer::Timer - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct Timer</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li></ul></div><p class='location'><a href='../index.html'>nrf51</a>::<wbr><a href='index.html'>timer</a></p><script>window.sidebarCurrent = {name: 'Timer', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>nrf51</a>::<wbr><a href='index.html'>timer</a>::<wbr><a class="struct" href=''>Timer</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/nrf51/timer.rs.html#93-97' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Timer {
+    which: <a class="enum" href="../../nrf51/timer/enum.Location.html" title="enum nrf51::timer::Location">Location</a>,
+    nvic: <a class="enum" href="../../nrf51/peripheral_interrupts/enum.NvicIdx.html" title="enum nrf51::peripheral_interrupts::NvicIdx">NvicIdx</a>,
+    client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../nrf51/timer/trait.CompareClient.html" title="trait nrf51::timer::CompareClient">CompareClient</a>&gt;&gt;,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.which' class="structfield">
+                           <span id='which.v' class='invisible'>
+                           <code>which: <a class="enum" href="../../nrf51/timer/enum.Location.html" title="enum nrf51::timer::Location">Location</a></code>
+                           </span></span><span id='structfield.nvic' class="structfield">
+                           <span id='nvic.v' class='invisible'>
+                           <code>nvic: <a class="enum" href="../../nrf51/peripheral_interrupts/enum.NvicIdx.html" title="enum nrf51::peripheral_interrupts::NvicIdx">NvicIdx</a></code>
+                           </span></span><span id='structfield.client' class="structfield">
+                           <span id='client.v' class='invisible'>
+                           <code>client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../nrf51/timer/trait.CompareClient.html" title="trait nrf51::timer::CompareClient">CompareClient</a>&gt;&gt;</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../nrf51/timer/struct.Timer.html" title="struct nrf51::timer::Timer">Timer</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/nrf51/timer.rs.html#99-240' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.timer' class="method"><span id='timer.v' class='invisible'><code>fn <a href='#method.timer' class='fnname'>timer</a>(&amp;self) -&gt; &amp;'static <a class="struct" href="../../nrf51/timer/struct.Registers.html" title="struct nrf51::timer::Registers">Registers</a></code></span></h4>
+<h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>const fn <a href='#method.new' class='fnname'>new</a>(location: <a class="enum" href="../../nrf51/timer/enum.Location.html" title="enum nrf51::timer::Location">Location</a>, nvic: <a class="enum" href="../../nrf51/peripheral_interrupts/enum.NvicIdx.html" title="enum nrf51::peripheral_interrupts::NvicIdx">NvicIdx</a>) -&gt; <a class="struct" href="../../nrf51/timer/struct.Timer.html" title="struct nrf51::timer::Timer">Timer</a></code></span></h4>
+<h4 id='method.set_client' class="method"><span id='set_client.v' class='invisible'><code>fn <a href='#method.set_client' class='fnname'>set_client</a>(&amp;self, client: &amp;'static <a class="trait" href="../../nrf51/timer/trait.CompareClient.html" title="trait nrf51::timer::CompareClient">CompareClient</a>)</code></span></h4>
+<h4 id='method.start' class="method"><span id='start.v' class='invisible'><code>fn <a href='#method.start' class='fnname'>start</a>(&amp;self)</code></span></h4>
+<h4 id='method.stop' class="method"><span id='stop.v' class='invisible'><code>fn <a href='#method.stop' class='fnname'>stop</a>(&amp;self)</code></span></h4>
+<h4 id='method.shutdown' class="method"><span id='shutdown.v' class='invisible'><code>fn <a href='#method.shutdown' class='fnname'>shutdown</a>(&amp;self)</code></span></h4>
+<h4 id='method.clear' class="method"><span id='clear.v' class='invisible'><code>fn <a href='#method.clear' class='fnname'>clear</a>(&amp;self)</code></span></h4>
+<h4 id='method.capture' class="method"><span id='capture.v' class='invisible'><code>fn <a href='#method.capture' class='fnname'>capture</a>(&amp;self, which: u8) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Capture the current timer value into the CC register
+specified by which, and return the value.</p>
+</div><h4 id='method.capture_to' class="method"><span id='capture_to.v' class='invisible'><code>fn <a href='#method.capture_to' class='fnname'>capture_to</a>(&amp;self, which: u8)</code></span></h4>
+<div class='docblock'><p>Capture the current value to the CC register specified by
+which and do not return the value.</p>
+</div><h4 id='method.get_shortcuts' class="method"><span id='get_shortcuts.v' class='invisible'><code>fn <a href='#method.get_shortcuts' class='fnname'>get_shortcuts</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Shortcuts can automatically stop or clear the timer on a particular
+compare event; refer to section 18.3 of the nRF reference manual
+for details. Implementation currently provides shortcuts as the
+raw bitmask.</p>
+</div><h4 id='method.set_shortcuts' class="method"><span id='set_shortcuts.v' class='invisible'><code>fn <a href='#method.set_shortcuts' class='fnname'>set_shortcuts</a>(&amp;self, shortcut: u32)</code></span></h4>
+<h4 id='method.get_cc0' class="method"><span id='get_cc0.v' class='invisible'><code>fn <a href='#method.get_cc0' class='fnname'>get_cc0</a>(&amp;self) -&gt; u32</code></span></h4>
+<h4 id='method.set_cc0' class="method"><span id='set_cc0.v' class='invisible'><code>fn <a href='#method.set_cc0' class='fnname'>set_cc0</a>(&amp;self, val: u32)</code></span></h4>
+<h4 id='method.get_cc1' class="method"><span id='get_cc1.v' class='invisible'><code>fn <a href='#method.get_cc1' class='fnname'>get_cc1</a>(&amp;self) -&gt; u32</code></span></h4>
+<h4 id='method.set_cc1' class="method"><span id='set_cc1.v' class='invisible'><code>fn <a href='#method.set_cc1' class='fnname'>set_cc1</a>(&amp;self, val: u32)</code></span></h4>
+<h4 id='method.get_cc2' class="method"><span id='get_cc2.v' class='invisible'><code>fn <a href='#method.get_cc2' class='fnname'>get_cc2</a>(&amp;self) -&gt; u32</code></span></h4>
+<h4 id='method.set_cc2' class="method"><span id='set_cc2.v' class='invisible'><code>fn <a href='#method.set_cc2' class='fnname'>set_cc2</a>(&amp;self, val: u32)</code></span></h4>
+<h4 id='method.get_cc3' class="method"><span id='get_cc3.v' class='invisible'><code>fn <a href='#method.get_cc3' class='fnname'>get_cc3</a>(&amp;self) -&gt; u32</code></span></h4>
+<h4 id='method.set_cc3' class="method"><span id='set_cc3.v' class='invisible'><code>fn <a href='#method.set_cc3' class='fnname'>set_cc3</a>(&amp;self, val: u32)</code></span></h4>
+<h4 id='method.enable_interrupts' class="method"><span id='enable_interrupts.v' class='invisible'><code>fn <a href='#method.enable_interrupts' class='fnname'>enable_interrupts</a>(&amp;self, interrupts: u32)</code></span></h4>
+<h4 id='method.disable_interrupts' class="method"><span id='disable_interrupts.v' class='invisible'><code>fn <a href='#method.disable_interrupts' class='fnname'>disable_interrupts</a>(&amp;self, interrupts: u32)</code></span></h4>
+<h4 id='method.enable_nvic' class="method"><span id='enable_nvic.v' class='invisible'><code>fn <a href='#method.enable_nvic' class='fnname'>enable_nvic</a>(&amp;self)</code></span></h4>
+<h4 id='method.disable_nvic' class="method"><span id='disable_nvic.v' class='invisible'><code>fn <a href='#method.disable_nvic' class='fnname'>disable_nvic</a>(&amp;self)</code></span></h4>
+<h4 id='method.set_prescaler' class="method"><span id='set_prescaler.v' class='invisible'><code>fn <a href='#method.set_prescaler' class='fnname'>set_prescaler</a>(&amp;self, val: u8)</code></span></h4>
+<h4 id='method.get_prescaler' class="method"><span id='get_prescaler.v' class='invisible'><code>fn <a href='#method.get_prescaler' class='fnname'>get_prescaler</a>(&amp;self) -&gt; u8</code></span></h4>
+<h4 id='method.handle_interrupt' class="method"><span id='handle_interrupt.v' class='invisible'><code>fn <a href='#method.handle_interrupt' class='fnname'>handle_interrupt</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>When an interrupt occurs, check if any of the 4 compares have
+created an event, and if so, add it to the bitmask of triggered
+events that is passed to the client.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "nrf51";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

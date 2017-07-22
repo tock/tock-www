@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `NonvolatileToPages` struct in crate `capsules`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, NonvolatileToPages">
+
+    <title>capsules::nonvolatile_to_pages::NonvolatileToPages - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct NonvolatileToPages</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>capsules</a>::<wbr><a href='index.html'>nonvolatile_to_pages</a></p><script>window.sidebarCurrent = {name: 'NonvolatileToPages', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>capsules</a>::<wbr><a href='index.html'>nonvolatile_to_pages</a>::<wbr><a class="struct" href=''>NonvolatileToPages</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/capsules/nonvolatile_to_pages.rs.html#47-68' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct NonvolatileToPages&lt;'a, F:&nbsp;<a class="trait" href="../../kernel/hil/flash/trait.Flash.html" title="trait kernel::hil::flash::Flash">Flash</a> + 'static&gt; {
+    driver: &amp;'a F,
+    client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorageClient.html" title="trait kernel::hil::nonvolatile_storage::NonvolatileStorageClient">NonvolatileStorageClient</a>&gt;&gt;,
+    pagebuffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, F::<a class="type" href="../../kernel/hil/flash/trait.Flash.html#associatedtype.Page" title="type kernel::hil::flash::Flash::Page">Page</a>&gt;,
+    state: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="../../capsules/nonvolatile_to_pages/enum.State.html" title="enum capsules::nonvolatile_to_pages::State">State</a>&gt;,
+    buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;,
+    address: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;,
+    length: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;,
+    remaining_length: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;,
+    buffer_index: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.driver' class="structfield">
+                           <span id='driver.v' class='invisible'>
+                           <code>driver: &amp;'a F</code>
+                           </span></span><div class='docblock'><p>The module providing a <code>Flash</code> interface.</p>
+</div><span id='structfield.client' class="structfield">
+                           <span id='client.v' class='invisible'>
+                           <code>client: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'static <a class="trait" href="../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorageClient.html" title="trait kernel::hil::nonvolatile_storage::NonvolatileStorageClient">NonvolatileStorageClient</a>&gt;&gt;</code>
+                           </span></span><div class='docblock'><p>Callback to the user of this capsule.</p>
+</div><span id='structfield.pagebuffer' class="structfield">
+                           <span id='pagebuffer.v' class='invisible'>
+                           <code>pagebuffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, F::<a class="type" href="../../kernel/hil/flash/trait.Flash.html#associatedtype.Page" title="type kernel::hil::flash::Flash::Page">Page</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Buffer correctly sized for the underlying flash page size.</p>
+</div><span id='structfield.state' class="structfield">
+                           <span id='state.v' class='invisible'>
+                           <code>state: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="../../capsules/nonvolatile_to_pages/enum.State.html" title="enum capsules::nonvolatile_to_pages::State">State</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Current state of this capsule.</p>
+</div><span id='structfield.buffer' class="structfield">
+                           <span id='buffer.v' class='invisible'>
+                           <code>buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;</code>
+                           </span></span><div class='docblock'><p>Temporary holding place for the user&#39;s buffer.</p>
+</div><span id='structfield.address' class="structfield">
+                           <span id='address.v' class='invisible'>
+                           <code>address: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;</code>
+                           </span></span><div class='docblock'><p>Absolute address of where we are reading or writing. This gets updated
+as the operation proceeds across pages.</p>
+</div><span id='structfield.length' class="structfield">
+                           <span id='length.v' class='invisible'>
+                           <code>length: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;</code>
+                           </span></span><div class='docblock'><p>Total length to read or write. We need to store this to return it to the
+client.</p>
+</div><span id='structfield.remaining_length' class="structfield">
+                           <span id='remaining_length.v' class='invisible'>
+                           <code>remaining_length: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;</code>
+                           </span></span><div class='docblock'><p>How many bytes are left to read or write.</p>
+</div><span id='structfield.buffer_index' class="structfield">
+                           <span id='buffer_index.v' class='invisible'>
+                           <code>buffer_index: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;usize&gt;</code>
+                           </span></span><div class='docblock'><p>Where we are in the user buffer.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a, F:&nbsp;<a class="trait" href="../../kernel/hil/flash/trait.Flash.html" title="trait kernel::hil::flash::Flash">Flash</a> + 'a&gt; <a class="struct" href="../../capsules/nonvolatile_to_pages/struct.NonvolatileToPages.html" title="struct capsules::nonvolatile_to_pages::NonvolatileToPages">NonvolatileToPages</a>&lt;'a, F&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/nonvolatile_to_pages.rs.html#70-84' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(driver: &amp;'a F, buffer: &amp;'static mut F::<a class="type" href="../../kernel/hil/flash/trait.Flash.html#associatedtype.Page" title="type kernel::hil::flash::Flash::Page">Page</a>) -&gt; <a class="struct" href="../../capsules/nonvolatile_to_pages/struct.NonvolatileToPages.html" title="struct capsules::nonvolatile_to_pages::NonvolatileToPages">NonvolatileToPages</a>&lt;'a, F&gt;</code></span></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a, F:&nbsp;<a class="trait" href="../../kernel/hil/flash/trait.Flash.html" title="trait kernel::hil::flash::Flash">Flash</a> + 'a&gt; <a class="trait" href="../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorage.html" title="trait kernel::hil::nonvolatile_storage::NonvolatileStorage">NonvolatileStorage</a> for <a class="struct" href="../../capsules/nonvolatile_to_pages/struct.NonvolatileToPages.html" title="struct capsules::nonvolatile_to_pages::NonvolatileToPages">NonvolatileToPages</a>&lt;'a, F&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/nonvolatile_to_pages.rs.html#86-148' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.set_client' class="method"><span id='set_client.v' class='invisible'><code>fn <a href='../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorage.html#tymethod.set_client' class='fnname'>set_client</a>(&amp;self, client: &amp;'static <a class="trait" href="../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorageClient.html" title="trait kernel::hil::nonvolatile_storage::NonvolatileStorageClient">NonvolatileStorageClient</a>)</code></span></h4>
+<h4 id='method.read' class="method"><span id='read.v' class='invisible'><code>fn <a href='../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorage.html#tymethod.read' class='fnname'>read</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;buffer: &amp;'static mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;address: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;length: usize<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Read <code>length</code> bytes starting at address <code>address</code> in to the provided buffer. The buffer must be at least <code>length</code> bytes long. The address must be in the address space of the physical storage. <a href="../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorage.html#tymethod.read">Read more</a></p>
+</div><h4 id='method.write' class="method"><span id='write.v' class='invisible'><code>fn <a href='../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorage.html#tymethod.write' class='fnname'>write</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;buffer: &amp;'static mut [u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;address: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;length: usize<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p>Write <code>length</code> bytes starting at address <code>address</code> from the provided buffer. The buffer must be at least <code>length</code> bytes long. This address must be in the address space of the physical storage. <a href="../../kernel/hil/nonvolatile_storage/trait.NonvolatileStorage.html#tymethod.write">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a, F:&nbsp;<a class="trait" href="../../kernel/hil/flash/trait.Flash.html" title="trait kernel::hil::flash::Flash">Flash</a> + 'a&gt; <a class="trait" href="../../kernel/hil/flash/trait.Client.html" title="trait kernel::hil::flash::Client">Client</a>&lt;F&gt; for <a class="struct" href="../../capsules/nonvolatile_to_pages/struct.NonvolatileToPages.html" title="struct capsules::nonvolatile_to_pages::NonvolatileToPages">NonvolatileToPages</a>&lt;'a, F&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/nonvolatile_to_pages.rs.html#152-263' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.read_complete' class="method"><span id='read_complete.v' class='invisible'><code>fn <a href='../../kernel/hil/flash/trait.Client.html#tymethod.read_complete' class='fnname'>read_complete</a>(&amp;self, pagebuffer: &amp;'static mut F::<a class="type" href="../../kernel/hil/flash/trait.Flash.html#associatedtype.Page" title="type kernel::hil::flash::Flash::Page">Page</a>, _error: <a class="enum" href="../../kernel/hil/flash/enum.Error.html" title="enum kernel::hil::flash::Error">Error</a>)</code></span></h4>
+<div class='docblock'><p>Flash read complete.</p>
+</div><h4 id='method.write_complete' class="method"><span id='write_complete.v' class='invisible'><code>fn <a href='../../kernel/hil/flash/trait.Client.html#tymethod.write_complete' class='fnname'>write_complete</a>(&amp;self, pagebuffer: &amp;'static mut F::<a class="type" href="../../kernel/hil/flash/trait.Flash.html#associatedtype.Page" title="type kernel::hil::flash::Flash::Page">Page</a>, _error: <a class="enum" href="../../kernel/hil/flash/enum.Error.html" title="enum kernel::hil::flash::Error">Error</a>)</code></span></h4>
+<div class='docblock'><p>Flash write complete.</p>
+</div><h4 id='method.erase_complete' class="method"><span id='erase_complete.v' class='invisible'><code>fn <a href='../../kernel/hil/flash/trait.Client.html#tymethod.erase_complete' class='fnname'>erase_complete</a>(&amp;self, _error: <a class="enum" href="../../kernel/hil/flash/enum.Error.html" title="enum kernel::hil::flash::Error">Error</a>)</code></span></h4>
+<div class='docblock'><p>Flash erase complete.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "capsules";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

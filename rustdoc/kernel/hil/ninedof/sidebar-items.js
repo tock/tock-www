@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["NineDof","A basic interface for a 9-DOF compatible chip. Not all functions must be implemented if not all features are supported (for instance some chips may not include a gyroscope)."],["NineDofClient","Client for receiving done events from the chip."]]});

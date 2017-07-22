@@ -1,0 +1,1 @@
+initSidebarItems({"static":[["READ_BUF",""],["WRITE_BUF",""]],"struct":[["App",""],["Nrf51822Serialization",""]]});

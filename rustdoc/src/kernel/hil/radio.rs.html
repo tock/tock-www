@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="Source to the Rust file `/home/bradjc/git/tock/kernel/src/hil/radio.rs`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang">
+
+    <title>radio.rs.html -- source</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc source">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content"><pre class="line-numbers"><span id="1">  1</span>
+<span id="2">  2</span>
+<span id="3">  3</span>
+<span id="4">  4</span>
+<span id="5">  5</span>
+<span id="6">  6</span>
+<span id="7">  7</span>
+<span id="8">  8</span>
+<span id="9">  9</span>
+<span id="10"> 10</span>
+<span id="11"> 11</span>
+<span id="12"> 12</span>
+<span id="13"> 13</span>
+<span id="14"> 14</span>
+<span id="15"> 15</span>
+<span id="16"> 16</span>
+<span id="17"> 17</span>
+<span id="18"> 18</span>
+<span id="19"> 19</span>
+<span id="20"> 20</span>
+<span id="21"> 21</span>
+<span id="22"> 22</span>
+<span id="23"> 23</span>
+<span id="24"> 24</span>
+<span id="25"> 25</span>
+<span id="26"> 26</span>
+<span id="27"> 27</span>
+<span id="28"> 28</span>
+<span id="29"> 29</span>
+<span id="30"> 30</span>
+<span id="31"> 31</span>
+<span id="32"> 32</span>
+<span id="33"> 33</span>
+<span id="34"> 34</span>
+<span id="35"> 35</span>
+<span id="36"> 36</span>
+<span id="37"> 37</span>
+<span id="38"> 38</span>
+<span id="39"> 39</span>
+<span id="40"> 40</span>
+<span id="41"> 41</span>
+<span id="42"> 42</span>
+<span id="43"> 43</span>
+<span id="44"> 44</span>
+<span id="45"> 45</span>
+<span id="46"> 46</span>
+<span id="47"> 47</span>
+<span id="48"> 48</span>
+<span id="49"> 49</span>
+<span id="50"> 50</span>
+<span id="51"> 51</span>
+<span id="52"> 52</span>
+<span id="53"> 53</span>
+<span id="54"> 54</span>
+<span id="55"> 55</span>
+<span id="56"> 56</span>
+<span id="57"> 57</span>
+<span id="58"> 58</span>
+<span id="59"> 59</span>
+<span id="60"> 60</span>
+<span id="61"> 61</span>
+<span id="62"> 62</span>
+<span id="63"> 63</span>
+<span id="64"> 64</span>
+<span id="65"> 65</span>
+<span id="66"> 66</span>
+<span id="67"> 67</span>
+<span id="68"> 68</span>
+<span id="69"> 69</span>
+<span id="70"> 70</span>
+<span id="71"> 71</span>
+<span id="72"> 72</span>
+<span id="73"> 73</span>
+<span id="74"> 74</span>
+<span id="75"> 75</span>
+<span id="76"> 76</span>
+<span id="77"> 77</span>
+<span id="78"> 78</span>
+<span id="79"> 79</span>
+<span id="80"> 80</span>
+<span id="81"> 81</span>
+<span id="82"> 82</span>
+<span id="83"> 83</span>
+<span id="84"> 84</span>
+<span id="85"> 85</span>
+<span id="86"> 86</span>
+<span id="87"> 87</span>
+<span id="88"> 88</span>
+<span id="89"> 89</span>
+<span id="90"> 90</span>
+<span id="91"> 91</span>
+<span id="92"> 92</span>
+<span id="93"> 93</span>
+<span id="94"> 94</span>
+<span id="95"> 95</span>
+<span id="96"> 96</span>
+<span id="97"> 97</span>
+<span id="98"> 98</span>
+<span id="99"> 99</span>
+<span id="100">100</span>
+<span id="101">101</span>
+<span id="102">102</span>
+<span id="103">103</span>
+<span id="104">104</span>
+<span id="105">105</span>
+<span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
+<span id="111">111</span>
+<span id="112">112</span>
+<span id="113">113</span>
+<span id="114">114</span>
+<span id="115">115</span>
+<span id="116">116</span>
+<span id="117">117</span>
+<span id="118">118</span>
+<span id="119">119</span>
+<span id="120">120</span>
+<span id="121">121</span>
+<span id="122">122</span>
+<span id="123">123</span>
+<span id="124">124</span>
+<span id="125">125</span>
+<span id="126">126</span>
+<span id="127">127</span>
+<span id="128">128</span>
+<span id="129">129</span>
+<span id="130">130</span>
+<span id="131">131</span>
+<span id="132">132</span>
+<span id="133">133</span>
+<span id="134">134</span>
+<span id="135">135</span>
+<span id="136">136</span>
+<span id="137">137</span>
+<span id="138">138</span>
+<span id="139">139</span>
+<span id="140">140</span>
+<span id="141">141</span>
+<span id="142">142</span>
+<span id="143">143</span>
+<span id="144">144</span>
+<span id="145">145</span>
+<span id="146">146</span>
+<span id="147">147</span>
+<span id="148">148</span>
+<span id="149">149</span>
+<span id="150">150</span>
+</pre><pre class="rust ">
+<span class="doccomment">//! Interface for sending and receiving IEEE 802.15.4 packets.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Hardware independent interface for an 802.15.4 radio. Note that</span>
+<span class="doccomment">//! configuration commands are asynchronous and must be committed with a call to</span>
+<span class="doccomment">//! config_commit. For example, calling set_address will change the source</span>
+<span class="doccomment">//! address of packets but does not change the address stored in hardware used</span>
+<span class="doccomment">//! for address recognition. This must be committed to hardware with a call to</span>
+<span class="doccomment">//! config_commit. Please see the relevant TRD for more details.</span>
+
+<span class="kw">use</span> <span class="ident">returncode</span>::<span class="ident">ReturnCode</span>;
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">TxClient</span> {
+    <span class="kw">fn</span> <span class="ident">send_done</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>], <span class="ident">acked</span>: <span class="ident">bool</span>, <span class="ident">result</span>: <span class="ident">ReturnCode</span>);
+}
+
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">RxClient</span> {
+    <span class="kw">fn</span> <span class="ident">receive</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>], <span class="ident">frame_len</span>: <span class="ident">u8</span>, <span class="ident">result</span>: <span class="ident">ReturnCode</span>);
+}
+
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ConfigClient</span> {
+    <span class="kw">fn</span> <span class="ident">config_done</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">result</span>: <span class="ident">ReturnCode</span>);
+}
+
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">PowerClient</span> {
+    <span class="kw">fn</span> <span class="ident">changed</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">on</span>: <span class="ident">bool</span>);
+}
+
+<span class="doccomment">/// These constants are used for interacting with the SPI buffer, which contains</span>
+<span class="doccomment">/// a 1-byte SPI command, a 1-byte PHY header, and then the 802.15.4 frame. In</span>
+<span class="doccomment">/// theory, the number of extra bytes in front of the frame can depend on the</span>
+<span class="doccomment">/// particular method used to communicate with the radio, but we leave this as a</span>
+<span class="doccomment">/// constant in this generic trait for now.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Furthermore, the minimum MHR size assumes that</span>
+<span class="doccomment">/// - The source PAN ID is omitted</span>
+<span class="doccomment">/// - There is no auxiliary security header</span>
+<span class="doccomment">/// - There are no IEs</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// +---------+-----+-----+-------------+-----+</span>
+<span class="doccomment">/// | SPI com | PHR | MHR | MAC payload | MFR |</span>
+<span class="doccomment">/// +---------+-----+-----+-------------+-----+</span>
+<span class="doccomment">/// \______ Static buffer rx/txed to SPI _____/</span>
+<span class="doccomment">///                 \__ PSDU / frame length __/</span>
+<span class="doccomment">/// \___ 2 bytes ___/</span>
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MIN_MHR_SIZE</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">9</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MFR_SIZE</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">2</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MAX_MTU</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">127</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MIN_FRAME_SIZE</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="ident">MIN_MHR_SIZE</span> <span class="op">+</span> <span class="ident">MFR_SIZE</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MAX_FRAME_SIZE</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="ident">MAX_MTU</span>;
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PSDU_OFFSET</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">2</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MAX_BUF_SIZE</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="ident">PSDU_OFFSET</span> <span class="op">+</span> <span class="ident">MAX_MTU</span>;
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MIN_PAYLOAD_OFFSET</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="ident">PSDU_OFFSET</span> <span class="op">+</span> <span class="ident">MIN_MHR_SIZE</span>;
+
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Radio</span>: <span class="ident">RadioConfig</span> <span class="op">+</span> <span class="ident">RadioData</span> {}
+
+<span class="doccomment">/// Configure the 802.15.4 radio.</span>
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">RadioConfig</span> {
+    <span class="doccomment">/// buf must be at least MAX_BUF_SIZE in length, and</span>
+    <span class="doccomment">/// reg_read and reg_write must be 2 bytes.</span>
+    <span class="kw">fn</span> <span class="ident">initialize</span>(<span class="kw-2">&amp;</span><span class="self">self</span>,
+                  <span class="ident">spi_buf</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>],
+                  <span class="ident">reg_write</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>],
+                  <span class="ident">reg_read</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>])
+                  <span class="op">-&gt;</span> <span class="ident">ReturnCode</span>;
+    <span class="kw">fn</span> <span class="ident">reset</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">ReturnCode</span>;
+    <span class="kw">fn</span> <span class="ident">start</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">ReturnCode</span>;
+    <span class="kw">fn</span> <span class="ident">stop</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">ReturnCode</span>;
+    <span class="kw">fn</span> <span class="ident">is_on</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span>;
+    <span class="kw">fn</span> <span class="ident">busy</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span>;
+
+    <span class="kw">fn</span> <span class="ident">set_power_client</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">client</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">PowerClient</span>);
+
+    <span class="doccomment">/// Commit the config calls to hardware, changing the address,</span>
+    <span class="doccomment">/// PAN ID, TX power, and channel to the specified values, issues</span>
+    <span class="doccomment">/// a callback to the config client when done.</span>
+    <span class="kw">fn</span> <span class="ident">config_commit</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">ReturnCode</span>;
+    <span class="kw">fn</span> <span class="ident">set_config_client</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">client</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">ConfigClient</span>);
+
+    <span class="kw">fn</span> <span class="ident">config_address</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u16</span>; <span class="comment">//....... The local 16-bit address</span>
+    <span class="kw">fn</span> <span class="ident">config_address_long</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> [<span class="ident">u8</span>; <span class="number">8</span>]; <span class="comment">// 64-bit address</span>
+    <span class="kw">fn</span> <span class="ident">config_pan</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u16</span>; <span class="comment">//........... The 16-bit PAN ID</span>
+    <span class="kw">fn</span> <span class="ident">config_tx_power</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">i8</span>; <span class="comment">//....... The transmit power, in dBm</span>
+    <span class="kw">fn</span> <span class="ident">config_channel</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u8</span>; <span class="comment">// ....... The 802.15.4 channel</span>
+
+    <span class="kw">fn</span> <span class="ident">config_set_address</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">addr</span>: <span class="ident">u16</span>);
+    <span class="kw">fn</span> <span class="ident">config_set_address_long</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">addr</span>: [<span class="ident">u8</span>; <span class="number">8</span>]);
+    <span class="kw">fn</span> <span class="ident">config_set_pan</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">addr</span>: <span class="ident">u16</span>);
+    <span class="kw">fn</span> <span class="ident">config_set_tx_power</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">power</span>: <span class="ident">i8</span>) <span class="op">-&gt;</span> <span class="ident">ReturnCode</span>;
+    <span class="kw">fn</span> <span class="ident">config_set_channel</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">chan</span>: <span class="ident">u8</span>) <span class="op">-&gt;</span> <span class="ident">ReturnCode</span>;
+}
+
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">RadioData</span> {
+    <span class="kw">fn</span> <span class="ident">payload_offset</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">long_src</span>: <span class="ident">bool</span>, <span class="ident">long_dest</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="ident">u8</span>;
+    <span class="kw">fn</span> <span class="ident">header_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">long_src</span>: <span class="ident">bool</span>, <span class="ident">long_dest</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="ident">u8</span>;
+    <span class="kw">fn</span> <span class="ident">packet_payload_offset</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">spi_buf</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">u8</span>;
+    <span class="kw">fn</span> <span class="ident">packet_header_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">spi_buf</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">u8</span>;
+    <span class="kw">fn</span> <span class="ident">packet_get_src</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">spi_buf</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">u16</span>;
+    <span class="kw">fn</span> <span class="ident">packet_get_dest</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">spi_buf</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">u16</span>;
+    <span class="kw">fn</span> <span class="ident">packet_get_src_long</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">spi_buf</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> [<span class="ident">u8</span>; <span class="number">8</span>];
+    <span class="kw">fn</span> <span class="ident">packet_get_dest_long</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">spi_buf</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> [<span class="ident">u8</span>; <span class="number">8</span>];
+    <span class="kw">fn</span> <span class="ident">packet_get_length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">spi_buf</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">u8</span>;
+    <span class="kw">fn</span> <span class="ident">packet_get_pan</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">spi_buf</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">u16</span>;
+    <span class="kw">fn</span> <span class="ident">packet_has_src_long</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">spi_buf</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">bool</span>;
+    <span class="kw">fn</span> <span class="ident">packet_has_dest_long</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">spi_buf</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">bool</span>;
+
+    <span class="kw">fn</span> <span class="ident">set_transmit_client</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">client</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">TxClient</span>);
+    <span class="kw">fn</span> <span class="ident">set_receive_client</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">client</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">RxClient</span>, <span class="ident">receive_buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>]);
+    <span class="kw">fn</span> <span class="ident">set_receive_buffer</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">receive_buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>]);
+
+    <span class="kw">fn</span> <span class="ident">transmit</span>(<span class="kw-2">&amp;</span><span class="self">self</span>,
+                <span class="ident">dest</span>: <span class="ident">u16</span>,
+                <span class="ident">spi_buf</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>],
+                <span class="ident">payload_len</span>: <span class="ident">u8</span>,
+                <span class="ident">source_long</span>: <span class="ident">bool</span>)
+                <span class="op">-&gt;</span> <span class="ident">ReturnCode</span>;
+    <span class="kw">fn</span> <span class="ident">transmit_long</span>(<span class="kw-2">&amp;</span><span class="self">self</span>,
+                     <span class="ident">dest</span>: [<span class="ident">u8</span>; <span class="number">8</span>],
+                     <span class="ident">spi_buf</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>],
+                     <span class="ident">payload_len</span>: <span class="ident">u8</span>,
+                     <span class="ident">source_long</span>: <span class="ident">bool</span>)
+                     <span class="op">-&gt;</span> <span class="ident">ReturnCode</span>;
+}
+
+<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">RadioMacLen</span> {
+    <span class="ident">ZERO</span> <span class="op">=</span> <span class="number">0</span>,
+    <span class="ident">FOUR</span> <span class="op">=</span> <span class="number">4</span>,
+    <span class="ident">EIGHT</span> <span class="op">=</span> <span class="number">8</span>,
+    <span class="ident">SIXTEEN</span> <span class="op">=</span> <span class="number">16</span>,
+}
+
+<span class="comment">// C is the confidentiality key type, I is the integrity key type</span>
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">RadioCrypto</span><span class="op">&lt;</span><span class="ident">C</span>, <span class="ident">I</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">set_encrypt_key</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">key</span>: <span class="ident">C</span>);
+    <span class="kw">fn</span> <span class="ident">set_decrypt_key</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">key</span>: <span class="ident">C</span>);
+    <span class="kw">fn</span> <span class="ident">set_mac_key</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">key</span>: <span class="ident">I</span>);
+    <span class="kw">fn</span> <span class="ident">set_mac_check_key</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">key</span>: <span class="ident">I</span>);
+    <span class="kw">fn</span> <span class="ident">set_encrypt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">on</span>: <span class="ident">bool</span>);
+    <span class="kw">fn</span> <span class="ident">set_mac</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">len</span>: <span class="ident">RadioMacLen</span>);
+}
+
+<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>, <span class="ident">packed</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Header</span> {
+    <span class="ident">len</span>: <span class="ident">u8</span>,
+    <span class="ident">fcf</span>: <span class="ident">u16</span>,
+    <span class="ident">dsn</span>: <span class="ident">u8</span>,
+    <span class="ident">pan</span>: <span class="ident">u16</span>,
+    <span class="ident">src</span>: <span class="ident">u16</span>,
+    <span class="ident">dst</span>: <span class="ident">u16</span>,
+}
+</pre>
+</section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "kernel";
+    </script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

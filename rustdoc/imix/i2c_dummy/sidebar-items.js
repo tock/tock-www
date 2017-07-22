@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["AccelClientState",""],["LiClientState",""]],"fn":[["i2c_accel_test",""],["i2c_li_test",""],["i2c_scan_slaves",""]],"static":[["ACCEL_CLIENT",""],["LI_CLIENT",""],["SCAN_CLIENT",""]],"struct":[["AccelClient",""],["LiClient",""],["ScanClient",""]]});

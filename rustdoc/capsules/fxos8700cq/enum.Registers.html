@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Registers` enum in crate `capsules`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Registers">
+
+    <title>capsules::fxos8700cq::Registers - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc enum">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Enum Registers</p><div class="block items"><ul><li><a href="#variants">Variants</a></li></ul></div><p class='location'><a href='../index.html'>capsules</a>::<wbr><a href='index.html'>fxos8700cq</a></p><script>window.sidebarCurrent = {name: 'Registers', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>capsules</a>::<wbr><a href='index.html'>fxos8700cq</a>::<wbr><a class="enum" href=''>Registers</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/capsules/fxos8700cq.rs.html#32-148' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>enum Registers {
+    Status,
+    OutXMsb,
+    OutXLsb,
+    OutYMsb,
+    OutYLsb,
+    OutZMsb,
+    OutZLsb,
+    FSetup,
+    TrigCfg,
+    Sysmod,
+    IntSource,
+    WhoAmI,
+    XyzDataCfg,
+    HpFilterCutoff,
+    PlStatus,
+    PlCfg,
+    PlCount,
+    PlBfZcomp,
+    PlThsReg,
+    AFfmtCfg,
+    AFfmtSrc,
+    AFfmtThs,
+    AFfmtCount,
+    TransientCfg,
+    TransientSrc,
+    TransientThs,
+    TransientCount,
+    PulseCfg,
+    PulseSrc,
+    PulseThsx,
+    PulseThsy,
+    PulseThsz,
+    PulseTmlt,
+    PulseLtcy,
+    PulseWind,
+    AslpCount,
+    CtrlReg1,
+    CtrlReg2,
+    CtrlReg3,
+    CtrlReg4,
+    CtrlReg5,
+    OffX,
+    OffY,
+    OffZ,
+    MDrStatus,
+    MOutXMsb,
+    MOutXLsb,
+    MOutYMsb,
+    MOutYLsb,
+    MOutZMsb,
+    MOutZLsb,
+    CmpXMsb,
+    CmpXLsb,
+    CmpYMsb,
+    CmpYLsb,
+    CmpZMsb,
+    CmpZLsb,
+    MOffXMsb,
+    MOffXLsb,
+    MOffYMsb,
+    MOffYLsb,
+    MOffZMsb,
+    MOffZLsb,
+    MaxXMsb,
+    MaxXLsb,
+    MaxYMsb,
+    MaxYLsb,
+    MaxZMsb,
+    MaxZLsb,
+    MinXMsb,
+    MinXLsb,
+    MinYMsb,
+    MinYLsb,
+    MinZMsb,
+    MinZLsb,
+    Temp,
+    MThsCfg,
+    MThsSrc,
+    MThsXMsb,
+    MThsXLsb,
+    MThsYMsb,
+    MThsYLsb,
+    MThsZMsb,
+    MThsZLsb,
+    MThsCount,
+    MCtrlReg1,
+    MCtrlReg2,
+    MCtrlReg3,
+    MIntSrc,
+    AVecmCfg,
+    AVecmThsMsb,
+    AVecmThsLsb,
+    AVecmCnt,
+    AVecmInitxMsb,
+    AVecmInitxLsb,
+    AVecmInityMsb,
+    AVecmInityLsb,
+    AVecmInitzMsb,
+    AVecmInitzLsb,
+    MVecmCfg,
+    MVecmThsMsb,
+    MVecmThsLsb,
+    MVecmCnt,
+    MVecmInitxMsb,
+    MVecmInitxLsb,
+    MVecmInityMsb,
+    MVecmInityLsb,
+    MVecmInitzMsb,
+    MVecmInitzLsb,
+    AFfmtThsXMsb,
+    AFfmtThsXLsb,
+    AFfmtThsYMsb,
+    AFfmtThsYLsb,
+    AFfmtThsZMsb,
+    AFfmtThsZLsb,
+}</pre><h2 id='variants' class='variants'>Variants</h2>
+<span id='variant.Status' class='variant'><span id='Status.v' class='invisible'><code>Status</code></span></span><span id='variant.OutXMsb' class='variant'><span id='OutXMsb.v' class='invisible'><code>OutXMsb</code></span></span><span id='variant.OutXLsb' class='variant'><span id='OutXLsb.v' class='invisible'><code>OutXLsb</code></span></span><span id='variant.OutYMsb' class='variant'><span id='OutYMsb.v' class='invisible'><code>OutYMsb</code></span></span><span id='variant.OutYLsb' class='variant'><span id='OutYLsb.v' class='invisible'><code>OutYLsb</code></span></span><span id='variant.OutZMsb' class='variant'><span id='OutZMsb.v' class='invisible'><code>OutZMsb</code></span></span><span id='variant.OutZLsb' class='variant'><span id='OutZLsb.v' class='invisible'><code>OutZLsb</code></span></span><span id='variant.FSetup' class='variant'><span id='FSetup.v' class='invisible'><code>FSetup</code></span></span><span id='variant.TrigCfg' class='variant'><span id='TrigCfg.v' class='invisible'><code>TrigCfg</code></span></span><span id='variant.Sysmod' class='variant'><span id='Sysmod.v' class='invisible'><code>Sysmod</code></span></span><span id='variant.IntSource' class='variant'><span id='IntSource.v' class='invisible'><code>IntSource</code></span></span><span id='variant.WhoAmI' class='variant'><span id='WhoAmI.v' class='invisible'><code>WhoAmI</code></span></span><span id='variant.XyzDataCfg' class='variant'><span id='XyzDataCfg.v' class='invisible'><code>XyzDataCfg</code></span></span><span id='variant.HpFilterCutoff' class='variant'><span id='HpFilterCutoff.v' class='invisible'><code>HpFilterCutoff</code></span></span><span id='variant.PlStatus' class='variant'><span id='PlStatus.v' class='invisible'><code>PlStatus</code></span></span><span id='variant.PlCfg' class='variant'><span id='PlCfg.v' class='invisible'><code>PlCfg</code></span></span><span id='variant.PlCount' class='variant'><span id='PlCount.v' class='invisible'><code>PlCount</code></span></span><span id='variant.PlBfZcomp' class='variant'><span id='PlBfZcomp.v' class='invisible'><code>PlBfZcomp</code></span></span><span id='variant.PlThsReg' class='variant'><span id='PlThsReg.v' class='invisible'><code>PlThsReg</code></span></span><span id='variant.AFfmtCfg' class='variant'><span id='AFfmtCfg.v' class='invisible'><code>AFfmtCfg</code></span></span><span id='variant.AFfmtSrc' class='variant'><span id='AFfmtSrc.v' class='invisible'><code>AFfmtSrc</code></span></span><span id='variant.AFfmtThs' class='variant'><span id='AFfmtThs.v' class='invisible'><code>AFfmtThs</code></span></span><span id='variant.AFfmtCount' class='variant'><span id='AFfmtCount.v' class='invisible'><code>AFfmtCount</code></span></span><span id='variant.TransientCfg' class='variant'><span id='TransientCfg.v' class='invisible'><code>TransientCfg</code></span></span><span id='variant.TransientSrc' class='variant'><span id='TransientSrc.v' class='invisible'><code>TransientSrc</code></span></span><span id='variant.TransientThs' class='variant'><span id='TransientThs.v' class='invisible'><code>TransientThs</code></span></span><span id='variant.TransientCount' class='variant'><span id='TransientCount.v' class='invisible'><code>TransientCount</code></span></span><span id='variant.PulseCfg' class='variant'><span id='PulseCfg.v' class='invisible'><code>PulseCfg</code></span></span><span id='variant.PulseSrc' class='variant'><span id='PulseSrc.v' class='invisible'><code>PulseSrc</code></span></span><span id='variant.PulseThsx' class='variant'><span id='PulseThsx.v' class='invisible'><code>PulseThsx</code></span></span><span id='variant.PulseThsy' class='variant'><span id='PulseThsy.v' class='invisible'><code>PulseThsy</code></span></span><span id='variant.PulseThsz' class='variant'><span id='PulseThsz.v' class='invisible'><code>PulseThsz</code></span></span><span id='variant.PulseTmlt' class='variant'><span id='PulseTmlt.v' class='invisible'><code>PulseTmlt</code></span></span><span id='variant.PulseLtcy' class='variant'><span id='PulseLtcy.v' class='invisible'><code>PulseLtcy</code></span></span><span id='variant.PulseWind' class='variant'><span id='PulseWind.v' class='invisible'><code>PulseWind</code></span></span><span id='variant.AslpCount' class='variant'><span id='AslpCount.v' class='invisible'><code>AslpCount</code></span></span><span id='variant.CtrlReg1' class='variant'><span id='CtrlReg1.v' class='invisible'><code>CtrlReg1</code></span></span><span id='variant.CtrlReg2' class='variant'><span id='CtrlReg2.v' class='invisible'><code>CtrlReg2</code></span></span><span id='variant.CtrlReg3' class='variant'><span id='CtrlReg3.v' class='invisible'><code>CtrlReg3</code></span></span><span id='variant.CtrlReg4' class='variant'><span id='CtrlReg4.v' class='invisible'><code>CtrlReg4</code></span></span><span id='variant.CtrlReg5' class='variant'><span id='CtrlReg5.v' class='invisible'><code>CtrlReg5</code></span></span><span id='variant.OffX' class='variant'><span id='OffX.v' class='invisible'><code>OffX</code></span></span><span id='variant.OffY' class='variant'><span id='OffY.v' class='invisible'><code>OffY</code></span></span><span id='variant.OffZ' class='variant'><span id='OffZ.v' class='invisible'><code>OffZ</code></span></span><span id='variant.MDrStatus' class='variant'><span id='MDrStatus.v' class='invisible'><code>MDrStatus</code></span></span><span id='variant.MOutXMsb' class='variant'><span id='MOutXMsb.v' class='invisible'><code>MOutXMsb</code></span></span><span id='variant.MOutXLsb' class='variant'><span id='MOutXLsb.v' class='invisible'><code>MOutXLsb</code></span></span><span id='variant.MOutYMsb' class='variant'><span id='MOutYMsb.v' class='invisible'><code>MOutYMsb</code></span></span><span id='variant.MOutYLsb' class='variant'><span id='MOutYLsb.v' class='invisible'><code>MOutYLsb</code></span></span><span id='variant.MOutZMsb' class='variant'><span id='MOutZMsb.v' class='invisible'><code>MOutZMsb</code></span></span><span id='variant.MOutZLsb' class='variant'><span id='MOutZLsb.v' class='invisible'><code>MOutZLsb</code></span></span><span id='variant.CmpXMsb' class='variant'><span id='CmpXMsb.v' class='invisible'><code>CmpXMsb</code></span></span><span id='variant.CmpXLsb' class='variant'><span id='CmpXLsb.v' class='invisible'><code>CmpXLsb</code></span></span><span id='variant.CmpYMsb' class='variant'><span id='CmpYMsb.v' class='invisible'><code>CmpYMsb</code></span></span><span id='variant.CmpYLsb' class='variant'><span id='CmpYLsb.v' class='invisible'><code>CmpYLsb</code></span></span><span id='variant.CmpZMsb' class='variant'><span id='CmpZMsb.v' class='invisible'><code>CmpZMsb</code></span></span><span id='variant.CmpZLsb' class='variant'><span id='CmpZLsb.v' class='invisible'><code>CmpZLsb</code></span></span><span id='variant.MOffXMsb' class='variant'><span id='MOffXMsb.v' class='invisible'><code>MOffXMsb</code></span></span><span id='variant.MOffXLsb' class='variant'><span id='MOffXLsb.v' class='invisible'><code>MOffXLsb</code></span></span><span id='variant.MOffYMsb' class='variant'><span id='MOffYMsb.v' class='invisible'><code>MOffYMsb</code></span></span><span id='variant.MOffYLsb' class='variant'><span id='MOffYLsb.v' class='invisible'><code>MOffYLsb</code></span></span><span id='variant.MOffZMsb' class='variant'><span id='MOffZMsb.v' class='invisible'><code>MOffZMsb</code></span></span><span id='variant.MOffZLsb' class='variant'><span id='MOffZLsb.v' class='invisible'><code>MOffZLsb</code></span></span><span id='variant.MaxXMsb' class='variant'><span id='MaxXMsb.v' class='invisible'><code>MaxXMsb</code></span></span><span id='variant.MaxXLsb' class='variant'><span id='MaxXLsb.v' class='invisible'><code>MaxXLsb</code></span></span><span id='variant.MaxYMsb' class='variant'><span id='MaxYMsb.v' class='invisible'><code>MaxYMsb</code></span></span><span id='variant.MaxYLsb' class='variant'><span id='MaxYLsb.v' class='invisible'><code>MaxYLsb</code></span></span><span id='variant.MaxZMsb' class='variant'><span id='MaxZMsb.v' class='invisible'><code>MaxZMsb</code></span></span><span id='variant.MaxZLsb' class='variant'><span id='MaxZLsb.v' class='invisible'><code>MaxZLsb</code></span></span><span id='variant.MinXMsb' class='variant'><span id='MinXMsb.v' class='invisible'><code>MinXMsb</code></span></span><span id='variant.MinXLsb' class='variant'><span id='MinXLsb.v' class='invisible'><code>MinXLsb</code></span></span><span id='variant.MinYMsb' class='variant'><span id='MinYMsb.v' class='invisible'><code>MinYMsb</code></span></span><span id='variant.MinYLsb' class='variant'><span id='MinYLsb.v' class='invisible'><code>MinYLsb</code></span></span><span id='variant.MinZMsb' class='variant'><span id='MinZMsb.v' class='invisible'><code>MinZMsb</code></span></span><span id='variant.MinZLsb' class='variant'><span id='MinZLsb.v' class='invisible'><code>MinZLsb</code></span></span><span id='variant.Temp' class='variant'><span id='Temp.v' class='invisible'><code>Temp</code></span></span><span id='variant.MThsCfg' class='variant'><span id='MThsCfg.v' class='invisible'><code>MThsCfg</code></span></span><span id='variant.MThsSrc' class='variant'><span id='MThsSrc.v' class='invisible'><code>MThsSrc</code></span></span><span id='variant.MThsXMsb' class='variant'><span id='MThsXMsb.v' class='invisible'><code>MThsXMsb</code></span></span><span id='variant.MThsXLsb' class='variant'><span id='MThsXLsb.v' class='invisible'><code>MThsXLsb</code></span></span><span id='variant.MThsYMsb' class='variant'><span id='MThsYMsb.v' class='invisible'><code>MThsYMsb</code></span></span><span id='variant.MThsYLsb' class='variant'><span id='MThsYLsb.v' class='invisible'><code>MThsYLsb</code></span></span><span id='variant.MThsZMsb' class='variant'><span id='MThsZMsb.v' class='invisible'><code>MThsZMsb</code></span></span><span id='variant.MThsZLsb' class='variant'><span id='MThsZLsb.v' class='invisible'><code>MThsZLsb</code></span></span><span id='variant.MThsCount' class='variant'><span id='MThsCount.v' class='invisible'><code>MThsCount</code></span></span><span id='variant.MCtrlReg1' class='variant'><span id='MCtrlReg1.v' class='invisible'><code>MCtrlReg1</code></span></span><span id='variant.MCtrlReg2' class='variant'><span id='MCtrlReg2.v' class='invisible'><code>MCtrlReg2</code></span></span><span id='variant.MCtrlReg3' class='variant'><span id='MCtrlReg3.v' class='invisible'><code>MCtrlReg3</code></span></span><span id='variant.MIntSrc' class='variant'><span id='MIntSrc.v' class='invisible'><code>MIntSrc</code></span></span><span id='variant.AVecmCfg' class='variant'><span id='AVecmCfg.v' class='invisible'><code>AVecmCfg</code></span></span><span id='variant.AVecmThsMsb' class='variant'><span id='AVecmThsMsb.v' class='invisible'><code>AVecmThsMsb</code></span></span><span id='variant.AVecmThsLsb' class='variant'><span id='AVecmThsLsb.v' class='invisible'><code>AVecmThsLsb</code></span></span><span id='variant.AVecmCnt' class='variant'><span id='AVecmCnt.v' class='invisible'><code>AVecmCnt</code></span></span><span id='variant.AVecmInitxMsb' class='variant'><span id='AVecmInitxMsb.v' class='invisible'><code>AVecmInitxMsb</code></span></span><span id='variant.AVecmInitxLsb' class='variant'><span id='AVecmInitxLsb.v' class='invisible'><code>AVecmInitxLsb</code></span></span><span id='variant.AVecmInityMsb' class='variant'><span id='AVecmInityMsb.v' class='invisible'><code>AVecmInityMsb</code></span></span><span id='variant.AVecmInityLsb' class='variant'><span id='AVecmInityLsb.v' class='invisible'><code>AVecmInityLsb</code></span></span><span id='variant.AVecmInitzMsb' class='variant'><span id='AVecmInitzMsb.v' class='invisible'><code>AVecmInitzMsb</code></span></span><span id='variant.AVecmInitzLsb' class='variant'><span id='AVecmInitzLsb.v' class='invisible'><code>AVecmInitzLsb</code></span></span><span id='variant.MVecmCfg' class='variant'><span id='MVecmCfg.v' class='invisible'><code>MVecmCfg</code></span></span><span id='variant.MVecmThsMsb' class='variant'><span id='MVecmThsMsb.v' class='invisible'><code>MVecmThsMsb</code></span></span><span id='variant.MVecmThsLsb' class='variant'><span id='MVecmThsLsb.v' class='invisible'><code>MVecmThsLsb</code></span></span><span id='variant.MVecmCnt' class='variant'><span id='MVecmCnt.v' class='invisible'><code>MVecmCnt</code></span></span><span id='variant.MVecmInitxMsb' class='variant'><span id='MVecmInitxMsb.v' class='invisible'><code>MVecmInitxMsb</code></span></span><span id='variant.MVecmInitxLsb' class='variant'><span id='MVecmInitxLsb.v' class='invisible'><code>MVecmInitxLsb</code></span></span><span id='variant.MVecmInityMsb' class='variant'><span id='MVecmInityMsb.v' class='invisible'><code>MVecmInityMsb</code></span></span><span id='variant.MVecmInityLsb' class='variant'><span id='MVecmInityLsb.v' class='invisible'><code>MVecmInityLsb</code></span></span><span id='variant.MVecmInitzMsb' class='variant'><span id='MVecmInitzMsb.v' class='invisible'><code>MVecmInitzMsb</code></span></span><span id='variant.MVecmInitzLsb' class='variant'><span id='MVecmInitzLsb.v' class='invisible'><code>MVecmInitzLsb</code></span></span><span id='variant.AFfmtThsXMsb' class='variant'><span id='AFfmtThsXMsb.v' class='invisible'><code>AFfmtThsXMsb</code></span></span><span id='variant.AFfmtThsXLsb' class='variant'><span id='AFfmtThsXLsb.v' class='invisible'><code>AFfmtThsXLsb</code></span></span><span id='variant.AFfmtThsYMsb' class='variant'><span id='AFfmtThsYMsb.v' class='invisible'><code>AFfmtThsYMsb</code></span></span><span id='variant.AFfmtThsYLsb' class='variant'><span id='AFfmtThsYLsb.v' class='invisible'><code>AFfmtThsYLsb</code></span></span><span id='variant.AFfmtThsZMsb' class='variant'><span id='AFfmtThsZMsb.v' class='invisible'><code>AFfmtThsZMsb</code></span></span><span id='variant.AFfmtThsZLsb' class='variant'><span id='AFfmtThsZLsb.v' class='invisible'><code>AFfmtThsZLsb</code></span></span></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "capsules";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Continue","Denotes whether the Client wants to be notified when `More` randomness is available or if they are `Done`"]],"trait":[["Client","An RNG client"],["RNG","Generic interface for a random number generator"]]});

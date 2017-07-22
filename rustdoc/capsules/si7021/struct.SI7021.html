@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `SI7021` struct in crate `capsules`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, SI7021">
+
+    <title>capsules::si7021::SI7021 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct SI7021</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>capsules</a>::<wbr><a href='index.html'>si7021</a></p><script>window.sidebarCurrent = {name: 'SI7021', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>capsules</a>::<wbr><a href='index.html'>si7021</a>::<wbr><a class="struct" href=''>SI7021</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/capsules/si7021.rs.html#85-91' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct SI7021&lt;'a, A:&nbsp;<a class="trait" href="../../kernel/hil/time/trait.Alarm.html" title="trait kernel::hil::time::Alarm">Alarm</a> + 'a&gt; {
+    i2c: &amp;'a <a class="trait" href="../../kernel/hil/i2c/trait.I2CDevice.html" title="trait kernel::hil::i2c::I2CDevice">I2CDevice</a>,
+    alarm: &amp;'a A,
+    callback: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../kernel/callback/struct.Callback.html" title="struct kernel::callback::Callback">Callback</a>&gt;&gt;,
+    state: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="../../capsules/si7021/enum.State.html" title="enum capsules::si7021::State">State</a>&gt;,
+    buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;,
+}</pre><h2 id='fields' class='fields'>Fields</h2><span id='structfield.i2c' class="structfield">
+                           <span id='i2c.v' class='invisible'>
+                           <code>i2c: &amp;'a <a class="trait" href="../../kernel/hil/i2c/trait.I2CDevice.html" title="trait kernel::hil::i2c::I2CDevice">I2CDevice</a></code>
+                           </span></span><span id='structfield.alarm' class="structfield">
+                           <span id='alarm.v' class='invisible'>
+                           <code>alarm: &amp;'a A</code>
+                           </span></span><span id='structfield.callback' class="structfield">
+                           <span id='callback.v' class='invisible'>
+                           <code>callback: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../kernel/callback/struct.Callback.html" title="struct kernel::callback::Callback">Callback</a>&gt;&gt;</code>
+                           </span></span><span id='structfield.state' class="structfield">
+                           <span id='state.v' class='invisible'>
+                           <code>state: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="../../capsules/si7021/enum.State.html" title="enum capsules::si7021::State">State</a>&gt;</code>
+                           </span></span><span id='structfield.buffer' class="structfield">
+                           <span id='buffer.v' class='invisible'>
+                           <code>buffer: <a class="struct" href="../../kernel/common/take_cell/struct.TakeCell.html" title="struct kernel::common::take_cell::TakeCell">TakeCell</a>&lt;'static, [u8]&gt;</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a, A:&nbsp;<a class="trait" href="../../kernel/hil/time/trait.Alarm.html" title="trait kernel::hil::time::Alarm">Alarm</a> + 'a&gt; <a class="struct" href="../../capsules/si7021/struct.SI7021.html" title="struct capsules::si7021::SI7021">SI7021</a>&lt;'a, A&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/si7021.rs.html#93-127' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;i2c: &amp;'a <a class="trait" href="../../kernel/hil/i2c/trait.I2CDevice.html" title="trait kernel::hil::i2c::I2CDevice">I2CDevice</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;alarm: &amp;'a A, <br>&nbsp;&nbsp;&nbsp;&nbsp;buffer: &amp;'static mut [u8]<br>) -&gt; <a class="struct" href="../../capsules/si7021/struct.SI7021.html" title="struct capsules::si7021::SI7021">SI7021</a>&lt;'a, A&gt;</code></span></h4>
+<h4 id='method.read_id' class="method"><span id='read_id.v' class='invisible'><code>fn <a href='#method.read_id' class='fnname'>read_id</a>(&amp;self)</code></span></h4>
+<h4 id='method.take_measurement' class="method"><span id='take_measurement.v' class='invisible'><code>fn <a href='#method.take_measurement' class='fnname'>take_measurement</a>(&amp;self)</code></span></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a, A:&nbsp;<a class="trait" href="../../kernel/hil/time/trait.Alarm.html" title="trait kernel::hil::time::Alarm">Alarm</a> + 'a&gt; <a class="trait" href="../../kernel/hil/i2c/trait.I2CClient.html" title="trait kernel::hil::i2c::I2CClient">I2CClient</a> for <a class="struct" href="../../capsules/si7021/struct.SI7021.html" title="struct capsules::si7021::SI7021">SI7021</a>&lt;'a, A&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/si7021.rs.html#129-201' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.command_complete' class="method"><span id='command_complete.v' class='invisible'><code>fn <a href='../../kernel/hil/i2c/trait.I2CClient.html#tymethod.command_complete' class='fnname'>command_complete</a>(&amp;self, buffer: &amp;'static mut [u8], _error: <a class="enum" href="../../kernel/hil/i2c/enum.Error.html" title="enum kernel::hil::i2c::Error">Error</a>)</code></span></h4>
+<div class='docblock'><p>Called when an I2C command completed. The <code>error</code> denotes whether the command completed successfully or if an error occured. <a href="../../kernel/hil/i2c/trait.I2CClient.html#tymethod.command_complete">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a, A:&nbsp;<a class="trait" href="../../kernel/hil/time/trait.Alarm.html" title="trait kernel::hil::time::Alarm">Alarm</a> + 'a&gt; <a class="trait" href="../../kernel/hil/time/trait.Client.html" title="trait kernel::hil::time::Client">Client</a> for <a class="struct" href="../../capsules/si7021/struct.SI7021.html" title="struct capsules::si7021::SI7021">SI7021</a>&lt;'a, A&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/si7021.rs.html#203-213' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fired' class="method"><span id='fired.v' class='invisible'><code>fn <a href='../../kernel/hil/time/trait.Client.html#tymethod.fired' class='fnname'>fired</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Callback signaled when the alarm&#39;s clock reaches the value set in <code>Alarm#set_alarm</code>. <a href="../../kernel/hil/time/trait.Client.html#tymethod.fired">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a, A:&nbsp;<a class="trait" href="../../kernel/hil/time/trait.Alarm.html" title="trait kernel::hil::time::Alarm">Alarm</a> + 'a&gt; <a class="trait" href="../../kernel/driver/trait.Driver.html" title="trait kernel::driver::Driver">Driver</a> for <a class="struct" href="../../capsules/si7021/struct.SI7021.html" title="struct capsules::si7021::SI7021">SI7021</a>&lt;'a, A&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/si7021.rs.html#215-242' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.subscribe' class="method"><span id='subscribe.v' class='invisible'><code>fn <a href='../../kernel/driver/trait.Driver.html#method.subscribe' class='fnname'>subscribe</a>(&amp;self, subscribe_num: usize, callback: <a class="struct" href="../../kernel/callback/struct.Callback.html" title="struct kernel::callback::Callback">Callback</a>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p><code>subscribe</code> lets an application pass a callback to the driver to be called later. This returns <code>ENOSUPPORT</code> if not used. <a href="../../kernel/driver/trait.Driver.html#method.subscribe">Read more</a></p>
+</div><h4 id='method.command' class="method"><span id='command.v' class='invisible'><code>fn <a href='../../kernel/driver/trait.Driver.html#method.command' class='fnname'>command</a>(&amp;self, command_num: usize, _: usize, _: <a class="struct" href="../../kernel/callback/struct.AppId.html" title="struct kernel::callback::AppId">AppId</a>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p><code>command</code> instructs a driver to perform some action synchronously. This returns <code>ENOSUPPORT</code> if not used. <a href="../../kernel/driver/trait.Driver.html#method.command">Read more</a></p>
+</div><h4 id='method.allow' class="method"><span id='allow.v' class='invisible'><code>fn <a href='../../kernel/driver/trait.Driver.html#method.allow' class='fnname'>allow</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;app: <a class="struct" href="../../kernel/callback/struct.AppId.html" title="struct kernel::callback::AppId">AppId</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;minor_num: usize, <br>&nbsp;&nbsp;&nbsp;&nbsp;slice: <a class="struct" href="../../kernel/mem/struct.AppSlice.html" title="struct kernel::mem::AppSlice">AppSlice</a>&lt;<a class="struct" href="../../kernel/mem/struct.Shared.html" title="struct kernel::mem::Shared">Shared</a>, u8&gt;<br>) -&gt; <a class="enum" href="../../kernel/returncode/enum.ReturnCode.html" title="enum kernel::returncode::ReturnCode">ReturnCode</a></code></span></h4>
+<div class='docblock'><p><code>allow</code> lets an application give the driver access to a buffer in the application&#39;s memory. This returns <code>ENOSUPPORT</code> if not used. <a href="../../kernel/driver/trait.Driver.html#method.allow">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "capsules";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

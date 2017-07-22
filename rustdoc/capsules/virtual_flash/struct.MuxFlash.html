@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `MuxFlash` struct in crate `capsules`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, MuxFlash">
+
+    <title>capsules::virtual_flash::MuxFlash - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct MuxFlash</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>capsules</a>::<wbr><a href='index.html'>virtual_flash</a></p><script>window.sidebarCurrent = {name: 'MuxFlash', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>capsules</a>::<wbr><a href='index.html'>virtual_flash</a>::<wbr><a class="struct" href=''>MuxFlash</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/capsules/virtual_flash.rs.html#37-41' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct MuxFlash&lt;'a, F:&nbsp;<a class="trait" href="../../kernel/hil/flash/trait.Flash.html" title="trait kernel::hil::flash::Flash">Flash</a> + 'static&gt; {
+    flash: &amp;'a F,
+    users: <a class="struct" href="../../kernel/common/list/struct.List.html" title="struct kernel::common::list::List">List</a>&lt;'a, <a class="struct" href="../../capsules/virtual_flash/struct.FlashUser.html" title="struct capsules::virtual_flash::FlashUser">FlashUser</a>&lt;'a, F&gt;&gt;,
+    inflight: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'a <a class="struct" href="../../capsules/virtual_flash/struct.FlashUser.html" title="struct capsules::virtual_flash::FlashUser">FlashUser</a>&lt;'a, F&gt;&gt;&gt;,
+}</pre><div class='docblock'><p>Handle keeping a list of active users of flash hardware and serialize their
+requests. After each completed request the list is checked to see if there
+is another flash user with an outstanding read, write, or erase request.</p>
+</div><h2 id='fields' class='fields'>Fields</h2><span id='structfield.flash' class="structfield">
+                           <span id='flash.v' class='invisible'>
+                           <code>flash: &amp;'a F</code>
+                           </span></span><span id='structfield.users' class="structfield">
+                           <span id='users.v' class='invisible'>
+                           <code>users: <a class="struct" href="../../kernel/common/list/struct.List.html" title="struct kernel::common::list::List">List</a>&lt;'a, <a class="struct" href="../../capsules/virtual_flash/struct.FlashUser.html" title="struct capsules::virtual_flash::FlashUser">FlashUser</a>&lt;'a, F&gt;&gt;</code>
+                           </span></span><span id='structfield.inflight' class="structfield">
+                           <span id='inflight.v' class='invisible'>
+                           <code>inflight: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;'a <a class="struct" href="../../capsules/virtual_flash/struct.FlashUser.html" title="struct capsules::virtual_flash::FlashUser">FlashUser</a>&lt;'a, F&gt;&gt;&gt;</code>
+                           </span></span><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a, F:&nbsp;<a class="trait" href="../../kernel/hil/flash/trait.Flash.html" title="trait kernel::hil::flash::Flash">Flash</a> + 'a&gt; <a class="struct" href="../../capsules/virtual_flash/struct.MuxFlash.html" title="struct capsules::virtual_flash::MuxFlash">MuxFlash</a>&lt;'a, F&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/virtual_flash.rs.html#69-112' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>const fn <a href='#method.new' class='fnname'>new</a>(flash: &amp;'a F) -&gt; <a class="struct" href="../../capsules/virtual_flash/struct.MuxFlash.html" title="struct capsules::virtual_flash::MuxFlash">MuxFlash</a>&lt;'a, F&gt;</code></span></h4>
+<h4 id='method.do_next_op' class="method"><span id='do_next_op.v' class='invisible'><code>fn <a href='#method.do_next_op' class='fnname'>do_next_op</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Scan the list of users and find the first user that has a pending
+request, then issue that request to the flash hardware.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a, F:&nbsp;<a class="trait" href="../../kernel/hil/flash/trait.Flash.html" title="trait kernel::hil::flash::Flash">Flash</a> + 'a&gt; <a class="trait" href="../../kernel/hil/flash/trait.Client.html" title="trait kernel::hil::flash::Client">Client</a>&lt;F&gt; for <a class="struct" href="../../capsules/virtual_flash/struct.MuxFlash.html" title="struct capsules::virtual_flash::MuxFlash">MuxFlash</a>&lt;'a, F&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/capsules/virtual_flash.rs.html#43-67' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.read_complete' class="method"><span id='read_complete.v' class='invisible'><code>fn <a href='../../kernel/hil/flash/trait.Client.html#tymethod.read_complete' class='fnname'>read_complete</a>(&amp;self, pagebuffer: &amp;'static mut F::<a class="type" href="../../kernel/hil/flash/trait.Flash.html#associatedtype.Page" title="type kernel::hil::flash::Flash::Page">Page</a>, error: <a class="enum" href="../../kernel/hil/flash/enum.Error.html" title="enum kernel::hil::flash::Error">Error</a>)</code></span></h4>
+<div class='docblock'><p>Flash read complete.</p>
+</div><h4 id='method.write_complete' class="method"><span id='write_complete.v' class='invisible'><code>fn <a href='../../kernel/hil/flash/trait.Client.html#tymethod.write_complete' class='fnname'>write_complete</a>(&amp;self, pagebuffer: &amp;'static mut F::<a class="type" href="../../kernel/hil/flash/trait.Flash.html#associatedtype.Page" title="type kernel::hil::flash::Flash::Page">Page</a>, error: <a class="enum" href="../../kernel/hil/flash/enum.Error.html" title="enum kernel::hil::flash::Error">Error</a>)</code></span></h4>
+<div class='docblock'><p>Flash write complete.</p>
+</div><h4 id='method.erase_complete' class="method"><span id='erase_complete.v' class='invisible'><code>fn <a href='../../kernel/hil/flash/trait.Client.html#tymethod.erase_complete' class='fnname'>erase_complete</a>(&amp;self, error: <a class="enum" href="../../kernel/hil/flash/enum.Error.html" title="enum kernel::hil::flash::Error">Error</a>)</code></span></h4>
+<div class='docblock'><p>Flash erase complete.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "capsules";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["test_map_cell",""],["test_take_map_cell",""]]});
