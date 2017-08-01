@@ -11,7 +11,7 @@ css: /assets/css/landing.css
 <div style="background-color: white; color: #000; box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7); display: inline-block; margin: 0 auto; text-align: left; padding: 16px;">
 We'll be giving tutorials this summer and fall. For registration and details head over to the event pages:
 
-  * [RustConf 2017](/events/rustconf2017) (August 17th, Portland, OR)
+  * [RustConf 2017](/events/rustconf2017) (August 18th, Portland, OR)
 
   * [SenSys 2017](/events/sensys2017) (November 5th, Delft, The Netherlands)
 
