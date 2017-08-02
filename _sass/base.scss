@@ -223,4 +223,8 @@ body > article {
       display: inline-block;
     }
   }
+
+  pre {
+    overflow-x: auto;
+  }
 }
