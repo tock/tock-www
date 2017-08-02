@@ -106,7 +106,7 @@ values... which is something we often _want_ in kernels. More on that in a
 bit.
 
 One of the key things we missed when we wrote "Ownership is Theft" is that
-preventing mutable alisases is not _just_ about concurrency, but also imperitive
+preventing mutable alisases is not _just_ about concurrency, but also imperative
 for preserving type-safety. For example, consider Rust’s `enum` types which
 allow multiple distinct types to share the same memory, similar to unions in
 C. In this example, the `enum` can be either a 32-bit unsigned number, or a
@@ -168,7 +168,7 @@ But operating system kernels depend heavily on callbacks and other event-driven
 programming mechanisms. Often, multiple components must both be able to mutate a
 shared data structure. Consider, for example, the random number generator
 software stack as shown in the [figure below](#rngimg). `RNG` provides an
-abstraction of an underlying hardware random number generater, such as Intel’s
+abstraction of an underlying hardware random number generator, such as Intel’s
 RDRAND/RDSEED or a TRNG on an ARM processor.
 
 ![Software architecture for a system call interface to a hardware random
