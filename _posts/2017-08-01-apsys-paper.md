@@ -230,7 +230,7 @@ called "interior mutability". Interior mutability is basically the ability to
 bypass the single-mutable-reference rule, in a controlled manner[^subtle].
 
 The Rust core and standard libraries have a number of types like this: `Cell`,
-`RefCell` and `Mutex`, to name a few. In all of these cases, users are can used
+`RefCell` and `Mutex`, to name a few. In all of these cases, users can use
 shared references (`&`) to mutate the value. These container types are safe
 because they either copy values in and out entirely (`Cell`) or enforce some for
 of mutual exclusion (`RefCell` and `Mutex`).
