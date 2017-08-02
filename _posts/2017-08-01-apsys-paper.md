@@ -17,7 +17,6 @@ will show you how to build and run Tock on real hardware, and how to write
 kernel extensions and applications in Rust!
 </div>
 
-
 Specifically, a workshop paper we published nearly two years ago, title
 "Ownership is Theft", has been
 [discussed](https://www.reddit.com/r/rust/comments/3nbt2d/ownership_is_theft_experiences_building_an/)
@@ -68,7 +67,7 @@ down"[^process-exceptions].
                        implemented in services (although it still runs on top of
                        the monolothic Linux kernel). Both of those are for
                        "small" systems, but still systems with many orders of
-                       magnitude more memory and processing power than they
+                       magnitude more memory and processing power than the
                        typical microcontroller Tock targets.
 
 
