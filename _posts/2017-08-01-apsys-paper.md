@@ -221,12 +221,12 @@ internal state of the `SimpleRNG` object).
 
 ## The Solution: Interior Mutability
 
-It turns out there are _certain instances_ where it's perfectly safe to have
-mutability doesn't _only_ have to happen through unique references to preserve
-type-safety. In fact, in _most_ cases in a kernel, we don't directly share
-constructs like `enum`. Rust has a notion of container types that have what's
-called "interior mutability". Interior mutability is basically the ability to
-bypass the single-mutable-reference rule, in a controlled manner[^subtle].
+It turns out there are _certain instances_ where it's perfectly safe to have to
+allow mutability non-unique references. In fact, in _most_ cases in a kernel,
+we don't directly share constructs like `enum`. Rust has a notion of container
+types that have what's called "interior mutability". Interior mutability is
+basically the ability to bypass the single-mutable-reference rule, in a
+controlled manner[^subtle].
 
 The Rust core and standard libraries have a number of types like this: `Cell`,
 `RefCell` and `Mutex`, to name a few. In all of these cases, users can use
