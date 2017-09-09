@@ -24,7 +24,7 @@ Easy to write low power applications is one of the main design goals of Tock.
 While we've basically built an architecture that should support it, we haven't
 focused much yet on actually getting our development boards in to low power
 modes. That changed this week, as we got the imix down to 7uA! Read about the
-details [here]({% post_url 2017-06-05-low-power %}).
+details [here]({% post_url 2017-06-05-low-power-1 %}).
 
 ## USB Enumeration for the SAM4L
 

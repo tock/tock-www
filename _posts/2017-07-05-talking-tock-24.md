@@ -46,7 +46,7 @@ implementing the accounting in each each low-level chip-specific driver. So
 far, it seems that the implementations are fairly straightforward.
 
 You can read more about our current strategy for managing sleep states in
-[yesterday's post]({% post_url 2017-07-04-low-power %})
+[yesterday's post]({% post_url 2017-07-04-low-power-2 %})
 
 ## ADC Clock Management
 
