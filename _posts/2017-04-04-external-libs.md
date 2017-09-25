@@ -111,7 +111,7 @@ For more details or other customizations, you can read all about the
 [Tock Userland Compilation Environment][comp-env].
 
 
-[pic]: https://github.com/helena-project/tock/blob/master/doc/Compilation.md#position-independent-code
-[tab]: https://github.com/helena-project/tock/blob/master/doc/Compilation.md#tock-application-bundle
-[ble-app]: https://github.com/helena-project/tock/blob/master/userland/examples/ble-env-sense/Makefile
-[comp-env]: https://github.com/helena-project/tock/blob/master/doc/Compilation.md#tock-userland-compilation-environment
+[pic]: https://github.com/helena-project/tock/blob/534fe288160f890f/doc/Compilation.md#position-independent-code
+[tab]: https://github.com/helena-project/tock/blob/534fe288160f890f/doc/Compilation.md#tock-application-bundle
+[ble-app]: https://github.com/helena-project/tock/blob/534fe288160f890f/userland/examples/ble-env-sense/Makefile
+[comp-env]: https://github.com/helena-project/tock/blob/534fe288160f890f/doc/Compilation.md#tock-userland-compilation-environment

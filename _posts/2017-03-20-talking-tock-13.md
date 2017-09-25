@@ -20,7 +20,7 @@ or desktops.
 ### Merged
 
   * @alevy added a
-    [CONTRIBUTING](https://github.com/helena-project/tock/blob/master/CONTRIBUTING.md)
+    [CONTRIBUTING](https://github.com/helena-project/tock/blob/ef840f14a1ae0a606d8d17de448e7315db95c1cb/CONTRIBUTING.md)
     document to help codify our contribution process.
 
   * @daniel-scs's TRD1 changes are
