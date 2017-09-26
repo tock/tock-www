@@ -8,7 +8,7 @@ permalink: /papers/
 # Academic Papers
 
   * [Multiprogramming a 64 kB Computer Safely and
-    Efficiently](/assets/papers/rust-kernel-apsys2017.pdf). SOSP 2017.
+    Efficiently](/assets/papers/tock-sosp2017.pdf). SOSP 2017.
 
   * [The Case for Writing a Kernel in
     Rust](/assets/papers/rust-kernel-apsys2017.pdf). APSys 2017.
