@@ -31,7 +31,8 @@ module Jekyll
       def filter_with_mention(src)
         filters[src] ||= HTML::Pipeline.new([
           HTML::Pipeline::HashtagFilter,
-        ], { :tag_url => src })
+        ], { :tag_url => src,
+             :hashtag_pattern => /[^"]#([\p{L}\w\-]+)/ })
       end
 
       # Public: Filters hash where the key is the mention base URL.
