@@ -71,7 +71,7 @@ packet fragmentation (pending a pull request being merged), most of the Thread
 security layer, and support for parsing network provisioning messages.
 
 Their end of the summer [write-up]({{
-  "/assets/papers/tock-os_thread-protocol-impementation-status_2017-08-31.pdf"
+  "/assets/papers/tock-os_thread-protocol-implementation-status_2017-08-31.pdf"
   }}) gives more details on their implementation effort and includes a really
 nice summary of the Thread/6lowpan stack.
 
