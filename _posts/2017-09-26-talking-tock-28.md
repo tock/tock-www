@@ -32,7 +32,7 @@ There was an incredible turnout for the Tock training at RustConf. After a few
 last minute sign-ups, we ended up with a 30-person room at capacity. From our
 informal survey of the room (a more formal one coming), there were folks from
 big companies (like Mozilla and Intel), small companies (like Helium), and no
-companies. It was a really greating meeting all of you, and thanks for turning
+companies. It was a really great meeting all of you, and thanks for turning
 up!
 
 We went over the general design of Tock, then worked with [Hails]({{
@@ -53,13 +53,13 @@ Stanford students who worked over the summer to implement 6lowpan and Thread
 support for Tock. Briefly, 6lowpan is a standard for tunneling IPv6 packets
 over the low-power 802.15.4 wireless radio standard (the same one used in
 ZigBee). It's a fairly common standard in wireless sensor networks in
-academica, and has also been picking up steam in home automation recently
+academia, and has also been picking up steam in home automation recently
 thanks to the Thread group standardizing a set bunch of related protocols
-around 6lowpan for network configuration (if you're work on Thread
+around 6lowpan for network configuration (if you're working on Thread
 professionally and are reading this, when are we getting an OnHub router that
 supports Thread??).
 
-Implementing support full support for Thread turns out be a pretty big task
+Implementing full support for Thread turns out be a pretty big task
 since it involves a handful of different protocols as well as some low-level
 802.15.4 features that hadn't been implemented for the RF233 driver in Tock. It
 also took some effort to get a test rig up since there isn't any commercially
@@ -68,7 +68,7 @@ available hardware that supports Thread natively just yet.
 Nonetheless, the students did a really impressive job. As of the end of the
 summer, Tock has support for 6lowpan compression and decompression, support for
 packet fragmentation (pending a pull request being merged), most of the Thread
-security layer and support for parsing network provisioning messages.
+security layer, and support for parsing network provisioning messages.
 
 Their end of the summer [write-up]({{
   "/assets/papers/tock-os_thread-protocol-impementation-status_2017-08-31.pdf"
@@ -81,7 +81,7 @@ We just submitted the camera-ready (i.e. final version) of a paper we wrote
 detailing the design and implementation of Tock for SOSP (Symposium on
 Operating Systems Principles). You can [read the full
 paper](/assets/papers/tock-sosp2017.pdf). We also posted a summary
-[yesterda]({% post_url 2017-09-25-sosp-paper %}).
+[yesterday]({% post_url 2017-09-25-sosp-paper %}).
 
 ## Pull Requests
 
