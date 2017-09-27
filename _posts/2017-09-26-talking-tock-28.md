@@ -93,55 +93,55 @@ categories this time.
 
 #### Thread/6lowpan
 
-  * (#524) @bbbert implemented ieee802154 data frame encoding & decoding
-  * (#578) @bbbert implemented ieee802154 mac security
-  * (#589) @bbbert fixed the interrupt handling flow for the rf233 radio driver
-  * (#588) @mog96 implemented encoding and decoding for Thread's TLV mesh link establishment messages
-  * (#607) @bbbert virtualized the ieee802154 radio layer
+  * (gh#524) @bbbert implemented ieee802154 data frame encoding & decoding
+  * (gh#578) @bbbert implemented ieee802154 mac security
+  * (gh#589) @bbbert fixed the interrupt handling flow for the rf233 radio driver
+  * (gh#588) @mog96 implemented encoding and decoding for Thread's TLV mesh link establishment messages
+  * (gh#607) @bbbert virtualized the ieee802154 radio layer
 
 #### NRF5x Port
 
-  * (#583) @niklasad1 added error messages when using program option for nrf5x boards
-  * (#585) @niklasad1 refactored much of the nrf51 and nrf52 code into a common nrf5x crate
-  * (#615) @JayKickliter implemented a SPI master adaptation driver for the NRF52
+  * (gh#583) @niklasad1 added error messages when using program option for nrf5x boards
+  * (gh#585) @niklasad1 refactored much of the nrf51 and nrf52 code into a common nrf5x crate
+  * (gh#615) @JayKickliter implemented a SPI master adaptation driver for the NRF52
 
 #### Towards Tock 1.0
 
-  * (#560) @alevy changed the console driver to require a `command` to trigger a transaction
-  * (#573) @alevy added an ambient light sensor HIL
-  * (#586) @alevy Fix elf2tbf to use a dynamically generated text-region base address
-  * (#582) @niklasad1 implemented generic interfaces for humidity and temperature sensors
+  * (gh#560) @alevy changed the console driver to require a `command` to trigger a transaction
+  * (gh#573) @alevy added an ambient light sensor HIL
+  * (gh#586) @alevy Fix elf2tbf to use a dynamically generated text-region base address
+  * (gh#582) @niklasad1 implemented generic interfaces for humidity and temperature sensors
 
 #### Userland
 
-  * (#556) @bradjc made Bluetooth Low Energy environment sensing a userland service
-  * (#584) @shaneleonard created a unit testing framework for processes
+  * (gh#556) @bradjc made Bluetooth Low Energy environment sensing a userland service
+  * (gh#584) @shaneleonard created a unit testing framework for processes
 
 #### Administrativia
 
-  * (#568) @ppannuto made sure GCC version is checked in kernel build
-  * (#577) @alevy removed `imixv1` board from the tree
-  * (#569) @phil-levis added support for the kernel to allocate regions of flash memory for storage
-  * (#591) @ppannuto added some more comments to the Hail board
-  * (#606) @JayKickliter added automatic conversion of `process:Error` to `ReturnCode`
-  * (#609) @bradjc added a pull request template
-  * (#611) @ppannuto added a style section to the CONTRIBUTING document
-  * (#612) @bradjc added `and_then()` methods to `TakeCell` and `MapCell`
-  * (#620) @bradjc update us to a recent version of `rustc`
-  * (#624) @alevy renamed `Container` to `Grant` to match documentation and paper
+  * (gh#568) @ppannuto made sure GCC version is checked in kernel build
+  * (gh#577) @alevy removed `imixv1` board from the tree
+  * (gh#569) @phil-levis added support for the kernel to allocate regions of flash memory for storage
+  * (gh#591) @ppannuto added some more comments to the Hail board
+  * (gh#606) @JayKickliter added automatic conversion of `process:Error` to `ReturnCode`
+  * (gh#609) @bradjc added a pull request template
+  * (gh#611) @ppannuto added a style section to the CONTRIBUTING document
+  * (gh#612) @bradjc added `and_then()` methods to `TakeCell` and `MapCell`
+  * (gh#620) @bradjc update us to a recent version of `rustc`
+  * (gh#624) @alevy renamed `Container` to `Grant` to match documentation and paper
 
 ### Proposed
 
 #### Thread/6lowpan
 
-  * (#581) @ptcrews implemented 6lowpan fragmentation
+  * (gh#581) @ptcrews implemented 6lowpan fragmentation
 
 #### Towards Tock 1.0
 
-  * (#599) @alevy proposed a standardization of some system call interfaces for Tock 1.0
-  * (#623) @niklasad1 proposed a generic user-level interface for Bluetooth Low Energy
+  * (gh#599) @alevy proposed a standardization of some system call interfaces for Tock 1.0
+  * (gh#623) @niklasad1 proposed a generic user-level interface for Bluetooth Low Energy
 
 #### Administrativia
 
-  * (#614) @phil-levis proposed a generical virtualization layer for kernel interfaces
+  * (gh#614) @phil-levis proposed a generical virtualization layer for kernel interfaces
 
