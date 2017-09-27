@@ -32,7 +32,7 @@ module Jekyll
         filters[src] ||= HTML::Pipeline.new([
           HTML::Pipeline::HashtagFilter,
         ], { :tag_url => src,
-             :hashtag_pattern => /[^"]#([\p{L}\w\-]+)/ })
+             :hashtag_pattern => /gh#([\p{L}\w\-]+)/ })
       end
 
       # Public: Filters hash where the key is the mention base URL.
