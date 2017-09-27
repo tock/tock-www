@@ -30,7 +30,7 @@ int main(void) {
 ```
 
 First we make sure the GPIO pin connected to the LED (which is connected to
-GPIO pin 0) is enabled as an output (line #4). Then, in an infinite loop, we
+GPIO pin 0) is enabled as an output (line 4). Then, in an infinite loop, we
 toggle the LED and wait for 500ms.
 
 Under the hood, the kernel initializes the chip, board and peripherals, protects
