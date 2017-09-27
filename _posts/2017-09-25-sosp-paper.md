@@ -17,7 +17,7 @@ our [documentation](/documentation) or it will make its way there eventually.
 But I wanted to highlight one particular topic we talk about in the paper: the
 threat model that Tock identifies and defends against.
 
-If you're building end-to-end embedded applications with Tock understanding how
+If you're building end-to-end embedded applications with Tock, understanding how
 you can model threats is important to building a secure system. But even if you
 don't intend on using Tock, starting to think about threats holistically in
 embedded software is important. Maybe Tock's model can help get us started.
@@ -32,7 +32,7 @@ developers, etc), their incentives, and their capabilities.
 A threat model is _most_ meaningful when we talk about a specific application:
 e.g., a Wordpress site with an administrator and a few writers, deployed in a
 third-party datacenter. Of course, Tock is not an application, but an operating
-system that's used to build applications and, moreover, it targets a fairly
+system that's used to build applications. Moreover, it targets a fairly
 diverse set of applications and deployment scenarios.
 
 As a result, the goal of threat modeling in the Tock design is to set up
@@ -42,8 +42,8 @@ typically viewed.
 
 Normally, embedded applications are built monolithically---that is, the
 hardware and software are designed together, and for the most part, all code in
-the system has the ability to completely control the hardware. But,
-increasingly, that doesn't fit how embedded applications are actually built.
+the system has the ability to completely control the hardware.
+Increasingly, that doesn't fit how embedded applications are actually built.
 
 Specifically, our threat model identifies four different stakeholders: board
 integrators, kernel component developers, application developers, and
@@ -63,14 +63,14 @@ impractical these days. Instead, they'll likely draw on the open source
 community or hardware vendors to write bits of the kernel. A vendor for an
 accelerometer peripheral may supply a step counting library tuned for their
 chip, or the open source community may develop a networking stack.  In Tock’s
-threat model, we assumes the source code for kernel components is available for
+threat model, we assume the source code for kernel components is available for
 the board integrators to audit before compiling into the kernel (this isn't
 always true, but it probably should be). However, it does not assume that
-auditing will catch all bugs, and Tock is limits the damage of a misbehaving
+auditing will catch all bugs, and Tock limits the damage of a misbehaving
 kernel component. In particular, kernel component developers are not trusted to
 protect the secrecy and integrity of other system components. For example, they
 cannot violate certain shared-resource restrictions, like performing
-unauthorized accesses on peripherals, even if it is authorized to access
+unauthorized accesses on peripherals, even if they are authorized to access
 another peripheral on the same bus.
 
 **Application developers** build actual end-user functionality using services
