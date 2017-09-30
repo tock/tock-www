@@ -60,7 +60,4 @@ as the controller and radio for other projects.
 
 ## Buy Now
 
-Hail modules are currently in production, but you can pre-order them today.
-We expect to be able to ship the first production run in early May.
-
 {% include hail_buy.html %}
