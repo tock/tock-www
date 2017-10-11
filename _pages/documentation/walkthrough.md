@@ -346,7 +346,7 @@ fn subscribe(&self, _: usize, callback: Callback) -> isize {
 }
 ```
 
-[^timer-subscribe]: [Timer driver `subscribe`](https://github.com/helena-project/tock/blob/master/capsules/src/timer.rs#L65)
+[^timer-subscribe]: [Timer driver `subscribe`](https://github.com/helena-project/tock/blob/master/capsules/src/alarm.rs#L77)
 
 ## Command
 
