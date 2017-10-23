@@ -16,14 +16,38 @@ below.
 
 {% include hail_buy.html %}
 
-## Imix
+## imix
 
 ![Imix on a table](/assets/img/imix-on-table.jpg)
 
-Imix is a "kitchen sink" development board for Tock with a SAM4L MCU, two
+imix is a "kitchen sink" development board for Tock with a SAM4L MCU, two
 wireless radios, a hardware random number generator, and a sensor suite.
 See the [GitHub page](https://github.com/helena-project/imix) for more
 information.
+
+## imix & Hail Comparison
+
+|                             | imix                    | Hail            |
+|-----------------------------|-------------------------|-----------------|
+| Microcontroller             | Sam4l                   | Sam4l           |
+| Sensors                     |                         |                 |
+| ‣ Accelerometer             | ✓                       | ✓               |
+| ‣ Temperature/Humidity      | ✓                       | ✓               |
+| ‣ Light                     | ✓                       | ✓               |
+| ‣ Accelerometer             | ✓                       | ✓               |
+| Radios                      |                         |                 |
+| ‣ BLE                       | ✓                       | ✓               |
+| ‣ 802.15.4                  | ✓                       |                 |
+| Other Features              |                         |                 |
+| ‣ Buttons                   | 1 user, 1 reset         | 1 user, 1 reset |
+| ‣ LEDs                      | 3                       | 1 blue, 1 RGB   |
+| ‣ Hardware RNG              | ✓                       |                 |
+| ‣ USB Host                  | ✓                       | pins only       |
+| ‣ Independent Power Domains | ✓                       |                 |
+| Programming                 | USB or JTAG             | USB or JTAG     |
+| Form Factor                 | Custom, Arduino Headers | Particle Photon |
+| Size                        | 2.45" x 4"              | 0.8" x 1.44"    |
+| Price                       | $100                    | $60             |
 
 ## nRF51-DK
 
