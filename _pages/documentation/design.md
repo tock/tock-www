@@ -140,7 +140,7 @@ requirements through memory grants. Capsules can allocate data of arbitrary
 type from the memory of processes that interact with them. This memory is
 allocated from the grant segment.
 
-Just as with buffers passed through allow, references to granted memory are
+Just as with buffers passed through `allow`, references to granted memory are
 wrapped in a type-safe struct that ensures the process is still alive before
 dereferencing. Unlike shared buffers, which can only be a buffer type in a
 capsule, granted memory can be defined as any type. Therefore, processes cannot
