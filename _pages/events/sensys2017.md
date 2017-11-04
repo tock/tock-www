@@ -22,6 +22,12 @@ page](http://sensys.acm.org/2017/registration/).  During registration, select
 "Workshop or Tutorial", then select "Tock Operating System Tutorial" from the
 drop-down menu titled "Which Workshop or Tutorial".
 
+## Location
+
+The tutorial will be co-located with other tutorials and workshops at TU Delft
+Faculty of Technology, Policy and Management at Jaffalaan 5.
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2456.2276874268014!2d4.368095715788242!3d52.00272887971946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5b593129f6993%3A0xc3e6dc47b6c95bba!2sTU+Delft+Faculty+of+Technology%2C+Policy+and+Management!5e0!3m2!1sen!2snl!4v1509771675388" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 
 ## Prerequisites
 
