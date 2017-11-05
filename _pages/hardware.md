@@ -26,7 +26,7 @@ See the [GitHub page](https://github.com/helena-project/imix) for more
 information.
 
 imix will be available in the coming weeks. Sign up below to be notified by e-mail
-when it is available for purchase or contact [Amit](amit@amitlevy.com) if you
+when it is available for purchase or contact [Amit](mailto:amit@amitlevy.com) if you
 want one sooner.
 
 <div id="mc_embed_signup">
