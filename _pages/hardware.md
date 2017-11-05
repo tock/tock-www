@@ -18,7 +18,7 @@ below.
 
 ## imix
 
-![Imix on a table](/assets/img/imix-on-table.jpg)
+![Imix on a table](/assets/img/imix-v2.1.png)
 
 imix is a "kitchen sink" development board for Tock with a SAM4L MCU, two
 wireless radios, a hardware random number generator, and a sensor suite.
