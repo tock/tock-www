@@ -9,7 +9,7 @@ css: /assets/css/landing.css
 ## An embedded operating system designed for running multiple concurrent, mutually distrustful applications on low-memory and low-power microcontrollers.
 
 <div style="background-color: white; color: #000; box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.7); display: inline-block; margin: 0 auto; text-align: left; padding: 16px;">
-We're giving a tutorial fall tomorrow, November 5th, at [SenSys
+We're giving a tutorial today, November 5th, at [SenSys
 2017](/events/sensys2017) in Delft, The Netherlands.
 
 </div>
