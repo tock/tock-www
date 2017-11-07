@@ -39,5 +39,15 @@ responsibilities of each crate, the system call interface and the user-level
 library.
   </div>
 </div>
+
+<div class="unit one-third">
+  <div class="project">
+#### [API Documentation](https://docs.tockos.org)
+
+Documentation on all of the interfaces and modules in Tock. This includes
+documentation for the core kernel as well as supported capsules, chips, and
+boards.
+  </div>
+</div>
 </div><!-- grid -->
 </div>
