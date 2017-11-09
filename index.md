@@ -41,8 +41,8 @@ We're giving a tutorial today, November 5th, at [SenSys
 
     The [Signpost] is a modular city-scale sensing platform that provides power
     and connectivity for a diverse set of sensing modules. Signpost is built
-    around Tock, and uses multiprogramming to let researchers to build
-    applications run experiments.
+    around Tock, and uses multiprogramming to let researchers build
+    applications and run experiments.
     </div>
 
     ![Signpost modular city-scale sensing platform]({{ site.baseurl }}/assets/img/signpost.png)
@@ -62,8 +62,8 @@ We're giving a tutorial today, November 5th, at [SenSys
     #### Wearables
 
     Tock enables consumer IoT devices, like sports watches or fitness trackers,
-    that run need to run for months on small batteries and low-memory
-    microcontrollers to support third-party apps just like on PC-grade
+    that need to run for months on small batteries and low-memory
+    microcontrollers, to support third-party apps just like PC-grade
     operating systems.
     </div>
 
