@@ -32,3 +32,8 @@ permalink: /papers/
   * [A networked embedded system platform for the post-mote
     era](/assets/papers/platform-sensys14.pdf) SenSys 2014.
 
+## Masters Theses
+
+  * [A Rust-based Runtime for the Internet of
+    Things](/assets/papers/thesis-nilsson-2017.pdf). Fredrik Nilsson & Niklas Adolfsson.
+    Chalmers University of Technology. 2017.
