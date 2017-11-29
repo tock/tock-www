@@ -5,7 +5,7 @@ author: aalevy
 authors: alevy
 ---
 
-This is the 28th post in a series tracking the development of Tock, a
+This is the 29th post in a series tracking the development of Tock, a
 safe multi-tasking operating system for microcontrollers.
 
 1. TOC
