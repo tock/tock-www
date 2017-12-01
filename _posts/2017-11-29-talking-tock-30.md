@@ -1,6 +1,6 @@
 ---
 title: Talking Tock 30
-subtitle: A world tour, docs and so many contributors
+subtitle: A world tour, docs, and so many contributors
 author: aalevy
 authors: alevy
 ---
@@ -35,7 +35,8 @@ some.
 
 A brief overview:
 
-  * Researchers at U.C. Berkeley are continuing to work on and deploy Signpost.
+  * Researchers at U.C. Berkeley are continuing to work on and deploy
+    [Signpost](https://github.com/lab11/signpost).
 
   * There are a number of ongoing projects at Stanford:
 
@@ -64,31 +65,31 @@ A brief overview:
 
 ### Merged
 
-  * Changes to kernel `debug!` semantics (remove some metadata by default)
-  * Improvements to SAM4L Flash driver's state machine
-  * Update Rust nightly
-  * 6lowpan changes and fixes
-  * Replace queue-based interrupt handling with NVIC registers
-  * NRF52 I2C driver
-  * Use LLVM's size optimizations
-  * Imix getting started fixes
-  * Convert nrf51 startup to Rust (using corrode)
-  * Add RomID support to Max17025
-  * Fix sensors app for NRF5x
-  * Add the NRF51 serialization capsule to imix
-  * Add imix test app
-  * Fixes to ELF2TBF
-  * Rustdocs posted automatically to <https://docs.tockos.org/>
-  * Generalize nrf5x GPIOTE to work with variable number of channels in NRF51 vs NRF52
-  * Remove unsafe from capsules and enforce through crate feature
-  * Add write\_read to I2CMasterSlaveDriver
+  * (gh#688) Changes to kernel `debug!` semantics (remove some metadata by default)
+  * (gh#689) Improvements to SAM4L Flash driver's state machine
+  * (gh#690) Update Rust nightly
+  * (gh#663) 6lowpan changes and fixes
+  * (gh#687) Replace queue-based interrupt handling with NVIC registers
+  * (gh#693) NRF52 I2C driver
+  * (gh#691) Use LLVM's size optimizations
+  * (gh#648) Imix getting started fixes
+  * (gh#649) Convert nrf51 startup to Rust (using corrode)
+  * (gh#652) Add RomID support to Max17025
+  * (gh#660) Fix sensors app for NRF5x
+  * (gh#664) Add the NRF51 serialization capsule to imix
+  * (gh#666) Add imix test app
+  * (gh#672) Fixes to ELF2TBF
+  * (gh#673) Rustdocs posted automatically to <https://docs.tockos.org/>
+  * (gh#677) Generalize nrf5x GPIOTE to work with variable number of channels in NRF51 vs NRF52
+  * (gh#678) Remove unsafe from capsules and enforce through crate feature
+  * (gh#681) Add write\_read to I2CMasterSlaveDriver
 
 ### Proposed
 
-  * Support for STM32F1
-  * Low power mac protocol (X-MAC)
-  * Implement start() and stop() for rf233
-  * FICR support in NRF52
-  * Change the List datastructure to allow trait objects as items
-  * CCM\* implementation for ieee802154 driver
+  * (gh#686) Support for STM32F1
+  * (gh#692) Low power mac protocol (X-MAC)
+  * (gh#694) Implement start() and stop() for rf233
+  * (gh#696) FICR support in NRF52
+  * (gh#685) Change the List datastructure to allow trait objects as items
+  * (gh#684) CCM\* implementation for ieee802154 driver
 
