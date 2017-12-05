@@ -23,4 +23,4 @@ Freenode. Join us on either if you have questions or are developing for Tock.
 
 ## Conduct
 
-We follow the [Rust Code of Conduct](http://www.rust-lang.org/conduct.html).
+We follow the [Rust Code of Conduct](https://www.rust-lang.org/conduct.html).

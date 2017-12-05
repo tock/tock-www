@@ -96,7 +96,7 @@ is written in Rust, for now it isn't possible to write applications in Rust.
 
 ### References
 
-[^1]: [Position Independent Code (PIC) in shared libraries](http://eli.thegreenplace.net/2011/11/03/position-independent-code-pic-in-shared-libraries)
+[^1]: [Position Independent Code (PIC) in shared libraries](https://eli.thegreenplace.net/2011/11/03/position-independent-code-pic-in-shared-libraries)
 
 [^2]: [GOT in Tock Applications - August 2016](https://github.com/helena-project/tock/blob/a68d5a16b9567ba47681bba678f49ad82f4ff98e/apps/blink/loader.ld#L26)
 
@@ -110,4 +110,4 @@ is written in Rust, for now it isn't possible to write applications in Rust.
 
 [^7]: [Tock Relocations Fixup - August 2016](https://github.com/helena-project/tock/blob/a68d5a16b9567ba47681bba678f49ad82f4ff98e/src/main/process.rs#L378)
 
-[^8]: [\[llvm-dev\]\[RFC\]\[ARM\] Add support for embedded position-independent code (ROPI/RWPI)](http://lists.llvm.org/pipermail/llvm-dev/2015-December/093022.html)
+[^8]: [\[llvm-dev\]\[RFC\]\[ARM\] Add support for embedded position-independent code (ROPI/RWPI)](https://lists.llvm.org/pipermail/llvm-dev/2015-December/093022.html)

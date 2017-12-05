@@ -14,7 +14,7 @@ submissions for [SenSys](http://sensys.acm.org/2017/) and
 in a couple weeks, but for now your usual, although abrdiged, installment of
 activity from the last week.
 
-Some of the Tock developers will be at [IPSN](http://ipsn.acm.org/2017/) in
+Some of the Tock developers will be at [IPSN](https://ipsn.acm.org/2017/) in
 Pittsburgh next week. Say hello if you see them!
 
 ## More chips and platforms

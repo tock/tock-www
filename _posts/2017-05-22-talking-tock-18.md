@@ -16,7 +16,7 @@ implementations for the SAM4L (OK, @brghena has been working on one of them for
 a while), a SPI-slave implementation, MPU bugs and bug-fixes, a Lua runtime and
 merging of @bradjc's long-standing accelerometer virtualization pull-request.
 We officially welcomed @petarpenkov, @mog96, @bbbert and @ptcrews to the team.
-They are from Stanford [CURIS](http://curis.stanford.edu/) students doing
+They are from Stanford [CURIS](https://curis.stanford.edu/) students doing
 research on Tock this summer and have already proposed two really high quality
 pull requests.  And, as the last update mentioned, the SenSys tutorial is
 happening this fall, and we're starting to hammer out the details.

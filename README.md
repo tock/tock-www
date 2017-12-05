@@ -2,7 +2,7 @@
 
 # Tock OS Website
 
-[http://www.tockos.org/](http://www.tockos.org/)
+[https://www.tockos.org/](https://www.tockos.org/)
 
 
 ## Building
@@ -31,4 +31,4 @@ To build the website:
 
 Now browse to http://localhost:4000 to view
 
-Logo maker: [logomakr.com/5mGstw](http://logomakr.com/5mGstw)
+Logo maker: [logomakr.com/5mGstw](https://logomakr.com/5mGstw)

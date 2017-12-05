@@ -19,7 +19,7 @@ microcontrollers.
 
 We paused our reports for even longer than normal, but it doesn't mean we've
 stopped working. Last week, we
-[demoed](http://dl.acm.org/citation.cfm?id=2996539&CFID=865195251&CFTOKEN=19552591)
+[demoed](https://dl.acm.org/citation.cfm?id=2996539&CFID=865195251&CFTOKEN=19552591)
 Tock and [imix](https://github.com/helena-project/imix) at ACM Conference on
 Embedded Networked Sensor Systems (SenSys). We finished up a bunch of
 oustanding tasks coming up to the demo.

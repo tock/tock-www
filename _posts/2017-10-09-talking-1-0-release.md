@@ -25,7 +25,7 @@ interfaces will not change until, at least, the next major version. In other
 words, if you write a process to that uses only the stable drivers and it
 doesn't work as expected, it's either a bug in the kernel or a bug in the
 userland library (and we appreciate [bug reports
-&hearts;](http://github.com/helena-project/tock/issues/new)).
+&hearts;](https://github.com/helena-project/tock/issues/new)).
 
 ## System Calls
 
