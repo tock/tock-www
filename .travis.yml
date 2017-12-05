@@ -1,6 +1,9 @@
 sudo: false
 
-cache: bundler
+cache:
+  bundler: true
+  directories:
+    - $TRAVIS_BUILD_DIR/tmp/.htmlproofer
 
 env:
   global:
@@ -8,5 +11,5 @@ env:
 
 script:
   - bundle exec jekyll build
-  - bundle exec htmlproofer --assume-extension --check-favicon --check-html --check-img-http ./_site/ --url-swap "https?\:\/\/(localhost\:4000|www\.tockos\.org):"
+  - bundle exec htmlproofer --timeframe 4w --assume-extension --check-favicon --check-html --check-img-http ./_site/ --url-swap "https?\:\/\/(localhost\:4000|www\.tockos\.org):"
 
