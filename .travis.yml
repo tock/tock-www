@@ -11,5 +11,6 @@ env:
 
 script:
   - bundle exec jekyll build
+  - bundle exec htmlproofer --version
   - bundle exec htmlproofer --timeframe 4w --assume-extension --check-favicon --check-html --check-img-http ./_site/ --url-swap "https?\:\/\/(localhost\:4000|www\.tockos\.org):"
 
