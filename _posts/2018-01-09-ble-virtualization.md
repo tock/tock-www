@@ -26,33 +26,32 @@ different applications in Tock. To demonstrate this, we run four
 instances of the following application with different configurations:
 
 ```c
-
 #include <simple_ble.h>
 #include <string.h>
 #include <tock.h>
 
 int main(void) {
   uint16_t advertising_interval_ms = 300;
-  uint8_t device_name[10] = "TockOS";
+  uint8_t device_name[7] = "TockOS";
 
   // this is used to illustrate the different application configurations
-  if (EXAMPLE_CONFIGURATION = 1) {
-    device_name[7] = '1'
+  if (EXAMPLE_CONFIGURATION == 1) {
+    device_name[6] = '1';
     advertising_interval_ms = 100;
   }
 
-  else if (EXAMPLE_CONFIGURATION = 2) {
-    device_name[7] = '2';
+  else if (EXAMPLE_CONFIGURATION == 2) {
+    device_name[6] = '2';
     advertising_interval_ms = 300;
   }
 
-  else if (EXAMPLE_CONFIGURATION = 3) {
-    device_name[7] = '3';
+  else if (EXAMPLE_CONFIGURATION == 3) {
+    device_name[6] = '3';
     advertising_interval_ms = 20;
   }
 
-  else if (EXAMPLE_CONFIGURATION = 4) {
-    device_name = '4';
+  else if (EXAMPLE_CONFIGURATION == 4) {
+    device_name[6] = '4';
     advertising_interval_ms = 1000;
   }
 
@@ -61,14 +60,13 @@ int main(void) {
   ble_initialize(advertising_interval_ms, true);
 
   // configure device name
-  ble_advertise_name(device_name, strlen(device_name));
+  ble_advertise_name(device_name, sizeof(device_name) / sizeof(device_name[0]));
 
   // start advertising
   ble_start_advertising();
 
   return 0;
 }
-
 ```
 
 While running a Bluetooth Sniffer we find the four different Tock devices
