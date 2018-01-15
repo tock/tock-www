@@ -89,6 +89,9 @@ authors:
   bradjc:
     display_name: Brad
     web: http://bradcampbell.com
+  niklasad1:
+    display_name: Niklas
+    web: https://niklasad1.github.io/
 
 # Build settings
 include:
