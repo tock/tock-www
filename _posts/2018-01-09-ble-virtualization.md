@@ -1,6 +1,8 @@
 ---
 title: Virtualizing Bluetooth Low Energy Advertisements
 authors: niklasad1
+image: /assets/2018/01/ble_advertising.png
+
 ---
 
 We recently [merged](https://github.com/helena-project/tock/pull/661) a system-call
