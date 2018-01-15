@@ -1,156 +1,152 @@
 ---
 title: Bluetooth Low Energy Virtualization
-author: niklasad1
-authors: niklasad1
+author: niklasad1, aalevy
+authors: niklasad1, alevy
 ---
 
-Hi everyone,
+Hi,
 
-The Tock team is happy to announce a new feature to the Bluetooth Low Energy
-Advertising driver which makes is possible for applications to advertise as if
-they are different Bluetooth devices.
-This is possible by taking advantage of process abstraction in Tock.
-The driver is supported by both the nRF51-DK and nRF52-DK. However, because
-nRFF51-DK only has 16kB of RAM, it can only run one process at a time in
-practice.
+we recently [merged](https://github.com/helena-project/tock/pull/661) a system-call
+interface for Bluetooth Low Energy advertising and scanning on Nordic nRF5x chips.
+This is an important step towards a stable and portable API for using Bluetooth
+in Tock processes. It's significant because it addresses a tricky question:
+how to let multiple user processes, that don't coordinate, each send Bluetooth
+advertisements.
 
+The solution we came up with was to give each process a unique Bluetooth device
+address and let each control its own advertising packets, while controlling the
+timing of each advertisement in a kernel driver to ensure processes
+advertisement are isolated and avoid collisions.
 
-## Feature description
+In this post, I'll give a bit of background about Bluetooth Low Energy
+advertisements, show a small example application, and explain the interface and
+implementation.
 
-Before getting into the actual implementation details we want show you how this
-can be used in Tock. Let's assume you want to run Tock and send Bluetooth Low
-Energy advertisements as four different devices with different configurations
-such as device name, transmitting power, advertisement interval, services and
-similar from the same physical device. This is now possible by running four
-different applications in Tock. To demonstrate this, we run four
-instances of the following application with different configurations:
+## Bluetooth Low Energy Advertisements
+
+Bluetooth Low Energy supports two types of communication channels.
+Connection-oriented channels are two-way communication channels between two
+devices that have setup a connection with tight timing constraints and,
+potentially, a shared encryption key. Advertising channels are for broadcast
+messages from lower-power devices (the advertisers) to higher-power devices
+(call scanners). In this post we're only concerned with the advertising channel.
+
+Advertisements are typically used to broadcast messages from a low-power device,
+such as a beacon, to a higher-power device, such as a cell-phone. For example,
+iBeacon or Eddystone are commonly used application protocols for broadcasting
+presence. Advertisements are also used to initiate connections between devices.
+
+An application that wishes to send Bluetooth Low Energy advertisements configures
+the advertising packet data and specifies how frequently it wants the advertisements
+to be sent (the "advertising interval"). The Bluetooth driver schedules these
+advertisements accordingly, with some added randomness, required by the
+Bluetooth specification to mitigate repeated collisions among nearby
+advertisers.
+
+Each advertising packet contains a header specifying the advertisement type and
+length, a device address, and a data payload:
+
+```
++----------+-----------+-----------+
+|  Header  |  Address  |  Data     |
++----------+-----------+-----------+
+```
+
+The device address itself can be either "public", in which case it must adhere
+to the IEEE 802-2001 standard, and is generally baked into the radio.
+Alternatively, it can be randomly generated, in which case it can change across
+power-cycles, and a single radio may even have several addresses. All the nitty
+gritty details about device addresses can be found in Bluetooth Specification
+Version 4.2 Vol 6, Part B, section 1.3.1.
+
+## Implementation details
+
+Typically, an microcontroller application has exclusive access to the Bluetooth
+radio since there generally is only one application. Not so with Tock. The
+Tock Bluetooth Low Energy driver needs to somehow support multiple processes,
+each potentially want to advertise their own data.
+
+The restriction we care about is that processes cannot interfere with each
+other. It turns out that as long as we control the specific timing and source
+address of Bluetooth advertising packets, we can do that without imposing much
+restrictions on applications. This new driver treats each process as a separate,
+virtual, Bluetooth Low Energy device.
+
+On the surface this ends up being a pretty simple interface. When a process
+initializes BLE advertisements, the driver creates a new device address for the
+process. The process then configures parameters, such as the advertisement
+interval, and the data to advertise, and starts advertisements. All of this
+meta-data is stored in the process's grant section---a heap specific to each
+process that is only accessible to the kernel and allows the kernel to
+dynamically allocate memory without compromising overall system reliability.
+
+When its time to perform an advertisement for a particular process, the driver
+simply copies the source address and advertisement data into the radio's transmit
+buffer, sets Bluetooth Low Energy specific radio configuration and transmits.
+But how do we keep track of when to perform each process's advertisement?
+
+If we only had to worry about one process, we would simply setup a timer that
+fires every advertising interval. In this case, where we need to service an
+arbitrary number of processes, we do the same thing, but with a virtual timer
+for each process, also stored in the grant section.
+
+For each process, the driver keeps track of the advertising interval as well as
+the time of its last advertising event. As soon as it finishes an advertising
+event, the driver looks through the processes, computes which advertising event is
+next, and sets a shared alarm to fire at that point.
+
+When the alarm fires, the driver knows that it needs to perform an advertisement
+for some process, so it, again, looks through the processes to find which
+process the alarm was initiated for, and advertises on its behalf.
+
+It's possible for processes to have overlapping advertising events. In practice
+this is rare as the driver adds an additional random delay between advertising
+events (as required by the Bluetooth specification). Nonetheless, collisions are
+sometimes unavoidable, and in those cases, the driver simply chooses one process
+to advertise for and re-schedules the others. In principle, it could be possible
+to prioritize processes that have advertised least recently, but we have not yet
+implemented such a mechanism.
+
+## Let's see a demo!
+
+So how can you actually use this?
+
+Below is code for a Tock process to advertise a device name every 100ms. I
+programmed this process on a NRF52 development kit, as well as three others with
+slightly different names and advertising every 300 ms, 20 ms and 1 second,
+respectively.
 
 ```c
-#include <simple_ble.h>
-#include <string.h>
-#include <tock.h>
-
 int main(void) {
-  uint16_t advertising_interval_ms = 300;
-  uint8_t device_name[7] = "TockOS";
-
-  // this is used to illustrate the different application configurations
-  if (EXAMPLE_CONFIGURATION == 1) {
-    device_name[6] = '1';
-    advertising_interval_ms = 100;
-  }
-
-  else if (EXAMPLE_CONFIGURATION == 2) {
-    device_name[6] = '2';
-    advertising_interval_ms = 300;
-  }
-
-  else if (EXAMPLE_CONFIGURATION == 3) {
-    device_name[6] = '3';
-    advertising_interval_ms = 20;
-  }
-
-  else if (EXAMPLE_CONFIGURATION == 4) {
-    device_name[6] = '4';
-    advertising_interval_ms = 1000;
-  }
+  uint16_t advertising_interval_ms = 100;
+  char* device_name = "TockOS1";
 
   // configure advertisement interval
-  // configure LE only and discoverable
   ble_initialize(advertising_interval_ms, true);
 
   // configure device name
-  ble_advertise_name(device_name, sizeof(device_name) / sizeof(device_name[0]));
+  ble_advertise_name(device_name, strlen(device_name));
 
-  // start advertising
   ble_start_advertising();
-
   return 0;
 }
 ```
 
-While running a Bluetooth Sniffer we find the four different Tock devices
-with different configurations as the screenshot below shows:
+Looking at a screenshot from a Bluetooth sniffing application on my phone
+[nRFConnect](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en),
+we can see all four processes' advertisements:
 
+![Four Tock processes, each advertising as a separate device. Picked up on an
+Android phone](../assets/2018/01/ble_advertising.png)
 
-![Bluetooth Low Energy](../assets/2018/01/ble_advertising.png)
-
-
-Note, that the kernel manages to generate a unique static random device address
-for each device, for interested readers more information about static device
-address can be found in BLUETOOTH SPECIFICATION Version 4.2 [Vol 6, Part B],
-section 1.3.2.1.
-Also, applications by themselves configures different
-advertisement intervals and device names that screenshot shows and the device
-TockOS2 is actually configured as Thermometer service with dummy data.
-
-## Implementation details
-
-First of all, we have not blogged about how the Bluetooth Low Energy driver works.
-The functionality is limited and supports only advertisements and passive scanning so
-far i.e., no connections, different security modes and similar.
-
-
-Overall, the driver works in the following sequence:
-1. Initialize different Bluetooth parameters
-(advertisement interval, device name, other gap data and etc.)
-2. Start advertising or start scanning, (this implies to configure a virtual timer alarm)
-3. The virtual alarm expires and the radio gets activated for short while (magnitude in terms of milliseconds), for example by sending advertisements
-4. Reconfigure the virtual alarm and go to sleep
-5. Steps 3 and 4 continue
-
-
-However, in this blog post we want explain how we can use the Tock architecture
-to achieve a high degree of concurrency in the Bluetooth Low Energy driver and
-the different types of trade-offs that we have performed with the implementation.
-A fundamental design decision in Tock is that the kernel is statically allocated
-which implies that the kernel can't dynamically allocate memory. Instead Tock
-uses a unique process model with five segments which the figure below shows:
-
-![Tock architecture](../assets/img/architecture.png)
-
-In context of this driver, the grant segment is the essential part which makes
-it possible for the kernel to allocate memory and store data for each process.
-The grant contains Bluetooth Low Energy related data such as transmitting
-power, advertising interval, the actual data to advertise, and state along with
-a virtual timer alarm. Note, that the process itself has no access to the grant
-segment.
-
-
-First, let's discuss the virtual alarm because it essential
-for correctness that the right process is identified when the timer fires.
-Because the virtual alarm doesn't indicate which process triggered the actual alarm,
-the driver must iterate through the grants to find the expired process.
-Also, note that several alarms can expire at the same time by overlapping
-advertisement intervals or that the radio is busy when an alarm expires.
-In such scenarios, pseudo-randomness is introduced to break ties and re-schedule
-a given process for later if the driver is busy. However, fairness and starvation
-can't be guaranteed caused by non-determinism. On the other hand, starvation is
-very unlikely for two reasons, first the number of processes is less than 10
-and second the time that a process need utilize the radio is short compared to
-the periodic interval. From the empirical tests it seems to work well with
-fine-grained granularity down to advertisement interval of 20ms when running 4
-processes concurrently.
-
-
-Second, the Bluetooth Low Energy related data stored in the grant must be written
-to the underlying chip before activating the chip because the order before an
-expired alarm is not validated, i.e., the content in the radio buffer can contain
-another application's buffer, the configuration has changed since the last activation
-or the radio has been used in passive scanning mode.
-This means, that the actual radio buffer and similar configuration must be
-configured every time before starting scanning or advertising but not when
-switching between different channels.
-
-
-To conclude, each process has its own Bluetooth Low Energy state which indicates
-whether it is idle, between advertising, between scanning, advertising or
-scanning. Mutual exclusion is only ensured in advertising or scanning state
-ensured by an atomic variable which makes re-configurations of the application
-between advertising or scanning possible.
+Note that the kernel generated a unique static random device address
+for each device (the device address is currently based on the process
+identifier). The intervals in the bottom right corner of each row show the
+advertising intervals the app on my phone calculated, which roughly matches the
+intervals I set up in the Tock processes.
 
 ## Try it out
 
-At the time of writing this the functionality is merged in the master branch
-but not the applications used in the demonstration.
-The applications can be found [here](https://github.com/niklasad1/tock/tree/nrf5x/radio_config/userland/examples/tests/ble/ble_nrf5x_concurrency)
+The driver is now merged in the Tock master branch and runs by default on the
+NRF52DK board. The applications I used in the demonstration can be found
+[here](https://github.com/niklasad1/tock/tree/nrf5x/radio_config/userland/examples/tests/ble/ble_nrf5x_concurrency)
