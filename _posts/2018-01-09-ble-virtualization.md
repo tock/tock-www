@@ -1,5 +1,5 @@
 ---
-title: Bluetooth Low Energy Virtualization
+title: Virtualizing Bluetooth Low Energy Advertisements
 authors: niklasad1
 ---
 
