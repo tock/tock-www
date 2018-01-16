@@ -1,5 +1,5 @@
 ---
-title: Talking Tock 33
+title: Talking Tock 31
 subtitle: Baby's first GitHub org, networking and ports
 author: aalevy
 authors: alevy
