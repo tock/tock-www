@@ -1,6 +1,6 @@
 ---
 title: Talking Tock 33
-subtitle:
+subtitle: Low-power MAC and a core team in the works
 author: aalevy
 authors: alevy
 ---
