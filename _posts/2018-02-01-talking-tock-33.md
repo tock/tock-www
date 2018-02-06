@@ -24,7 +24,7 @@ multi-tasking operating system for microcontrollers.
   * (gh#738) TI SensorTag support (GPIO only first)
   * (gh#736) Code Review process document & establishing a "core team"
 
-### Older, but revigorated
+### Older, but reinvigorated
 
   * (gh#658) New register and bitfield interface
   * (gh#684) [ieee802154] CCM\* implementation
