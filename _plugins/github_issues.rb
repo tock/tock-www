@@ -11,7 +11,7 @@ module Jekyll
 
     class << self
       def issuify(doc)
-        return unless doc.output.include?("@")
+        return unless doc.output.include?("#")
         src = ISSUE_PREFIX_URL
         if doc.output.include? BODY_START_TAG
           parsed_doc    = Nokogiri::HTML::Document.parse(doc.output)
