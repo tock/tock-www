@@ -98,10 +98,10 @@ makes a branch with the release number and pull request reviews restart.
 Release branches are named 'release-version-mon-year'. For example,
 'release-0.1-Feb-2018'.
 
-For the time being, releases don't necessarily backwards compatibility. We will
-likely use semver-like semantics in the version of each release, though. For
-example, all release marked `1.x` will _probably_ comply with the `1.0` binary
-ABI.
+For the time being, releases don't necessarily guarantee backwards
+compatibility. We will likely use semver-like semantics in the version of each
+release, though. For example, all release marked `1.x` will _probably_ comply
+with the `1.0` binary ABI.
 
 ## Register and Bitfield Macros
 
