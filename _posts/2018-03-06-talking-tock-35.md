@@ -87,10 +87,10 @@ _Bolded pull requests were marked "P-Significant"_
 
 ### Proposed
 
-  * (gh#757) Add ability to deactivate subscribed callback in system call interface
-  * (gh#747) Port to the TI launchxl-cc26x2
-  * (gh#750) Port to the TI EK-TM4C1294XL evaluation kit
-  * (gh#760) MMIO Interface with automatic peripheral clock management
+  * (gh#757) **Add ability to deactivate subscribed callback in system call interface**
+  * (gh#747) **Port to the TI launchxl-cc26x2**
+  * (gh#750) **Port to the TI EK-TM4C1294XL evaluation kit**
+  * (gh#760) **MMIO Interface with automatic peripheral clock management**
   * (gh#761) Configured Sam4l deep-sleep while using I2C
   * (gh#766) Port Sam4l USART to new register interface
 
