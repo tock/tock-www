@@ -52,6 +52,8 @@ also reason to push on this.
 
 ## Pull Requests
 
+_Bolded pull requests were marked "P-Significant"_
+
 ### Merged
 
   * (gh#658) **New register and bitfield interface**
