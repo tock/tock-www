@@ -9,7 +9,7 @@ authors: ppannuto
 [usart-commit]: https://github.com/helena-project/tock/pull/760/commits/d975cd321345bc40e9fdf471d9a82fcd0db84b55#diff-001c67ee9f8c56d6403b71536b6ebecbR290
 [usart-int]: https://github.com/helena-project/tock/pull/760/commits/d975cd321345bc40e9fdf471d9a82fcd0db84b55#diff-001c67ee9f8c56d6403b71536b6ebecbL528
 [mmio]: https://en.wikipedia.org/wiki/Memory-mapped_I/O
-[tt34]: https://www.tockos.org/blog/2018/talking-tock-34/#register-and-bitfield-macros
+[tt34]: {% post_url 2018-02-06-talking-tock-34 %}#register-and-bitfield-macros
 [docs]: https://docs.tockos.org/kernel/common/peripherals/index.html
 [signpost]: https://github.com/lab11/signpost/
 
