@@ -45,7 +45,8 @@ result, etc. In practice, this means that code normally models a peripheral as
 an array of words in memory at a certain location:
 
 ```rust
-/// This is the SPI peripheral for the SAM4L, see §26.8 of the datasheet.
+/// This is the SPI peripheral for the SAM4L, see §26.8
+/// of the datasheet.
 #[repr(C)]
 pub struct Registers {
     pub cr: WriteOnly<u32, Control::Register>,
@@ -55,7 +56,8 @@ pub struct Registers {
     sr: ReadOnly<u32, Status::Register>,
     ...
 
-/// This is how we attach the representation above to the actual location in memory.
+/// This is how we attach the representation above to the
+/// actual location in memory.
 const SPI_BASE: StaticRef<SpiRegisters> =
     unsafe { StaticRef::new(0x40008000 as *const SpiRegisters) };
 ```
@@ -82,18 +84,21 @@ impl PeripheralManagement<pm::Clock> for SpiHw {
         &pm::Clock::PBA(pm::PBAClock::SPI)
     }
 
-    fn before_peripheral_access(&self, clock: &pm::Clock, _: &SpiRegisters) {
+    fn before_peripheral_access(&self, clock: &pm::Clock,
+                                _: &SpiRegisters) {
         clock.enable();
     }
 
-    fn after_peripheral_access(&self, clock: &pm::Clock, _: &SpiRegisters) {
+    fn after_peripheral_access(&self, clock: &pm::Clock,
+                               _: &SpiRegisters) {
         if !self.is_busy() {
             clock.disable();
         }
     }
 }
 
-type SpiRegisterManager<'a> = PeripheralManager<'a, SpiHw, pm::Clock>;
+type SpiRegisterManager<'a> =
+        PeripheralManager<'a, SpiHw, pm::Clock>;
 ```
 
 Now, whenever the driver wants to access the underlying SPI hardware, it goes
@@ -106,7 +111,8 @@ impl SpiHw {
 
     /// Returns the value of CSR0, CSR1, CSR2, or CSR3,
     /// whichever corresponds to the active peripheral
-    fn get_active_csr(&self) -> &regs::ReadWrite<u32, ChipSelectParams::Register> {
+    fn get_active_csr(&self) ->
+              &regs::ReadWrite<u32, ChipSelectParams::Register> {
         let spi = &SpiRegisterManager::new(&self);
 
         match self.get_active_peripheral() {
