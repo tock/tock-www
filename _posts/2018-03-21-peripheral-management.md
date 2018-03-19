@@ -14,33 +14,33 @@ authors: ppannuto
 [signpost]: https://github.com/lab11/signpost/
 
 An operating system works hard to abstract away details of the underlying
-hardware. Virtual timers multiplex one physical timer to provide an unlimited
-number of alarms, bus interfaces seamlessly share one connection across
-multiple chips, and processes operate independently of others running on the
-machine.
-At the bottom of this visage, however, is real, physical hardware.
-Hardware comes with some expectations that do not always line up with software,
-and it be tricky sometimes to ensure that, particularly as software gets more
-complex.
-This post describes the new `PeripheralManager` recently [merged][pr] into
-Tock, which aims to help with ensuring that software always accesses hardware
-correctly, and cleans up after it's done.
+hardware: virtual timers multiplex one physical timer to provide an unlimited
+number of alarms; bus interfaces seamlessly share one connection across
+multiple chips; processes operate independently of others running on the same
+machine. At the bottom of this visage, however, is real, physical hardware.
+Hardware that comes with expectations that do not always line up with software,
+and it can be tricky to ensure that those expectations are met, particularly as
+software gets more complex.
+
+
+This post describes the recently [merged][pr] `PeripheralManager`, which helps
+software ensure it always accesses hardware correctly, and cleans up after
+it's done.
 
 The key idea is to leverage Rust's [ownership model][obrm] to manage access to
-peripherals. By encapsulating hardware access in an object, we can invoke
-arbitrary code in a principled manner before and after all peripheral accesses.
-This lets us move over 20 clock enable/disable calls strewn about the SAM4L USART
-driver to [just one invocation][usart-commit]. Further, by meting out access
-to a single static reference to the USART hardware, this PR removes 35 calls to
-`unsafe` in the USART driver alone.
-
+peripherals. By tying hardware access to ownership of a value, we can invoke
+setup and cleanup code in a principled manner before and after all peripheral
+accesses.  For example, this let us move over 20 clock enable/disable calls
+strewn about the SAM4L USART driver to [just one invocation][usart-commit].
+Further, by meting out access to a single static reference to the USART
+hardware, we removed 35 `unsafe` blocks in the USART driver alone.
 
 ## Memory-Mapped I/O
 
 Most peripherals are implemented as [memory mapped I/O (MMIO)][mmio]. The
 idea is that certain memory address are not backed by memory that you can read
-and write, rather hardware peripherals that will perform certain actions: write
-this address to send a radio packet, read this address to get an ADC sample
+and write, but rather hardware peripherals that will perform certain actions: write
+this address to send a radio packet, read that address to get an ADC sample
 result, etc. In practice, this means that code normally models a peripheral as
 an array of words in memory at a certain location:
 
