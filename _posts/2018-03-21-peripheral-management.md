@@ -41,7 +41,7 @@ Most peripherals are implemented as [memory mapped I/O (MMIO)][mmio]. The
 idea is that certain memory address are not backed by memory that you can read
 and write, but rather hardware peripherals that will perform certain actions: write
 this address to send a radio packet, read that address to get an ADC sample
-result, etc. In practice, this means that code normally models a peripheral as
+result, etc. In practice, this means that code usually models a peripheral as
 an array of words in memory at a certain location:
 
 ```rust
@@ -68,9 +68,9 @@ For more information on how Tock models MMIO, check out our recent post on the
 
 ## Ownership of MMIO Objects
 
-Because MMIO affects underlying hardware, some extra care is needed sometimes.
-For example, if you attempt to read or write a peripheral on the SAM4L whose clock
-is disabled, the whole core will hang! Enter the `PeripheralManager`:
+Because MMIO affects underlying hardware, sometimes extra care is needed.  For
+example, on the SAM4L, if you attempt to read or write a peripheral while its
+clock is disabled, the whole core will hang! Enter the `PeripheralManager`:
 
 ```rust
 impl PeripheralManagement<pm::Clock> for SpiHw {
@@ -126,19 +126,19 @@ impl SpiHw {
 
 The particularly cool bit here is that when the driver is done with the
 hardware reference, Rust will automatically `Drop` it, which will invoke our
-`after_peripheral_access` method. This gives us a sane place to check things
+`after_peripheral_access` method. This gives us a single place to check things
 like whether this peripheral is active (i.e. doing a DMA transfer) or whether
 it can be powered off.
 
 Power management is a notoriously hard problem for embedded operating systems,
-but with the `PeripheralManager` it's surprisingly easier. The previous SAM4L
-USART driver had nineteen calls to `enable_clock` and five to `disable_clock`,
-plus an [outstanding clock mystery][usart-int] in the interrupt handler. By
-centralizing clock management, driver authors no longer have to reason through
-all possible execution paths to ensure they're correctly checking clocks
-everywhere. I was able to add low-power support to SPI in half an hour and it
-just worked on the first try, which was absolutely mind-blowing to me.
-
+but with the `PeripheralManager` it's surprisingly straight-forward. The
+previous SAM4L USART driver had nineteen calls to `enable_clock` and five to
+`disable_clock`, plus an [outstanding clock mystery][usart-int] in the
+interrupt handler. By centralizing clock management, driver authors no longer
+have to reason through all possible execution paths to be certain they're correctly
+checking clocks everywhere. I was able to add low-power support to SPI in half
+an hour and it just worked on the first try, which was absolutely mind-blowing
+to me.
 
 ## PeripheralManager in Action
 
