@@ -148,6 +148,19 @@ to pull this into the [Signpost platform][signpost], as this energy harvesting
 system has been artificially underperforming for a while due to the incomplete
 low-power implementation in Tock.
 
+We're just starting to move things over, so not everything is low power yet,
+but a lightly modified version of the Hail test app (commenting out ADC,
+Bluetooth, and GPIO) we can watch the baseline power draw drop:
+
+![Power draw before](/assets/2018/03/hail_before.png)
+![Power draw after](/assets/2018/03/hail_after.png)
+
+The early, more spaced-out peaks are each of the sensor readings. The tighter
+peaks at the end are all the `printf`s in the Hail app. The prints are
+particularly interesting as you can see the USART DMA operation holding the
+core in a higher power state, as well as the peaks upon each completion as the
+next print is prepared.
+
 For more details on the `PeripheralManager` itself, [check out the
 documentation][docs].
 
