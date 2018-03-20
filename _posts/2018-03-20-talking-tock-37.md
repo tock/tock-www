@@ -32,7 +32,7 @@ _Bolded pull requests were marked "P-Significant"_
   * (gh#796) Port CC26xx to use new register interface
   * (gh#802) RTC support for launchxl
   * (gh#824) cc26xx: Return expected value for get\_alarm in rtc
-  * (gh#825) cc26xx: fix sw_reset check in trng
+  * (gh#825) cc26xx: fix sw\_reset check in trng
   * (gh#761) sam4l: Low power I2C
   * (gh#827) kernel: split register matches to any and all
 
