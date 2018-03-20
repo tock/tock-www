@@ -65,7 +65,7 @@ _Bolded pull requests were marked "P-Significant"_
   * (gh#802) TRNG support for CC26xx + Launchxl
   * (gh#807) Port SAM4L GPIO to new regs interface
 
-### Aproval period
+### Approval period
 
   * (gh#750) **Port to the TI EK-TM4C1294XL evaluation kit**
   * (gh#760) **MMIO Interface with automatic peripheral clock management**
