@@ -12,10 +12,10 @@ We mostly use one of two development platforms---Hail and imix---designed as a
 common basis for Tock development. If you're contributing to Tock, it would be
 useful (though not necessary) to have one of these. They have specific features
 that make Tock development easier: e.g. a common set of sensors, radios and the
-ability to measure power consumption easily. Both Hail and imix were design at
-Universities for our own purposes, but we're able to make them available with
-small-run productions funded with grad student rent money. This means they're
-not as cheap as they could be. Sorry!
+ability to measure power consumption easily. Both Hail and imix were designed
+at Universities for our own purposes, but we're able to make them available
+with small-run productions funded with grad student rent money. This means
+they're not as cheap as they could be. Sorry!
 
 ## Hail
 
