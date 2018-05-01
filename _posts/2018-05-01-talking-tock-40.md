@@ -32,7 +32,6 @@ _Bolded pull requests were marked "P-Significant"_
 ### Merged
 
   * (gh#895) **Critical fix to Hail clock wakeup and minor overhaul of alarm virtualization stack**
-  * (gh#837) **Support for SAM4L analog comparator**
   * (gh#851) **Add receive callback to console system call driver**
   * (gh#859) Word-align section binaries in userspace
   * (gh#873) Simplify BLE capsule
