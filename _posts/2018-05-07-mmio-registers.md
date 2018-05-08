@@ -15,27 +15,27 @@ address for interacting with a specific peripheral is known as a *register*.
 Each register has a number of *fields*: a set of one or more
 bits that can be read to indicate or written to activate one logical ability
 in the peripheral. Driver code uses these memory-mapped registers and fields to
-interact with the peripheral, while providing a higher-level interface to the
+interact with the peripheral while providing a higher-level interface to the
 rest of the system.
 
 Mistakes in memory maps are a real concern in embedded software. Mistakenly
 writing to an unintended bit could, in the best case, fail to have to the expected
-effect. In worse case, it can have an entirely unexpected effect in the
+effect. Worse, it could have an entirely unexpected effect in the
 low-level hardware. For instance, in the SAM4L UART control register, the bit
 adjacent to disabling the receiver instead enables the transmitter. Debugging
 mistakes in memory maps can be difficult and frustrating. This post
-describes how Tock deals with register memory maps, and a new tool that can
+describes how Tock deals with register memory maps and a new tool that can
 automatically generate memory maps for many ARM microcontrollers.
 
 ## Tock Registers
 
 The first way that Tock avoids possible mistakes in peripheral memory map
 interactions is to encapsulate them in a defined type, the
-[Tock Register Interface](https://github.com/tock/tock/tree/master/kernel/src/common/regs)
+[Tock Register Interface](https://github.com/tock/tock/tree/master/kernel/src/common/regs),
 that is capable of providing compile-time checks.
 
 First, the register interface has a particular way to define registers and
-fields within them. Each register is marked as either `ReadOnly`, `WriteOnly`,
+fields within them. Each register is marked as `ReadOnly`, `WriteOnly`,
 or `ReadWrite`, which matches the way the hardware exposes them. Then
 drivers are only able to use functions (such as `read` or `write`)
 corresponding to the capabilities of a register when accessing it.
@@ -122,15 +122,15 @@ error[E0308]: mismatched types
 
 ## SVD Files
 
-One particular pain point with the register system has been creating the
-register fields. Each peripheral has several registers, each of which can have
-up to 32 fields. For ARM microcontrollers, however, this problem has already
-been addressed with
+One particular pain point with the register system has been authoring these
+register definitions. Each peripheral has several registers, each of which can
+have up to 32 fields. For ARM microcontrollers, however, this problem has
+already been addressed with
 [SVD files](http://arm-software.github.io/CMSIS_5/SVD/html/index.html).
 
 A `System View Description` file is a formal description of the registers for
 each peripheral in a ARM microcontroller. They are created and maintained by
-the company which made the chip. A collection of SVD files for dozens of chips
+the company that made the chip. A collection of SVD files for dozens of chips
 by manufacturers like STMicroelectronics, Texas Instruments, and Nordic
 Semiconductor are available in the python package
 [cmsis-svd](https://github.com/posborne/cmsis-svd).
@@ -138,8 +138,8 @@ Semiconductor are available in the python package
 ## Automatic Generation
 
 The standard format of SVD files allows them to be parsed in order to generate
-register fields. Using this, a new Tock tool, [Stefan Hölzl](https://github.com/stefanhoelzl)
-created a new tool, `svd2regs`, in (gh#877). `svd2regs` parses the SVD
+register fields. Using this, [Stefan Hölzl](https://github.com/stefanhoelzl)
+created a new Tock tool, `svd2regs`, in (gh#877). `svd2regs` parses the SVD
 file for a microcontroller and generates the Tock register interface code for a
 specified register.
 
@@ -230,5 +230,4 @@ and compact. As an example, the resulting code from `svd2regs` for the
 STM32F042 clock registers (RCC) is 322 lines of code whereas the resulting
 code from `svd2rust` is 7713 lines in length. The big difference between the
 two is that `svd2rust` places function definitions directly inline in the code,
-whereas we hide that behind the `register_bitfields!` macro.
-
+whereas Tock hides them behind the `register_bitfields!` macro.
