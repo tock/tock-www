@@ -1,33 +1,31 @@
 ---
 title: Memory-Mapped Registers in Tock
 authors: brghena
-
 ---
 
 1. TOC
 {:toc}
 
 
-In all modern microcontrollers, [memory-mapped
-I/O](https://en.wikipedia.org/wiki/Memory-mapped_I/O) interfaces are used to
-control special-purpose peripherals such as external interfaces (e.g. UART or
+Microcontrollers typically use [memory-mapped
+I/O](https://en.wikipedia.org/wiki/Memory-mapped_I/O) interfaces to
+control hardware peripherals such as external interfaces (e.g. UART or
 ADC) as well as internal features (e.g. timers or power states). Each memory
 address for interacting with a specific peripheral is known as a *register*.
-With each register are a number of *fields*, which are a set of one or more
-bits which can be read to indicate or written to activate one logical ability
+Each register has a number of *fields*: a set of one or more
+bits that can be read to indicate or written to activate one logical ability
 in the peripheral. Driver code uses these memory-mapped registers and fields to
 interact with the peripheral, while providing a higher-level interface to the
 rest of the system.
 
 Mistakes in memory maps are a real concern in embedded software. Mistakenly
-writing to an unintended bit could, in the best case, fail to have to expected
-effect. In the worst case, it can have an entirely unexpected effect in the
+writing to an unintended bit could, in the best case, fail to have to the expected
+effect. In worse case, it can have an entirely unexpected effect in the
 low-level hardware. For instance, in the SAM4L UART control register, the bit
 adjacent to disabling the receiver instead enables the transmitter. Debugging
-mistakes in memory maps can be difficult and frustrating. In this article, we
-describe how Tock deals with register memory maps, and a new tool that allows
-memory maps for ARM microcontrollers to be generated automatically.
-
+mistakes in memory maps can be difficult and frustrating. This post
+describes how Tock deals with register memory maps, and a new tool that can
+automatically generate memory maps for many ARM microcontrollers.
 
 ## Tock Registers
 
@@ -38,7 +36,7 @@ that is capable of providing compile-time checks.
 
 First, the register interface has a particular way to define registers and
 fields within them. Each register is marked as either `ReadOnly`, `WriteOnly`,
-or `ReadWrite`, which matches the way they are thought about in hardware. Then
+or `ReadWrite`, which matches the way the hardware exposes them. Then
 drivers are only able to use functions (such as `read` or `write`)
 corresponding to the capabilities of a register when accessing it.
 
@@ -56,9 +54,9 @@ struct UsartRegisters {
 }
 ```
 
-Next, each field for a given register is defined with its bit offset in the
-register and the number of bits in length it is. If there is meaning to the
-values the register can be set to, they are included as well.
+Next, each register's fields are defined with their offsets within the
+register and their lengths (both in bits). If the values for a field have
+names, those are also included.
 
 For example, here are a subset of the fields for the SAM4L USART mode register.
 The `OFFSET` specification is the bit location of the start of the field in the
@@ -137,13 +135,11 @@ by manufacturers like STMicroelectronics, Texas Instruments, and Nordic
 Semiconductor are available in the python package
 [cmsis-svd](https://github.com/posborne/cmsis-svd).
 
-
 ## Automatic Generation
 
 The standard format of SVD files allows them to be parsed in order to generate
-register fields. Using this, a new Tock tool, `svd2regs` has been created by
-[Stefan Hölzl](https://github.com/stefanhoelzl) in
-[PR #877](https://github.com/tock/tock/pull/877). `svd2regs` parses the SVD
+register fields. Using this, a new Tock tool, [Stefan Hölzl](https://github.com/stefanhoelzl)
+created a new tool, `svd2regs`, in (gh#877). `svd2regs` parses the SVD
 file for a microcontroller and generates the Tock register interface code for a
 specified register.
 
@@ -152,22 +148,20 @@ support a new chip. One of the more tedious parts of adding peripheral drivers
 is the creation of its registers structures, which is now automated, reducing
 the possibility for human-error in transcription.
 
-
 ## Comparison to `svd2rust`
 
-Tock's register interface is not the first or only effort to add compile-time
+Tock's register interface is not the only effort to add compile-time
 checking and access control to memory-mapped registers.
 [`svd2rust`](https://github.com/japaric/svd2rust) also automatically generates
 register maps in Rust from SVD files. The
-[register system](https://docs.rs/svd2rust/0.12.1/svd2rust/) they use is very
+[register system](https://docs.rs/svd2rust/0.12.1/svd2rust/) is very
 similar in capability to the Tock register interface, especially for SVDs with
 enumerated values.
 
 One notable difference between the two interfaces is that `svd2rust` relies on
 closures to guarantee compile-time checks, while Tock does not. For example,
 here is LED blink code written using both interfaces. The example is taken from
-the
-[STM32F042 repo](https://github.com/therealprof/stm32f042/blob/master/examples/blinky.rs).
+the [STM32F042 repo](https://github.com/therealprof/stm32f042/blob/master/examples/blinky.rs).
 
 Example with the Tock register interface:
 
