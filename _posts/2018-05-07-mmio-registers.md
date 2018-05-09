@@ -1,11 +1,17 @@
 ---
 title: Memory-Mapped Registers in Tock
 authors: brghena
+excerpt: >
+  Microcontrollers typically use memory-mapped I/O interfaces to control
+  hardware peripherals. Driver code uses these memory-mapped registers and
+  fields to interact with the peripheral while providing a higher-level interface
+  to the rest of the system. This post describes how Tock deals with register
+  memory maps and a new tool that can automatically generate memory maps for many
+  ARM microcontrollers.
 ---
 
 1. TOC
 {:toc}
-
 
 Microcontrollers typically use [memory-mapped
 I/O](https://en.wikipedia.org/wiki/Memory-mapped_I/O) interfaces to
