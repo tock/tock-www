@@ -4,7 +4,7 @@ require 'html/pipeline/hashtag/hashtag_filter'
 
 module Jekyll
   class Issues
-    ISSUE_PREFIX_URL = "https://github.com/helena-project/tock/issues/%{tag}".freeze
+    ISSUE_PREFIX_URL = "https://github.com/tock/tock/issues/%{tag}".freeze
     BODY_START_TAG = "<body".freeze
 
     InvalidJekyllMentionConfig = Class.new(Jekyll::Errors::FatalException)

@@ -34,7 +34,7 @@ Faculty of Technology, Policy and Management at Jaffalaan 5.
 Please bring a laptop to use during the tutorial and download the
 [Tock VM](http://www.scs.stanford.edu/~alevy/Tock.ova) in advance.
 If you prefer to develop natively, please finish the Tock
-[Getting Started](https://github.com/helena-project/tock/blob/master/doc/Getting_Started.md)
+[Getting Started](https://github.com/tock/tock/blob/master/doc/Getting_Started.md)
 guide so that everything is downloaded in advance.
 
 ## Schedule and Agenda
