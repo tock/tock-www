@@ -25,17 +25,17 @@ How would you like to get started?
 
 ### Use Tock
 
-First, follow our [getting started guide](https://github.com/helena-project/tock/blob/master/doc/Getting_Started.md) to setup
+First, follow our [getting started guide](https://github.com/tock/tock/blob/master/doc/Getting_Started.md) to setup
 your system to compile Tock and Tock applications.
 
 Then head to the [hardware page](/hardware)
 to learn about the hardware platforms Tock supports. Also check out the
-[tutorials](https://github.com/helena-project/tock/blob/master/doc/tutorials) to get started running apps with TockOS.
+[tutorials](https://github.com/tock/tock/blob/master/doc/tutorials) to get started running apps with TockOS.
 
 
 ### Develop Tock
 
-Read our [getting started guide](https://github.com/helena-project/tock/blob/master/doc/Getting_Started.md) to get the correct
+Read our [getting started guide](https://github.com/tock/tock/blob/master/doc/Getting_Started.md) to get the correct
 version of the Rust compiler, then look through the `/kernel`, `/capsules`,
 `/chips`, and `/boards` directories.
 
@@ -45,7 +45,7 @@ We're happy to accept pull requests and look forward to seeing how Tock grows.
 ### Learn How Tock Works
 
 Both the design and implementation of Tock are documented in the
-[docs](https://github.com/helena-project/tock/blob/master/doc) folder. Read through the guides there to learn about the kernel,
+[docs](https://github.com/tock/tock/blob/master/doc) folder. Read through the guides there to learn about the kernel,
 Tock's use of Rust, the build system, and applications.
 
 

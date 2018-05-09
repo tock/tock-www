@@ -64,9 +64,9 @@ defining values in the `.vectors`[^vectors] section and relies on the
 board-specific crate[^hail-crate] to place that section appropriately using it's linker
 script:
 
-[^sam4l-crate]: [SAM4L crate](https://github.com/helena-project/tock/tree/master/chips/sam4l)
-[^vectors]: [SAM4L Vector Table](https://github.com/helena-project/tock/blob/master/chips/sam4l/src/lib.rs#L68)
-[^hail-crate]: [Hail Crate](https://github.com/helena-project/tock/tree/master/boards/hail)
+[^sam4l-crate]: [SAM4L crate](https://github.com/tock/tock/tree/master/chips/sam4l)
+[^vectors]: [SAM4L Vector Table](https://github.com/tock/tock/blob/master/chips/sam4l/src/lib.rs#L60)
+[^hail-crate]: [Hail Crate](https://github.com/tock/tock/tree/master/boards/hail)
 
 ```rust
 // Exposed by the linker script or board-specific crate
@@ -217,7 +217,7 @@ while let Some(interrupt) = iq.dequeue() {
 }
 ```
 
-[^service-interrupts]: [`service_pending_interrupts` for SAM4L](https://github.com/helena-project/tock/blob/master/chips/sam4l/src/chip.rs#L70)
+[^service-interrupts]: [`service_pending_interrupts` for SAM4L](https://github.com/tock/tock/blob/master/chips/sam4l/src/chip.rs#L72)
 
 The board definition specifies which system call number is associated with a
 particular capsule in the `with_driver` method[^with-driver]:
@@ -240,7 +240,7 @@ requires them to implement three methods (`allow`, `command`, and `subscribe`)
 corresponding to three of the five system calls processes can invoke. The other
 two (`memop` and `yield`) are handled directly by the scheduler.
 
-[^with-driver]: [`with_driver` for Hail](https://github.com/helena-project/tock/blob/master/boards/hail/src/main.rs#L93)
+[^with-driver]: [`with_driver` for Hail](https://github.com/tock/tock/blob/master/boards/hail/src/main.rs#L81)
 
 ## Process scheduler
 
@@ -346,7 +346,7 @@ fn subscribe(&self, _: usize, callback: Callback) -> isize {
 }
 ```
 
-[^timer-subscribe]: [Timer driver `subscribe`](https://github.com/helena-project/tock/blob/master/capsules/src/alarm.rs#L77)
+[^timer-subscribe]: [Timer driver `subscribe`](https://github.com/tock/tock/blob/master/capsules/src/alarm.rs#L74)
 
 ## Command
 

@@ -12,7 +12,7 @@ platforms. We will soon be releasing our primary development platform (based on
 Atmel's SAM4L). Until then, if you want to port Tock to another platform, we
 encourage that and will try to help as much as we can.
 
-The main repository is hosted on [GitHub](https://github.com/helena-project/tock).
+The main repository is hosted on [GitHub](https://github.com/tock/tock).
 
 ## Communication
 
