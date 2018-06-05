@@ -23,7 +23,7 @@ other utilities, and are strictly bound by the Rust typesystem (i.e. no
 still making a kernel possible.
 
 This restriction on capsules has so far made it very difficult to use
-community-developed crates. Following up on @josh_triplett's [analysis of
+community-developed crates. Following up on @joshtriplett's [analysis of
 crates.io](https://twitter.com/josh_triplett/status/849089108727222275), we
 surveyed all of the crates on crates.io and found that 34% (4216/12360) of the
 crates use an `unsafe` block at least once. Of crates that have been downloaded
