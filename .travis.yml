@@ -1,5 +1,11 @@
 sudo: false
 
+addons:
+  apt:
+    packages:
+      - libssl1.0.0
+      - curl
+
 cache:
   bundler: true
   directories:
