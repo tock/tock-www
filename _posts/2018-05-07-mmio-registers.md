@@ -37,7 +37,7 @@ automatically generate memory maps for many ARM microcontrollers.
 
 The first way that Tock avoids possible mistakes in peripheral memory map
 interactions is to encapsulate them in a defined type, the
-[Tock Register Interface](https://github.com/tock/tock/tree/master/kernel/src/common/regs),
+[Tock Register Interface](https://github.com/tock/tock/tree/master/libraries/tock-register-interface),
 that is capable of providing compile-time checks.
 
 First, the register interface has a particular way to define registers and
