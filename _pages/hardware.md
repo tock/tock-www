@@ -97,3 +97,8 @@ The [Nordic nRF Development
 Kit](https://www.nordicsemi.com/eng/Products/nRF51-DK) is Nordic
 Semiconductor's development board for the popular Blutooth Low Energy SoC, the
 NRF51. Both imix and Hail include this chip in addition to the SAM4L.
+
+## NRF52
+
+Adafruit Feather nRF52 Bluefruit LE - nRF52832
+https://www.adafruit.com/product/3406
