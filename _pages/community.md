@@ -17,9 +17,9 @@ The main repository is hosted on [GitHub](https://github.com/tock/tock).
 ## Communication
 
 Tock developers communicate on the [tock-dev mailing
-list](https://groups.google.com/forum/#!forum/tock-dev) and on the
-[#tock](https://kiwiirc.com/client/irc.freenode.net/tock) IRC channel on
-Freenode. Join us on either if you have questions or are developing for Tock.
+list](https://groups.google.com/forum/#!forum/tock-dev) and on
+[Slack](https://join.slack.com/t/tockos/shared_invite/enQtNDE5ODQyNDU4NTE1LTg4YzE1MTkwYzI0YjhjNjA0YWExOGY2ZGYwNjQ2YmFiZjdhOTdlMzY0YTBiYTA2YTRlYzMyZTI1MDdmMTgwMzc).
+Join us on either if you have questions or are developing for Tock.
 
 ## Conduct
 
