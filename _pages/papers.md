@@ -34,6 +34,14 @@ permalink: /papers/
 
 ## Masters Theses
 
+  * [Abstraction Layers and Energy Efficiency in TockOS, a Rust-based Runtime
+    for the Internet of Things](/assets/papers/thesis-nilsson-2018.pdf). Filip Nilsson & Sebastian Lund
+    Chalmers University of Technology, University of Gothenburg. 2018.
+
+  * [Defining a minimal BLE stack](/assets/papers/thesis-makela-2018.pdf).
+    Francine Mäkelä & Johan Lindskogen.
+    Chalmers University of Technology, University of Gothenburg. 2018.
+
   * [A Rust-based Runtime for the Internet of
     Things](/assets/papers/thesis-nilsson-2017.pdf). Fredrik Nilsson & Niklas Adolfsson.
     Chalmers University of Technology. 2017.
