@@ -14,24 +14,10 @@ Rust language, it supports kernel extensions in Rust as well as multiple
 concurrent applications written in C, Rust, or Lua. This tutorial will give an
 introduction to programming in Tock as well as an overview of its architecture.
 Attendees will write a user-land networking application in C as well as a
-kernel extension in Rust. Attendees will be provided hardware kits, which they
-may optionally purchase as part of the registration fee.
+kernel extension in Rust.
 
-Sign up to receive emails when registration opens and details are available.
-
-<div id="mc_embed_signup" markdown="0" style="text-align: center;">
-<form action="//tockos.us14.list-manage.com/subscribe/post?u=3ab7c13c2409f58a1553f170a&amp;id=685cf61bd6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-<p>
-  <input type="email" value="" placeholder="Enter your e-mail" name="EMAIL" class="required email" id="mce-EMAIL"/>
-</p>
-<div id="mce-responses" class="clear">
-        <div class="response" id="mce-error-response" style="display:none"></div>
-        <div class="response" id="mce-success-response" style="display:none"></div>
-</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3ab7c13c2409f58a1553f170a_685cf61bd6" tabindex="-1" value=""></div>
-<p><input type="submit" value="Get Notified" name="subscribe" id="mc-embedded-subscribe" class="button"></p>
-</form>
-</div>
+Register [here](http://www.cvent.com/d/9bqkqv/4W) (make sure to sign up for the
+"Workshops").
 
 
 ## Prerequisites
