@@ -19,6 +19,11 @@ kernel extension in Rust.
 Register [here](http://www.cvent.com/d/9bqkqv/4W) (make sure to sign up for the
 "Workshops").
 
+## Organizers
+
+  * Amit Levy (Princeton University)
+
+  * Phil Levis (Stanford University)
 
 ## Prerequisites
 
