@@ -28,8 +28,8 @@ cool when it's done!
 @niklasad1 spent the week working on a driver and HIL interface for the NRF51
 AES controller. The AES controller only supports ECB mode (which is insecure
 for streams), but he's worked out a way to use that controller in other block
-cipher modes (e.g. counter mode). A [conversation on
-IRC](http://bot.tockos.org/tockbot/tock/msg/445/) has some details.
+cipher modes (e.g. counter mode). A conversation formerly at
+http://bot.tockos.org/tockbot/tock/msg/445/ had some details.
 
 ## TRDs (Tock Reference Documents)
 

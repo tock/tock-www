@@ -151,4 +151,4 @@ set up in the Tock processes.
 
 The driver is now merged in the Tock master branch and runs by default on the
 NRF52DK board. The applications I used in the demonstration can be found
-[here](https://github.com/helena-project/tock/tree/master/userland/examples/tests/ble/ble_nrf5x_concurrency)
+[here](https://github.com/tock/libtock-c/tree/5f273ff70693b1c5ad164b9754c9efd6f7c9bc2d/examples/tests/ble/ble_nrf5x_concurrency)

@@ -29,7 +29,7 @@ progress on support for the NRF51. So far they have upstreamed support for the
 temperature sensor and random number generator. Even more exciting, though,
 they have prototyped support for the Bluetooth Low Energy advertising directly
 in the Tock kernel! This will be one of only a
-[small](https://mynewt.apache.org/pages/ble/)
+[small](https://mynewt.apache.org/)
 [number](https://github.com/pauloborges/blessed) of open-source
 (down-to-the-metal) Bluetooth Low Energy stacks and the only one in Rust.
 

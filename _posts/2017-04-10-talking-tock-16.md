@@ -22,8 +22,8 @@ Pittsburgh next week. Say hello if you see them!
 There have been a fair bit of questions and offers of assistance porting Tock
 to some readily available hardware platforms, particularly the STM32-based
 discovery boards. The Tock team is all very supportive of such efforts. On the
-side, we've begin playing around with @japaric's excellent
-[tutorial](https://japaric.github.io/discovery) on bring up of the
+side, we've begun playing around with @japaric's excellent
+tutorial (formerly at https://japaric.github.io/discovery) on bring up of the
 [STMF3DISCOVERY](http://www.st.com/en/evaluation-tools/stm32f3discovery.html).
 
 If you are interested in these efforts, please join the [_tock-dev_ mailing

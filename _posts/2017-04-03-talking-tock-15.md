@@ -18,8 +18,8 @@ We've
 with the organizers of [RustFest](http://2017.rustfest.eu/) for there to be a
 few Hails available to check out at RustFest at the end of April.
 
-@JayKickliter [chimmed in on
-IRC](https://bot.tockos.org/tockbot/tock/2017-04-01/?msg=947&page=1) to ask
+@JayKickliter chimed in on
+IRC (formerly at https://bot.tockos.org/tockbot/tock/2017-04-01/?msg=947&page=1) to ask
 some questions about porting Tock to a new chip and board in an external
 repository. It sounds like he's working on a port to another Cortex-M0 with
 some exciting features. In the process, he's been compiling a list of questions

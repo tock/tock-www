@@ -52,7 +52,7 @@ revision](https://github.com/helena-project/imix/issues/12) on the way.
 
 ## Community
 
-We deployed [BotBot](https://bot.tockos.org) to log our [IRC
+We deployed BotBot (formerly at https://bot.tockos.org) to log our [IRC
 channel](https://kiwiirc.com/client/irc.freenode.net/tock). It's open and
 public and we're hoping this makes IRC a more welcoming medium to come talk to
 us.

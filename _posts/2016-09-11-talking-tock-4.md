@@ -13,15 +13,15 @@ safe multi-tasking operating system for microcontrollers.
     list](https://groups.google.com/forum/#!forum/tock-dev) for people working
     on Tock or ports of Tock to various chips and platforms.
 
-  * The mailing list has been innagurated with a discussion of [faster
+  * The mailing list has been inaugurated with a discussion of [faster
     interrupt
     handling](https://groups.google.com/forum/#!topic/tock-dev/fPzYev4rvnI),
     [LLVM changes that make Rust processes
-    feaible](https://groups.google.com/forum/#!topic/tock-dev/fPzYev4rvnI) and
+    feasible](https://groups.google.com/forum/#!topic/tock-dev/fPzYev4rvnI) and
     a [directory tree
     restructure](https://groups.google.com/forum/#!topic/tock-dev/7d-FdWP6Zu0)
 
-  * @idolf did a complete pass cleaning up the source with `rustfmt`.
+  * @TethysSvensson did a complete pass cleaning up the source with `rustfmt`.
 
   * @emosenkis replaced instances of the unstable
     `volatile_load`/`volatile_store` calls with their stable variants
