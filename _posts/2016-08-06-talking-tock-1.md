@@ -8,8 +8,8 @@ safe multi-tasking operating system for microcontrollers.
 
 ## What's new in Tock?
 
-  * @idolf fixed the `static_init!` to only allocate as much static memory as
-    needed.
+  * @TethysSvensson fixed the `static_init!` to only allocate as much static
+    memory as needed.
 
   * @yuriks Upgraded Tock to Rust nightly version 2016-07-29, catching us up by
     over 7 months worth of nightly versions.
