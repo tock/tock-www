@@ -18,8 +18,8 @@ is yes. Are you within flying distance of Portland, OR? Again, the answer is
 yes. Join us for a Tock training colocated with RustConf 2017 on August 17th in
 Portland!
 
-Register on the RustConf [website](http://rustconf.com/register.html). Just
-remember you need to register for the Tock training regardless of if you
+Register on the RustConf website (formerly at http://rustconf.com/register.html).
+Just remember you need to register for the Tock training regardless of if you
 register for the rest of the conference. All the proceeds from the training go towards funding RustBridge, so it's win-win-win.
 
 ![Win/Win is number four and number five is win/win/win. The important

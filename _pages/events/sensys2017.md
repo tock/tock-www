@@ -32,7 +32,7 @@ Faculty of Technology, Policy and Management at Jaffalaan 5.
 ## Prerequisites
 
 Please bring a laptop to use during the tutorial and download the
-[Tock VM](http://www.scs.stanford.edu/~alevy/Tock.ova) in advance.
+Tock VM[^1] in advance.
 If you prefer to develop natively, please finish the Tock
 [Getting Started](https://github.com/tock/tock/blob/master/doc/Getting_Started.md)
 guide so that everything is downloaded in advance.
@@ -49,3 +49,5 @@ guide so that everything is downloaded in advance.
   - Part 3: Kernel Hacking
      - From boot to board
      - Building a basic capsule (driver)
+
+[^1]: The Tock VM has been deprecated. Please follow the guidelines in the [Tock book](https://book.tockos.org/) for latest environment setup.

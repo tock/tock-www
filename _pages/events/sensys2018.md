@@ -28,7 +28,7 @@ Register [here](http://www.cvent.com/d/9bqkqv/4W) (make sure to sign up for the
 ## Prerequisites
 
 Please bring a laptop to use during the tutorial and download the
-[Tock VM](http://www.scs.stanford.edu/~alevy/Tock.ova) in advance.
+Tock VM[^1] in advance.
 If you prefer to develop natively, please finish the Tock
 [Getting Started](https://github.com/tock/tock/blob/master/doc/Getting_Started.md)
 guide so that everything is downloaded in advance.
@@ -55,3 +55,4 @@ There will be buses from the conference hotel and back at the following times:
 | 15:20-15:40 | Coffee break |
 | 15:40-17:30 | Practicum: Fix the bug! |
 
+[^1]: The Tock VM has been deprecated. Please follow the guidelines in the [Tock book](https://book.tockos.org/) for latest environment setup.
