@@ -89,7 +89,28 @@ want one sooner.
 | Size                        | 2.45" x 4"              | 0.8" x 1.44"    |
 | Price                       | $100                    | $60             |
 
-## nRF51-DK
+## nRF52 Family
+
+An enhancement of the highly popular nRF51XXX family, Nordic Semiconductor
+recently released the nRF52 family of SoCs. These boards include Bluetooth 5,
+Bluetooth mesh, NFC, and ANT. The first was the nRF52832, which is available on
+the [nRF52 DK][nrf52832]. More recently, they released the nRF52840, which adds
+802.15.4 and in turn Thread and Zigbee support, which is available on the
+[nRF52840 DK][nrf52840].
+
+| nRF52840 DK with nRF52840 SoC               | nRF52 DK with nRF52832 SoC            |
+|---------------------------------------------|---------------------------------------|
+| ![nRF52840 DK](/assets/img/nRF52840-DK.png) | ![nRF52 DK](/assets/img/nRF52-DK.png) |
+
+[nrf52832]: https://www.nordicsemi.com/?sc_itemid=%7BF2C2DBF4-4D5C-4EAD-9F3D-CFD0276B300B%7D
+[nrf52840]: https://www.nordicsemi.com/Software-and-Tools/Development-Kits/nRF52840-DK
+
+---
+
+## nRF51-DK (depreacted)
+
+> **Note:** Tock has largely depreacted efforts around the nrf51 in favor of
+> the nRF52.
 
 ![NRF51 Development Kit](/assets/img/nrf51dk.jpg)
 
