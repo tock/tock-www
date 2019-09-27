@@ -107,9 +107,9 @@ the [nRF52 DK][nrf52832]. More recently, they released the nRF52840, which adds
 
 ---
 
-## nRF51-DK (depreacted)
+## nRF51-DK (deprecated)
 
-> **Note:** Tock has largely depreacted efforts around the nrf51 in favor of
+> **Note:** Tock has largely deprecated efforts around the nrf51 in favor of
 > the nRF52.
 
 ![NRF51 Development Kit](/assets/img/nrf51dk.jpg)
