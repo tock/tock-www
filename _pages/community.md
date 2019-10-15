@@ -18,7 +18,7 @@ The main repository is hosted on [GitHub](https://github.com/tock/tock).
 
 Tock developers communicate on the [tock-dev mailing
 list](https://groups.google.com/forum/#!forum/tock-dev) and on
-[Slack](https://join.slack.com/t/tockos/shared_invite/enQtNDE5ODQyNDU4NTE1LTg4YzE1MTkwYzI0YjhjNjA0YWExOGY2ZGYwNjQ2YmFiZjdhOTdlMzY0YTBiYTA2YTRlYzMyZTI1MDdmMTgwMzc).
+[Slack](https://join.slack.com/t/tockos/shared_invite/enQtNDE5ODQyNDU4NTE1LWVjNTgzMTMwYzA1NDI1MjExZjljMjFmOTMxMGIwOGJlMjk0ZTI4YzY0NTYzNWM0ZmJmZGFjYmY5MTJiMDBlOTk).
 Join us on either if you have questions or are developing for Tock.
 
 ## Conduct
