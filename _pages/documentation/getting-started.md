@@ -30,7 +30,7 @@ your system to compile Tock and Tock applications.
 
 Then head to the [hardware page](/hardware)
 to learn about the hardware platforms Tock supports. Also check out the
-[tutorials](https://github.com/tock/tock/blob/master/doc/tutorials) to get started running apps with TockOS.
+[Tock OS Book](https://book.tockos.org/) to get started running apps with TockOS.
 
 
 ### Develop Tock
