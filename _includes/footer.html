@@ -3,7 +3,7 @@
     <div>
       Website errors? Suggested improvements?<br />
       <a style="color: white;" href="https://github.com/tock/tock-www">Submit a Pull Request!</a><br />
-      Hosting generously provided by <a style="color:white;" href="https://www.netlify.com/">Netlify</a>.</li>
+      &copy; {{ site.time | date: '%Y' }} {{ site.author }}
     </div>
     <div>
       <ul>
@@ -21,8 +21,17 @@
           </a>
         </li>
         {% endif %}
+        <li>
+          <a href="https://www.netlify.com">
+            <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg"/>
+            <!-- https://www.netlify.com/press/
+            <img src="https://www.netlify.com/img/global/badges/netlify-color-bg.svg"/>
+            <img src="https://www.netlify.com/img/global/badges/netlify-light.svg"/>
+            <img src="https://www.netlify.com/img/global/badges/netlify-dark.svg"/>
+            -->
+          </a>
+        </li>
       </ul>
-      &copy; {{ site.time | date: '%Y' }} {{ site.author }}
     </div>
   </div>
 </footer>
