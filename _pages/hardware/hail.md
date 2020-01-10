@@ -36,8 +36,8 @@ soldered directly on with the castellations.
 ## Tock Support
 
 Hail is [fully supported](https://github.com/tock/tock/tree/master/boards/hail)
-by Tock. This includes the [tutorials](https://github.com/tock/tock/tree/master/doc/tutorials)
-that make it easy to get started with programming Tock applications.
+by Tock. This includes the [Tock OS Book](https://book.tockos.org/) that makes
+it easy to get started with programming Tock applications.
 
 ## Comparison to imix
 
