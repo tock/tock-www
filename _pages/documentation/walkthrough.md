@@ -305,7 +305,7 @@ void delay_ms(uint32_t ms) {
 }
 ```
 
-_Note: `timer_subscribe` and `timer_onshot` are simple wrappers around
+_Note: `timer_subscribe` and `timer_oneshot` are simple wrappers around
 `subscribe` and `command`. The code above shows the exact calls made in
 comments._
 
@@ -333,7 +333,7 @@ driver switching into arbitrary code in the process or corrupting (or leaking)
 the user-data value.
 
 In the case of the timer driver, subscribe stores the `Callback` for later in a
-process specific data structure[^timer-subscribe]:
+process-specific data structure[^timer-subscribe]:
 
 ```rust
 fn subscribe(&self, _: usize, callback: Callback) -> isize {
@@ -358,7 +358,7 @@ Similar to `subscribe`, when a process calls `command`, a system call
 instruction is invoked, trapping to the scheduler, which figures out which
 driver to forward the `command` to by looking up the driver number.
 
-The scheduler the simply calls the driver's `command` method with the
+The scheduler then simply calls the driver's `command` method with the
 sub-driver number, argument and the process identifier. The timer driver's
 oneshot command stores both the current absolute time and the interval in the
 process-specific data structure. If the underlying alarm is already armed it
