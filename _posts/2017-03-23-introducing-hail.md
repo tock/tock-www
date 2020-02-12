@@ -51,7 +51,7 @@ as the controller and radio for other projects.
 - [SAM4L](http://www.atmel.com/products/microcontrollers/arm/sam4l.aspx) Cortex-M4
 - [nRF51822](https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF51822) BLE Radio
 - [SI7021](https://www.silabs.com/products/sensors/humidity-sensors/Pages/si7013-20-21.aspx) Temperature and Humidity Sensor
-- [ISL29035](https://www.intersil.com/en/products/optoelectronics/ambient-light-sensors/light-to-digital-sensors/ISL29035.html) Light Sensor
+- [ISL29035](https://www.renesas.com/us/en/products/sensors/ambient-light-sensors/light-to-digital-sensors/device/ISL29035.html) Light Sensor <!-- formerly https://www.intersil.com/en/products/optoelectronics/ambient-light-sensors/light-to-digital-sensors/ISL29035.html -->
 - [FXOS8700CQ](https://www.nxp.com/products/sensors/6-axis-sensors/digital-sensor-3d-accelerometer-2g-4g-8g-plus-3d-magnetometer:FXOS8700CQ) 6-axis Accelerometer and Magnetometer
 - RGB LED
 - User push-button
