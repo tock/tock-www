@@ -30,7 +30,7 @@ permalink: /papers/
     during a particular point in the development of Tock._
 
   * [A networked embedded system platform for the post-mote
-    era](/assets/papers/platform-sensys14.pdf) SenSys 2014.
+    era](/assets/papers/platform-sensys14.pdf). SenSys 2014.
 
 ## Masters Theses
 
