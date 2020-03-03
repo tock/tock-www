@@ -61,7 +61,7 @@ there we can run arbitrary C/Rust code.
 
 In Tock, the chip-specific crate[^sam4l-crate] sets up the vector table by
 defining values in the `.vectors`[^vectors] section and relies on the
-board-specific crate[^hail-crate] to place that section appropriately using it's linker
+board-specific crate[^hail-crate] to place that section appropriately using its linker
 script:
 
 [^sam4l-crate]: [SAM4L crate](https://github.com/tock/tock/tree/master/chips/sam4l)
@@ -187,7 +187,7 @@ kernel::main(&hail, &mut chip, load_processes(), &hail.ipc);
 ```
 
 We also passed the result of `load_processes()` to `kernel::main`. This is a
-board-specific functions that reads process headers from flash, populates a
+board-specific function that reads process headers from flash, populates a
 list of structures to represent them, and initializes each of their data
 segments, global offset tables and stacks into memory.
 
@@ -284,7 +284,7 @@ operations.
 
 `delay_ms`, on the other hand, is more complex and involves four of the five
 system calls. Let's follow `delay_ms` end-to-end to get a picture of the
-interaction between processes, capsules, and the hardware works.
+interaction between processes, capsules, and the hardware.
 
 ```rust
 static void delay_cb(int unused0, int unused1, int unused2,
