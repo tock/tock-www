@@ -61,11 +61,11 @@ there we can run arbitrary C/Rust code.
 
 In Tock, the chip-specific crate[^sam4l-crate] sets up the vector table by
 defining values in the `.vectors`[^vectors] section and relies on the
-board-specific crate[^hail-crate] to place that section appropriately using it's linker
+board-specific crate[^hail-crate] to place that section appropriately using its linker
 script:
 
 [^sam4l-crate]: [SAM4L crate](https://github.com/tock/tock/tree/master/chips/sam4l)
-[^vectors]: [SAM4L Vector Table](https://github.com/tock/tock/blob/master/chips/sam4l/src/lib.rs#L60)
+[^vectors]: [SAM4L Vector Table](https://github.com/tock/tock/blob/master/chips/sam4l/src/lib.rs#L79)
 [^hail-crate]: [Hail Crate](https://github.com/tock/tock/tree/master/boards/hail)
 
 ```rust
@@ -187,7 +187,7 @@ kernel::main(&hail, &mut chip, load_processes(), &hail.ipc);
 ```
 
 We also passed the result of `load_processes()` to `kernel::main`. This is a
-board-specific functions that reads process headers from flash, populates a
+board-specific function that reads process headers from flash, populates a
 list of structures to represent them, and initializes each of their data
 segments, global offset tables and stacks into memory.
 
@@ -217,7 +217,7 @@ while let Some(interrupt) = iq.dequeue() {
 }
 ```
 
-[^service-interrupts]: [`service_pending_interrupts` for SAM4L](https://github.com/tock/tock/blob/master/chips/sam4l/src/chip.rs#L72)
+[^service-interrupts]: [`service_pending_interrupts` for SAM4L](https://github.com/tock/tock/blob/master/chips/sam4l/src/chip.rs#L80)
 
 The board definition specifies which system call number is associated with a
 particular capsule in the `with_driver` method[^with-driver]:
@@ -240,7 +240,7 @@ requires them to implement three methods (`allow`, `command`, and `subscribe`)
 corresponding to three of the five system calls processes can invoke. The other
 two (`memop` and `yield`) are handled directly by the scheduler.
 
-[^with-driver]: [`with_driver` for Hail](https://github.com/tock/tock/blob/master/boards/hail/src/main.rs#L81)
+[^with-driver]: [`with_driver` for Hail](https://github.com/tock/tock/blob/master/boards/hail/src/main.rs#L77)
 
 ## Process scheduler
 
@@ -284,7 +284,7 @@ operations.
 
 `delay_ms`, on the other hand, is more complex and involves four of the five
 system calls. Let's follow `delay_ms` end-to-end to get a picture of the
-interaction between processes, capsules, and the hardware works.
+interaction between processes, capsules, and the hardware.
 
 ```rust
 static void delay_cb(int unused0, int unused1, int unused2,
