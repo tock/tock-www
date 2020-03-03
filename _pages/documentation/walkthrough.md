@@ -65,7 +65,7 @@ board-specific crate[^hail-crate] to place that section appropriately using it's
 script:
 
 [^sam4l-crate]: [SAM4L crate](https://github.com/tock/tock/tree/master/chips/sam4l)
-[^vectors]: [SAM4L Vector Table](https://github.com/tock/tock/blob/master/chips/sam4l/src/lib.rs#L60)
+[^vectors]: [SAM4L Vector Table](https://github.com/tock/tock/blob/master/chips/sam4l/src/lib.rs#L79)
 [^hail-crate]: [Hail Crate](https://github.com/tock/tock/tree/master/boards/hail)
 
 ```rust
@@ -217,7 +217,7 @@ while let Some(interrupt) = iq.dequeue() {
 }
 ```
 
-[^service-interrupts]: [`service_pending_interrupts` for SAM4L](https://github.com/tock/tock/blob/master/chips/sam4l/src/chip.rs#L72)
+[^service-interrupts]: [`service_pending_interrupts` for SAM4L](https://github.com/tock/tock/blob/master/chips/sam4l/src/chip.rs#L80)
 
 The board definition specifies which system call number is associated with a
 particular capsule in the `with_driver` method[^with-driver]:
@@ -240,7 +240,7 @@ requires them to implement three methods (`allow`, `command`, and `subscribe`)
 corresponding to three of the five system calls processes can invoke. The other
 two (`memop` and `yield`) are handled directly by the scheduler.
 
-[^with-driver]: [`with_driver` for Hail](https://github.com/tock/tock/blob/master/boards/hail/src/main.rs#L81)
+[^with-driver]: [`with_driver` for Hail](https://github.com/tock/tock/blob/master/boards/hail/src/main.rs#L77)
 
 ## Process scheduler
 
