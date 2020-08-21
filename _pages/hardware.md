@@ -316,8 +316,7 @@ platforms.
 
 __Where to get it:__ [Crowdsupply][hifive1-revB-hw]*
 
-_*Note: Initial Tock support is for the RevA board which is no longer avaiable,
-this now links to the RevB board._
+_*Note: Tock only supports the Rev B_
 
 [hifive1-revB-hw]: https://www.crowdsupply.com/sifive/hifive1-rev-b
 
