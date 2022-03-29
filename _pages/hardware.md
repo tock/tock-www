@@ -24,6 +24,7 @@ Tock supports a growing number of hardware platforms.
     + [Nucleo f429zi](#nucleo-f429zi)
   * [Aconno](#aconno)
   * [TI Launch XL](#ti-launch-xl)
+  * [ESP32 Family](#esp32-family)
 - [Experimental](#experimental)
   * [SiFive HiFive1](#sifive-hifive1)
   * [OpenTitan](#opentitan)
@@ -299,6 +300,32 @@ A newer addition to TI's LaunchPad family of development boards.
 __Where to get it:__ [TI or distributors][launchxl-hw]
 
 [launchxl-hw]: http://www.ti.com/tool/LAUNCHXL-CC26X2R1#buy
+
+## ESP32 Family
+
+### [ESP32-C3-DevKitM-1](https://github.com/tock/tock/tree/master/boards/esp32-c3-devkitM-1)
+
+[ESP32-C3-DevKitM-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/hw-reference/esp32c3/user-guide-devkitm-1.html) is an entry-level development board based on [ESP32-C3-MINI-1](https://www.espressif.com/sites/default/files/documentation/esp32-c3-mini-1_datasheet_en.pdf), a small-sized 2.4 GHz Wi-Fi (802.11 b/g/n) and Bluetooth® 5 module built around the ESP32-C3 series of SoCs, RISC-V single-core microprocessor.
+
+<table markdown="1">
+<tr markdown="1">
+<td markdown="1">
+ - Chip: ESP32-C3
+ - Basics:
+   - RGB LED
+ - I/O:
+   - Wi-Fi
+   - Bluetooth LE
+ - Extras:
+   - USB-to-UART Bridge
+</td>
+<td markdown="1">
+![Image of ESP32-C3-DevKitM-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/_images/esp32-c3-devkitm-1-v1-isometric.png)
+</td>
+</tr>
+</table>
+
+__Where to get it:__ [Espressif distributors](https://www.espressif.com/en/products/devkits)
 
 ---
 
