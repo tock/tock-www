@@ -2,7 +2,8 @@
 layout: page
 title: TockWorld 2022
 subtitle: Agenda
-description: Hardware platforms supported by TockOS
+description: Proposed agenda for TockWorld 2022
+permalink: /tockworld22/agenda
 ---
 
 # Day 1
