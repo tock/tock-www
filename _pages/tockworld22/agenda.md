@@ -109,6 +109,13 @@ _[Slides](/assets/tockworld22/2022-07-19_tockworld5_repurposable.pptx)_
 - Where is effort being spent?
 - What are the current pain points?
 
+_Discussion Groups_
+
+- Code Size
+- Pluggable/blocking syscalls
+- [Connectivity](/assets/connectivity.pptx)
+- Testing
+
 ## Community development
 
 - What do we want to community to look like in 3-5 years
