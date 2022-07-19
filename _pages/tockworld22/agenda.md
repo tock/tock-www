@@ -101,6 +101,8 @@ _Speaker: Alyssa Haroldsen_
 
 _Speaker: Brad Campbell_
 
+_[Slides](/assets/tockworld22/2022-07-19_tockworld5_repurposable.pptx)_
+
 ## Discussions: Vision & Development Focus Areas
 
 - Where do we want the project to go in the next 3-5 years?
