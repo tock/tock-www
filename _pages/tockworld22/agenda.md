@@ -53,7 +53,7 @@ depending on what food you want.
   | 13:30 |  [Ti50](#ti50)                                       | Alyssa        |
   | 14:00 |  [Repurposable Devices](#repurposable-devices)       | Brad          |
   | 14:30 |  _Break_                                             |               |
-  | 15:00 |  [Development Focus Areas](#development-focus-areas) | Lead: Brad    |
+  | 15:00 |  [Development Focus Areas](#discussions-vision--development-focus-areas) | Lead: Brad    |
   | 16:00 |  _Break_                                             |               |
   | 16:30 |  [Community Development](#community-development)     | Lead: Amit    |
 
