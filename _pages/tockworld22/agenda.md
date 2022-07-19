@@ -113,7 +113,7 @@ _Discussion Groups_
 
 - Code Size
 - Pluggable/blocking syscalls
-- [Connectivity](/assets/connectivity.pptx)
+- [Connectivity](/assets/tockworld22/connectivity.pptx)
 - Testing
 
 ## Community development
