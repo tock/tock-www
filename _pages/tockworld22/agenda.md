@@ -73,6 +73,8 @@ depending on what food you want.
 
 _Speakers: Amit & Hudson_
 
+_[Slides](/assets/tockworld22/state-of-tock.pdf)_
+
 - The Big Picture
 - Since 2.0
 - Progress on Code Size
