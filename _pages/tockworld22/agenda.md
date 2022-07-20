@@ -146,3 +146,4 @@ _Discussion Groups_
 - Documentation and other materials? Events? Hardware platforms?
   Staffing? Governance? Online communication tools?
 
+_[Notes](/assets/tockworld22/community.pptx)_
