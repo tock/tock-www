@@ -1,17 +1,17 @@
 ---
 layout: page
-title: TockWorld 2022
-description: Proposed agenda for TockWorld 2022
-permalink: /tockworld22/agenda
+title: TockWorld 5
+description: Proposed agenda for TockWorld 5
+permalink: /tockworld5/agenda
 ---
 
-TockWorld 2022 will take place at Northwestern University in Chicago on July
-19th & 20th. Day 1 welcomes everyone to hear talks and participate in
+TockWorld 5 will take place at Northwestern University in Chicago on July
+19th & 20th, 2022. Day 1 welcomes everyone to hear talks and participate in
 discussions. Day 2 also welcomes everyone, but will be organized around smaller
 group discussions focused on governance.
 
 In addition to normal presentations on the development in and around Tock, this
-TockWorld will have focused discussions on the future of the Tock roject and
+TockWorld will have focused discussions on the future of the Tock project and
 strategies for fostering a sustainable community around the project.
 
 * TOC
@@ -73,7 +73,7 @@ depending on what food you want.
 
 _Speakers: Amit & Hudson_
 
-_[Slides](/assets/tockworld22/state-of-tock.pdf)_
+_[Slides](/assets/tockworld5/state-of-tock.pdf)_
 
 - The Big Picture
 - Since 2.0
@@ -101,7 +101,7 @@ _Speaker: Alyssa Haroldsen_
 
 _Speaker: Brad Campbell_
 
-_[Slides](/assets/tockworld22/2022-07-19_tockworld5_repurposable.pptx)_
+_[Slides](/assets/tockworld5/2022-07-19_tockworld5_repurposable.pptx)_
 
 ## Discussions: Vision & Development Focus Areas
 
@@ -113,7 +113,7 @@ _Discussion Groups_
 
 - Code Size
 - Pluggable/blocking syscalls
-- [Connectivity](/assets/tockworld22/connectivity.pptx)
+- [Connectivity](/assets/tockworld5/connectivity.pptx)
 - Testing
     - There are four broad categories of testing:
     - Real HW testing
@@ -146,4 +146,4 @@ _Discussion Groups_
 - Documentation and other materials? Events? Hardware platforms?
   Staffing? Governance? Online communication tools?
 
-_[Notes](/assets/tockworld22/community.pptx)_
+_[Notes](/assets/tockworld5/community.pptx)_
