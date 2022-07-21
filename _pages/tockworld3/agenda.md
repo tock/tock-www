@@ -40,26 +40,24 @@ TockWorld 3 has three major goals (in order of importance):
 
 ## Agenda
 
-9:30-10: arrive, coffee + pastries, etc.
-10-10:15 -  Welcome and day’s agenda (Phil)
-10:15-10:45 - introductions
-10:45-11:15 - Tock milestones/agenda (Amit)
-11:15-11:30 - Tock at Google (Dom)
-11:30-11:45 - Tock at Michigan/Berkeley, signpost, etc. (Branden)
-11:45-Noon - Tock security model (Amit)
+|  Time         |  Topic                                       | Speaker       |
+| ------------- |----------------------------------------------| ------------- |
+| 9:30 - 10:00  | arrive, coffee + pastries, etc.              |               |
+| 10:00 - 10:15 | -  Welcome and day’s agenda                  | Phil          |
+| 10:15 - 10:45 | - introductions                              |               |
+| 10:45 - 11:15 | - Tock milestones/agenda                     | Amit          |
+| 11:15 - 11:30 | - Tock at Google                             | Dom           |
+| 11:30 - 11:45 | - Tock at Michigan/Berkeley, signpost, etc.  | Branden       |
+| 11:45 - Noon  | - Tock security model                        | Amit          |
+| Noon - 1:30   | - Lunch, discussion, hacking                 |               |
+| 1:30 - 2:00   | - Networking/power management                | Phil          |
+| 2:00 - 2:30   | - multicore/distributed, e.g. signpost services | Pat        |
+| 2:30 - 3:00   | - imix platform                              | Shane         |
+| 3:00 - 4:00   | - Break/discussions/hacking                  |               |
+| 4:00 - 4:30   | - Group discussion on academic/industrial collaboration |    |
+| 4:30 - 5:00   | - Group discussion on roadmap                |               |
 
-Noon - 1:30 - Lunch, discussion, hacking
 
-1:30 - 2:00 - Networking/power management (Phil)
-2:00 - 2:30 - multicore/distributed, e.g. signpost services (Pat)
-2:30 - 3:00 - imix platform (Shane)
-
-3:00 - 4:00 - Break/discussions/hacking
-
-4:00 - 4:30 - Group discussion on academic/industrial collaboration
-4:30 - 5:00 - Group discussion on roadmap
-
-5:00 end
 
 ## Attendees
 
