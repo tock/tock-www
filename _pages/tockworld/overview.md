@@ -13,8 +13,8 @@ challenges and use cases, and the roadmap for future Tock development.
 
 ## Past Meetings
 
-- TockWorld 1 - Berkeley, CA -
-- TockWorld 2
-- TockWorld 3
+- [TockWorld 1](/tockworld1/agenda) - Berkeley, CA - 2015
+- [TockWorld 2](/tockworld2/agenda) - Stanford, CA - 2015
+- [TockWorld 3](/tockworld3/agenda) - Stanford, CA - 2017
 - [TockWorld 4](/tockworld4/agenda) - Princeton, NJ - 2019
 - [TockWorld 5](/tockworld5/agenda) - Evanston, IL - 2022
