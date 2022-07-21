@@ -140,10 +140,10 @@ _[Notes](/assets/tockworld5/community.pptx)_
 - Hudson Ayers
 - Alyssa Haroldsen
 - Alexandru Radovici
-- Arun
+- Arun Thomas
 - Andrey Pronin
 - Leon Schuermann
 - Jett Rink
-- a
-- b
-- c
+- Alexandru Vochescu
+- Teona Severin
+- Douglas Reis
