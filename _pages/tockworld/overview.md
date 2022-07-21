@@ -16,5 +16,5 @@ challenges and use cases, and the roadmap for future Tock development.
 - TockWorld 1 - Berkeley, CA -
 - TockWorld 2
 - TockWorld 3
-- TockWorld 4 - Princeton, NJ - 2019
+- [TockWorld 4](/tockworld4/agenda) - Princeton, NJ - 2019
 - [TockWorld 5](/tockworld5/agenda) - Evanston, IL - 2022
