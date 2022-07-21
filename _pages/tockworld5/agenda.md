@@ -127,3 +127,23 @@ _Discussion Groups_
   Staffing? Governance? Online communication tools?
 
 _[Notes](/assets/tockworld5/community.pptx)_
+
+
+# Attendees
+
+- Amit Levy
+- Phil Levis
+- Pat Pannuto
+- Branden Ghena
+- Brad Campbell
+- Johnathon Van Why
+- Hudson Ayers
+- Alyssa Haroldsen
+- Alexandru Radovici
+- Arun
+- Andrey Pronin
+- Leon Schuermann
+- Jett Rink
+- a
+- b
+- c
