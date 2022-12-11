@@ -435,7 +435,7 @@ The chip sees that the alarm has fired and calls the `ast`'s `handle_interrupt`
 method (AST stands for "Asynchronous Timer" and is the name of the SAM4L's
 alarm controller).
 
-This method passes marks the interrupt handled and passes the event up to it's
+This method passes marks the interrupt handled and passes the event up to its
 client (the one we set up in the board initialization) through the
 `time::Client` trait's `fired` method.
 
@@ -447,7 +447,7 @@ The timer driver's `time::Client#fired` method looks through the process
 specific data structures to see which process's timers have expired---we know
 that there is as least one, but there may be more than one.
 
-The timer driver then schedules each process's `Callback` by calling it's
+The timer driver then schedules each process's `Callback` by calling its
 `schedule` method, which enqueues the `Callback` in the process's callback
 queue (part of the process data structure created in `load_processes`).
 
