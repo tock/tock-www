@@ -12,7 +12,7 @@ system](https://www.tockos.org/) for secure and reliable embedded systems.
 
 ## Details
 
-- Date: Wednesday, July 28, 2023
+- Date: Wednesday, July 26, 2023
 - Location: [Rice Hall](https://goo.gl/maps/uVcsA4eVU11HmwXA7), University of Virginia
 - Time: 10 am - 4 pm
 
