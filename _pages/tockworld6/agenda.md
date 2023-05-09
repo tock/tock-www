@@ -86,7 +86,7 @@ drive from NYC.
 There are several hotels near UVA and downtown. This is not a comprehensive
 list, just the hotels we typically book when hosting visitors.
 
-- [Oakhurst Inn](https://oakhurstinn.com/): Boutique, more historical hotel with
+- [Oakhurst Inn](https://oakhurstinn.com/): Boutique, more historic hotel with
   rooms in renovated houses. Cool if you are into that. Very close to
   engineering (3 minute walk).
 - [Draftsman](https://www.marriott.com/en-us/hotels/choak-the-draftsman-charlottesville-university-autograph-collection-hotel/overview/):
