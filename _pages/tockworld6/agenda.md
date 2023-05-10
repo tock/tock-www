@@ -20,7 +20,7 @@ ongoing management and governance of the Tock project.
 
 # Location
 
-TBD
+University of Virginia
 
 # Food 
 
@@ -30,17 +30,25 @@ TBD
 
 ## Wednesday, July 26, 2023: Training Workshop
 
+- Location: [Rice Hall](https://goo.gl/maps/HrEhb71s7iD7DuaUA), Room 130. 85 Engineer's Way, Charlottesville, VA 22903
+
 ## Thursday, July 27, 2023: TockWorld Discussion Day 1
 
-  |  Time |  Topic                                               | Speaker       |
-  | ----- |------------------------------------------------------| ------------- |
-  |  8:00 |  _Breakfast_                                         |               |
+- Location: Thornton Hall, Room E303
+
+
+|  Time |  Topic                                               | Speaker       |
+| ----- |------------------------------------------------------| ------------- |
+|  8:00 |  _Breakfast_                                         |               |
 
 ## Friday, July 28, 2023: TockWorld Discussion Day 2
 
-  |  Time |  Topic                                               | Speaker       |
-  | ----- |------------------------------------------------------| ------------- |
-  |  8:00 |  _Breakfast_                                         |               |
+- Location: Thornton Hall, Room E303
+
+
+|  Time |  Topic                                               | Speaker       |
+| ----- |------------------------------------------------------| ------------- |
+|  8:00 |  _Breakfast_                                         |               |
 
 
 
