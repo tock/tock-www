@@ -26,7 +26,14 @@ will have their own embedded development board to use and prototype with.
 The final session will have participants develop a security-focused application:
 either a HTOP security key fob or a physical security wireless sensor.
 
-Tock extensively uses [Rust](https://www.rust-lang.org/) to
+Tock is an open-source project [led by a
+consortium](https://github.com/tock/tock/tree/master/doc/wg/core) of developers
+from academia and industry. Tock extensively uses
+[Rust](https://www.rust-lang.org/) to increase system robustness and minimize
+the amount of untrusted code in the kernel. If you are interested in Rust this
+tutorial will introduce you to a mature Rust project focused on embedded
+programming. If you are _not_ interested in Rust, the tutorial will also include
+application-level development in C.
 
 ## Details
 
