@@ -19,6 +19,10 @@ silicon](https://github.com/google/tock-on-titan), wireless sensor nodes,
 
 ### Tutorial Overview
 
+<img src="/assets/img/tock_tutorial_sensys17_01.jpg" width="23%">
+<img src="/assets/img/tock_tutorial_sensys17_02.jpg" width="23%">
+<img src="/assets/img/tock_tutorial_sosp17.jpg" width="23%">
+
 The tutorial will provide hands-on experience with three aspects of Tock: the
 kernel, mutually distrustful applications, and secure systems. Each participant
 will have their own embedded development board to use and prototype with.
@@ -47,6 +51,8 @@ Registration will open soon!
 
 ## Schedule
 
+_Note, schedule is subject to change._
+
 |  Time |  Topic                                               |
 | ----- |------------------------------------------------------|
 |  8:30 |  Arrival and Check-in                                |
@@ -61,6 +67,7 @@ Registration will open soon!
 
 ## Hardware
 
+<img src="/assets/img/nRF52840-DK.webp" width="35%" style="float:right;">
 The tutorial is a hands-on experience where we will develop on real hardware.
 Tock supports numerous hardware platforms, but for the tutorial we will use
 platforms based on the Nordic nRF52840 microcontroller. Specifically, we will
