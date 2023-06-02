@@ -47,7 +47,7 @@ application-level development in C.
 
 ## Registration
 
-Registration will open soon!
+Registration is available [here](https://www.eventbrite.com/e/tock-tutorial-2023-tickets-641499280617)!
 
 ## Schedule
 
