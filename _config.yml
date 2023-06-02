@@ -96,6 +96,7 @@ authors:
 # Build settings
 include:
   - _pages                  # all your pages can be put inside pages (except articles)
+  - .well-known             # include .well-known static content (e.g., for Matrix homeserver discovery)
 exclude:
   - CNAME
   - README.md
