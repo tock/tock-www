@@ -100,16 +100,12 @@ The Tock operating system exposes a system call interface between kernelspace
 and userspace, and in this session we will explore developing applications that
 run on top of Tock. Consistent with other operating systems, Tock considers
 applications interdependently of the kernel, and as such applications can be
-written in any programming language. We will explore both applications written
-in C as well as in Rust. Importantly, the Tock kernel guarantees (as part of the
-thread model) that applications cannot maliciously affect other applications
-or the kernel. To demonstrate this, we will write intentionally malicious apps
-and demonstrate continued system robustness.
+written in any programming language. Importantly, the Tock kernel guarantees (as
+part of the thread model) that applications cannot maliciously affect other
+applications or the kernel.
 
 ### Session 3: System Demo
 
-Building on the first two sessions, in the third session we will build
-realistic, security-focused devices using Tock. One option will be to develop a
+Building on the first two sessions, in the third session we will build a
+realistic, security-focused device using Tock. Each participant will develop a
 security USB key which can be used for secure logins with one time passwords.
-The other option will be to build a sensor node capable of reliably monitoring
-indoor physical security.
