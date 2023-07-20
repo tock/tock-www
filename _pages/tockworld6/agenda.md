@@ -57,12 +57,13 @@ ongoing management and governance of the Tock project.
   <li>Coming Soon: The Tock Foundataion</li>
   </ul>
   </td><td>Amit Levy</td></tr>
-<tr><td rowspan="5">10:30</td>
-  <td colspan="2"><strong>The Current and Future State of Networking</strong></td>
+<tr><td rowspan="6">10:30</td>
+  <td colspan="2" style="text-align: center;"><strong>The Current and Future State of Networking</strong></td>
   </tr>
   <tr class="confirmed"><td>Thread &amp; 802.15.4</td><td>Tyler Potyondy</td></tr>
-  <tr class="unconfirmed"><td>Ethernet</td><td>Leon Schuermann and (?? Alex student picking this up)</td></tr>
-  <tr class="coreproblem"><td>Other PHYs: LoRa, BLE</td><td>Branden? Pat?</td></tr>
+  <tr class="coreproblem"><td>Other Wireless PHYs: LoRa, BLE</td><td>Branden? Pat?</td></tr>
+  <tr class="unconfirmed"><td>Ethernet</td><td>Leon Schuermann (? and Ionut [Johnny])</td></tr>
+  <tr class="confirmed"><td>Other Wired PHYs: CAN, etc</td><td>Alexandru (or students)</td></tr>
   <tr class="coreproblem"><td colspan="2">Open discussion re: networking</td></tr>
 <tr class="break"><td>12:00</td><td colspan="2"><i>Lunch</i></td></tr>
 <tr class="coreproblem"><td>13:00</td><td>
@@ -97,7 +98,7 @@ ongoing management and governance of the Tock project.
 <tr class="break"><td>8:00</td><td colspan="2"><i>Breakfast</i></td></tr>
 <tr class="unconfirmed"><td>9:00</td><td>Tock+Western Digital</td><td>Alistair Francis <small><i>(remote; 23:00 local)</i></small></td></tr>
 <tr class="unconfirmed"><td>9:30</td><td>Tock+Google</td><td>Johnathan Van Why or Alyssa Haroldsen</td></tr>
-<tr class="unconfirmed"><td>10:00</td><td>Tock+Oxide</td><td>Alexadru Radovici</td></tr>
+<tr class="confirmed"><td>10:00</td><td>Tock+OxidOS</td><td>Alexadru Radovici</td></tr>
 <tr class="confirmed"><td>10:30</td><td>Tock+OpenTitan</td><td>Dominic Rizzo <small><i>(remote; 7:30 local)</i></small></td></tr>
 <tr class="confirmed"><td>11:00</td><td>OpenTitan Update</td><td>Leon Schuermann</td></tr>
 <tr class="confirmed"><td>11:30</td><td>Open discussion re: downstream users</td><td>Tock Core Team</td></tr>
