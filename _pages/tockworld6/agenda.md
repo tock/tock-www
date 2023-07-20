@@ -49,7 +49,7 @@ ongoing management and governance of the Tock project.
 <table style="width: 100%;">
 <tr><th style="width: 15%;">Time</th><th style="width: 60%;">Topic</th><th style="width: 25%;">Speaker(s)</th></tr>
 <tr class="break"><td>8:30</td><td colspan="2"><i>Breakfast</i></td></tr>
-<tr class="coreproblem"><td>9:30</td><td>
+<tr class="coreproblem"><td>9:15</td><td>
   The State of Tock
   <ul>
   <li>The Big Picture</li>
@@ -57,6 +57,16 @@ ongoing management and governance of the Tock project.
   <li>Coming Soon: The Tock Foundataion</li>
   </ul>
   </td><td>Amit Levy</td></tr>
+<tr class="confirmed"><td>10:00</td><td>
+  Kernel soundness, size, and ergonomics
+  <ul>
+  <li><tt>ufmt</tt> in the kernel</li>
+  <li>Adding blocking command syscall</li>
+  <li>Implementing zerocopy APIs</li>
+  <li>Results of a small async runtime experiment</li>
+  <li>Improving MMIO soundness</li>
+  </ul>
+  </td><td>Alyssa Haroldsen</td></tr>
 <tr><td rowspan="6">10:30</td>
   <td colspan="2" style="text-align: center;"><strong>The Current and Future State of Networking</strong></td>
   </tr>
@@ -97,7 +107,7 @@ ongoing management and governance of the Tock project.
 <tr><th style="width: 15%;">Time</th><th style="width: 60%;">Topic</th><th style="width: 25%;">Speaker(s)</th></tr>
 <tr class="break"><td>8:00</td><td colspan="2"><i>Breakfast</i></td></tr>
 <tr class="unconfirmed"><td>9:00</td><td>Tock+Western Digital</td><td>Alistair Francis <small><i>(remote; 23:00 local)</i></small></td></tr>
-<tr class="unconfirmed"><td>9:30</td><td>Tock+Google</td><td>? Alyssa Haroldsen ?</td></tr>
+<tr class="confirmed"><td>9:30</td><td>Tock+Google</td><td>Alyssa Haroldsen</td></tr>
 <tr class="confirmed"><td>10:00</td><td>Tock+OxidOS</td><td>Alexadru Radovici</td></tr>
 <tr class="confirmed"><td>10:30</td><td>Tock+OpenTitan</td><td>Dominic Rizzo <small><i>(remote; 7:30 local)</i></small></td></tr>
 <tr class="confirmed"><td>11:00</td><td>OpenTitan Update</td><td>Leon Schuermann</td></tr>
