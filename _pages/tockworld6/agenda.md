@@ -85,7 +85,7 @@ ongoing management and governance of the Tock project.
   <i>Ad-Hoc Breakout Sessions</i>
   </td><td>Brad?</td></tr>
 <tr class="break"><td>15:00</td><td colspan="2"><i>Break</i></td></tr>
-<tr class="coreproblem"><td>15:30</td><td>Regroup &amp; Synthesis of Breakouts</td><td>Phil Levis</td></tr>
+<tr class="coreproblem"><td>15:30</td><td>Regroup &amp; Synthesis of Breakouts</td><td>Tock Core Team</td></tr>
 <tr class="break"><td>16:00</td><td colspan="2"><i>Day 1 End</i></td></tr>
 </table>
 
@@ -97,7 +97,7 @@ ongoing management and governance of the Tock project.
 <tr><th style="width: 15%;">Time</th><th style="width: 60%;">Topic</th><th style="width: 25%;">Speaker(s)</th></tr>
 <tr class="break"><td>8:00</td><td colspan="2"><i>Breakfast</i></td></tr>
 <tr class="unconfirmed"><td>9:00</td><td>Tock+Western Digital</td><td>Alistair Francis <small><i>(remote; 23:00 local)</i></small></td></tr>
-<tr class="unconfirmed"><td>9:30</td><td>Tock+Google</td><td>Johnathan Van Why or Alyssa Haroldsen</td></tr>
+<tr class="unconfirmed"><td>9:30</td><td>Tock+Google</td><td>? Alyssa Haroldsen ?</td></tr>
 <tr class="confirmed"><td>10:00</td><td>Tock+OxidOS</td><td>Alexadru Radovici</td></tr>
 <tr class="confirmed"><td>10:30</td><td>Tock+OpenTitan</td><td>Dominic Rizzo <small><i>(remote; 7:30 local)</i></small></td></tr>
 <tr class="confirmed"><td>11:00</td><td>OpenTitan Update</td><td>Leon Schuermann</td></tr>
