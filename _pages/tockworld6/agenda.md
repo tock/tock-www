@@ -72,7 +72,7 @@ ongoing management and governance of the Tock project.
   </tr>
   <tr class="confirmed"><td>Thread &amp; 802.15.4</td><td>Tyler Potyondy</td></tr>
   <tr class="coreproblem"><td>Other Wireless PHYs: LoRa, BLE</td><td>Branden? Pat?</td></tr>
-  <tr class="unconfirmed"><td>Ethernet</td><td>Leon Schuermann (? and Ionut [Johnny])</td></tr>
+  <tr class="confirmed"><td>Ethernet</td><td>Leon Schuermann and Cristian Cirstea</td></tr>
   <tr class="confirmed"><td>Other Wired PHYs: CAN, etc</td><td>Alexandru (or students)</td></tr>
   <tr class="coreproblem"><td colspan="2">Open discussion re: networking</td></tr>
 <tr class="break"><td>12:00</td><td colspan="2"><i>Lunch</i></td></tr>
