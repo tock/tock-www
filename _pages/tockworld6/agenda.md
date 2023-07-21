@@ -26,13 +26,14 @@ ongoing management and governance of the Tock project.
   background-color: #fae88e;
 }
 .confirmed {
-  background-color: #7dbd8a;
+//  background-color: #7dbd8a;
 }
 .unconfirmed {
-  background-color: #ed4d45;
+//  background-color: #ed4d45;
+  background-color: #ffdcd9;
 }
 .coreproblem {
-  background-color: #ffdcd9;
+//  background-color: #ffdcd9;
 }
 </style>
 
@@ -57,7 +58,7 @@ ongoing management and governance of the Tock project.
   <li>Coming Soon: The Tock Foundataion</li>
   </ul>
   </td><td>Amit Levy</td></tr>
-<tr class="confirmed"><td>10:00</td><td>
+<tr class="confirmed"><td>9:45</td><td>
   Kernel soundness, size, and ergonomics
   <ul>
   <li><tt>ufmt</tt> in the kernel</li>
@@ -71,7 +72,7 @@ ongoing management and governance of the Tock project.
   <td colspan="2" style="text-align: center;"><strong>The Current and Future State of Networking</strong></td>
   </tr>
   <tr class="confirmed"><td>Thread &amp; 802.15.4</td><td>Tyler Potyondy</td></tr>
-  <tr class="coreproblem"><td>Other Wireless PHYs: LoRa, BLE</td><td>Branden? Pat?</td></tr>
+  <tr class="coreproblem"><td>Other Wireless PHYs: LoRa, BLE</td><td>Branden/Pat</td></tr>
   <tr class="confirmed"><td>Ethernet</td><td>Leon Schuermann and Cristian Cirstea</td></tr>
   <tr class="confirmed"><td>Other Wired PHYs: CAN, etc</td><td>Alexandru (or students)</td></tr>
   <tr class="coreproblem"><td colspan="2">Open discussion re: networking</td></tr>
@@ -84,17 +85,32 @@ ongoing management and governance of the Tock project.
   <li>Connectivity</li>
   <li>Testing</li>
   </ul>
-  </td><td>Tock Core Team</td></tr>
-<tr class="coreproblem"><td>13:30</td><td>
-  Discussions: Vision & Development Focus Areas
-  <ul>
-  <li>Where do we want the project to go in the next 3-5 years?</li>
-  <li>Where is effort being spent?</li>
-  <li>What are the current pain points?</li>
-  </ul>
-  <i>Ad-Hoc Breakout Sessions</i>
-  </td><td>Brad?</td></tr>
-<tr class="break"><td>15:00</td><td colspan="2"><i>Break</i></td></tr>
+  </td><td>Hudson Ayers</td></tr>
+  <tr class="coreproblem">
+    <td>13:30</td>
+    <td>
+      Discussions: Vision & Development Focus Areas
+      <ul>
+        <li>Where do we want the project to go in the next 3-5 years?</li>
+        <li>Where is effort being spent?</li>
+        <li>What are the current pain points?</li>
+        <ul style="font-size: 80%;">
+          <li>
+            <strong>Open Forum: Challenges &amp; Future Focus Pitches</strong><br />
+            This list firmly non-exhaustive, just some seeds to kick off discussion—
+            <ul>
+              <li>Alexandru: Interrupt-aware scheduler?</li>
+              <li>Pat: Virtualization ergnomics?</li>
+              <li>...</li>
+            </ul>
+          </li>
+        </ul>
+      </ul>
+      <i>Ad-Hoc Breakout Sessions</i>
+    </td>
+    <td>Brad Campbell</td>
+  </tr>
+<tr class="break"><td>15:15</td><td colspan="2"><i>Break</i></td></tr>
 <tr class="coreproblem"><td>15:30</td><td>Regroup &amp; Synthesis of Breakouts</td><td>Tock Core Team</td></tr>
 <tr class="break"><td>16:00</td><td colspan="2"><i>Day 1 End</i></td></tr>
 </table>
@@ -105,8 +121,8 @@ ongoing management and governance of the Tock project.
 
 <table style="width: 100%;">
 <tr><th style="width: 15%;">Time</th><th style="width: 60%;">Topic</th><th style="width: 25%;">Speaker(s)</th></tr>
-<tr class="break"><td>8:00</td><td colspan="2"><i>Breakfast</i></td></tr>
-<tr class="unconfirmed"><td>9:00</td><td>Tock+Western Digital</td><td>Alistair Francis <small><i>(remote; 23:00 local)</i></small></td></tr>
+<tr class="break"><td>8:15</td><td colspan="2"><i>Breakfast</i></td></tr>
+<tr class="unconfirmed"><td>9:00</td><td>Tock+Western Digital <small><i>(tentative)</i></small></td><td>Alistair Francis</td></tr>
 <tr class="confirmed"><td>9:30</td><td>Tock+Google</td><td>Alyssa Haroldsen</td></tr>
 <tr class="confirmed"><td>10:00</td><td>Tock+OxidOS</td><td>Alexadru Radovici</td></tr>
 <tr class="confirmed"><td>10:30</td><td>Tock+OpenTitan</td><td>Dominic Rizzo <small><i>(remote; 7:30 local)</i></small></td></tr>
@@ -118,7 +134,7 @@ ongoing management and governance of the Tock project.
   <ul>
   <li><a href="/assets/tockworld5/community.pptx">Notes from TockWorld5</a></li>
   </ul>
-  </td><td>Amit? Brad?</td></tr>
+  </td><td>Tock POSE Team</td></tr>
 <tr class="coreproblem"><td>14:45</td><td>Summary &amp; Final Thoughts</td><td>Amit Levy</td></tr>
 <tr class="break"><td>15:00</td><td colspan="2"><i>Go catch flights, see you next year!</i></td></tr>
 </table>
