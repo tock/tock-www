@@ -135,8 +135,8 @@ ongoing management and governance of the Tock project.
   <li><a href="/assets/tockworld5/community.pptx">Notes from TockWorld5</a></li>
   </ul>
   </td><td>Tock POSE Team</td></tr>
-<tr class="coreproblem"><td>14:45</td><td>Summary &amp; Final Thoughts</td><td>Amit Levy</td></tr>
-<tr class="break"><td>15:00</td><td colspan="2"><i>Go catch flights, see you next year!</i></td></tr>
+<tr class="coreproblem"><td>16:45</td><td>Summary &amp; Final Thoughts</td><td>Amit Levy</td></tr>
+<tr class="break"><td>17:00</td><td colspan="2"><i>Go catch flights, see you next year!</i></td></tr>
 </table>
 
 
