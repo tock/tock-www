@@ -82,30 +82,32 @@ the tutorial you can borrow.
 
 ## Tutorial Sessions
 
-The tutorial will be organized around three specific sessions with dedicated
-topics.
+The tutorial will be organized around three steps in one overarching theme: the
+creation of a USB security key.
 
-### Session 1: Kernel Capsules
+### Session 1: HOTP Application
 
-In this session we will modify and customize the Tock kernel by developing our
-own capsule. This will introduce the Tock threat model and how Tock's
-architecture helps minimize potentially buggy code in the Tock kernel. As Tock
-is written in Rust, this session will introduce the subset of Rust (i.e. no
-dynamic memory allocation) used in the kernel, as well as some Rust programming
-concepts.
-
-### Session 2: Userland Applications
-
-The Tock operating system exposes a system call interface between kernelspace
-and userspace, and in this session we will explore developing applications that
-run on top of Tock. Consistent with other operating systems, Tock considers
+We will start by using and improving a userspace application that implements an
+HOTP security token. Consistent with other operating systems, Tock considers
 applications interdependently of the kernel, and as such applications can be
-written in any programming language. Importantly, the Tock kernel guarantees (as
-part of the thread model) that applications cannot maliciously affect other
-applications or the kernel.
+written in any programming language (although we'll use C for this tutorial).
+Importantly, the Tock kernel guarantees (as part of the thread model) that
+applications cannot maliciously affect other applications or the kernel. 
 
-### Session 3: System Demo
 
-Building on the first two sessions, in the third session we will build a
-realistic, security-focused device using Tock. Each participant will develop a
-security USB key which can be used for secure logins with one time passwords.
+### Session 2: Encryption Oracle Capsule
+
+In this session we will improve our security key by developing our own kernel
+capsule which is capable of encrypting and decrypting HOTP secrets. This will
+introduce the Tock threat model and how Tock's architecture helps minimize
+potentially buggy code in the Tock kernel. As Tock is written in Rust, this
+session will introduce the subset of Rust (i.e. no dynamic memory allocation)
+used in the kernel, as well as some Rust programming concepts.
+
+### Session 3: Access Control
+
+Building on the first two sessions, in the third session we will implement
+access control in Tock to limit which applications can run on our USB security
+key and ensure that only allowed apps have access to the encryption oracle
+capsule we developed.
+
