@@ -43,7 +43,10 @@ application-level development in C.
 
 - Date: Wednesday, July 26, 2023
 - Location: [Rice Hall](https://goo.gl/maps/uVcsA4eVU11HmwXA7), University of Virginia
+- Room: Rice 130 (Lecture hall on main floor)
 - Time: 10 am - 4 pm
+
+[Metered parking](https://goo.gl/maps/eU1oYfHDfA9noXVg7)
 
 ## Registration
 
@@ -55,7 +58,7 @@ _Note, schedule is subject to change._
 
 |  Time |  Topic                                               |
 | ----- |------------------------------------------------------|
-|  8:30 |  Arrival and Check-in                                |
+|  9:30 |  Arrival and Check-in                                |
 | 10:00 |  Welcome and Overview of Tutorial                    |
 | 10:15 |  Introduction to Tock                                |
 | 10:45 |  Tutorial Lesson 1                                   |
