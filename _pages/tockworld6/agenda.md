@@ -102,11 +102,13 @@ corner of Thornton Hall).
         <ul style="font-size: 80%;">
           <li>
             <strong>Open Forum: Challenges &amp; Future Focus Pitches</strong><br />
-            This list firmly non-exhaustive, just some seeds to kick off discussion—
             <ul>
-              <li>Alexandru: Interrupt-aware scheduler?</li>
-              <li>Pat: Virtualization ergnomics?</li>
-              <li>...</li>
+              <li>Networking</li>
+              <li>Blocking Commands</li>
+              <li>Goals and Future</li>
+              <li>libtock-rs</li>
+              <li>[Technical Debt and Documentation](/tockworld6/techdebt)</li>
+              <li>Scheduler and Interrupt Priority</li>
             </ul>
           </li>
         </ul>
