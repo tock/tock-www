@@ -127,7 +127,6 @@ corner of Thornton Hall).
 <table style="width: 100%;">
 <tr><th style="width: 15%;">Time</th><th style="width: 60%;">Topic</th><th style="width: 25%;">Speaker(s)</th></tr>
 <tr class="break"><td>8:15</td><td colspan="2"><i>Breakfast</i></td></tr>
-<tr class="unconfirmed"><td>9:00</td><td>Tock+Western Digital <small><i>(tentative)</i></small></td><td>Alistair Francis</td></tr>
 <tr class="confirmed"><td>9:30</td><td>Tock+Google</td><td>Alyssa Haroldsen</td></tr>
 <tr class="confirmed"><td>10:00</td><td>Tock+OxidOS</td><td>Alexadru Radovici</td></tr>
 <tr class="confirmed"><td>10:30</td><td>Tock+OpenTitan</td><td>Dominic Rizzo <small><i>(remote; 7:30 local)</i></small></td></tr>
