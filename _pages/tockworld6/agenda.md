@@ -17,7 +17,11 @@ ongoing management and governance of the Tock project.
 * TOC
 {:toc}
 
+# Location
 
+Thornton Hall E303 (upstairs in the SE corner of Thornton Hall).
+
+<img src="/assets/img/thornton_e_map.png" width="50%">
 
 # Schedule
 
