@@ -107,7 +107,7 @@ corner of Thornton Hall).
               <li>Blocking Commands</li>
               <li>Goals and Future</li>
               <li>libtock-rs</li>
-              <li>[Technical Debt and Documentation](/tockworld6/techdebt)</li>
+              <li><a href="/tockworld6/techdebt">Technical Debt and Documentation</a></li>
               <li>Scheduler and Interrupt Priority</li>
             </ul>
           </li>
