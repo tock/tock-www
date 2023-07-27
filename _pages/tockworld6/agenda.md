@@ -174,17 +174,18 @@ corner of Thornton Hall).
 > There will be vegetarian options at all meals.
 
 
-A light breakfast and coffee service will be provided each morning of the main workshop.
+A light breakfast and coffee service will be provided each morning of the main
+workshop.
 
 Lunch will be provided each afternoon. Dinners will generally be on your own.
 
-We may try to orgagnize a group dinner one evening if folks are interested.
+We may try to organize a group dinner one evening if folks are interested.
 
 ## Travel
 
 There are few options for getting to Charlottesville, VA.
 
-### Airplane
+**Airplane**
 
 Airport options:
 
@@ -198,7 +199,7 @@ Airport options:
   Charlottesville.
 
 
-### Train
+**Train**
 
 Charlottesville has an [Amtrak station](https://www.amtrak.com/stations/cvs)
 right downtown served by two Amtrak lines.
@@ -211,7 +212,7 @@ to the Amtrak station. You can also fly into IAD, but that is closer to
 [a 1h15m Metro connection][iad-was]. Similarly, you can take commuter rail
 from BWI, which is also [about a 1h15m trip][bwi-was] to WAS Union Station.
 
-### Car
+**Car**
 
 Charlottesville is a 2.5 hour drive from DC, 1 hour drive from Richmond, 3.5
 hour drive from Raleigh-Durham, 4.25 hour drive from Philadelphia, or 6 hour
@@ -219,7 +220,7 @@ drive from NYC.
 
 ## Hotel
 
-### Close/Downtown
+**Close/Downtown**
 
 There are several hotels near UVA and downtown. This is not a comprehensive
 list, just the hotels we typically book when hosting visitors:
@@ -237,7 +238,7 @@ list, just the hotels we typically book when hosting visitors:
 - [Forum Hotel](https://forumhotelcharlottesville.com): Brand new hotel attached
   to the UVA business school. You can check out what all the hype is about.
 
-### Close But Not Walkable
+**Close But Not Walkable**
 
 There are many options that are close driving distance, here are just a couple:
 
@@ -252,7 +253,7 @@ There are many options that are close driving distance, here are just a couple:
   (South)](https://www.ihg.com/holidayinn/hotels/us/en/charlottesville/choso/hoteldetail):
   Sorta walkable to 5th Street Station.
 
-### Have Money to Spend
+**Have Money to Spend**
 
 Charlottesville also caters to those who need to spend money before it expires:
 
