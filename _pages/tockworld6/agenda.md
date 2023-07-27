@@ -56,7 +56,7 @@ corner of Thornton Hall).
 <tr><th style="width: 15%;">Time</th><th style="width: 60%;">Topic</th><th style="width: 25%;">Speaker(s)</th></tr>
 <tr class="break"><td>8:30</td><td colspan="2"><i>Breakfast</i></td></tr>
 <tr class="coreproblem"><td>9:15</td><td>
-  The State of Tock
+  The State of Tock [<a href="/assets/tockworld6/state-of-tock.pdf">slides</a>]
   <ul>
   <li>The Big Picture</li>
   <li>Since TockWorld 5</li>
