@@ -60,7 +60,7 @@ _Note, schedule is subject to change._
 | ----- |------------------------------------------------------|
 |  9:30 |  Arrival and Check-in                                |
 | 10:00 |  Welcome and Overview of Tutorial                    |
-| 10:15 |  [Introduction to Tock](/assets/tockworld6/tock_overview.pdf) - [(pptx)](/assets/tockworld6/tock_overview.pptx) |
+| 10:15 |  [Introduction to Tock](/assets/tockworld6/tock_tutorial_2023_overview.pdf) - [(pptx)](/assets/tockworld6/tock_tutorial_2023_overview.pptx) |
 | 10:45 |  Tutorial Lesson 1                                   |
 | 12:00 |  Lunch Break                                         |
 |  1:00 |  Tutorial Lesson 2                                   |
