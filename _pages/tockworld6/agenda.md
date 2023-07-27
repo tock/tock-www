@@ -76,7 +76,7 @@ corner of Thornton Hall).
 <tr><td rowspan="6">10:30</td>
   <td colspan="2" style="text-align: center;"><strong>The Current and Future State of Networking</strong></td>
   </tr>
-  <tr class="confirmed"><td>Thread &amp; 802.15.4</td><td>Tyler Potyondy</td></tr>
+  <tr class="confirmed"><td>Thread &amp; 802.15.4 [<a href="/assets/tockworld6/Tock-World-2023-Thread-Networking.pdf">slides</a>]</td><td>Tyler Potyondy</td></tr>
   <tr class="coreproblem"><td>Other Wireless PHYs: LoRa, BLE [<a href="/assets/tockworld6/lora_and_ble.pdf">slides</a>]</td><td>Branden/Pat</td></tr>
   <tr class="confirmed"><td>Ethernet</td><td>Leon Schuermann and Cristian Cirstea</td></tr>
   <tr class="confirmed"><td>Other Wired PHYs: CAN, etc</td><td>Alexandru (or students)</td></tr>
