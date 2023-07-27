@@ -88,6 +88,13 @@ the tutorial you can borrow.
 The tutorial will be organized around three steps in one overarching theme: the
 creation of a USB security key.
 
+### Overview
+
+For those new to Tock, we will give a brief primer on key aspects of the OS.
+
+[[slides](/assets/tockworld6/tock_tutorial_2023_overview.pptx) |
+[pdf](/assets/tockworld6/tock_tutorial_2023_overview.pdf)]
+
 ### Session 1: HOTP Application
 
 We will start by using and improving a userspace application that implements an
