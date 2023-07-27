@@ -144,6 +144,26 @@ corner of Thornton Hall).
 </table>
 
 
+# Attendees
+
+- Amit Levy
+- Pat Pannuto
+- Branden Ghena
+- Brad Campbell
+- Hudson Ayers
+- Alyssa Haroldsen
+- Alexandru Radovici
+- Arun Thomas
+- Leon Schuermann
+- Alexandru Vochescu
+- Alphan Ulusoy
+- Tyler Potyondy
+- Viswajith Govinda Rajan
+- Ioan-Cristian Cirstea
+- Cristiana Andrei
+- Cosmin Radu
+
+
 
 # Logistics
 
