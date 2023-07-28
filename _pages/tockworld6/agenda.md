@@ -139,8 +139,8 @@ corner of Thornton Hall).
 <tr><td></td>
   <td colspan="2" style="text-align: center;"><strong>Downstream Users</strong></td>
   </tr>
-<tr class="confirmed"><td>9:15</td><td>Tock+Google</td><td>Alyssa Haroldsen</td></tr>
-<tr class="confirmed"><td>9:45</td><td>Tock+OxidOS</td><td>Alexadru Radovici</td></tr>
+<tr class="confirmed"><td>9:15</td><td>Tock+OxidOS</td><td>Alexadru Radovici</td></tr>
+<tr class="confirmed"><td>9:45</td><td>Tock+Google</td><td>Alyssa Haroldsen</td></tr>
 <tr class="break"><td>10:15</td><td colspan="2"><i>Call setup</i></td></tr>
 <tr class="confirmed"><td>10:30</td><td>Tock+OpenTitan</td><td>Dominic Rizzo <small><i>(remote; 7:30 local)</i></small></td></tr>
 <tr class="confirmed"><td>11:00</td><td>Tock+OpenTitan CryptoLib Integration</td><td>Leon Schuermann</td></tr>
