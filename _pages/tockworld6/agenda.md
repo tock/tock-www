@@ -143,7 +143,7 @@ corner of Thornton Hall).
 <tr class="confirmed"><td>9:45</td><td>Tock+OxidOS</td><td>Alexadru Radovici</td></tr>
 <tr class="break"><td>10:15</td><td colspan="2"><i>Call setup</i></td></tr>
 <tr class="confirmed"><td>10:30</td><td>Tock+OpenTitan</td><td>Dominic Rizzo <small><i>(remote; 7:30 local)</i></small></td></tr>
-<tr class="confirmed"><td>11:00</td><td>OpenTitan Update</td><td>Leon Schuermann</td></tr>
+<tr class="confirmed"><td>11:00</td><td>Tock+OpenTitan CryptoLib Integration</td><td>Leon Schuermann</td></tr>
 <tr class="confirmed"><td>11:30</td><td>Open discussion re: downstream users</td><td>Tock Core Team</td></tr>
 <tr class="break"><td>12:00</td><td colspan="2"><i>Lunch</i></td></tr>
 <tr class="break"><td>12:30</td><td colspan="2"><i>Walking tour of UVA</i></td></tr>
