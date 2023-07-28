@@ -137,12 +137,38 @@ corner of Thornton Hall).
 <tr class="confirmed"><td>11:30</td><td>Open discussion re: downstream users</td><td>Tock Core Team</td></tr>
 <tr class="break"><td>12:00</td><td colspan="2"><i>Lunch</i></td></tr>
 <tr class="break"><td>12:30</td><td colspan="2"><i>Walking tour of UVA</i></td></tr>
-<tr class="coreproblem"><td>13:00</td><td>
-  Community Development and The Tock Foundation
+<tr class="coreproblem"><td>13:30</td><td>
+  Tock Foundation: Vision
   <ul>
+  <li>Mission Statement</li>
+  <li>Structure</li>
   <li><a href="/assets/tockworld5/community.pptx">Notes from TockWorld5</a></li>
   </ul>
-  </td><td>Tock POSE Team</td></tr>
+  </td><td>Amit Levy</td></tr>
+<tr class="coreproblem"><td>14:45</td><td>
+  Tock Foundation: Hiring
+  <ul>
+  <li>Job description brainstorming</li>
+  </ul>
+  </td><td>Brad Campbell</td></tr>
+<tr class="break"><td>15:15</td><td colspan="2"><i>Break</i></td></tr>
+<tr class="coreproblem"><td>15:30</td><td>
+  Tock Foundation: Community Engagement
+  <ul>
+  <li>Ecosystem discovery</li>
+  <li>Strategic partners</li>
+  <li>Potential partners</li>
+  </ul>
+  </td><td>Amit Levy</td></tr>
+<tr class="break"><td>16:00</td><td colspan="2"><i>Break</i></td></tr>
+<tr class="coreproblem"><td>16:15</td><td>
+  Tock World 7: Planning
+  <ul>
+  <li>Location?</li>
+  <li>Agenda?</li>
+  <li>Growth?</li>
+  </ul>
+  </td><td>Pat Pannuto</td></tr>
 <tr class="coreproblem"><td>16:45</td><td>Summary &amp; Final Thoughts</td><td>Amit Levy</td></tr>
 <tr class="break"><td>17:00</td><td colspan="2"><i>Go catch flights, see you next year!</i></td></tr>
 </table>
