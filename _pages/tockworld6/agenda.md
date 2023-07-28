@@ -147,7 +147,7 @@ corner of Thornton Hall).
 <tr class="confirmed"><td>11:30</td><td>Open discussion re: downstream users</td><td>Tock Core Team</td></tr>
 <tr class="break"><td>12:00</td><td colspan="2"><i>Lunch</i></td></tr>
 <tr class="break"><td>12:30</td><td colspan="2"><i>Walking tour of UVA</i></td></tr>
-<tr class="coreproblem"><td>13:30</td><td>
+<tr class="coreproblem"><td>13:45</td><td>
   Tock Foundation: Vision
   <ul>
   <li>Mission Statement</li>
