@@ -99,6 +99,9 @@ corner of Thornton Hall).
       <li>Where do we want the project to go in the next 3-5 years?</li>
       <li>Where is effort being spent?</li>
       <li>What are the current pain points?</li>
+    </ul>
+    <ul>
+      <li>Breakout Groups:</li>
       <ul style="font-size: 80%;">
         <li>Networking</li>
         <li>Blocking Commands</li>
@@ -112,10 +115,13 @@ corner of Thornton Hall).
   <td>15:30</td>
   <td>
     Discussions: Vision & Development Focus Areas (2)
-    <ul style="font-size: 80%;">
-      <li>libtock-rs</li>
-      <li><a href="/tockworld6/techdebt">Technical Debt and Documentation</a></li>
-      <li>Scheduler and Interrupt Priority</li>
+    <ul>
+      <li>Breakout Groups:</li>
+      <ul style="font-size: 80%;">
+        <li>libtock-rs</li>
+        <li><a href="/tockworld6/techdebt">Technical Debt and Documentation</a></li>
+        <li>Scheduler and Interrupt Priority</li>
+      </ul>
     </ul>
   </td>
   <td>Brad Campbell</td></tr>
