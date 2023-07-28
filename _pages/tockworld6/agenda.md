@@ -81,8 +81,8 @@ corner of Thornton Hall).
   <tr class="confirmed"><td>Ethernet</td><td>Leon Schuermann and Cristian Cirstea</td></tr>
   <tr class="confirmed"><td>Other Wired PHYs: CAN, etc</td><td>Alexandru (or students)</td></tr>
   <tr class="coreproblem"><td colspan="2">Open discussion re: networking</td></tr>
-<tr class="break"><td>12:00</td><td colspan="2"><i>Lunch</i></td></tr>
-<tr class="coreproblem"><td>13:00</td><td>
+<tr class="break"><td>12:45</td><td colspan="2"><i>Lunch</i></td></tr>
+<tr class="coreproblem"><td>13:45</td><td>
   A Check-In on Development Focus Areas
   <ul>
   <li>Code Size</li>
@@ -91,35 +91,36 @@ corner of Thornton Hall).
   <li>Testing</li>
   </ul>
   </td><td>Hudson Ayers</td></tr>
-  <tr class="coreproblem">
-    <td>13:30</td>
-    <td>
-      Discussions: Vision & Development Focus Areas
-      <ul>
-        <li>Where do we want the project to go in the next 3-5 years?</li>
-        <li>Where is effort being spent?</li>
-        <li>What are the current pain points?</li>
-        <ul style="font-size: 80%;">
-          <li>
-            <strong>Open Forum: Challenges &amp; Future Focus Pitches</strong><br />
-            <ul>
-              <li>Networking</li>
-              <li>Blocking Commands</li>
-              <li>Goals and Future</li>
-              <li>libtock-rs</li>
-              <li><a href="/tockworld6/techdebt">Technical Debt and Documentation</a></li>
-              <li>Scheduler and Interrupt Priority</li>
-            </ul>
-          </li>
-        </ul>
+<tr class="coreproblem">
+  <td>14:30</td>
+  <td>
+    Discussions: Vision & Development Focus Areas (1)
+    <ul>
+      <li>Where do we want the project to go in the next 3-5 years?</li>
+      <li>Where is effort being spent?</li>
+      <li>What are the current pain points?</li>
+      <ul style="font-size: 80%;">
+        <li>Networking</li>
+        <li>Blocking Commands</li>
+        <li>Goals and Future</li>
       </ul>
-      <i>Ad-Hoc Breakout Sessions</i>
-    </td>
-    <td>Brad Campbell</td>
-  </tr>
-<tr class="break"><td>15:15</td><td colspan="2"><i>Break</i></td></tr>
-<tr class="coreproblem"><td>15:30</td><td>Regroup &amp; Synthesis of Breakouts</td><td>Tock Core Team</td></tr>
-<tr class="break"><td>16:00</td><td colspan="2"><i>Day 1 End</i></td></tr>
+    </ul>
+  </td>
+  <td>Brad Campbell</td></tr>
+<tr class="break"><td>15:15</td><td colspan="2"><i>Break and regroup</i></td></tr>
+<tr class="coreproblem">
+  <td>15:30</td>
+  <td>
+    Discussions: Vision & Development Focus Areas (2)
+    <ul style="font-size: 80%;">
+      <li>libtock-rs</li>
+      <li><a href="/tockworld6/techdebt">Technical Debt and Documentation</a></li>
+      <li>Scheduler and Interrupt Priority</li>
+    </ul>
+  </td>
+  <td>Brad Campbell</td></tr>
+<tr class="coreproblem"><td>16:15</td><td>Regroup &amp; Synthesis of Breakouts</td><td>Tock Core Team</td></tr>
+<tr class="break"><td>18:00</td><td colspan="2"><i>Dinner</i></td></tr>
 </table>
 
 ## Friday, July 28, 2023: TockWorld Discussion Day 2
