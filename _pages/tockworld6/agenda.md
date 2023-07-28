@@ -129,6 +129,9 @@ corner of Thornton Hall).
 <table style="width: 100%;">
 <tr><th style="width: 15%;">Time</th><th style="width: 60%;">Topic</th><th style="width: 25%;">Speaker(s)</th></tr>
 <tr class="break"><td>8:30</td><td colspan="2"><i>Breakfast</i></td></tr>
+<tr><td></td>
+  <td colspan="2" style="text-align: center;"><strong>Downstream Users</strong></td>
+  </tr>
 <tr class="confirmed"><td>9:15</td><td>Tock+Google</td><td>Alyssa Haroldsen</td></tr>
 <tr class="confirmed"><td>9:45</td><td>Tock+OxidOS</td><td>Alexadru Radovici</td></tr>
 <tr class="break"><td>10:15</td><td colspan="2"><i>Call setup</i></td></tr>
