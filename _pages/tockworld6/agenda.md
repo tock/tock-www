@@ -118,7 +118,7 @@ corner of Thornton Hall).
     <ul>
       <li>Breakout Groups:</li>
       <ul style="font-size: 80%;">
-        <li>libtock-rs</li>
+        <li><a href="/tockworld6/libtock-rs-breakout">libtock-rs</a></li>
         <li><a href="/tockworld6/techdebt">Technical Debt and Documentation</a></li>
         <li>Scheduler and Interrupt Priority</li>
       </ul>
