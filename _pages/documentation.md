@@ -39,5 +39,23 @@ responsibilities of each crate, the system call interface and the user-level
 library.
   </div>
 </div>
+
+<div class="unit one-third">
+  <div class="project">
+#### [The Tock Book](https://book.tockos.org/)
+
+A more complete introduction to Tock's design and implementation, as well as
+tutorials for kernel develop and advanced userspace application development.
+  </div>
+</div>
+
+<div class="unit one-third">
+  <div class="project">
+#### [RustDocs](https://docs.tockos.org/)
+
+Detailed documentation for Tock kernel code.
+  </div>
+</div>
+
 </div><!-- grid -->
 </div>
