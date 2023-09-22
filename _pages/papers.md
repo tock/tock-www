@@ -7,6 +7,8 @@ permalink: /papers/
 
 # Academic Papers
 
+  * [EuroSec: Tiered Trust for useful embedded systems security](/assets/papers/tock-security-model-EuroSec2022.pdf). EuroSec 2022.
+
   * [Multiprogramming a 64 kB Computer Safely and
     Efficiently](/assets/papers/tock-sosp2017.pdf). SOSP 2017.
 
