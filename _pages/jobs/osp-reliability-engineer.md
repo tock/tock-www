@@ -36,7 +36,7 @@ Occasional responsibilities include:
 
 The position will work alongside engineers, faculty, and graduate students, collaborating with members of the Tock project.
 
-## Qualifiactions:
+## Qualifications:
 
 A Bachelor’s degree in Computer Science, Computer Engineering, Electrical
 Engineering, or equivalent disciplines.  Three or more years of combined
