@@ -5,6 +5,7 @@ _site
 .bundle
 npm-debug.log
 vendor/bundle
+vendor/cache
 
 # Local Netlify folder
 .netlify
