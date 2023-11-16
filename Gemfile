@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-gem "jekyll", ">= 3.8.4"
-gem "nokogiri", ">= 1.8.5"
+gem "jekyll", "~> 4.2.2"
 gem "html-proofer"
 gem 'html-pipeline-hashtag'
 gem "jekyll-paginate"
@@ -10,3 +9,5 @@ gem "jekyll-seo-tag"
 gem "jekyll-sitemap"
 gem "kramdown"
 gem "rouge"
+
+gem "webrick"
