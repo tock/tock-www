@@ -1,0 +1,142 @@
+<html>
+<head>
+<script type="text/javascript" src="./2.0.0-crypto-sha256.js"></script>
+<script type="text/javascript" src="./hmac.js"></script>
+<script type="text/javascript" src="./base32.js"></script>
+<script type="text/javascript" src="./hotp.js"></script>
+<title>Tock HOTP USB Security Key Test Page</title>
+</head>
+<body>
+
+<h1>Tock HOTP USB Security Key Test Page</h1>
+
+<script>
+
+function makeid(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
+}
+
+function login() {
+    username = document.getElementById("username").value;
+    password = document.getElementById("password").value;
+    const saved_password = localStorage.getItem(username);
+
+    document.getElementById("loginerrorbox").style.display = 'none';
+
+    if (saved_password !== null) {
+        console.log("exists")
+        if (saved_password ==  password) {
+            console.log("LOGGED IN")
+
+            document.getElementById("loginbox").style.display = 'none';
+
+            document.getElementById("verifybox").style.display = 'block';
+        } else {
+            console.log("Wrong password")
+            document.getElementById("loginerrorbox").style.display = 'block';
+        }
+
+    } else {
+        secret = makeid(3);
+        console.log(secret)
+
+        localStorage.setItem(username, password)
+        localStorage.setItem(username + "-secret", secret)
+        localStorage.setItem(username + "-count", 0)
+
+        document.getElementById("newsecret").innerHTML = secret;
+        document.getElementById("newsecretbox").style.display = 'block';
+
+    }
+}
+
+function verify() {
+    username = document.getElementById("username").value;
+    password = document.getElementById("password").value;
+    const saved_password = localStorage.getItem(username);
+
+    document.getElementById("verifyerror").style.display = 'none';
+
+    if (saved_password !== null) {
+        if (saved_password ==  password) {
+
+            sec = localStorage.getItem(username + "-secret")
+            cou = parseInt(localStorage.getItem(username + "-count"))
+
+            console.log(sec)
+            console.log(cou)
+
+            code = hotp(sec, cou, "dec6");
+
+            console.log("Expected: " + code);
+
+            entered_hotp = document.getElementById("hotp").value;
+
+            console.log("Entered: " + entered_hotp);
+
+            if (code == entered_hotp) {
+                console.log("Code matches, successfully logged in!");
+
+                document.getElementById("verifybox").style.display = 'none';
+                document.getElementById("verifysuccess").style.display = 'block';
+            } else {
+                console.log("Error, invalid code");
+                document.getElementById("verifyerror").style.display = 'block';
+            }
+
+            localStorage.setItem(username + "-count", cou + 1);
+
+
+        }
+
+    }
+}
+
+</script>
+<br />
+<br />
+
+<div id="loginbox">
+    <label>Username</label>
+    <input type = "text" name = "username" id="username" />
+    <label>Password</label>
+    <input type = "text" name = "password" id="password" />
+    <input type = "button" onclick = "login();" name = "ok" value="Login" id="login" />
+</div>
+
+<div id="loginerrorbox" style="display:none;">
+    <p>Login Error</p>
+</div>
+
+<div id="verifybox" style="display:none">
+    <p>Put your cursor in this box and press the correct button on your USB security key.</p>
+    <label>HOTP Code:</label>
+    <input type = "text" name = "hotp" id="hotp" />
+    <input type = "button" onclick = "verify();" name = "verify" value="Verify" id="verify" />
+</div>
+
+<div id="newsecretbox" style="display:none">
+    <h2>New Key</h2>
+    <p>Setup your security key. Enter the following secret:</p>
+    <h4 id="newsecret"></h4>
+    <p>Then refresh to login.</p>
+</div>
+
+<div id="verifysuccess" style="display:none">
+    <h2>You successfully logged in! Your security key works!</h2>
+</div>
+
+<div id="verifyerror" style="display:none">
+    <h2>Error, wrong HOTP code.</h2>
+</div>
+
+</body>
+</html>
