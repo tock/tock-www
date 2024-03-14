@@ -2,7 +2,7 @@
 layout: page
 title: EWSN 2024 Tock Tutorial
 description: Tutorial Page
-permalink: /ewsn-2024
+permalink: /events/ewsn-2024
 ---
 
 ## Rapid Prototyping for Cyber-Physical Systems and IoT Applications with the Tock Embedded Operating System
