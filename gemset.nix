@@ -435,10 +435,10 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0k9w2z0953mnjrsji74cshqqp08q7m1r6zhadw1w0g34xzjh3a74";
+      sha256 = "173zavvxlwyi48lfskk48wcrdbkvjlhjhvy4jpcrfx72rpjjx4k8";
       type = "gem";
     };
-    version = "1.15.4";
+    version = "1.16.2";
   };
   pathutil = {
     dependencies = ["forwardable-extended"];
