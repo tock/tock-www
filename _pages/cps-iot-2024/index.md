@@ -7,7 +7,7 @@ permalink: /cps-iot-2024
 
 ## Rapid Prototyping for Cyber-Physical Systems and IoT Applications with the Tock Embedded Operating System
 
-We will be holding a half-day tutorial at [CPS-IoT Week](https://cps-iot-week2024.ie.cuhk.edu.hk/index.php) on the Tock Operating System. This tutorial will take place on Monday, May 13, 2024 ([agenda](https://tockos.org/cps-iot-2024/agenda)).
+We will be holding a half-day tutorial at [CPS-IoT Week](https://cps-iot-week2024.ie.cuhk.edu.hk/index.php) on the Tock Operating System. This tutorial will take place on Monday, May 13, 2024 ([agenda]({% link _pages/cps-iot-2024/agenda.md %})).
 
 ## Who is this tutorial for?
 
@@ -23,7 +23,7 @@ The goal of the tutorial is to introduce the OS to researchers in the CPS-IoT co
 
 Tock provides a unique advantage for CPS and IoT research as the operating system by default provides process isolation and memory safety for the core kernel. As such, researchers can spend more time on CPS and IoT research rather than time spent configuring the MPU or radio drivers. Moreover, the Tock kernel provides the advantages of a modern type-safe language while still providing the freedom to develop user applications in C.
 
-Having a modern, secure OS platform has the potential to help coalesce the CPS-IoT community around a set of shared important research problems. We think Tock has the potential to be such an OS/platform and would like to provide a tutorial to help colleagues and fellow researchers in learning to use it. 
+Having a modern, secure OS platform has the potential to help coalesce the CPS-IoT community around a set of shared important research problems. We think Tock has the potential to be such an OS/platform and would like to provide a tutorial to help colleagues and fellow researchers in learning to use it.
 
 ## Tutorial Overview
 
