@@ -39,10 +39,11 @@ table {
     table-layout: fixed;
       tr td:first-child, tr th {
 	  text-align: center;
+	  width: max-content;
       }
 
-      tr th:first-child {
-	  width: 15%;
+      tr th:nth-child(2) {
+	  width: 75%;
       }
   }
 }

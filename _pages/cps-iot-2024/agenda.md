@@ -6,7 +6,7 @@ permalink: /cps-iot-2024/agenda
 ---
 
 The RUSTIC tutorial will take place on Monday, May 13, 2024 at CPS-IoT Week. The schedule for the event can
-be found below. Further information on the event can be found [here]({% link_to _pages/cps-iot-2024/index.md %}).
+be found below. Further information on the event can be found [here]({% link _pages/cps-iot-2024/index.md %}).
 
 ## Location
 
