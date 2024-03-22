@@ -37,11 +37,11 @@ table {
 
   &.agenda {
     table-layout: fixed;
-      td:first-child, th {
+      tr td:first-child, tr th {
 	  text-align: center;
       }
 
-      th:first-child {
+      tr th:first-child {
 	  width: 15%;
       }
   }

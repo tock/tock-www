@@ -24,4 +24,4 @@ To be announced.
 | 15:00-15:30 | Coffee Break                                |
 | 15:30-16:30 | Tock Thread Network Cont.                   |
 | 16:30-17:00 | Tock Multi-tenancy and Robustness           |
-| 17:00-17:30 | Next Steps and Future Directions with Tock< |
+| 17:00-17:30 | Next Steps and Future Directions with Tock  |
