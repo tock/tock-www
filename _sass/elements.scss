@@ -20,17 +20,29 @@ table {
   margin-bottom: $spacer;
   border-collapse: collapse;
   background-color: transparent;
+  width: 100%;
 
   tr {
     border-top: 1px solid #ddd;
   }
 
   th, td {
-    padding: calc($spacer / 2) $spacer;
+    padding: calc(#{$spacer} / 2) $spacer;
     border: 1px solid #ddd;
   }
 
   th {
     text-align: center;
+  }
+
+  &.agenda {
+    table-layout: fixed;
+      td:first-child, th {
+	  text-align: center;
+      }
+
+      th:first-child {
+	  width: 15%;
+      }
   }
 }
