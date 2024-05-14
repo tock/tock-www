@@ -98,6 +98,7 @@ include:
   - _pages                  # all your pages can be put inside pages (except articles)
   - .well-known             # include .well-known static content (e.g., for Matrix homeserver discovery)
   - _headers                # Netlify HTTP header configuration
+  - _redirects              # Netlify redirects configuration
 exclude:
   - CNAME
   - README.md
