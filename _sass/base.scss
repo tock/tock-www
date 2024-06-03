@@ -170,6 +170,10 @@ footer {
   color: $light-text;
   padding: $spacer 2 * $spacer;
 
+  a {
+    color: $light-text;
+  }
+
   > div {
     max-width: 800px;
     margin: 0 auto;
@@ -240,4 +244,3 @@ body > article {
   text-align: left;
   padding: 16px;
 }
-
