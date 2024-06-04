@@ -92,6 +92,9 @@ authors:
   niklasad1:
     display_name: Niklas
     web: https://niklasad1.github.io/
+  folkert:
+    display_name: Folkert de Vries
+    web: https://tweedegolf.nl/en/about/21/folkert
 
 # Build settings
 include:
