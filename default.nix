@@ -17,7 +17,7 @@ let
 
   gems = bundlerEnv {
     name = "tock-www";
-    ruby = ruby_3_2;
+    ruby = ruby_3_3;
     gemfile = ./Gemfile;
     lockfile = ./Gemfile.lock;
     gemset = ./gemset.nix;
@@ -25,7 +25,7 @@ let
 
 in stdenv.mkDerivation {
   name = "tock-www";
-  buildInputs = [ gems ruby_3_2 ];
+  buildInputs = [ gems ruby_3_3 ];
   builder = writeText "builder.sh" ''
     source ${stdenv}/setup
     cp -r $src/* .
