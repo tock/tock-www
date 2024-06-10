@@ -1,21 +1,42 @@
 ---
 title: Analyzing Binary Size Bloat in Tock
-subtitle: 
+subtitle:
 author: folkert
 authors: folkert
 ---
 
-_This article is cross-posted from Tweede Golf's blog_
+_This article is cross-posted from [Tweede Golf's blog](https://tweedegolf.nl/en/blog/126/tock-binary-size)_
 
-[Tock](https://tockos.org) is a powerful and secure embedded operating system. While Tock was designed with resource constraints in mind, years of additional features, generalizing to more platforms, and security improvements have brought resource, and in particular, code size bloat.
+[Tock](https://tockos.org) is a powerful and secure embedded operating
+system. While Tock was designed with resource constraints in mind,
+years of additional features, generalizing to more platforms, and
+security improvements have brought resource, and in particular, code
+size bloat.
 
-A _lot_ of code-size bloat. In 2018, when Tock was first released, a minimal kernel required ~7KB for code. Today, the default build for most platforms is easily over 100KB. This is a big problem for resource-sensitive applications--where a platform may only have a couple 100KB of executable flash or must execute from memory.
+A _lot_ of code-size bloat. In 2018, when Tock was first released, a
+minimal kernel required ~7KB for code. Today, the default build for
+most platforms is easily over 100KB. This is a big problem for
+resource-sensitive applications--where a platform may only have a
+couple 100KB of executable flash or must execute from memory.
 
-We (Folkert and Dion from Tweede Golf) recently worked on a project that explores where all of this extra code size is spent, how much of it is fundamental to the design of Tock, and how Tock could adapt to support more platforms with stricter code size constraints. 
+We (Folkert and Dion from Tweeded Golf) recently worked on a project
+that explores where all of this extra code size is spent, how much of
+it is fundamental to the design of Tock, and how Tock could adapt to
+support more platforms with stricter code size constraints.
 
 ## Baseline
 
-Let's first establish a baseline. We pick the [NRF52840DK](POINTER), a development board for the popular [NRF52840](POINTER) from [Nordic Semiconductors](POINTER). It is one of the main development boards in the Tock community and is pretty representative of many embedded applications. It helps that we also happened to have a few lying around. Our exploration is based off of a recent tip-version of Tock (commit `41aafdca37e6961af3ae19742edcdf40cd8e8d1a`). The total size of the kernel for this version is
+Let's first establish a baseline. We pick the
+[NRF52840DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK),
+a development board for the popular
+[NRF52840](https://infocenter.nordicsemi.com/index.jsp?topic=%2Fps_nrf52840%2Fkeyfeatures_html5.html)
+from [Nordic Semiconductors](https://www.nordicsemi.com/). It is one
+of the main development boards in the Tock community and is pretty
+representative of many embedded applications. It helps that we also
+happened to have a few lying around. Our exploration is based off of a
+recent tip-version of Tock (commit
+[`41aafdca37e6961af3ae19742edcdf40cd8e8d1a`](https://github.com/tweedegolf/tock/commit/41aafdca37e6961af3ae19742edcdf40cd8e8d1a)). The
+total size of the kernel for this version is
 
 ```shell
 $ cd boards/nordic/nrf52840dk/
@@ -26,17 +47,28 @@ $ make
 
 The text section (where executable code lives) is almost 200kb! That's a lot...
 
-## A Stripped-Down Board 
+## A Stripped-Down Board
 
-OK, most of that 200KB is from peripheral drivers, including  a full 6lowpan/802.15.4 stack, Bluetooth, as well as a number of subsystems for debugging, like a process console. Because Tock separates the kernel from applications, which can be loaded dynamically, the drivers a board configures are compiled in regardless of whether any application actually ever uses them.
+OK, most of that 200KB is from peripheral drivers, including a full
+6lowpan/802.15.4 stack, Bluetooth, as well as a number of subsystems
+for debugging, like a process console. Because Tock separates the
+kernel from applications, which can be loaded dynamically, the drivers
+a board configures are compiled in regardless of whether any
+application actually ever uses them.
 
-So let's start by just removing superfluous components to get to a stripped-down board. Initially we'll only consider the kernel, so anything related to processes can also go. For a minimal functional program, we'll leave in logic for a serial port (UART) and to print a message. This ends up removing about 150KB of code.
+So let's start by just removing superfluous components to get to a
+stripped-down board. Initially we'll only consider the kernel, so
+anything related to processes can also go. For a minimal functional
+program, we'll leave in logic for a serial port (UART) and to print a
+message. This ends up removing about 150KB of code.
 
 | commit | size of .text (kb) |
 | ----- | ---------- |
 | [`439cfc4caaf12f656c4f9a5e9cf7bffd47da709e`](https://github.com/tweedegolf/tock/commit/439cfc4caaf12f656c4f9a5e9cf7bffd47da709e) | 45.1 |
 
-Impressive! But 45KB is still a lot for a system that does very little. Getting rid of debug functionality in the `panic!` handler saves another 20KB:
+Impressive! But 45KB is still a lot for a system that does very
+little. Getting rid of debug functionality in the `panic!` handler
+saves another 20KB:
 
 
 | commit | size of .text (kb) |
@@ -44,26 +76,35 @@ Impressive! But 45KB is still a lot for a system that does very little. Getting 
 | [`fa97bb11f3f406e3893c814a674f79776a4dfb8b`](https://github.com/tweedegolf/tock/commit/fa97bb11f3f406e3893c814a674f79776a4dfb8b) | 24.6 |
 
 
-We now have a barebones version of Tock that can run processes and supports a minimal set of functionality--just printing to the console.
+We now have a barebones version of Tock that can run processes and
+supports a minimal set of functionality--just printing to the console.
 
 
 ## Let's Pretend We Don't Want Processes
 
-We can go furher by getting rid of the process loading and scheduling infrastructure and, instead, implement a very simple timed-print inside the kernel itself.
+We can go furher by getting rid of the process loading and scheduling
+infrastructure and, instead, implement a very simple timed-print
+inside the kernel itself.
 
-Just removing processes entirely (by setting `NUM_PROCS` to 0 and letting code elimination do its magic) and implementing a simple kernel application, we cut the code size down by another 50%: 
+Just removing processes entirely (by setting `NUM_PROCS` to 0 and
+letting code elimination do its magic) and implementing a simple
+kernel application, we cut the code size down by another 50%:
 
 | commit | size of .text (kb) |
 | ----- | ---------- |
 | [`57174fbd560b9f0495f136b7ddb1c63644a9fd41`](https://github.com/tweedegolf/tock/commit/57174fbd560b9f0495f136b7ddb1c63644a9fd41) | 12.3 |
 
-Since our kernel now only uses the serial driver and timer infrastructure in one place, we can further get rid of the virtualization layers for both, which cost ~4KB in this case:
+Since our kernel now only uses the serial driver and timer
+infrastructure in one place, we can further get rid of the
+virtualization layers for both, which cost ~4KB in this case:
 
 | commit | size of .text (kb) |
 | ----- | ---------- |
 | [`952641f4553b80a749fde14d914b6aeeffbbdeb7`](https://github.com/tweedegolf/tock/commit/952641f4553b80a749fde14d914b6aeeffbbdeb7) |  8.2 |
 
-Finally, we can remove ~1.5KB of extraneous padding in the linker script which is only useful when allocating flash for a persistent storage driver:
+Finally, we can remove ~1.5KB of extraneous padding in the linker
+script which is only useful when allocating flash for a persistent
+storage driver:
 
 | commit | size of .text (kb) |
 | ----- | ---------- |
@@ -73,7 +114,11 @@ We're now down to a more respectable size for a minimal kernel.
 
 ---
 
-At this point we ran out of things we knew we could remove. We can check with `cargo bloat` what the remaining functions in the binary are, and whether we think they make sense. In this case, the report looks pretty reasonable: there is no more formatting or obvious debugging code on a function level.
+At this point we ran out of things we knew we could remove. We can
+check with `cargo bloat` what the remaining functions in the binary
+are, and whether we think they make sense. In this case, the report
+looks pretty reasonable: there is no more formatting or obvious
+debugging code on a function level.
 
 ```
 > make cargobloat
@@ -102,7 +147,10 @@ File  .text   Size             Crate Name
 
 ### Expensive division
 
-The only thing that really caught our attention is the compiler builtins. In particular, the 64-bit integer division is quite large. The target we use has no instruction for this operation, so it is implemented entirely in software. 
+The only thing that really caught our attention is the compiler
+builtins. In particular, the 64-bit integer division is quite
+large. The target we use has no instruction for this operation, so it
+is implemented entirely in software.
 
 ```
 File  .text   Size             Crate Name
@@ -113,11 +161,13 @@ File  .text   Size             Crate Name
 0.0%   0.4%    26B compiler_builtins compiler_builtins::arm::__aeabi_memset4
 ```
 
-This operation is used to convert between microseconds (for humans) and native ticks (for computers). For instance:
+This operation is used to convert between microseconds (for humans)
+and native ticks (for computers). For instance:
 
     hertz * us / 1_000_000
 
-It might be worth it to actually write this as a subtracting loop, something like: 
+It might be worth it to actually write this as a subtracting loop,
+something like:
 
 
 ```rust
@@ -145,22 +195,31 @@ pub fn micros_to_ticks(freq: u32, micros: u32) -> u32 {
 
 ### GPIO pin initialization
 
-Because `start` is the biggest function, we had a look at its source code to see if there is anything we can cut out. After some trial and error, we found that the initialization of GPIO pins uses a lot of instructions.
+Because `start` is the biggest function, we had a look at its source
+code to see if there is anything we can cut out. After some trial and
+error, we found that the initialization of GPIO pins uses a lot of
+instructions.
 
 | commit | size of .text | size of `nrf52840dk::start`  |
 | -- | -- | -- |
 | [`d915dc33718688f21c44265aca10891ac9a4805e`](https://github.com/tweedegolf/tock/commit/d915dc33718688f21c44265aca10891ac9a4805e) | 8822B | 2100B |
 | [`f893f60346b7a07bbd4bddd21dfe8eff11a36c12`](https://github.com/tweedegolf/tock/commit/f893f60346b7a07bbd4bddd21dfe8eff11a36c12) | 7574B  |  940B |
 
-This "solution" in the final commit is incorrect, but it shows there is potential here: even for a small binary the gains are substantial.
+This "solution" in the final commit is incorrect, but it shows there
+is potential here: even for a small binary the gains are substantial.
 
-The problem is that the initialization cannot occur in a const, so all the pins need to be set up at runtime.
+The problem is that the initialization cannot occur in a const, so all
+the pins need to be set up at runtime.
 
 ## With processes
 
-In practice, Tock will of course run processes. So while the previous experiment is useful to learn how small the kernel could be, it is not realistic.
+In practice, Tock will of course run processes. So while the previous
+experiment is useful to learn how small the kernel could be, it is not
+realistic.
 
-When we bump the number of processes from zero to one, the binary gets a lot bigger again. Cargo bloat shows that there is formatting code in the binary.
+When we bump the number of processes from zero to one, the binary gets
+a lot bigger again. Cargo bloat shows that there is formatting code in
+the binary.
 
 ```
 File  .text   Size             Crate Name
@@ -170,9 +229,12 @@ File  .text   Size             Crate Name
 0.0%   1.0%    222B              core <core::fmt::Formatter>::pad
 ```
 
-However, it is not immediately obvious what the root cause is. We could do some searching through the disassembly to track down callers to those formatting functions, but in this case there is a simpler way. 
+However, it is not immediately obvious what the root cause is. We
+could do some searching through the disassembly to track down callers
+to those formatting functions, but in this case there is a simpler
+way.
 
-By default `cargo bloat` cuts lines off so they fit in your terminal. 
+By default `cargo bloat` cuts lines off so they fit in your terminal.
 
 ```
 File  .text    Size             Crate Name
@@ -182,7 +244,7 @@ File  .text    Size             Crate Name
 0.1%   3.6%    812B              core <&mut cortexm::mpu::CortexMConfig<8: usize> as core::fmt::Display>::fmt
 ```
 
-To get the full name of functions, we need to pass 
+To get the full name of functions, we need to pass
 
 ```
 > CARGO_BLOAT_FLAGS=-w make cargobloat
@@ -204,11 +266,14 @@ fn print_full_process(&self, writer: &mut dyn Write) {
 
     // ...
 }
-``` 
+```
 
-We can easily remove all the formatting code by turning this into an `if true`. Dead code elimination will just remove the rest of this function's body.
+We can easily remove all the formatting code by turning this into an
+`if true`. Dead code elimination will just remove the rest of this
+function's body.
 
-The commit below bumps the number of processes to one and removes the debug info:
+The commit below bumps the number of processes to one and removes the
+debug info:
 
 | commit | size of .text (kb) |
 | -- | -- |
@@ -218,12 +283,13 @@ The commit below bumps the number of processes to one and removes the debug info
 
 ## Memmove
 
-Next we decided to use the C blinky application as our benchmark, and made some modifications to the code so memmove is not included.
+Next we decided to use the C blinky application as our benchmark, and
+made some modifications to the code so memmove is not included.
 
 | commit | size of .text (kb) |
 | -- | -- |
 | [`24fac24a2fa0adfebb968188e9b1d56027886d2e`](https://github.com/tweedegolf/tock/commit/24fac24a2fa0adfebb968188e9b1d56027886d2e) | 20.1 |
-| [`10afc491f124ebe9cef64e8b26bd23d209656b78`](https://github.com/tweedegolf/tock/commit/10afc491f124ebe9cef64e8b26bd23d209656b78) | 19.8 | 
+| [`10afc491f124ebe9cef64e8b26bd23d209656b78`](https://github.com/tweedegolf/tock/commit/10afc491f124ebe9cef64e8b26bd23d209656b78) | 19.8 |
 
 The memmove story is interesting. It turns out that code like
 
@@ -233,17 +299,35 @@ if dst != src {
 }
 ```
 
-is actually emitted as a `memmove`, even though all conditions for a `memcpy` are satisfied. 
+is actually emitted as a `memmove`, even though all conditions for a `memcpy` are satisfied.
 
 - [zullip thread](https://rust-lang.zulipchat.com/#narrow/stream/405744-wg-binary-size/topic/memmove.20instead.20of.20memcopy)
 - [llvm issue](https://github.com/llvm/llvm-project/issues/86499)
 
 This is unfortunate because `memmove` is slower and also much bigger than `memcpy` (which is often included anyway).
 
+## Size optimizations in the rust standard library
+
+At RustNL the idea formed to have a `cfg(optimize_for_size)` option in
+the rust standard library. The thinking is that much of the standard
+library is optimized for capable machines (that e.g. have SIMD
+instructions available). Those choices don't always make sense for
+embedded.
+
+The [tracking
+issue](https://github.com/rust-lang/rust/issues/125612#issue-2318931679)
+has a list with merged and closed PRs that improve embedded binary
+size.
+
 ## Takeaways
 
-So now we know where Tock's code size bloat comes from, and how Tock could adapt to support more platforms with stricter code size constraints:
+So now we know where Tock's code size bloat comes from, and how Tock
+could adapt to support more platforms with stricter code size
+constraints:
 
-* The peripheral initialization is very expensive, so ideally the user has more fine-grained control over what is included.
-* The panic handler itself is not that big, but it pulls in a large amount of `fmt::Debug` code to print the error.
-* Finally reducing the number of processes to zero means that certain loops can be eliminated entirely, leading to dead code elimination.
+* The peripheral initialization is very expensive, so ideally the user
+  has more fine-grained control over what is included.
+* The panic handler itself is not that big, but it pulls in a large
+  amount of `fmt::Debug` code to print the error.
+* Finally reducing the number of processes to zero means that certain
+  loops can be eliminated entirely, leading to dead code elimination.
