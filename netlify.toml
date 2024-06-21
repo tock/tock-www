@@ -1,6 +1,0 @@
-[[redirects]]
-  from = "/tockworld/overview"
-  to = "https://world.tockos.org"
-  status = 302
-  force = true
-
