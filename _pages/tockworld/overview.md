@@ -13,10 +13,11 @@ challenges and use cases, and the roadmap for future Tock development.
 
 ## Upcoming Meetings
 
-- [TockWorld 7](https://world.tockos.org/tockworld7/) — San Diego, CA — June 26-28, 2024
+- TockWorld 8 - TBA
 
 ## Past Meetings
 
+- [TockWorld 7](https://world.tockos.org/tockworld7/) — San Diego, CA — 2024
 - [TockWorld 6](/tockworld6/agenda) — Charlottesville, VA — 2023
 - [TockWorld 5](/tockworld5/agenda) — Evanston, IL — 2022
 - [TockWorld 4](/tockworld4/agenda) — Princeton, NJ — 2019
