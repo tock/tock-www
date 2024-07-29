@@ -302,6 +302,17 @@
     };
     version = "4.3.3";
   };
+  jekyll-compose = {
+    dependencies = ["jekyll"];
+    groups = ["development"];
+    platforms = [];
+    source = {
+      remotes = ["https://rubygems.org"];
+      sha256 = "1ny8xps0mrmx2w0xxc9rwa15ch1wkxvdrzxiwnqramqwja566y04";
+      type = "gem";
+    };
+    version = "0.12.0";
+  };
   jekyll-mentions = {
     dependencies = ["html-pipeline" "jekyll"];
     groups = ["default"];

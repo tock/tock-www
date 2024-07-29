@@ -11,3 +11,7 @@ gem "kramdown"
 gem "rouge"
 
 gem "webrick"
+
+group :development do
+  gem 'jekyll-compose'
+end
