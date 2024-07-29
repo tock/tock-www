@@ -9,8 +9,8 @@ CA. This year combined a developer day, conference, and tutorials,
 expanding the purpose and audience of TockWorld.
 
 In terms of both participation and content, this was the most vibrant
-and exciting TockWorld's to-date. Participants came from all over the
-world, included students, researchers, and practitioners, from
+and exciting TockWorld to-date. Participants came from all over the
+world, including students, researchers, and practitioners, from
 companies large and small. We had, for the first time, an array of
 conference-style talks that shared experiences working with Tock,
 deploying Tock, and expanding Tock to new domains and architectures.
