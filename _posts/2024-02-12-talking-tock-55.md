@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 55
 subtitle: Tock Compiles on Stable Rust!
-author: bradjc
 authors: bradjc
 ---
 

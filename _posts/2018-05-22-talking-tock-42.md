@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 42
 subtitle: Bootloader, restarting processes and changing clocks
-author: aalevy
 authors: alevy
 ---
 

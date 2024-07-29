@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 16
 subtitle: Papers, ports and pull requests
-author: aalevy
 authors: alevy
 ---
 

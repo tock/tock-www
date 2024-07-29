@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 30
 subtitle: A world tour, docs, and so many contributors
-author: aalevy
 authors: alevy
 ---
 

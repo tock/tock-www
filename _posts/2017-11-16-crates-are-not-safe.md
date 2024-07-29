@@ -1,6 +1,5 @@
 ---
 title: Crates.io Ecosystem Not Ready for Embedded Rust
-author: bradjc
 authors: bradjc
 ---
 

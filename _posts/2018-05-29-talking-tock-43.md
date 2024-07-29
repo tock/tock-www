@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 43
 subtitle: Changing clocks, bootloader re-write and cleanups
-author: aalevy
 authors: alevy
 ---
 

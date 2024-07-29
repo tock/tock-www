@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 26
 subtitle: NRF52, external clock bugs and C bugs
-author: aalevy
 authors: alevy
 ---
 

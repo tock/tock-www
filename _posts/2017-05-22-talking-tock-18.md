@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 18
 subtitle: SenSys tutorial, MPU improvements and a warm welcome
-author: aalevy
 authors: alevy
 ---
 

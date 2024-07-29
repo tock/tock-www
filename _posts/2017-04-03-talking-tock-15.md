@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 15
 subtitle: Cryptography, external libraries and document wrangling
-author: aalevy
 authors: alevy
 ---
 

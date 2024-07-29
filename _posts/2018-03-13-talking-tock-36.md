@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 36
 subtitle: Defining registers, paper season and un-broken links
-author: aalevy
 authors: alevy
 ---
 

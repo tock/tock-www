@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 28
 subtitle: Recapping the last couple months
-author: aalevy
 authors: alevy
 ---
 

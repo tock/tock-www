@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 53
 subtitle: Key-Value Store Updates
-author: bradjc
 authors: bradjc
 ---
 

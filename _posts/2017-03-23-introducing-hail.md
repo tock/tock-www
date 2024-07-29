@@ -1,6 +1,5 @@
 ---
 title: Introducing Hail
-author: bradjc
 authors: bradjc
 desc: >
   Today we are introducing Hail, an IoT development board that supports

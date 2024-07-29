@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 32
 subtitle: More flexible relocation, STM32 & Teensy repos
-author: aalevy
 authors: alevy
 ---
 

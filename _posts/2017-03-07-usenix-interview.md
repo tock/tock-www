@@ -1,6 +1,5 @@
 ---
 title: USENIX Interview
-author: brghena
 authors: brghena
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 35
 subtitle: 1.0, Rust userland, and New Supported Boards
-author: aalevy
 authors: alevy
 ---
 

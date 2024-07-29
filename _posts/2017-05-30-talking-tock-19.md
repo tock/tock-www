@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 19
 subtitle: High-Speed ADC and LLVM bugs
-author: aalevy
 authors: alevy
 ---
 

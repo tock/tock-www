@@ -1,7 +1,6 @@
 ---
 title: Announcing Tock 1.0
 subtitle: A stable ABI
-author: aalevy
 authors: alevy
 ---
 

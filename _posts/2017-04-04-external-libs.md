@@ -1,6 +1,5 @@
 ---
 title: Including External Libraries in Processes
-author: ppannuto
 authors: ppannuto
 desc: >
   Tock can be a little particular about how things are built. Specifically, it

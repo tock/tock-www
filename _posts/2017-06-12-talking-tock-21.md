@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 21
 subtitle: Bluetooth, static initialization and userland code quality
-author: aalevy
 authors: alevy
 ---
 

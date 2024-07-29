@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 24
 subtitle: μAs during sleep, ADC clocks, and too many PRs to count
-author: aalevy
 authors: alevy
 ---
 

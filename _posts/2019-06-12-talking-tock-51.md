@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 51
 subtitle: Slightly past due edition!
-author: bradjc
 authors: bradjc
 ---
 

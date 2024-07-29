@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 34
 subtitle: Registers, Review process & Releases
-author: aalevy
 authors: alevy
 ---
 

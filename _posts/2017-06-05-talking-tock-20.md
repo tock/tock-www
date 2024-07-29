@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 20
 subtitle: Low Power, USB and Bluetooth
-author: aalevy
 authors: alevy
 ---
 

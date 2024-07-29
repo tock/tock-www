@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 56
 subtitle: New libtock-c Design
-author: bradjc
 authors: bradjc
 ---
 

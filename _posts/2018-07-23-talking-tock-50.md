@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 50
 subtitle:
-author: aalevy
 authors: alevy
 ---
 

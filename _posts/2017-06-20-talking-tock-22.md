@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 22
 subtitle: RustConf tutorial preview and SITP retreat
-author: aalevy
 authors: alevy
 ---
 

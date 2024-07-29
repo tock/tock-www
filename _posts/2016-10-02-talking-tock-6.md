@@ -1,6 +1,5 @@
 ---
 title: Talking Tock Week 6
-author: aalevy
 authors: alevy
 ---
 

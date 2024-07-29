@@ -1,6 +1,5 @@
 ---
 title: Talking Tock Week 7
-author: aalevy
 authors: alevy
 ---
 

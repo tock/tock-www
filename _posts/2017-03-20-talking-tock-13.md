@@ -1,6 +1,5 @@
 ---
 title: Talking Tock 13
-author: aalevy
 authors: alevy
 ---
 

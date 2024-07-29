@@ -1,6 +1,5 @@
 ---
 title: Talking Tock 12
-author: aalevy
 authors: alevy
 ---
 

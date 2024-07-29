@@ -1,6 +1,5 @@
 ---
 title: Compile-time Safety is for Everybody!
-author: aalevy
 authors: alevy
 ---
 

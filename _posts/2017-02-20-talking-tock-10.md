@@ -1,6 +1,5 @@
 ---
 title: Talking Tock 10
-author: aalevy
 authors: alevy
 ---
 
