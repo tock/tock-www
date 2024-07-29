@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 45
 subtitle:
-author: aalevy
 authors: alevy
 ---
 

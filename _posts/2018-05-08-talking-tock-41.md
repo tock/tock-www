@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 41
 subtitle:
-author: aalevy
 authors: alevy
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 53
 subtitle: Introducing the Networking Working Group
-author: bradjc
 authors: bradjc
 ---
 

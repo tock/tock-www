@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 44
 subtitle: External elf2tab and Tock coming to Shenzhen
-author: aalevy
 authors: alevy
 ---
 

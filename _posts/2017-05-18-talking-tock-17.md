@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 17
 subtitle: Rust + Lua userlands, Hail shipped and an upcoming tutorial
-author: aalevy
 authors: alevy
 ---
 

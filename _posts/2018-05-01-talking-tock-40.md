@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 40
 subtitle: Release 1.1, Rust upgrade, svd2regs
-author: aalevy
 authors: alevy
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Talking Tock Week 9
-author: aalevy
 authors: alevy
 excerpt: >
   This is the ninth post in a weekly (well... in theory) series tracking the

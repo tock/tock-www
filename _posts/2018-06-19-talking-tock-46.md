@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 46
 subtitle: 1.2 released
-author: aalevy
 authors: alevy
 ---
 

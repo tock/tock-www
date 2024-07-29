@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 25
 subtitle: Towards 1.0, new design coming and a new paper
-author: aalevy
 authors: alevy
 ---
 

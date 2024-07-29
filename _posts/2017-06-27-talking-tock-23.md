@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 23
 subtitle: Training at RustConf, virtual alarms and lots of new drivers
-author: aalevy
 authors: alevy
 ---
 

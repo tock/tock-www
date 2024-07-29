@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 52
 subtitle: Version 1.4
-author: bradjc
 authors: bradjc
 ---
 

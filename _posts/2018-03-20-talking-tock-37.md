@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 37
 subtitle:
-author: aalevy
 authors: alevy
 ---
 

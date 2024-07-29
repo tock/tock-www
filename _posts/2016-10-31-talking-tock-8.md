@@ -1,6 +1,5 @@
 ---
 title: Talking Tock Week 8
-author: aalevy
 authors: alevy
 ---
 

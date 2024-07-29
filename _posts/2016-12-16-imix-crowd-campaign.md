@@ -1,6 +1,5 @@
 ---
 title: imix Crowd Campaign
-author: aalevy
 authors: alevy
 ---
 

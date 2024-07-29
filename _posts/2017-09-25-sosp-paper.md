@@ -1,6 +1,5 @@
 ---
 title: Modeling Threats on a 64 kB Computer
-author: aalevy
 authors: alevy
 ---
 

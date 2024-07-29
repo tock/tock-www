@@ -1,6 +1,5 @@
 ---
 title: Talking Tock Week 5
-author: aalevy
 authors: alevy
 ---
 

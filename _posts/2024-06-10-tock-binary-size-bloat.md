@@ -1,7 +1,6 @@
 ---
 title: Analyzing Binary Size Bloat in Tock
 subtitle:
-author: folkert
 authors: folkert
 ---
 

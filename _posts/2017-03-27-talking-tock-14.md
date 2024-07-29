@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 14
 subtitle: Hail release, TABs, timer bugs and hardware CRC.
-author: aalevy
 authors: alevy
 ---
 

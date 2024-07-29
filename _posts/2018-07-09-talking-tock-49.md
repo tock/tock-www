@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 49
 subtitle:
-author: aalevy
 authors: alevy
 ---
 

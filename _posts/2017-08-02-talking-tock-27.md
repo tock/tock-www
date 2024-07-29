@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 27
 subtitle: USB, safety bug fixes and more
-author: aalevy
 authors: alevy
 ---
 

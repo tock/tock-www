@@ -1,7 +1,6 @@
 ---
 title: "OpenSK: Built by Google, Powered by Tock"
 subtitle: Announcing the release of OpenSK by Google!
-author: ppannuto
 authors: ppannuto
 ---
 

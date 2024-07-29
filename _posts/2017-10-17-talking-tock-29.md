@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 29
 subtitle: 1.0 release, imix and more
-author: aalevy
 authors: alevy
 ---
 
