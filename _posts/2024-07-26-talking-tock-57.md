@@ -156,7 +156,7 @@ disadvantages, however, we still document here the limitations with using Cargo.
     (say during development) while keeping the existing flags intact.
 
     To help mitigate these downsides, we add a sentinel flag called
-    `cfg_tock_buildflagssentinel` in our many `.toml` file. Then, in `build.rs`
+    `cfg_tock_buildflagssentinel` in our main `.toml` file. Then, in `build.rs`
     we check that the flag is in fact set. If it isn't then something is amiss
     about the build flags being used and we print an error to the user. For
     users who want to override the build flags, then can simply set the sentinel
