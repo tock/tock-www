@@ -1,7 +1,6 @@
 ---
 title: Talking Tock 57
 subtitle: Cargo Build System for the Kernel
-author: bradjc
 authors: bradjc
 ---
 
