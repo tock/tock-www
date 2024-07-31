@@ -2,6 +2,12 @@
 title: Analyzing Binary Size Bloat in Tock
 subtitle:
 authors: folkert
+excerpt: >
+  Tock is a powerful and secure embedded operating
+  system. While Tock was designed with resource constraints in mind,
+  years of additional features, generalizing to more platforms, and
+  security improvements have brought resource, and in particular, code
+  size bloat.
 ---
 
 _This article is cross-posted from [Tweede Golf's blog](https://tweedegolf.nl/en/blog/126/tock-binary-size)_
