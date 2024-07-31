@@ -4,6 +4,7 @@ authors:
   - alevy
 ---
 
+![](/assets/2024/07/tockworld7-crowd.jpg){: style="float: left; width: 50%; padding-right: 1em"}
 On June 26-28 we held the 7th annual Tock gathering in San Diego,
 CA. This year combined a developer day, conference, and tutorials,
 expanding the purpose and audience of TockWorld.
