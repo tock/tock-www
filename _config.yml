@@ -95,6 +95,9 @@ authors:
   folkert:
     display_name: Folkert de Vries
     web: https://tweedegolf.nl/en/about/21/folkert
+  lschuermann:
+    display_name: Leon
+    web: https://leon.schuermann.io
 
 # Build settings
 include:
