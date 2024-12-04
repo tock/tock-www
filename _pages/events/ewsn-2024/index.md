@@ -9,15 +9,22 @@ permalink: /events/ewsn-2024
 
 We will be holding a half-day tutorial at [EWSN](https://ewsn24.tii.ae/) on the Tock Operating System.
 
+---
+
+<div markdown="0">
 <dl>
-<dt>Time:</dt><dd>11am</dd>
-<dt>Location:</dt><dd>Al Jurf Room</dd>
+  <dt>Time:</dt>
+  <dd>11am</dd>
+  <dt>Location:</dt>
+  <dd>Al Jurf Room</dd>
 </dl>
+</div>
 
 We will provide the needed hardware development kits to complete the tutorial.
 Participants will need to bring a laptop for programming and flashing the development boards.
-**To ensure the tutorial goes smoothly, we ask that you [complete the quickstart guide](https://book.tockos.org/setup/quickstart) on your laptop before next Tuesday (12/10).**
-(Completing this is particularly important, as some of the needed dependencies may be challenging to download over the conference WiFi).
+> **To ensure the tutorial goes smoothly, we ask that you [complete the quickstart guide](https://book.tockos.org/setup/quickstart) on your laptop before next Tuesday (12/10).**
+>
+> Completing this is particularly important, as some of the needed dependencies may be challenging to download over the conference WiFi.
 
 We recommend using Mac or Linux for the development environment.
 
