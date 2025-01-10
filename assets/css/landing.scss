@@ -90,9 +90,14 @@ ul#applications {
     flex-wrap: wrap;
     list-style: none;
     padding: 2 * $spacer;
+
     @media screen and (min-width: $tablet) {
       padding-left: 140px;
       padding-right: 140px;
+    }
+
+    @media screen and (max-width: $tablet) {
+      font-size: 1.5rem;
     }
 
     font-size: 2rem;
@@ -127,12 +132,16 @@ ul#applications {
   }
 
   li:nth-child(even) {
-    flex-direction: row-reverse;
     background-color: $primary-color;
     color: white;
-    div:first-child {
-      flex: 1;
-      margin-left: 3 * $spacer;
+  }
+  @media screen and (min-width: $tablet) {
+    li:nth-child(even) {
+      flex-direction: row-reverse;
+      div:first-child {
+        flex: 1;
+        margin-left: 3 * $spacer;
+      }
     }
   }
 }
