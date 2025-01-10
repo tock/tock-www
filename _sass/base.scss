@@ -31,7 +31,9 @@ body > header {
   box-sizing: border-box;
   background-color: white;
   border-bottom: 2px solid #f5f5f5;
-  display: block;
+  display: flex;
+  justify-content: space-between;
+
   @media screen and (min-width: $tablet) {
     display: flex;
     flex-direction: row;
@@ -108,7 +110,8 @@ body > header {
 
   @media screen and (max-width: $tablet) {
     > nav {
-      float: right;
+      position: relative;
+      z-index: 10;
 
       .hamburger {
         i {
@@ -121,6 +124,19 @@ body > header {
 
       ul {
         display: none;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        padding: 5px;
+      }
+
+      ul li:not(:last-child) {
+        border-bottom: 1px solid $divider-color;
+      }
+
+      ul li a {
+        display: flex;
+        flex-direction: row-reverse;
+        margin-left: 0px;
       }
 
       i.menu {
@@ -137,6 +153,7 @@ body > header {
         }
         & ~ i.close {
           display: block;
+          margin-top: 8px;
         }
 
         & ~ i.menu {
@@ -178,14 +195,29 @@ footer {
     max-width: 800px;
     margin: 0 auto;
     display: flex;
+
+    @media screen and (max-width: $tablet) {
+      flex-direction: column;
+      padding: 0 $spacer;
+    }
+
     div {
       flex: 1;
       margin: auto 0;
       text-align: left;
+      
+      @media screen and (max-width: $tablet) {
+        margin: $spacer 0;
+        text-align: center;
+      }
     }
 
     div:nth-child(2) {
       text-align: right;
+      
+      @media screen and (max-width: $tablet) {
+        text-align: center;
+      }
     }
 
     img {
@@ -194,6 +226,13 @@ footer {
 
     ul {
       display: block;
+      
+      @media screen and (max-width: $tablet) {
+        margin-top: $spacer;
+        list-style-type: none;
+        padding-left: 0;
+      }
+      
       li {
         display: inline;
       }
