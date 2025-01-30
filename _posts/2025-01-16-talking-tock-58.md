@@ -21,10 +21,11 @@ Fundamentally this type stores a pointer to memory. The name "capability"
 signifies this type also captures the validity of that pointer and whether the
 holder of the pointer can actually use the pointer to access memory.
 
-Traditionally, a pointer in `unsafe` Rust always has the capability to be
-dereferenced. That is, the hardware will access the referenced memory.
-`CapabilityPtr` expands this abstraction, and enables software to track whether
-hardware will permit the memory access, if the hardware has such restrictions.
+Traditionally, a valid pointer in `unsafe` Rust always has the capability to be
+dereferenced. That is, the hardware will (at least try to) access the referenced
+memory. `CapabilityPtr` expands this abstraction, and enables software to track
+whether hardware will permit the memory access, if the hardware has such
+restrictions.
 
 Support for CHERI
 -----------------
@@ -33,9 +34,11 @@ The primary driver for adding the `CapabilityPtr` type is the
 [CHERI](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/) extension for
 hardware architectures. With CHERI, hardware can track whether a pointer can be
 dereferenced. The metadata for that tracking is stored alongside the pointer
-address in hardware registers. With the `CapabilityPtr` type, Tock now has a
-mechanism to represent data that is larger than the machine's `usize` yet still
-represents a single register.
+address in hardware registers. Tock is targeting a hybrid CHERI ABI which
+supports both a traditional pointer and pointers with the CHERI metadata. With
+the `CapabilityPtr` type, Tock now has a mechanism to represent these pointers
+with metadata that are larger than the machine's `usize` yet `CapabilityPtr`
+still represents a single register.
 
 Adding `CapabilityPtr` is only a first step towards support for CHERI in Tock.
 Additional pull requests will fill in the remaining support needed in the Tock
