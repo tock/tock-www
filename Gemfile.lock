@@ -103,10 +103,10 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
-    mini_portile2 (2.8.7)
+    mini_portile2 (2.8.8)
     minitest (5.23.1)
     mutex_m (0.2.0)
-    nokogiri (1.16.5)
+    nokogiri (1.18.3)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     pathutil (0.16.2)
@@ -118,7 +118,7 @@ GEM
       ruby-rc4
       ttfunk
     public_suffix (5.0.5)
-    racc (1.8.0)
+    racc (1.8.1)
     rainbow (3.1.1)
     rake (13.2.1)
     rb-fsevent (0.11.2)
