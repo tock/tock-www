@@ -27,6 +27,21 @@ While participants are encouraged to attend for the full day, each session aims
 to be sufficiently standalone to allow "drop-ins" for different portions of the
 event.
 
+### Call For Lightning Introduction Talks
+
+We encourage participants to submit one slide introducing themselves and their
+research area. During the first session of the tutorial we will invite
+participants who submitted a slide to introduce themselves, their background,
+and their interest in secure IoT operating systems. Our goal is to get better
+sense of the participants in the tutorial so we can facilitate a more
+interactive tutorial and adapt some of the content based on participant interest
+and background.
+
+Please submit your slide **here** in either `.pdf` or `.pptx` form.
+
+If capacity for the tutorial is reached priority will be given to participants
+who have submitted an introduction slide.
+
 ---
 
 __Times are estimates for planning flow Pat just made up for the moment.__
@@ -77,10 +92,10 @@ __Times are estimates for planning flow Pat just made up for the moment.__
   9:00
   </td>
   <td>
-  (45m) Lightning Talks
+  (45m) Introduction Lightning Talks
   <ul>
-    <li>1-3 slides / person?</li>
-    <li>What guidance do we want to give folks?</li>
+    <li>1 slide / person, 2 minutes</li>
+    <li>Tell us a bit about who you are and what your research area or background is.</li>
     <li>Interactive at all?</li>
   </ul>
   </td>
