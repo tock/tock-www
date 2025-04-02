@@ -115,7 +115,7 @@ __Times are estimates for planning flow Pat just made up for the moment.__
   <td colspan="2" style="text-align: right;">
   <small><i>Chair:
   <a href="https://www.linkedin.com/in/katfox">Kat Fox</a>,
-  <a href="https://www.zerorisc.com/">ZeroRisc</a>
+  <a href="https://www.zerorisc.com/">zeroRISC</a>
   </i></small>
   </td>
 </tr>
@@ -128,10 +128,10 @@ __Times are estimates for planning flow Pat just made up for the moment.__
   <ul>
     <li>What is a RoT?</li>
     <li>Examples of RoTs you use already? (Directly, e.g. SecureEnclave; Indirectly, e.g. cloud)</li>
-    <li>Top-Down: What does RoT provide platform, app developers? Why does mobile/edge computing care about RoT?</li>
-    <li>Bottom-Up: What is required to act as a RoT? From HW? SW?</li>
-    <li>Demo??</li>
-    <li>Open challenges / concerns / problems for RoT / security ecosystem around them?</li>
+    <li>From top down: what does a RoT provide to platform/app developers? Why should they care?</li>
+    <li>From bottom up: what hardware/software does a RoT require to operate? What makes one secure?</li>
+    <li>Tock + [OpenTitan](https://opentitan.org/) silicon RoT live demo</li>
+    <li>Current advances/challenges in RoT development; open source ushering in a new era of secure HW + SW systems</li>
   </ul>
   <ul>
     <li>Q&A</li>
@@ -145,11 +145,11 @@ __Times are estimates for planning flow Pat just made up for the moment.__
   <td>
   (25m+5m) TockOS as firmware for RoT
   <ul>
-    <li>What is Tock (quickly; avoid re-hash of Session 0 Intro)? Who is using Tock as part of RoT solution today?</li>
-    <li>What parts of "what defines a RoT" does Tock provide?</li>
-    <li>What does Tock provide above and beyond bare metal / minimal RoT firmware?</li>
-    <li>Understand trust boundaries, relationships? What "parts of Tock" are "parts of the RoT"?</li>
-    <li>What does a mobile developer, edge device developer gain from RoT+Tock? Transition to hands-on component?</li>
+    <li>What is Tock? Who is using Tock in a RoT solution today?</li>
+    <li>What components of a RoT does Tock provide?</li>
+    <li>How does Tock go above and beyond e.g. bare metal RoT firmware?</li>
+    <li>What does Tock's security model look like, and how does that fit with a RoT's security model?</li>
+    <li>What can a mobile/edge device developer gain from learning about RoTs and Tock?</li>
   </ul>
   </td>
 </tr>
