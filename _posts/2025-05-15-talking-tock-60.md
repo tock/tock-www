@@ -12,9 +12,9 @@ machine type.
 Trying It Out
 -------------
 
-You can use the Tock port with QEMU following the [instructions here]
-(https://github.com/tock/tock/tree/master/boards/qemu_i486_q35). After you
-install QEMU, you can:
+You can use the Tock port with QEMU following the
+[instructions here](https://github.com/tock/tock/tree/master/boards/qemu_i486_q35).
+After you install QEMU, you can:
 
 ```
 cd tock/boards/qemu_i486_q35
