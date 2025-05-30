@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem "jekyll", "~> 4.3.3"
+gem "jekyll", "~> 4.4.1"
 gem "html-proofer"
 gem 'html-pipeline-hashtag'
 gem "jekyll-paginate"

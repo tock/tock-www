@@ -28,6 +28,7 @@ GEM
       fiber-annotation
       fiber-local (~> 1.1)
       json
+    csv (3.3.4)
     drb (2.2.1)
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
@@ -63,17 +64,20 @@ GEM
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     io-event (1.6.0)
-    jekyll (4.3.3)
+    jekyll (4.4.1)
       addressable (~> 2.4)
+      base64 (~> 0.2)
       colorator (~> 1.0)
+      csv (~> 3.0)
       em-websocket (~> 0.5)
       i18n (~> 1.0)
       jekyll-sass-converter (>= 2.0, < 4.0)
       jekyll-watch (~> 2.0)
+      json (~> 2.6)
       kramdown (~> 2.3, >= 2.3.1)
       kramdown-parser-gfm (~> 1.0)
       liquid (~> 4.0)
-      mercenary (>= 0.3.6, < 0.5)
+      mercenary (~> 0.3, >= 0.3.6)
       pathutil (~> 0.9)
       rouge (>= 3.0, < 5.0)
       safe_yaml (~> 1.0)
@@ -150,7 +154,7 @@ PLATFORMS
 DEPENDENCIES
   html-pipeline-hashtag
   html-proofer
-  jekyll (~> 4.3.3)
+  jekyll (~> 4.4.1)
   jekyll-compose
   jekyll-mentions
   jekyll-paginate
@@ -161,4 +165,4 @@ DEPENDENCIES
   webrick
 
 BUNDLED WITH
-   2.5.9
+   2.6.6
