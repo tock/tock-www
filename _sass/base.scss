@@ -1,32 +1,36 @@
+@use "fonts";
+@use "variables";
+@use "sizes";
+
 h1, h2, h3, h4 {
-  font-family: $heading-font;
+  font-family: fonts.$heading-font;
 }
 
 body {
-  font-family: $body-font;
-  font-size: $text-base-size;
+  font-family: fonts.$body-font;
+  font-size: fonts.$text-base-size;
 }
 
 a {
-  color: $primary-color;
+  color: variables.$primary-color;
   text-decoration: none;
 
   &:hover {
     text-decoration: underline;
-    color: $primary-color-dark;
+    color: variables.$primary-color-dark;
   }
 }
 
 body {
   min-height: 100vh;
   display: grid;
-  grid-auto-rows: $header-height min-content auto min-content;
+  grid-auto-rows: sizes.$header-height min-content auto min-content;
 }
 
 // Heading
 
 body > header {
-  padding: $spacer;
+  padding: sizes.$spacer;
   width: 100%;
   box-sizing: border-box;
   background-color: white;
@@ -34,13 +38,13 @@ body > header {
   display: flex;
   justify-content: space-between;
 
-  @media screen and (min-width: $tablet) {
+  @media screen and (min-width: sizes.$tablet) {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
   }
 
-  @media screen and (min-width: $tablet) {
+  @media screen and (min-width: sizes.$tablet) {
     &:before, &:after {
       content: '';
       flex: 1 1 auto;
@@ -56,7 +60,7 @@ body > header {
       display: none;
     }
 
-    @media screen and (max-width: $tablet) {
+    @media screen and (max-width: sizes.$tablet) {
       float: right;
     }
   }
@@ -68,13 +72,14 @@ body > header {
   }
 
   > h1 {
-    @media screen and (max-width: $tablet) {
-      float: left;
-    }
     text-align: left;
 
+    @media screen and (max-width: sizes.$tablet) {
+      float: left;
+    }
+
     img {
-      height: $header-height - (3 * $spacer);
+      height: sizes.$header-height - (3 * sizes.$spacer);
       margin: 5px 0;
     }
   }
@@ -89,16 +94,16 @@ body > header {
       list-style: none;
       padding: 0;
       li {
-        @media screen and (min-width: $tablet) {
+        @media screen and (min-width: sizes.$tablet) {
           display: inline;
         }
       }
     }
 
     a {
-      color: $primary-color;
+      color: variables.$primary-color;
       text-decoration: none;
-      margin-left: $spacer;
+      margin-left: sizes.$spacer;
       padding: 5px;
       display: inline-block;
       line-height: 24pt;
@@ -108,7 +113,7 @@ body > header {
     }
   }
 
-  @media screen and (max-width: $tablet) {
+  @media screen and (max-width: sizes.$tablet) {
     > nav {
       position: relative;
       z-index: 10;
@@ -118,7 +123,7 @@ body > header {
           font-family: 'Material Icons';
           font-size: 3rem;
           line-height: 100%;
-          color: $primary-color-dark;
+          color: variables.$primary-color-dark;
         }
       }
 
@@ -130,7 +135,7 @@ body > header {
       }
 
       ul li:not(:last-child) {
-        border-bottom: 1px solid $divider-color;
+        border-bottom: 1px solid variables.$divider-color;
       }
 
       ul li a {
@@ -169,8 +174,8 @@ body > header {
 
 body > .hero {
   color: #fff;
-  background-color: $primary-color;
-  padding: 2 * $spacer;
+  background-color: variables.$primary-color;
+  padding: 2 * sizes.$spacer;
   text-align: center;
   > h1, h2 {
     margin: 0 auto;
@@ -183,12 +188,12 @@ body > .hero {
 // Footer
 
 footer {
-  background-color: $primary-color;
-  color: $light-text;
-  padding: $spacer 2 * $spacer;
+  background-color: variables.$primary-color;
+  color: variables.$light-text;
+  padding: sizes.$spacer 2 * sizes.$spacer;
 
   a {
-    color: $light-text;
+    color: variables.$light-text;
   }
 
   > div {
@@ -196,26 +201,26 @@ footer {
     margin: 0 auto;
     display: flex;
 
-    @media screen and (max-width: $tablet) {
+    @media screen and (max-width: sizes.$tablet) {
       flex-direction: column;
-      padding: 0 $spacer;
+      padding: 0 sizes.$spacer;
     }
 
     div {
       flex: 1;
       margin: auto 0;
       text-align: left;
-      
-      @media screen and (max-width: $tablet) {
-        margin: $spacer 0;
+
+      @media screen and (max-width: sizes.$tablet) {
+        margin: sizes.$spacer 0;
         text-align: center;
       }
     }
 
     div:nth-child(2) {
       text-align: right;
-      
-      @media screen and (max-width: $tablet) {
+
+      @media screen and (max-width: sizes.$tablet) {
         text-align: center;
       }
     }
@@ -226,13 +231,13 @@ footer {
 
     ul {
       display: block;
-      
-      @media screen and (max-width: $tablet) {
-        margin-top: $spacer;
+
+      @media screen and (max-width: sizes.$tablet) {
+        margin-top: sizes.$spacer;
         list-style-type: none;
         padding-left: 0;
       }
-      
+
       li {
         display: inline;
       }
@@ -245,7 +250,7 @@ footer {
 body > article {
   max-width: 800px;
   margin: 0 auto;
-  padding: $spacer 2 * $spacer;
+  padding: sizes.$spacer 2 * sizes.$spacer;
   font-size: 1.25rem;
 
   img {
@@ -259,8 +264,8 @@ body > article {
   ol.pager {
     list-style: none;
     padding: 0;
-    margin-top: $spacer;
-    margin-left: $spacer;
+    margin-top: sizes.$spacer;
+    margin-left: sizes.$spacer;
     text-align: right;
 
     li {

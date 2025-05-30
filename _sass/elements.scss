@@ -1,5 +1,8 @@
+@use "variables";
+@use "sizes";
+
 a.button {
-  color: $primary-color-text;
+  color: variables.$primary-color-text;
   text-decoration: none;
   display: inline-block;
   border: 2px solid #ddd;
@@ -7,7 +10,7 @@ a.button {
   padding: 6px 18px;
   font-size: 1.25em;
   box-shadow: 1px 2px 0 rgba(0, 0, 0, 0.25);
-  background-color: $secondary-color;
+  background-color: variables.$secondary-color;
 
   &:hover {
     border-color: #333;
@@ -17,7 +20,7 @@ a.button {
 
 table {
   margin-top: 0;
-  margin-bottom: $spacer;
+  margin-bottom: sizes.$spacer;
   border-collapse: collapse;
   background-color: transparent;
   width: 100%;
@@ -27,7 +30,7 @@ table {
   }
 
   th, td {
-    padding: calc(#{$spacer} / 2) $spacer;
+    padding: calc(#{sizes.$spacer} / 2) sizes.$spacer;
     border: 1px solid #ddd;
   }
 

@@ -2,8 +2,8 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 
-@import 'sizes';
-@import 'variables';
+@use 'sizes';
+@use 'variables';
 
 body > .hero {
   color: #fff;
@@ -11,12 +11,13 @@ body > .hero {
   background-position: center 35px;
   background-repeat: no-repeat;
   background-size: 90%;
-  @media screen and (min-width: $tablet) {
-    background-size: 600px;
-  }
-  background-color: $primary-color;
+  background-color: variables.$primary-color;
   padding: 70px;
   text-align: center;
+
+  @media screen and (min-width: sizes.$tablet) {
+    background-size: 600px;
+  }
   > h1, > h2 {
     max-width: 600px;
     margin: 0 auto;
@@ -33,7 +34,7 @@ body > .hero {
 
     li {
       display: inline-block;
-      margin: $spacer;
+      margin: sizes.$spacer;
     }
   }
 
@@ -86,21 +87,20 @@ ul#applications {
 
   li {
     display: flex;
-    background-color: $primary-color-light;
+    background-color: variables.$primary-color-light;
     flex-wrap: wrap;
     list-style: none;
-    padding: 2 * $spacer;
+    padding: 2 * sizes.$spacer;
+    font-size: 2rem;
 
-    @media screen and (min-width: $tablet) {
+    @media screen and (min-width: sizes.$tablet) {
       padding-left: 140px;
       padding-right: 140px;
     }
 
-    @media screen and (max-width: $tablet) {
+    @media screen and (max-width: sizes.$tablet) {
       font-size: 1.5rem;
     }
-
-    font-size: 2rem;
 
     h4 {
       font-size: 3rem;
@@ -114,7 +114,7 @@ ul#applications {
     div:first-child {
       flex: 1;
       text-align: left;
-      margin-right: 3 * $spacer;
+      margin-right: 3 * sizes.$spacer;
     }
 
     p {
@@ -122,25 +122,25 @@ ul#applications {
     }
 
     img {
-      @media screen and (max-width: $tablet) {
-        display: none;
-      }
       max-width: 300px;
       max-height: 300px;
       border-radius: 10%;
+      @media screen and (max-width: sizes.$tablet) {
+        display: none;
+      }
     }
   }
 
   li:nth-child(even) {
-    background-color: $primary-color;
+    background-color: variables.$primary-color;
     color: white;
   }
-  @media screen and (min-width: $tablet) {
+  @media screen and (min-width: sizes.$tablet) {
     li:nth-child(even) {
       flex-direction: row-reverse;
       div:first-child {
         flex: 1;
-        margin-left: 3 * $spacer;
+        margin-left: 3 * sizes.$spacer;
       }
     }
   }

@@ -1,3 +1,5 @@
+@use "variables";
+
 body > article {
 
   header {
@@ -8,7 +10,7 @@ body > article {
     h2 {
       margin: 0;
     }
-    
+
     time, span[rel="author"] {
       font-size: 0.66em;
       color: #333;
@@ -16,13 +18,13 @@ body > article {
   }
 
   ul.posts {
-    color: $dark-text;
+    color: variables.$dark-text;
     list-style: none;
     padding: 0;
     margin: 0;
 
     h3 {
-      color: $secondary-color;
+      color: variables.$secondary-color;
     }
 
     a {
@@ -43,7 +45,7 @@ body > article {
           display: block;
           width: 3rem;
           height: 5px;
-          background-color: $secondary-color;
+          background-color: variables.$secondary-color;
         }
 
         &:hover:after, &:focus:after {

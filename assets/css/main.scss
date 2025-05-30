@@ -3,10 +3,10 @@
 ---
 @charset "utf-8";
 
-@import "normalize";
-@import "fonts";
-@import "variables";
-@import "sizes";
-@import "elements";
-@import "base";
-@import "blog";
+@use "normalize";
+@use "fonts";
+@use "variables";
+@use "sizes";
+@use "elements";
+@use "base";
+@use "blog";
