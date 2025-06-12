@@ -14,8 +14,9 @@ The goal of this tutorial is to provide members of the mobile systems and
 computing community a contemporary guide to the foundations of security for
 modern computational systems.
 
-The event is divided into four semi-independent sessions. The first session
-invites __TBD: lightning talks? posters? what do we want to solicit?__
+The event is divided into four semi-independent sessions. The first session will
+allow participants to introduce themselves, their background, and their
+interest in secure devices and software.
 
 Each of the subsequent technical sessions is a mixture of educational content
 and hands-on hardware experience. Over the course of the day, we will develop
@@ -37,14 +38,15 @@ sense of the participants in the tutorial so we can facilitate a more
 interactive tutorial and adapt some of the content based on participant interest
 and background.
 
-Please submit your slide **here** in either `.pdf` or `.pptx` form.
+Please submit your slide [here](https://tockatmobisys2025.hotcrp.com/) in either
+`.pdf` or `.pptx` form.
 
 If capacity for the tutorial is reached priority will be given to participants
 who have submitted an introduction slide.
 
 ---
 
-__Times are estimates for planning flow Pat just made up for the moment.__
+__Times are estimates!__
 
 <style>
 .session {
@@ -72,18 +74,17 @@ __Times are estimates for planning flow Pat just made up for the moment.__
   8:45
   </td>
   <td>
-  (10m) Welcome, Intro to Tock, and Overview of the Day
+  (5m) Welcome and Overview of the Day
   </td>
 </tr>
 <tr>
   <td>
-  8:55
+  8:50
   </td>
   <td>
-  (5m) Setting up your development environment
+  (10m) Setting up your development environment
   <ul>
-    <li>Get folks started on this.</li>
-    <li>Work independently on these (high-latency, low-interaction) steps during the rest of the session.</li>
+    <li>Get started if anyone needs help.</li>
   </ul>
   </td>
 </tr>
@@ -92,11 +93,22 @@ __Times are estimates for planning flow Pat just made up for the moment.__
   9:00
   </td>
   <td>
-  (45m) Introduction Lightning Talks
+  (25m) Introduction Lightning Talks
   <ul>
     <li>1 slide / person, 2 minutes</li>
     <li>Tell us a bit about who you are and what your research area or background is.</li>
-    <li>Interactive at all?</li>
+  </ul>
+  </td>
+</tr>
+<tr>
+  <td>
+  9:25
+  </td>
+  <td>
+  (20m) Introduction to Tock
+  <ul>
+    <li>Key Tock features.</li>
+    <li>Comparison to other OSes.</li>
   </ul>
   </td>
 </tr>
@@ -124,13 +136,13 @@ __Times are estimates for planning flow Pat just made up for the moment.__
   10:00
   </td>
   <td>
-  (50m+10m) A Primer on Roots of Trust
+  (10m+10m) A Primer on Roots of Trust
   <ul>
     <li>What is a RoT?</li>
     <li>Examples of RoTs you use already? (Directly, e.g. SecureEnclave; Indirectly, e.g. cloud)</li>
     <li>From top down: what does a RoT provide to platform/app developers? Why should they care?</li>
     <li>From bottom up: what hardware/software does a RoT require to operate? What makes one secure?</li>
-    <li>Tock + [OpenTitan](https://opentitan.org/) silicon RoT live demo</li>
+    <li>Tock + <a href="https://opentitan.org/">OpenTitan</a> silicon RoT live demo</li>
     <li>Current advances/challenges in RoT development; open source ushering in a new era of secure HW + SW systems</li>
   </ul>
   <ul>
@@ -140,12 +152,12 @@ __Times are estimates for planning flow Pat just made up for the moment.__
 </tr>
 <tr>
   <td>
-  11:00
+  10:30
   </td>
   <td>
   (25m+5m) TockOS as firmware for RoT
   <ul>
-    <li>What is Tock? Who is using Tock in a RoT solution today?</li>
+    <li>Who is using Tock in a RoT solution today?</li>
     <li>What components of a RoT does Tock provide?</li>
     <li>How does Tock go above and beyond e.g. bare metal RoT firmware?</li>
     <li>What does Tock's security model look like, and how does that fit with a RoT's security model?</li>
@@ -155,12 +167,12 @@ __Times are estimates for planning flow Pat just made up for the moment.__
 </tr>
 <tr>
   <td>
-  11:30
+  11:00
   </td>
   <td>
-  (30m) Interactive Session
+  (1h) Interactive Session
   <ul>
-    <li>Maybe: Turn nrf52840dk into a U2F token?</li>
+    <li>Explore Root of Trust features in Tock</li>
   </ul>
   </td>
 </tr>
@@ -188,12 +200,11 @@ __Times are estimates for planning flow Pat just made up for the moment.__
   13:00
   </td>
   <td>
-  (20m+10m) A Policy-Based Approach to Secure and Flexible Platform Deisgn
+  (10m+5m) A Policy-Based Approach to Secure and Flexible Platform Design
   <ul>
-    <li>Dynamic app loading—what's different on embedded, different concerns on RoT platform, especially with mixed use cases?</li>
-    <li>App identity in Tock (mabye sig's / enforcement etc too)?</li>
-    <li>OS/platform policy approach, runtime flexibility, etc; some dive into the implementation</li>
-    <li>Specific examples, maybe use as transition to hands-on part?</li>
+    <li>Dynamic app loading architecture</li>
+    <li>App identity in Tock</li>
+    <li>What the Tock kernel can enforce</li>
   </ul>
   <ul>
     <li>Q&A</li>
@@ -202,15 +213,14 @@ __Times are estimates for planning flow Pat just made up for the moment.__
 </tr>
 <tr>
   <td>
-  13:30
+  13:15
   </td>
   <td>
-  (75m) Interactive Session
+  (90m) Interactive Session
   <ol>
     <li>Basic interaction with multiple, static processes on Tock</li>
-    <li>Process loading example [how to "get" other apps? in-binary, DFU USB, Thread?]</li>
+    <li>Process loading example</li>
     <li>Policy enforcement for dynamic apps</li>
-    <li>Example of security / attacker scenario Tock protects against</li>
   </ol>
   </td>
 </tr>
