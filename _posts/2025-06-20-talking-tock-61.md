@@ -4,7 +4,7 @@ subtitle: x86 Working Group
 authors: bradjc
 ---
 
-Following on Talking Tock #60(2025-05-15-talking-tock-60.md), we have
+Following on [Talking Tock #60](2025-05-15-talking-tock-60.md), we have
 established an
 [x86 working group](https://github.com/tock/tock/tree/master/doc/wg/x86).
 This working group will steward Tock development (include userspace and tooling)
