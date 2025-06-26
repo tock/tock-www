@@ -172,7 +172,6 @@ table {
     <li>Examples of RoTs you use already? (Directly, e.g. SecureEnclave; Indirectly, e.g. cloud)</li>
     <li>From top down: what does a RoT provide to platform/app developers? Why should they care?</li>
     <li>From bottom up: what hardware/software does a RoT require to operate? What makes one secure?</li>
-    <li>Tock + <a href="https://opentitan.org/">OpenTitan</a> silicon RoT live demo</li>
     <li>Current advances/challenges in RoT development; open source ushering in a new era of secure HW + SW systems</li>
   </ul>
   <ul>
@@ -185,7 +184,7 @@ table {
   10:30
   </td>
   <td>
-  <b>TockOS as firmware for RoT</b>
+  <b>TockOS as firmware for RoTs</b>
   <ul>
     <li>Who is using Tock in a RoT solution today?</li>
     <li>What components of a RoT does Tock provide?</li>
