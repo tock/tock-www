@@ -7,7 +7,9 @@ permalink: /papers/
 
 # Academic Papers
 
-  * [EuroSec: Tiered Trust for useful embedded systems security](/assets/papers/tock-security-model-EuroSec2022.pdf). EuroSec 2022.
+  * [Tock: From Research to Securing 10 Million Computers](/assets/papers/2025-sosp-tock-decade.pdf). SOSP 2025.
+
+  * [Tiered Trust for useful embedded systems security](/assets/papers/tock-security-model-EuroSec2022.pdf). EuroSec 2022.
 
   * [Multiprogramming a 64 kB Computer Safely and
     Efficiently](/assets/papers/tock-sosp2017.pdf). SOSP 2017.
