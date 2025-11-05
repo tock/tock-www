@@ -320,7 +320,7 @@ __Where to get it:__ [TI or distributors][launchxl-hw]
    - USB-to-UART Bridge
 </td>
 <td markdown="1">
-![Image of ESP32-C3-DevKitM-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/_images/esp32-c3-devkitm-1-v1-isometric.png)
+![Image of ESP32-C3-DevKitM-1](https://www.espressif.com/sites/default/files/dev-board/ESP32-C3-DevKitM-1%20V1.0%20.png)
 </td>
 </tr>
 </table>
