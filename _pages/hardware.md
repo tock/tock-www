@@ -243,7 +243,7 @@ __Where to get it:__ [ST or distributors][f446re-hw]
    - Extensible via Arduino™ Uno V3 connectivity support or ST morpho headers
 </td>
 <td markdown="1">
-![Image of Nucleo f446re](https://www.st.com/bin/ecommerce/api/image.PF262637.en.feature-description-include-personalized-no-cpn-medium.jpg)
+![Image of Nucleo f429zi](https://www.st.com/bin/ecommerce/api/image.PF262637.en.feature-description-include-personalized-no-cpn-medium.jpg)
 </td>
 </tr>
 </table>
