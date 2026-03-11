@@ -23,8 +23,7 @@ that guarantee, we can implement the `Sync` trait for the type, allowing it to
 be used as a global variable.
 
 ```rust
-static VAL: SingleThreadValue<GlobalStateForPanics> =
-    SingleThreadValue::new(GlobalStateForPanics::new());
+static VAL: SingleThreadValue<GlobalStateForPanics> = SingleThreadValue::new();
 ```
 
 Accessing `GlobalStateForPanics` can now fail if the accessing thread is
@@ -37,16 +36,26 @@ impl SingleThreadValue<T> {
 }
 ```
 
+To enable access to the stored value, the owning thread must call
+`bind_to_thread()` with the value to initialize the `SingleThreadValue`
+with.
+
+```rust
+VAL.bind_to_thread(GlobalStateForPanics::new());
+```
+
 The contained value is not mutable, so for objects that need to be modified the
 contained value should be in a cell type, such as a `MapCell`.
 
 ```rust
-static VAL: SingleThreadValue<MapCell<Resource>> = SingleThreadValue::new(MapCell::new(resource));
+static VAL: SingleThreadValue<MapCell<Resource>> = SingleThreadValue::new();
 ```
 
 And then to store a value:
 
 ```rust
+VAL.bind_to_thread(MapCell::new(resource));
+
 VAL.get().map(|val| {
 	val.put(my_resource);
 });
@@ -64,10 +73,10 @@ is a two step process:
    This instance is not active because it is not bound to a thread. Any attempts
    to use the contained value will fail.
 
-2. `SingleThreadValue::bind_to_thread()` binds the value to the thread that
-   called `bind_to_thread()`. This binding means that only this thread can
-   access the contained value. Any attempt to access the value from a different
-   thread will fail.
+2. `SingleThreadValue::bind_to_thread(value)` initializes the value and binds
+   the value to the thread that called `bind_to_thread()`. This binding means
+   that only this thread can access the contained value. Any attempt to access
+   the value from a different thread will fail.
 
 After these two steps the value can be soundly used as a global value by the
 thread that bound it.
