@@ -9,7 +9,7 @@ Anyone working with or on Tock is encouraged to join community communication pla
 
   * Join the [devel@lists.tockos.org](https://lists.tockos.org/postorius/lists/devel.lists.tockos.org/) mailing list for general development discussion, questions, and announcements.
   * Join other [mailing lists](https://lists.tockos.org) for working-group or topic specific discussions.
-  * Join us on [Matrix (#tock:tockos.org)](https://matrix.to/#/#tock:tockos.org) or [Slack](https://join.slack.com/t/tockos/shared_invite/enQtNDE5ODQyNDU4NTE1LWVjNTgzMTMwYzA1NDI1MjExZjljMjFmOTMxMGIwOGJlMjk0ZTI4YzY0NTYzNWM0ZmJmZGFjYmY5MTJiMDBlOTk) to chat.
+  * Join us on [Matrix (#tock:tockos.org)](https://matrix.to/#/#tock:tockos.org) or [Slack](https://join.slack.com/t/tockos/shared_invite/enQtNDE5ODQyNDU4NTE1LWVjNTgzMTMwYzA1NDI1MjExZjljMjFmOTMxMGIwOGJlMjk0ZTI4YzY0NTYzNWM0ZmJmZGFjYmY5MTJiMDBlOTk) to chat. We have a [Tock Registers Matrix room](https://matrix.to/#/#tock-registers:tockos.org) for questions and discussions about the tock-registers library.
 
 ## Contributing
 
