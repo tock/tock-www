@@ -63,7 +63,8 @@ impl PeripheralDma {
     pub fn start_dma(&self, buf: SubSliceMut<'static, u8>) -> Result<(), ()> {
         if self.dma_pending() { return Err(()); }
 
-        // To create a DmaFence we must trust the implementation.
+        // To create a `DmaFence` we must ensure that we're running
+        // on compatible hardware.
         //
         // # Safety
         //
