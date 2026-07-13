@@ -17,14 +17,10 @@ to the process's allocated memory.
 One challenge with doing field-by-field struct initialization is that _every_
 field in the struct **must** be initialized before calling
 `MaybeUninit::assume_init()`, or the assume init call is unsafe. For small
-structs (i.e., with say fewer than five fields), it is fairly straightforward
-to ensure that all fields have been initialized. However, for something like
-Tock's standard PCB, there are roughly 25 fields. It is difficult during code
-review to ensure all fields are initialized. Also, potentially more
-problematically, if a new field is ever added to the PCB struct, that
-field _must_ be initialized as well. Yet, Rust does not automatically track
-that every field is initialized and no error will be generated, yet the
-program will be unsound.
+structs (say, fewer than five fields), it is fairly straightforward
+to ensure during code review that all fields have been initialized. However, for something like
+Tock's standard PCB, and its ~25 fields, it can be easy to miss an uninitialized field during code review. When a new field is added to the PCB struct, that
+field _must_ be initialized as well everywhere the struct is created. Because we've told the compiler the memory is `MaybeUninit`, Rust will not generate an error a field is not initialized, but the program will be unsound.
 
 To ensure a compiler error is generated if not every field of a struct is
 initialized in a `MaybeUninit` use case, we created the `init_uninit_struct!()`
@@ -52,7 +48,7 @@ let process_uninit: &mut MaybeUninit<ProcessControlBlock> =
     unsafe { &mut *process_control_block_memory_location };
 ```
 
-We can use the `init_uninit_struct!()` to populate all fields like this:
+We can use `init_uninit_struct!()` to populate all fields like this:
 
 ```rust
 unsafe {
