@@ -27,16 +27,16 @@ phase).
 ```rust
 /// `DmaFence` enables releasing memory from Rust to the DMA hardware,
 /// and then re-acquiring the memory.
-/// 
+///
 /// Trait is unsafe because upper-level soundness guarantees must
 /// assume the trait is implemented correctly for a specific hardware
 /// architecture.
 pub unsafe trait DmaFence {
-	/// Release memory from any assumptions the Rust compiler may
-	/// make about the memory.
-	///
-	/// Must ensure that all writes to `buf` have finished and will
-	/// be visible to the DMA hardware.
+    /// Release memory from any assumptions the Rust compiler may
+    /// make about the memory.
+    ///
+    /// Must ensure that all writes to `buf` have finished and will
+    /// be visible to the DMA hardware.
     fn release<T>(self, buf: *mut [T]);
 
     /// Retrieve the memory from the DMA hardware.
