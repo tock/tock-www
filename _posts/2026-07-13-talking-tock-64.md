@@ -20,7 +20,7 @@ field in the struct **must** be initialized before calling
 structs (say, fewer than five fields), it is fairly straightforward
 to ensure during code review that all fields have been initialized. However, for something like
 Tock's standard PCB, and its ~25 fields, it can be easy to miss an uninitialized field during code review. When a new field is added to the PCB struct, that
-field _must_ be initialized as well everywhere the struct is created. Because we've told the compiler the memory is `MaybeUninit`, Rust will not generate an error a field is not initialized, but the program will be unsound.
+field _must_ be initialized as well everywhere the struct is created. Because we've told the compiler the memory is `MaybeUninit`, Rust will not generate an error if a field is not initialized, but the program will be unsound.
 
 To ensure a compiler error is generated if not every field of a struct is
 initialized in a `MaybeUninit` use case, we created the `init_uninit_struct!()`
