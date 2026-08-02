@@ -36,6 +36,9 @@ navigation:
   - title: Community
     url: /community/
     description: Mailing list, GitHub, IRC...
+  - title: Awesome Tock
+    url: /awesome/
+    description: Community projects built with and around Tock
   - title: Papers
     url: /papers/
     description: Published academic papers about Tock
