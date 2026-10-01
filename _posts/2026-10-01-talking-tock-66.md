@@ -1,5 +1,5 @@
 ---
-title: Talking Tock 65
+title: Talking Tock 66
 subtitle: Tock Registers' register_map API
 authors: jrvanwhy
 ---
