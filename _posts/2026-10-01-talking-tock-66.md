@@ -96,7 +96,7 @@ that restriction (e.g., adding `&core::panic::PanicInfo` as an argument).
 `unsafe` uses determined to be in Category (2) are the most satisfying as the
 `unsafe` can be removed.
 
-Finally, addressing `unsafe` use in Category (3) requires writing the correct
+Finally, addressing `unsafe` use in Category (1) requires writing the correct
 safety documentation.
 
 ### Determining what the correct documentation is
@@ -158,9 +158,8 @@ unnecessary `unsafe` usage.
 
 In hindsight, we should have started the project with these lints enabled
 (or, well, enforced them manually ourselves before the lints were added).
-Fixing them after the fact is much more difficult as the context and thinking
-from the when the code was written and added to Tock is difficult to
-recreated.
+Fixing them after the fact is much more difficult as the context and thought
+process from the when the code was written is difficult to recreate.
 
 This further reinforces a challenge with using Rust: the compiler only
 provides a single way to restrict code, the `unsafe` keyword. However, Tock
