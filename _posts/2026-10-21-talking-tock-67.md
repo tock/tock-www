@@ -1,14 +1,14 @@
 ---
-title: Talking Tock 66
+title: Talking Tock 67
 subtitle: Tock Registers' register_map API
 authors: jrvanwhy
 ---
 
-tock-registers version 0.11 has been published on crates.io! This release
-introduces register_map, the successor to register_structs. It is a complete
-redesign, with a new syntax for specifying register layouts and a completely new
-format for the generated code. It has the following improvements over
-register_structs:
+tock-registers versions 0.11 and 0.12 have been published on crates.io! These
+releases introduce register_map, the successor to register_structs. It is a
+complete redesign, with a new syntax for specifying register layouts and a
+completely new format for the generated code. It has the following improvements
+over register_structs:
 
 - It resolves the [reference-to-MMIO soundness
   issue](https://github.com/tock/tock-registers/issues/4).
@@ -23,9 +23,14 @@ repository](https://github.com/tock/tock-registers). You can also reference
 [pull request 11](https://github.com/tock/tock-registers/pull/11), which
 introduced the design.
 
-To make it easier to incrementally migrate code to register_map, this release
-does not remove the earlier APIs. However, because register_structs is unsound,
-it is immediately deprecated: please migrate code to register_map instead.
+To make it easier to incrementally migrate code to register_map, these releases
+do not remove the earlier APIs. However, because register_structs is unsound,
+it is immediately deprecated: please migrate code to register_map instead. The
+difference between 0.11 and 0.12 is the deprecation mechanism: 0.11 merely
+documents the old APIs as deprecated, 0.12 additionally uses the `#[deprecated]`
+attribute to emit compiler warnings on code that uses the unsound APIs. If your
+project denies warnings in CI, you can use 0.11 as a stop-gap while you migrate
+to register_map, otherwise we recommend updating directly to 0.12.
 
 ## What's Next?
 
@@ -36,6 +41,6 @@ The current roadmap for tock-registers is:
    register_map API.
 3. Once the register_map API seems stable, we will publish tock-registers 2.0.
 
-The jump from release 0.11 to 2.0 is intentional: register_map is effectively
+The jump from release 0.12 to 2.0 is intentional: register_map is effectively
 the second major iteration of tock-registers, and we did not feel that a 1.0
 release would be suitable for it.
